@@ -1,0 +1,291 @@
+<script setup lang="ts">
+import { ref, computed, markRaw } from 'vue'
+import programsData from '../data/programs.json'
+import { 
+  Briefcase, Building2, Ban, GraduationCap, User, Plane, 
+  Hospital, Coins, Home, BookOpen, HeartHandshake, AlertTriangle, Baby, Accessibility,
+  HelpCircle, ArrowLeft, ArrowRight
+} from 'lucide-vue-next'
+import type { Program } from '../types'
+
+const emit = defineEmits<{
+  (e: 'select-program', programId: string): void
+}>()
+
+const step = ref(1)
+const totalSteps = 3
+
+// Form State
+const status = ref('')
+const need = ref('')
+const demographics = ref<string[]>([])
+
+// Options
+const statusOptions = [
+  { value: 'Employed', label: 'Employed (Private Sector/Kasambahay)', icon: markRaw(Briefcase) },
+  { value: 'Government Employees', label: 'Government Employee', icon: markRaw(Building2) },
+  { value: 'Unemployed', label: 'Unemployed / Laid off', icon: markRaw(Ban) },
+  { value: 'Students', label: 'Student', icon: markRaw(GraduationCap) },
+  { value: 'Seniors', label: 'Senior Citizen (60+)', icon: markRaw(User) },
+  { value: 'OFW', label: 'Overseas Filipino Worker (OFW)', icon: markRaw(Plane) }
+]
+
+const needOptions = [
+  { value: 'medical', label: 'Medical & Healthcare (Bills, Medicines, Checkups)', icon: markRaw(Hospital) },
+  { value: 'financial', label: 'Direct Cash & Livelihood (Emergency cash, loans, work)', icon: markRaw(Coins) },
+  { value: 'housing', label: 'Housing & Home Loans', icon: markRaw(Home) },
+  { value: 'education', label: 'Education & Scholarships (Tuition, allowances)', icon: markRaw(BookOpen) }
+]
+
+const demographicOptions = [
+  { value: 'Indigent', label: 'Low-income / Indigent Family', icon: markRaw(HeartHandshake) },
+  { value: 'Crisis Victims', label: 'Experiencing an immediate crisis (death, disaster)', icon: markRaw(AlertTriangle) },
+  { value: 'Pregnant', label: 'Pregnant or Expectant Mother', icon: markRaw(Baby) },
+  { value: 'PWD', label: 'Person with Disability (PWD)', icon: markRaw(Accessibility) }
+]
+
+const toggleDemographic = (val: string) => {
+  const idx = demographics.value.indexOf(val)
+  if (idx > -1) {
+    demographics.value.splice(idx, 1)
+  } else {
+    demographics.value.push(val)
+  }
+}
+
+const nextStep = () => {
+  if (step.value < totalSteps) {
+    step.value++
+  }
+}
+
+const prevStep = () => {
+  if (step.value > 1) {
+    step.value--
+  }
+}
+
+const resetQuiz = () => {
+  step.value = 1
+  status.value = ''
+  need.value = ''
+  demographics.value = []
+}
+
+// Simple recommendation engine
+const recommendedPrograms = computed<Program[]>(() => {
+  if (step.value !== 3 || !status.value || !need.value) return []
+
+  const scored = (programsData as Program[]).map(program => {
+    let score = 0
+
+    // Match status/employment
+    const statusLower = status.value.toLowerCase()
+    const matchStatus = program.target_audience.some(aud => 
+      aud.toLowerCase().includes(statusLower) || 
+      statusLower.includes(aud.toLowerCase())
+    ) || program.tags.some(t => t.toLowerCase() === statusLower)
+    
+    if (matchStatus) score += 4
+
+    // Special fallback for SSS members
+    if (status.value === 'Employed' && program.target_audience.includes('SSS Members')) {
+      score += 3
+    }
+    // Special fallback for GSIS members
+    if (status.value === 'Government Employees' && program.target_audience.includes('Government Employees')) {
+      score += 4
+    }
+
+    // Match needs
+    if (program.tags.includes(need.value) || program.category.toLowerCase().includes(need.value)) {
+      score += 5
+    }
+
+    // Match demographics
+    demographics.value.forEach(dem => {
+      const demLower = dem.toLowerCase()
+      const matchDem = program.target_audience.some(aud => 
+        aud.toLowerCase().includes(demLower) ||
+        demLower.includes(aud.toLowerCase())
+      ) || program.tags.some(t => t.toLowerCase() === demLower)
+
+      if (matchDem) score += 3
+    })
+
+    // General "All" or "All Citizens" tag match
+    if (program.target_audience.includes('All Citizens')) {
+      score += 1
+    }
+
+    return { program, score }
+  })
+
+  // Filter out zero or low matching scores, sort descending
+  return scored
+    .filter(item => item.score > 2)
+    .sort((a, b) => b.score - a.score)
+    .map(item => item.program)
+})
+</script>
+
+<template>
+  <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 md:p-8 shadow-sm transition-all duration-300">
+
+    <!-- Header and progress indicator -->
+    <div class="flex items-center justify-between mb-8 border-b border-slate-100 dark:border-slate-800 pb-4">
+      <div>
+        <h3 class="text-xs uppercase font-medium tracking-wide text-slate-500 dark:text-slate-400">Ayuda Finder Wizard</h3>
+        <p class="text-xl font-bold text-blue-900 dark:text-blue-400 mt-0.5">Find Your Eligible Benefits</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-sm font-medium text-slate-500 dark:text-slate-400">Step {{ step }} of {{ totalSteps }}</span>
+        <div class="w-20 bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden border border-slate-200/50 dark:border-slate-800/50">
+          <div class="bg-blue-900 dark:bg-blue-800 h-full transition-all duration-300" :style="{ width: `${(step / totalSteps) * 100}%` }"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Steps -->
+    <div class="min-h-[280px] flex flex-col justify-between">
+      
+      <!-- Step 1: Employment / Status -->
+      <div v-if="step === 1" class="space-y-4 animate-fade-in">
+        <h4 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-4">What is your current employment or life status?</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <button 
+            v-for="opt in statusOptions" 
+            :key="opt.value"
+            @click="status = opt.value; nextStep()"
+            class="flex items-center gap-4 p-4 text-left rounded-xl border transition-all duration-205 group active:scale-[0.98]"
+            :class="status === opt.value 
+              ? 'bg-blue-50 dark:bg-blue-950/20 border-blue-900 dark:border-blue-800 text-blue-900 dark:text-blue-400 shadow-sm' 
+              : 'bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-900 hover:border-slate-350 dark:hover:border-slate-700'"
+          >
+            <span class="p-2 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg transition-transform group-hover:scale-105">
+              <component :is="opt.icon" class="w-6 h-6 text-blue-900 dark:text-blue-400" />
+            </span>
+            <span class="font-medium text-sm md:text-base">{{ opt.label }}</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2: Main Area of Need -->
+      <div v-if="step === 2" class="space-y-4 animate-fade-in">
+        <h4 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-4">What service or aid do you require help with?</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <button 
+            v-for="opt in needOptions" 
+            :key="opt.value"
+            @click="need = opt.value; nextStep()"
+            class="flex items-center gap-4 p-4 text-left rounded-xl border transition-all duration-205 group active:scale-[0.98]"
+            :class="need === opt.value 
+              ? 'bg-blue-50 dark:bg-blue-950/20 border-blue-900 dark:border-blue-800 text-blue-900 dark:text-blue-400 shadow-sm' 
+              : 'bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-900 hover:border-slate-350 dark:hover:border-slate-700'"
+          >
+            <span class="p-2 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg transition-transform group-hover:scale-105">
+              <component :is="opt.icon" class="w-6 h-6 text-blue-900 dark:text-blue-400" />
+            </span>
+            <span class="font-medium text-sm md:text-base">{{ opt.label }}</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 3: Demographics & Special conditions -->
+      <div v-if="step === 3" class="space-y-4 animate-fade-in">
+        <h4 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-4">Select all other tags that describe you (Optional):</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+          <button 
+            v-for="opt in demographicOptions" 
+            :key="opt.value"
+            @click="toggleDemographic(opt.value)"
+            class="flex items-center gap-4 p-4 text-left rounded-xl border transition-all duration-205 group active:scale-[0.98]"
+            :class="demographics.includes(opt.value) 
+              ? 'bg-blue-50 dark:bg-blue-950/20 border-blue-900 dark:border-blue-800 text-blue-900 dark:text-blue-400 shadow-sm' 
+              : 'bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-900 hover:border-slate-350 dark:hover:border-slate-700'"
+          >
+            <span class="p-2 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg transition-transform group-hover:scale-105">
+              <component :is="opt.icon" class="w-6 h-6 text-blue-900 dark:text-blue-400" />
+            </span>
+            <span class="font-medium text-sm md:text-base">{{ opt.label }}</span>
+          </button>
+        </div>
+
+        <!-- Recommendations Result Panel -->
+        <div class="mt-6 border-t border-slate-200 dark:border-slate-800 pt-6">
+          <h5 class="text-sm font-bold text-blue-900 dark:text-blue-400 mb-4 flex items-center gap-2">
+            <Briefcase class="w-4 h-4" />
+            Handpicked Recommendations ({{ recommendedPrograms.length }})
+          </h5>
+
+          <div v-if="recommendedPrograms.length === 0" class="text-center py-8 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-200 dark:border-slate-800">
+            <HelpCircle class="w-8 h-8 text-slate-400 dark:text-slate-600 mx-auto" />
+            <p class="text-slate-600 dark:text-slate-300 font-medium mt-2">No specialized programs matched these combinations.</p>
+            <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Try selecting different options or view all benefits in the Directory.</p>
+          </div>
+
+          <div v-else class="space-y-3 max-h-[250px] overflow-y-auto pr-1">
+            <div 
+              v-for="prog in recommendedPrograms" 
+              :key="prog.id"
+              class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 hover:border-blue-300 dark:hover:border-blue-800 rounded-xl transition-all duration-200"
+            >
+              <div class="flex-1 pr-4">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="px-2 py-0.5 bg-blue-100 dark:bg-blue-950/40 text-blue-900 dark:text-blue-300 rounded text-[10px] uppercase font-bold tracking-wider border border-blue-200/50 dark:border-blue-900/30">{{ prog.agency }}</span>
+                  <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">{{ prog.category }}</span>
+                </div>
+                <h6 class="text-sm font-bold text-slate-900 dark:text-slate-100 mt-1 line-clamp-1">{{ prog.name }}</h6>
+              </div>
+              <button 
+                @click="emit('select-program', prog.id)" 
+                class="px-3 py-1.5 bg-blue-900 dark:bg-blue-800 hover:bg-blue-800 dark:hover:bg-blue-700 text-white font-semibold rounded-lg text-xs transition-colors flex items-center gap-1 active:scale-95"
+              >
+                <span>View Details</span>
+                <ArrowRight class="w-3 h-3" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation buttons -->
+      <div class="flex items-center justify-between mt-8 border-t border-slate-200 dark:border-slate-800 pt-4">
+        <button 
+          v-if="step > 1" 
+          @click="prevStep" 
+          class="px-4 py-2 text-slate-600 dark:text-slate-350 hover:text-blue-900 dark:hover:text-blue-400 text-sm font-semibold transition-colors flex items-center gap-1"
+        >
+          <ArrowLeft class="w-4 h-4" /> Back
+        </button>
+        <div v-else></div>
+
+        <button 
+          v-if="step === totalSteps"
+          @click="resetQuiz"
+          class="px-5 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-850 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 font-semibold rounded-xl text-sm transition-all duration-200"
+        >
+          Reset Quiz
+        </button>
+      </div>
+
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
