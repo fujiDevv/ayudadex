@@ -69,6 +69,8 @@ bun run build
 │   ├── constants.ts        # Static datasets (hotlines, audience tags)
 │   ├── types.ts            # Shared TypeScript interface definitions
 │   ├── components/
+│   │   ├── AppHeader.vue   # Brand logo, tab navigation, and dark switcher
+│   │   ├── AppFooter.vue   # Redesigned civic footer, portals, and disclaimer
 │   │   ├── AyudaFinder.vue # Smart matching quiz wizard component
 │   │   └── ProgramCard.vue # Reusable benefits program card component
 │   └── data/
