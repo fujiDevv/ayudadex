@@ -6,6 +6,7 @@ import {
   Hospital, Coins, Home, BookOpen, HeartHandshake, AlertTriangle, Baby, Accessibility,
   HelpCircle, ArrowLeft, ArrowRight
 } from 'lucide-vue-next'
+import { motion } from 'motion-v'
 import type { Program } from '../types'
 
 const emit = defineEmits<{
@@ -130,7 +131,12 @@ const recommendedPrograms = computed<Program[]>(() => {
 </script>
 
 <template>
-  <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 md:p-8 shadow-sm transition-all duration-300">
+  <motion.div 
+    class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 md:p-8 shadow-sm transition-all duration-300"
+    :initial="{ opacity: 0, y: 15 }"
+    :animate="{ opacity: 1, y: 0 }"
+    :transition="{ duration: 0.4 }"
+  >
 
     <!-- Header and progress indicator -->
     <div class="flex items-center justify-between mb-8 border-b border-slate-100 dark:border-slate-800 pb-4">
@@ -153,20 +159,23 @@ const recommendedPrograms = computed<Program[]>(() => {
       <div v-if="step === 1" class="space-y-4 animate-fade-in">
         <h4 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-4">What is your current employment or life status?</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <button 
+          <motion.button 
             v-for="opt in statusOptions" 
             :key="opt.value"
             @click="status = opt.value; nextStep()"
-            class="flex items-center gap-4 p-4 text-left rounded-xl border transition-all duration-205 group active:scale-[0.98]"
+            class="flex items-center gap-4 p-4 text-left rounded-xl border transition-all duration-205 group active:scale-[0.98] cursor-pointer"
             :class="status === opt.value 
               ? 'bg-blue-50 dark:bg-blue-950/20 border-blue-900 dark:border-blue-800 text-blue-900 dark:text-blue-400 shadow-sm' 
               : 'bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-900 hover:border-slate-350 dark:hover:border-slate-700'"
+            :whileHover="{ scale: 1.02, y: -2 }"
+            :whileTap="{ scale: 0.98 }"
+            :transition="{ type: 'spring', stiffness: 300, damping: 15 }"
           >
             <span class="p-2 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg transition-transform group-hover:scale-105">
               <component :is="opt.icon" class="w-6 h-6 text-blue-900 dark:text-blue-400" />
             </span>
             <span class="font-medium text-sm md:text-base">{{ opt.label }}</span>
-          </button>
+          </motion.button>
         </div>
       </div>
 
@@ -174,20 +183,23 @@ const recommendedPrograms = computed<Program[]>(() => {
       <div v-if="step === 2" class="space-y-4 animate-fade-in">
         <h4 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-4">What service or aid do you require help with?</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <button 
+          <motion.button 
             v-for="opt in needOptions" 
             :key="opt.value"
             @click="need = opt.value; nextStep()"
-            class="flex items-center gap-4 p-4 text-left rounded-xl border transition-all duration-205 group active:scale-[0.98]"
+            class="flex items-center gap-4 p-4 text-left rounded-xl border transition-all duration-205 group active:scale-[0.98] cursor-pointer"
             :class="need === opt.value 
               ? 'bg-blue-50 dark:bg-blue-950/20 border-blue-900 dark:border-blue-800 text-blue-900 dark:text-blue-400 shadow-sm' 
               : 'bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-900 hover:border-slate-350 dark:hover:border-slate-700'"
+            :whileHover="{ scale: 1.02, y: -2 }"
+            :whileTap="{ scale: 0.98 }"
+            :transition="{ type: 'spring', stiffness: 300, damping: 15 }"
           >
             <span class="p-2 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg transition-transform group-hover:scale-105">
               <component :is="opt.icon" class="w-6 h-6 text-blue-900 dark:text-blue-400" />
             </span>
             <span class="font-medium text-sm md:text-base">{{ opt.label }}</span>
-          </button>
+          </motion.button>
         </div>
       </div>
 
@@ -195,20 +207,23 @@ const recommendedPrograms = computed<Program[]>(() => {
       <div v-if="step === 3" class="space-y-4 animate-fade-in">
         <h4 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-4">Select all other tags that describe you (Optional):</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
-          <button 
+          <motion.button 
             v-for="opt in demographicOptions" 
             :key="opt.value"
             @click="toggleDemographic(opt.value)"
-            class="flex items-center gap-4 p-4 text-left rounded-xl border transition-all duration-205 group active:scale-[0.98]"
+            class="flex items-center gap-4 p-4 text-left rounded-xl border transition-all duration-205 group active:scale-[0.98] cursor-pointer"
             :class="demographics.includes(opt.value) 
               ? 'bg-blue-50 dark:bg-blue-950/20 border-blue-900 dark:border-blue-800 text-blue-900 dark:text-blue-400 shadow-sm' 
               : 'bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-900 hover:border-slate-350 dark:hover:border-slate-700'"
+            :whileHover="{ scale: 1.02, y: -2 }"
+            :whileTap="{ scale: 0.98 }"
+            :transition="{ type: 'spring', stiffness: 300, damping: 15 }"
           >
             <span class="p-2 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg transition-transform group-hover:scale-105">
               <component :is="opt.icon" class="w-6 h-6 text-blue-900 dark:text-blue-400" />
             </span>
             <span class="font-medium text-sm md:text-base">{{ opt.label }}</span>
-          </button>
+          </motion.button>
         </div>
 
         <!-- Recommendations Result Panel -->
@@ -225,10 +240,13 @@ const recommendedPrograms = computed<Program[]>(() => {
           </div>
 
           <div v-else class="space-y-3 max-h-[250px] overflow-y-auto pr-1">
-            <div 
+            <motion.div 
               v-for="prog in recommendedPrograms" 
               :key="prog.id"
               class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 hover:border-blue-300 dark:hover:border-blue-800 rounded-xl transition-all duration-200"
+              :initial="{ opacity: 0, x: 10 }"
+              :animate="{ opacity: 1, x: 0 }"
+              :transition="{ duration: 0.25 }"
             >
               <div class="flex-1 pr-4">
                 <div class="flex items-center gap-2 flex-wrap">
@@ -237,40 +255,46 @@ const recommendedPrograms = computed<Program[]>(() => {
                 </div>
                 <h6 class="text-sm font-bold text-slate-900 dark:text-slate-100 mt-1 line-clamp-1">{{ prog.name }}</h6>
               </div>
-              <button 
+              <motion.button 
                 @click="emit('select-program', prog.id)" 
-                class="px-3 py-1.5 bg-blue-900 dark:bg-blue-800 hover:bg-blue-800 dark:hover:bg-blue-700 text-white font-semibold rounded-lg text-xs transition-colors flex items-center gap-1 active:scale-95"
+                class="px-3 py-1.5 bg-blue-900 dark:bg-blue-800 hover:bg-blue-800 dark:hover:bg-blue-700 text-white font-semibold rounded-lg text-xs transition-colors flex items-center gap-1 active:scale-95 cursor-pointer"
+                :whileHover="{ scale: 1.05 }"
+                :whileTap="{ scale: 0.95 }"
               >
                 <span>View Details</span>
                 <ArrowRight class="w-3 h-3" />
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
           </div>
         </div>
       </div>
 
       <!-- Navigation buttons -->
       <div class="flex items-center justify-between mt-8 border-t border-slate-200 dark:border-slate-800 pt-4">
-        <button 
+        <motion.button 
           v-if="step > 1" 
           @click="prevStep" 
-          class="px-4 py-2 text-slate-600 dark:text-slate-350 hover:text-blue-900 dark:hover:text-blue-400 text-sm font-semibold transition-colors flex items-center gap-1"
+          class="px-4 py-2 text-slate-600 dark:text-slate-350 hover:text-blue-900 dark:hover:text-blue-400 text-sm font-semibold transition-colors flex items-center gap-1 cursor-pointer"
+          :whileHover="{ scale: 1.03 }"
+          :whileTap="{ scale: 0.97 }"
         >
           <ArrowLeft class="w-4 h-4" /> Back
-        </button>
+        </motion.button>
         <div v-else></div>
 
-        <button 
+        <motion.button 
           v-if="step === totalSteps"
           @click="resetQuiz"
-          class="px-5 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-850 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 font-semibold rounded-xl text-sm transition-all duration-200"
+          class="px-5 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 font-semibold rounded-xl text-sm transition-all duration-200 cursor-pointer"
+          :whileHover="{ scale: 1.03 }"
+          :whileTap="{ scale: 0.97 }"
         >
           Reset Quiz
-        </button>
+        </motion.button>
       </div>
 
     </div>
-  </div>
+  </motion.div>
 </template>
 
 <style scoped>

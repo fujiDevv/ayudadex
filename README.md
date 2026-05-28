@@ -1,4 +1,4 @@
-# 🇵🇭 AyudaDex
+# AyudaDex
 
 **AyudaDex** is an open-source citizen initiative designed to simplify, navigate, and track access to public welfare programs and social benefits in the Philippines. 
 
@@ -8,18 +8,18 @@ Built with a premium modern design, it helps Filipinos search through benefits f
 
 ---
 
-## ✨ Features
+## Features
 
-* **📋 Benefits Directory**: A unified repository of national welfare schemes, searchable by keywords and filterable by agency, benefit category, and target audience.
-* **🔮 Eligibility Quiz (Ayuda Finder)**: An interactive 3-step wizard that scores and recommends government programs tailored to a user's employment status, needs, and demographics.
-* **📝 Interactive Requirement Checklists**: Dynamic checklist tracking for application documents with a visual readiness progress bar (e.g. `2 / 5 (40% Ready)`).
-* **⭐️ Bookmarks & Shortlist**: Save matching benefits to a personal dashboard, fully persisted locally in the browser via `localStorage`.
-* **📞 Official Hotlines**: Contact numbers, email addresses, and support guidelines for government assistance centers.
-* **🌙 Dark Mode Switcher**: Modern responsive dashboard styling with premium dark and light theme options.
+* **Benefits Directory**: A unified repository of national welfare schemes, searchable by keywords and filterable by agency, benefit category, and target audience.
+* **Eligibility Quiz (Ayuda Finder)**: An interactive 3-step wizard that scores and recommends government programs tailored to a user's employment status, needs, and demographics.
+* **Interactive Requirement Checklists**: Dynamic checklist tracking for application documents with a visual readiness progress bar (e.g. `2 / 5 (40% Ready)`).
+* **Bookmarks & Shortlist**: Save matching benefits to a personal dashboard, fully persisted locally in the browser via `localStorage`.
+* **Official Hotlines**: Contact numbers, email addresses, and support guidelines for government assistance centers.
+* **Dark Mode Switcher**: Modern responsive dashboard styling with premium dark and light theme options.
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 * **Framework**: [Vue 3](https://vuejs.org/) (Composition API, `<script setup>` with TypeScript)
 * **Build Tool**: [Vite](https://vite.dev/)
@@ -28,7 +28,7 @@ Built with a premium modern design, it helps Filipinos search through benefits f
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 To run the application locally on your computer, ensure you have [Bun](https://bun.sh/) installed, and follow these steps:
 
@@ -57,7 +57,7 @@ bun run build
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
 ├── index.html              # Entry HTML with typography and SEO tags
@@ -66,15 +66,18 @@ bun run build
 │   ├── main.ts             # App bootstrapping and style imports
 │   ├── App.vue             # Main dashboard layout, filtering, and tab states
 │   ├── style.css           # Global stylesheets & Tailwind imports
+│   ├── constants.ts        # Static datasets (hotlines, audience tags)
+│   ├── types.ts            # Shared TypeScript interface definitions
 │   ├── components/
-│   │   └── AyudaFinder.vue # Smart matching quiz wizard component
+│   │   ├── AyudaFinder.vue # Smart matching quiz wizard component
+│   │   └── ProgramCard.vue # Reusable benefits program card component
 │   └── data/
 │       └── programs.json   # JSON Database containing government programs
 ```
 
 ---
 
-## 🤝 Contributing Guidelines
+## Contributing Guidelines
 
 We welcome contributions from developers, researchers, designers, and policy advocates! Here is how you can help:
 
@@ -117,7 +120,7 @@ The database of programs is stored in [src/data/programs.json](file:///Users/jos
 
 ---
 
-## ⚖️ Disclaimer
+## Disclaimer
 
 AyudaDex is an independent open-source initiative and is **not affiliated, associated, authorized, endorsed by, or in any way officially connected with the government of the Philippines** or any of its offices. All official names (DSWD, SSS, GSIS, PhilHealth, Pag-IBIG, DOLE, DOH, OWWA) and trademarks belong to their respective holders.
 

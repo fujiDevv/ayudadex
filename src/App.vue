@@ -8,6 +8,7 @@ import {
   FileText, Sparkles, AlertTriangle, Sun, Moon
 } from 'lucide-vue-next'
 import { useDark, useToggle } from '@vueuse/core'
+import { motion } from 'motion-v'
 import type { Program } from './types'
 import { hotlines, audienceTags } from './constants'
 
@@ -183,65 +184,83 @@ const selectProgramFromWizard = (programId: string) => {
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         
         <!-- Logo and Slogan -->
-        <div class="flex items-center gap-3">
+        <motion.div 
+          class="flex items-center gap-3"
+          :initial="{ opacity: 0, x: -15 }"
+          :animate="{ opacity: 1, x: 0 }"
+          :transition="{ type: 'spring', stiffness: 300, damping: 20 }"
+        >
           <div class="w-10 h-10 rounded-xl bg-blue-900 flex items-center justify-center text-white font-extrabold text-lg">
             AD
           </div>
           <div>
             <div class="flex items-center gap-1.5">
               <h1 class="text-2xl font-bold tracking-tight text-blue-900 dark:text-blue-400">AyudaDex</h1>
-              <span class="text-[10px] font-medium tracking-wide uppercase px-1.5 py-0.5 bg-blue-100 dark:bg-blue-950/40 text-blue-900 dark:text-blue-300 rounded-md border border-blue-200/50 dark:border-blue-900/30">CIVIC V1.2</span>
+              <span class="text-[10px] font-medium tracking-wide uppercase px-1.5 py-0.5 bg-blue-100 dark:bg-blue-900/40 text-blue-900 dark:text-blue-300 rounded-md border border-blue-200/50 dark:border-blue-900/30">CIVIC V1.2</span>
             </div>
             <p class="text-xs text-slate-500 dark:text-slate-400 font-medium hidden sm:block">Philippine Government Social Benefits Navigator</p>
           </div>
-        </div>
+        </motion.div>
 
         <!-- Navigation Tabs (Desktop) -->
         <nav class="hidden md:flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700">
-          <button 
+          <motion.button 
             @click="activeTab = 'directory'" 
-            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all"
+            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all cursor-pointer"
             :class="activeTab === 'directory' 
               ? 'bg-white dark:bg-slate-900 text-blue-900 dark:text-blue-400 shadow-sm' 
               : 'text-slate-600 dark:text-slate-350 hover:text-blue-900 dark:hover:text-blue-400'"
+            :whileHover="{ scale: 1.05 }"
+            :whileTap="{ scale: 0.95 }"
           >
             <ClipboardList class="w-4 h-4 inline-block mr-1" /> Benefits Directory
-          </button>
-          <button 
+          </motion.button>
+          <motion.button 
             @click="activeTab = 'wizard'" 
-            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all"
+            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all cursor-pointer"
             :class="activeTab === 'wizard' 
               ? 'bg-white dark:bg-slate-900 text-blue-900 dark:text-blue-400 shadow-sm' 
               : 'text-slate-600 dark:text-slate-350 hover:text-blue-900 dark:hover:text-blue-400'"
+            :whileHover="{ scale: 1.05 }"
+            :whileTap="{ scale: 0.95 }"
           >
             <Wand2 class="w-4 h-4 inline-block mr-1" /> Eligibility Quiz
-          </button>
-          <button 
+          </motion.button>
+          <motion.button 
             @click="activeTab = 'shortlist'" 
-            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all flex items-center gap-1.5"
+            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all flex items-center gap-1.5 cursor-pointer"
             :class="activeTab === 'shortlist' 
               ? 'bg-white dark:bg-slate-900 text-blue-900 dark:text-blue-400 shadow-sm' 
               : 'text-slate-600 dark:text-slate-350 hover:text-blue-900 dark:hover:text-blue-400'"
+            :whileHover="{ scale: 1.05 }"
+            :whileTap="{ scale: 0.95 }"
           >
             <Star class="w-4 h-4" /> Saved ({{ savedPrograms.length }})
-          </button>
-          <button 
+          </motion.button>
+          <motion.button 
             @click="activeTab = 'hotlines'" 
-            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all"
+            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all cursor-pointer"
             :class="activeTab === 'hotlines' 
               ? 'bg-white dark:bg-slate-900 text-blue-900 dark:text-blue-400 shadow-sm' 
               : 'text-slate-600 dark:text-slate-350 hover:text-blue-900 dark:hover:text-blue-400'"
+            :whileHover="{ scale: 1.05 }"
+            :whileTap="{ scale: 0.95 }"
           >
             <Phone class="w-4 h-4 inline-block mr-1" /> Hotlines
-          </button>
+          </motion.button>
         </nav>
 
         <!-- Dark Mode Toggle -->
         <div class="w-10">
-          <button @click="toggleDark()" class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <motion.button 
+            @click="toggleDark()" 
+            class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+            :whileHover="{ scale: 1.12, rotate: 12 }"
+            :whileTap="{ scale: 0.88 }"
+          >
             <Sun v-if="isDark" class="w-5 h-5" />
             <Moon v-else class="w-5 h-5" />
-          </button>
+          </motion.button>
         </div>
 
       </div>
@@ -250,38 +269,42 @@ const selectProgramFromWizard = (programId: string) => {
     <!-- Sub-navbar for Mobile Navigation -->
     <div class="md:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-20 z-30">
       <div class="grid grid-cols-4 text-center text-xs font-bold divide-x divide-slate-100 dark:divide-slate-800">
-        <button 
+        <motion.button 
           @click="activeTab = 'directory'" 
-          class="py-3 flex flex-col items-center gap-1"
+          class="py-3 flex flex-col items-center gap-1 cursor-pointer"
           :class="activeTab === 'directory' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400'"
+          :whileTap="{ scale: 0.95 }"
         >
           <ClipboardList class="w-5 h-5" />
           <span>Directory</span>
-        </button>
-        <button 
+        </motion.button>
+        <motion.button 
           @click="activeTab = 'wizard'" 
-          class="py-3 flex flex-col items-center gap-1"
+          class="py-3 flex flex-col items-center gap-1 cursor-pointer"
           :class="activeTab === 'wizard' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400'"
+          :whileTap="{ scale: 0.95 }"
         >
           <Wand2 class="w-5 h-5" />
           <span>Quiz</span>
-        </button>
-        <button 
+        </motion.button>
+        <motion.button 
           @click="activeTab = 'shortlist'" 
-          class="py-3 flex flex-col items-center gap-1"
+          class="py-3 flex flex-col items-center gap-1 cursor-pointer"
           :class="activeTab === 'shortlist' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400'"
+          :whileTap="{ scale: 0.95 }"
         >
           <Star class="w-5 h-5" />
           <span>Saved ({{ savedPrograms.length }})</span>
-        </button>
-        <button 
+        </motion.button>
+        <motion.button 
           @click="activeTab = 'hotlines'" 
-          class="py-3 flex flex-col items-center gap-1"
+          class="py-3 flex flex-col items-center gap-1 cursor-pointer"
           :class="activeTab === 'hotlines' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400'"
+          :whileTap="{ scale: 0.95 }"
         >
           <Phone class="w-5 h-5" />
           <span>Hotlines</span>
-        </button>
+        </motion.button>
       </div>
     </div>
 
@@ -292,31 +315,43 @@ const selectProgramFromWizard = (programId: string) => {
       <div v-if="activeTab === 'directory'" class="space-y-6">
         
         <!-- Welcome Hero/Tagline -->
-        <div class="text-left mb-8 max-w-2xl">
+        <motion.div 
+          class="text-left mb-8 max-w-2xl"
+          :initial="{ opacity: 0, y: -10 }"
+          :animate="{ opacity: 1, y: 0 }"
+          :transition="{ duration: 0.4 }"
+        >
           <h2 class="text-3xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">
             Explore Philippine Welfare & Benefits
           </h2>
           <p class="text-slate-500 dark:text-slate-400 mt-2 text-base font-normal leading-relaxed">
             Search, filter, and track requirements for national assistance schemes. Bookmark programs to save your document checklists offline.
           </p>
-        </div>
+        </motion.div>
 
         <!-- Layout Grid: Left Sidebar Filters, Right Content Feed -->
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
           
           <!-- Filters Column -->
-          <aside class="space-y-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl shadow-sm">
+          <motion.aside 
+            class="space-y-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl shadow-sm"
+            :initial="{ opacity: 0, x: -15 }"
+            :animate="{ opacity: 1, x: 0 }"
+            :transition="{ duration: 0.35 }"
+          >
             <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
               <h3 class="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
                 <Settings class="w-5 h-5" /> Filters
               </h3>
-              <button 
+              <motion.button 
                 v-if="selectedAgencies.length || selectedCategories.length || selectedAudiences.length || searchQuery" 
                 @click="clearFilters" 
-                class="text-xs text-blue-900 dark:text-blue-400 font-bold hover:underline"
+                class="text-xs text-blue-900 dark:text-blue-400 font-bold hover:underline cursor-pointer"
+                :whileHover="{ scale: 1.03 }"
+                :whileTap="{ scale: 0.97 }"
               >
                 Clear All
-              </button>
+              </motion.button>
             </div>
 
             <!-- Search Field -->
@@ -337,14 +372,16 @@ const selectProgramFromWizard = (programId: string) => {
             <div class="space-y-2">
               <label class="text-xs font-medium tracking-wide uppercase text-slate-500 dark:text-slate-400 block mb-1">Government Agency</label>
               <div class="flex flex-wrap lg:flex-col gap-1.5">
-                <button 
+                <motion.button 
                   v-for="agency in agenciesList" 
                   :key="agency"
                   @click="toggleAgencyFilter(agency)"
-                  class="px-3 py-1.5 lg:w-full lg:text-left text-xs font-medium rounded-lg border transition-all flex items-center justify-between gap-2"
+                  class="px-3 py-1.5 lg:w-full lg:text-left text-xs font-medium rounded-lg border transition-all flex items-center justify-between gap-2 cursor-pointer"
                   :class="selectedAgencies.includes(agency)
-                    ? 'bg-blue-900 dark:bg-blue-800 border-blue-900 dark:border-blue-850 text-white' 
-                    : 'bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-900 hover:border-slate-350 dark:hover:border-slate-700'"
+                    ? 'bg-blue-900 dark:bg-blue-800 border-blue-900 dark:border-blue-800 text-white' 
+                    : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-900 hover:border-slate-350 dark:hover:border-slate-700'"
+                  :whileHover="{ scale: 1.01 }"
+                  :whileTap="{ scale: 0.99 }"
                 >
                   <span>{{ agency }}</span>
                   <span 
@@ -353,7 +390,7 @@ const selectProgramFromWizard = (programId: string) => {
                   >
                     {{ programsData.filter(p => p.agency === agency).length }}
                   </span>
-                </button>
+                </motion.button>
               </div>
             </div>
 
@@ -361,17 +398,19 @@ const selectProgramFromWizard = (programId: string) => {
             <div class="space-y-2">
               <label class="text-xs font-medium tracking-wide uppercase text-slate-500 dark:text-slate-400 block mb-1">Category</label>
               <div class="flex flex-wrap lg:flex-col gap-1.5">
-                <button 
+                <motion.button 
                   v-for="cat in categoriesList" 
                   :key="cat"
                   @click="toggleCategoryFilter(cat)"
-                  class="px-3 py-1.5 lg:w-full lg:text-left text-xs font-medium rounded-lg border transition-all flex items-center justify-between gap-2"
+                  class="px-3 py-1.5 lg:w-full lg:text-left text-xs font-medium rounded-lg border transition-all flex items-center justify-between gap-2 cursor-pointer"
                   :class="selectedCategories.includes(cat)
-                    ? 'bg-blue-900 dark:bg-blue-800 border-blue-900 dark:border-blue-850 text-white' 
-                    : 'bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-900 hover:border-slate-350 dark:hover:border-slate-700'"
+                    ? 'bg-blue-900 dark:bg-blue-800 border-blue-900 dark:border-blue-800 text-white' 
+                    : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-900 hover:border-slate-350 dark:hover:border-slate-700'"
+                  :whileHover="{ scale: 1.01 }"
+                  :whileTap="{ scale: 0.99 }"
                 >
                   <span>{{ cat }}</span>
-                </button>
+                </motion.button>
               </div>
             </div>
 
@@ -379,21 +418,23 @@ const selectProgramFromWizard = (programId: string) => {
             <div class="space-y-2">
               <label class="text-xs font-medium tracking-wide uppercase text-slate-500 dark:text-slate-400 block mb-1">Target Audience</label>
               <div class="flex flex-wrap gap-1">
-                <button 
+                <motion.button 
                   v-for="aud in audienceTags" 
                   :key="aud"
                   @click="toggleAudienceFilter(aud)"
-                  class="px-2 py-1 text-[10px] font-medium rounded-md border transition-all"
+                  class="px-2 py-1 text-[10px] font-medium rounded-md border transition-all cursor-pointer"
                   :class="selectedAudiences.includes(aud)
-                    ? 'bg-blue-900 dark:bg-blue-800 border-blue-900 dark:border-blue-850 text-white' 
-                    : 'bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-900 hover:border-slate-300 dark:hover:border-slate-700'"
+                    ? 'bg-blue-900 dark:bg-blue-800 border-blue-900 dark:border-blue-800 text-white' 
+                    : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-900 hover:border-slate-300 dark:hover:border-slate-700'"
+                  :whileHover="{ scale: 1.04 }"
+                  :whileTap="{ scale: 0.96 }"
                 >
                   {{ aud }}
-                </button>
+                </motion.button>
               </div>
             </div>
 
-          </aside>
+          </motion.aside>
 
           <!-- Feed Column -->
           <section class="lg:col-span-3 space-y-6">
@@ -408,9 +449,14 @@ const selectProgramFromWizard = (programId: string) => {
               <Search class="w-12 h-12 text-slate-300 dark:text-slate-700 mx-auto" />
               <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mt-4">No matching programs found</h3>
               <p class="text-slate-500 dark:text-slate-400 text-sm mt-1 max-w-md mx-auto">Try refining your keyword search, selecting broader filter tags, or clearing filters to see all available listings.</p>
-              <button @click="clearFilters" class="mt-4 px-4 py-2 bg-blue-900 dark:bg-blue-800 hover:bg-blue-850 dark:hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-all">
+              <motion.button 
+                @click="clearFilters" 
+                class="mt-4 px-4 py-2 bg-blue-900 dark:bg-blue-800 hover:bg-blue-800 dark:hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-all cursor-pointer"
+                :whileHover="{ scale: 1.04 }"
+                :whileTap="{ scale: 0.96 }"
+              >
                 Reset Filters
-              </button>
+              </motion.button>
             </div>
 
             <!-- Program Cards -->
@@ -460,32 +506,43 @@ const selectProgramFromWizard = (programId: string) => {
           <Star class="w-12 h-12 text-slate-300 dark:text-slate-700 mx-auto" />
           <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mt-4">No bookmarked benefits yet</h3>
           <p class="text-slate-500 dark:text-slate-400 text-sm mt-1 max-w-md mx-auto px-4">Browse the Benefits Directory and click the star icon on any program to save it here for offline reference.</p>
-          <button @click="activeTab = 'directory'" class="mt-4 px-5 py-2.5 bg-blue-900 dark:bg-blue-800 hover:bg-blue-800 dark:hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-all">
+          <motion.button 
+            @click="activeTab = 'directory'" 
+            class="mt-4 px-5 py-2.5 bg-blue-900 dark:bg-blue-800 hover:bg-blue-800 dark:hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-all cursor-pointer"
+            :whileHover="{ scale: 1.04 }"
+            :whileTap="{ scale: 0.96 }"
+          >
             Browse Directory
-          </button>
+          </motion.button>
         </div>
 
         <!-- Saved Listings -->
         <div v-else class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div 
+          <motion.div 
             v-for="program in shortlistedPrograms" 
             :key="program.id"
             class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 relative transition-all duration-300 hover:shadow-sm"
+            :initial="{ opacity: 0, y: 15 }"
+            :animate="{ opacity: 1, y: 0 }"
+            :transition="{ duration: 0.3 }"
+            :whileHover="{ y: -3, scale: 1.005 }"
           >
             <div class="flex items-start justify-between gap-4">
               <div>
-                <span class="px-2 py-0.5 bg-blue-100 dark:bg-blue-950/40 text-blue-900 dark:text-blue-300 text-[9px] font-bold uppercase rounded-md tracking-wider border border-blue-200/50 dark:border-blue-900/30">
+                <span class="px-2 py-0.5 bg-blue-100 dark:bg-blue-900/40 text-blue-900 dark:text-blue-300 text-[9px] font-bold uppercase rounded-md tracking-wider border border-blue-200/50 dark:border-blue-900/30">
                   {{ program.agency }}
                 </span>
                 <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mt-1">{{ program.name }}</h3>
               </div>
-              <button 
+              <motion.button 
                 @click="toggleSaveProgram(program.id, $event)" 
-                class="hover:text-slate-400 dark:hover:text-slate-500 transition-colors p-1"
+                class="hover:text-slate-400 dark:hover:text-slate-500 transition-colors p-1 cursor-pointer"
                 title="Remove from shortlist"
+                :whileHover="{ scale: 1.2 }"
+                :whileTap="{ scale: 0.8 }"
               >
                 <Star class="w-5 h-5 text-yellow-500 fill-current" />
-              </button>
+              </motion.button>
             </div>
 
             <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 line-clamp-2">{{ program.description }}</p>
@@ -498,7 +555,7 @@ const selectProgramFromWizard = (programId: string) => {
                   {{ getCheckedCount(program.id) }} / {{ program.requirements.length }} ({{ getPreparedPercent(program) }}%)
                 </span>
               </div>
-              <div class="w-full bg-slate-100 dark:bg-slate-850 h-2 rounded-full overflow-hidden border border-slate-200/50 dark:border-slate-800/50">
+              <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden border border-slate-200/50 dark:border-slate-800/50">
                 <div 
                   class="bg-blue-900 dark:bg-blue-800 h-full transition-all duration-300" 
                   :style="{ width: `${getPreparedPercent(program)}%` }"
@@ -507,13 +564,15 @@ const selectProgramFromWizard = (programId: string) => {
             </div>
 
             <!-- View details button -->
-            <button 
+            <motion.button 
               @click="selectProgramFromWizard(program.id)" 
-              class="w-full mt-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-850 rounded-xl text-[10px] font-bold text-slate-700 dark:text-slate-300 transition-colors"
+              class="w-full mt-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl text-[10px] font-bold text-slate-700 dark:text-slate-300 transition-colors cursor-pointer"
+              :whileHover="{ scale: 1.02 }"
+              :whileTap="{ scale: 0.98 }"
             >
               Expand Checklist & Steps ➔
-            </button>
-          </div>
+            </motion.button>
+          </motion.div>
         </div>
 
       </div>
@@ -530,14 +589,18 @@ const selectProgramFromWizard = (programId: string) => {
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div 
-            v-for="contact in hotlines" 
+          <motion.div 
+            v-for="(contact, idx) in hotlines" 
             :key="contact.agency"
             class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm space-y-3"
+            :initial="{ opacity: 0, y: 15 }"
+            :animate="{ opacity: 1, y: 0 }"
+            :transition="{ duration: 0.3, delay: idx * 0.04 }"
+            :whileHover="{ y: -3, scale: 1.005 }"
           >
             <div>
               <h3 class="font-bold text-base text-slate-900 dark:text-slate-100 line-clamp-1">{{ contact.agency }}</h3>
-              <p class="text-xs text-slate-400 dark:text-slate-500 font-medium mt-0.5">{{ contact.purpose }}</p>
+              <p class="text-xs text-slate-400 dark:text-slate-400 font-medium mt-0.5">{{ contact.purpose }}</p>
             </div>
 
             <div class="space-y-1.5 pt-2 border-t border-slate-100 dark:border-slate-800">
@@ -554,11 +617,16 @@ const selectProgramFromWizard = (programId: string) => {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         <!-- Call center warning advice -->
-        <div class="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-900/50 p-5 rounded-2xl mt-8 flex items-start gap-4">
+        <motion.div 
+          class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-900/50 p-5 rounded-2xl mt-8 flex items-start gap-4"
+          :initial="{ opacity: 0, scale: 0.95 }"
+          :animate="{ opacity: 1, scale: 1 }"
+          :transition="{ duration: 0.3 }"
+        >
           <AlertTriangle class="w-8 h-8 text-blue-900 dark:text-blue-400 shrink-0" />
           <div>
             <h4 class="font-bold text-blue-900 dark:text-blue-400 text-sm">Important Notice on Inquiries</h4>
@@ -566,7 +634,7 @@ const selectProgramFromWizard = (programId: string) => {
               Official operating times for most government hotlines are Monday to Friday, 8:00 AM to 5:00 PM (Philippine Standard Time), except for Pag-IBIG which operates 24/7. Standard local call rates apply. When contacting, ensure you have your SSS/GSIS/PhilHealth/Pag-IBIG membership ID number ready.
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
 
     </main>
@@ -618,28 +686,3 @@ const selectProgramFromWizard = (programId: string) => {
     </footer>
   </div>
 </template>
-
-<style scoped>
-.animate-fade-in {
-  animation: fadeIn 0.3s ease-out forwards;
-}
-.animate-slide-down {
-  animation: slideDown 0.25s ease-out forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-</style>

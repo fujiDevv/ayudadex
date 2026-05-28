@@ -4,6 +4,7 @@ import {
   Star, Clock, Globe, ArrowRight, MapPin, FileText, 
   ChevronUp, ChevronDown, FolderOpen 
 } from 'lucide-vue-next'
+import { motion } from 'motion-v'
 import type { Program } from '../types'
 
 const props = defineProps<{
@@ -28,9 +29,13 @@ const preparedPercent = computed(() => {
 </script>
 
 <template>
-  <div 
+  <motion.div 
     :id="`program-card-${program.id}`"
     class="group relative bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 transition-all duration-300 hover:shadow-md hover:border-slate-300 dark:hover:border-slate-700"
+    :initial="{ opacity: 0, y: 15 }"
+    :animate="{ opacity: 1, y: 0 }"
+    :transition="{ duration: 0.3 }"
+    :whileHover="{ y: -3, scale: 1.005 }"
   >
     <!-- Card Header -->
     <div class="flex items-start justify-between gap-4">
@@ -49,23 +54,25 @@ const preparedPercent = computed(() => {
       </div>
 
       <!-- Bookmark Button -->
-      <button 
+      <motion.button 
         @click="emit('toggle-save', $event)" 
-        class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors flex-shrink-0"
+        class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors flex-shrink-0 cursor-pointer"
         :title="isSaved ? 'Remove bookmark' : 'Bookmark for later'"
+        :whileHover="{ scale: 1.15 }"
+        :whileTap="{ scale: 0.85 }"
       >
         <Star :class="isSaved ? 'text-yellow-500 fill-current scale-110' : 'text-slate-400 dark:text-slate-500'" class="w-5 h-5 transition-transform" />
-      </button>
+      </motion.button>
     </div>
 
     <!-- Card Body (Description) -->
-    <p class="text-sm sm:text-base text-slate-655 dark:text-slate-300 mt-3 leading-relaxed font-normal">
+    <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-3 leading-relaxed font-normal">
       {{ program.description }}
     </p>
 
     <!-- Target Audiences Tags -->
     <div class="flex items-center flex-wrap gap-1.5 mt-4">
-      <span class="text-[10px] font-medium text-slate-550 dark:text-slate-400 uppercase tracking-wide mr-1">For:</span>
+      <span class="text-[10px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide mr-1">For:</span>
       <span 
         v-for="aud in program.target_audience" 
         :key="aud"
@@ -86,7 +93,7 @@ const preparedPercent = computed(() => {
         </span>
       </div>
       <!-- Progress Line -->
-      <div class="w-full bg-slate-100 dark:bg-slate-850 h-2.5 rounded-full overflow-hidden border border-slate-200/50 dark:border-slate-800/50">
+      <div class="w-full bg-slate-100 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden border border-slate-200/50 dark:border-slate-800/50">
         <div 
           class="bg-blue-900 dark:bg-blue-800 h-full transition-all duration-300" 
           :style="{ width: `${preparedPercent}%` }"
@@ -96,14 +103,16 @@ const preparedPercent = computed(() => {
 
     <!-- Collapsed / Expanded Content Toggle -->
     <div class="mt-6">
-      <button 
+      <motion.button 
         @click="emit('toggle-expansion')" 
-        class="w-full py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl text-xs font-bold flex items-center justify-center gap-1 transition-all active:scale-[0.99] text-slate-700 dark:text-slate-350"
+        class="w-full py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl text-xs font-bold flex items-center justify-center gap-1 transition-all active:scale-[0.99] text-slate-700 dark:text-slate-350 cursor-pointer"
+        :whileHover="{ scale: 1.01 }"
+        :whileTap="{ scale: 0.99 }"
       >
         <span>{{ isExpanded ? 'Hide Application Steps & Checklist' : 'Show Application Steps & Checklist' }}</span>
         <ChevronUp v-if="isExpanded" class="w-4 h-4" />
         <ChevronDown v-else class="w-4 h-4" />
-      </button>
+      </motion.button>
     </div>
 
     <!-- Expanded Details Drawer -->
@@ -119,10 +128,12 @@ const preparedPercent = computed(() => {
           </div>
         </div>
 
-        <a 
+        <motion.a 
           :href="program.official_url" 
           target="_blank" 
           class="bg-white dark:bg-slate-900 border border-blue-200 dark:border-blue-900/50 p-4 rounded-xl flex items-center justify-between hover:bg-blue-50/50 dark:hover:bg-blue-950/20 transition-colors group/link"
+          :whileHover="{ scale: 1.02 }"
+          :whileTap="{ scale: 0.98 }"
         >
           <div class="flex items-center gap-3">
             <Globe class="w-6 h-6 text-blue-900 dark:text-blue-400" />
@@ -132,7 +143,7 @@ const preparedPercent = computed(() => {
             </div>
           </div>
           <ArrowRight class="w-4 h-4 text-blue-900 dark:text-blue-400 group-hover/link:translate-x-1 transition-transform" />
-        </a>
+        </motion.a>
       </div>
 
       <!-- Left-Right Grid for Steps vs Requirements Checklist -->
@@ -164,7 +175,7 @@ const preparedPercent = computed(() => {
           <h4 class="text-sm font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wide flex items-center gap-2 mb-2">
             <FileText class="w-4 h-4" /> Document Checklist
           </h4>
-          <p class="text-[10px] text-slate-400 dark:text-slate-550 font-medium uppercase tracking-wide mb-4">Check off items as you prepare them:</p>
+          <p class="text-[10px] text-slate-400 dark:text-slate-400 font-medium uppercase tracking-wide mb-4">Check off items as you prepare them:</p>
           <div class="space-y-3">
             <label 
               v-for="(req, idx) in program.requirements" 
@@ -192,5 +203,5 @@ const preparedPercent = computed(() => {
       </div>
 
     </div>
-  </div>
+  </motion.div>
 </template>
