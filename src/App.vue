@@ -4,7 +4,7 @@ import AppHeader from './components/AppHeader.vue'
 import AppFooter from './components/AppFooter.vue'
 import { useAyudaStore } from './stores/ayudaStore'
 
-const isDark = useDark()
+const isDark = useDark({ initialValue: 'light' })
 const toggleDark = useToggle(isDark)
 
 const store = useAyudaStore()
