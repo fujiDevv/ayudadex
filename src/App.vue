@@ -10,12 +10,14 @@ import {
   FileText, AlertTriangle
 } from 'lucide-vue-next'
 import { useDark, useToggle } from '@vueuse/core'
+import { useI18n } from 'vue-i18n'
 import { motion } from 'motion-v'
 import type { Program } from './types'
 import { hotlines, audienceTags } from './constants'
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
+const { t, tm } = useI18n()
 
 // Tabs
 type Tab = 'directory' | 'wizard' | 'shortlist' | 'hotlines'
@@ -83,13 +85,14 @@ const filteredPrograms = computed<Program[]>(() => {
   return (programsData as Program[]).filter(program => {
     // Search Query Match (fuzzy match name, description, tags, agency)
     const query = searchQuery.value.toLowerCase().trim()
+    const reqs = tm(`programs.${program.id}.requirements`) as string[] || []
     const matchesSearch = !query ||
-      program.name.toLowerCase().includes(query) ||
-      program.description.toLowerCase().includes(query) ||
+      t(`programs.${program.id}.name`).toLowerCase().includes(query) ||
+      t(`programs.${program.id}.description`).toLowerCase().includes(query) ||
       program.agency.toLowerCase().includes(query) ||
       program.category.toLowerCase().includes(query) ||
-      program.requirements.some(r => r.toLowerCase().includes(query)) ||
-      program.tags.some(t => t.toLowerCase().includes(query))
+      reqs.some(r => r.toLowerCase().includes(query)) ||
+      program.tags.some(tg => tg.toLowerCase().includes(query))
 
     // Agency Filter
     const matchesAgency = selectedAgencies.value.length === 0 ||
@@ -194,11 +197,10 @@ const selectProgramFromWizard = (programId: string) => {
         <motion.div class="text-left mb-8 max-w-2xl" :initial="{ opacity: 0, y: -10 }" :animate="{ opacity: 1, y: 0 }"
           :transition="{ duration: 0.4 }">
           <h2 class="text-3xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">
-            Explore Philippine Welfare & Benefits
+            {{ $t('hero.title') }}
           </h2>
           <p class="text-slate-500 dark:text-slate-400 mt-2 text-base font-normal leading-relaxed">
-            Search, filter, and track requirements for national assistance schemes. Bookmark programs to save your
-            document checklists offline.
+            {{ $t('hero.desc') }}
           </p>
         </motion.div>
 
@@ -211,23 +213,23 @@ const selectProgramFromWizard = (programId: string) => {
             :initial="{ opacity: 0, x: -15 }" :animate="{ opacity: 1, x: 0 }" :transition="{ duration: 0.35 }">
             <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
               <h3 class="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
-                <Settings class="w-5 h-5" /> Filters
+                <Settings class="w-5 h-5" /> {{ $t('filters.title') }}
               </h3>
               <motion.button
                 v-if="selectedAgencies.length || selectedCategories.length || selectedAudiences.length || searchQuery"
                 @click="clearFilters"
                 class="text-xs text-blue-900 dark:text-blue-400 font-bold hover:underline cursor-pointer"
                 :whileHover="{ scale: 1.03 }" :whileTap="{ scale: 0.97 }">
-                Clear All
+                {{ $t('filters.clearAll') }}
               </motion.button>
             </div>
 
             <!-- Search Field -->
             <div class="space-y-2">
               <label
-                class="text-xs font-medium tracking-wide uppercase text-slate-500 dark:text-slate-400">Search</label>
+                class="text-xs font-medium tracking-wide uppercase text-slate-500 dark:text-slate-400">{{ $t('filters.search') }}</label>
               <div class="relative">
-                <input type="text" v-model="searchQuery" placeholder="e.g. AICS, Maternity, Loan..."
+                <input type="text" v-model="searchQuery" :placeholder="$t('filters.searchPlaceholder')"
                   class="w-full bg-white dark:bg-slate-950 text-sm font-normal rounded-xl border border-slate-200 dark:border-slate-800 py-3 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-slate-900 dark:text-slate-100 shadow-sm" />
                 <Search class="w-4 h-4 absolute left-3.5 top-3.5 text-slate-400 dark:text-slate-500" />
               </div>
@@ -236,8 +238,7 @@ const selectProgramFromWizard = (programId: string) => {
             <!-- Agency Filter List -->
             <div class="space-y-2">
               <label
-                class="text-xs font-medium tracking-wide uppercase text-slate-500 dark:text-slate-400 block mb-1">Government
-                Agency</label>
+                class="text-xs font-medium tracking-wide uppercase text-slate-500 dark:text-slate-400 block mb-1">{{ $t('filters.agency') }}</label>
               <div class="flex flex-wrap lg:flex-col gap-1.5">
                 <motion.button v-for="agency in agenciesList" :key="agency" @click="toggleAgencyFilter(agency)"
                   class="px-3 py-1.5 lg:w-full lg:text-left text-xs font-medium rounded-lg border transition-all flex items-center justify-between gap-2 cursor-pointer"
@@ -257,7 +258,7 @@ const selectProgramFromWizard = (programId: string) => {
             <!-- Category Filter List -->
             <div class="space-y-2">
               <label
-                class="text-xs font-medium tracking-wide uppercase text-slate-500 dark:text-slate-400 block mb-1">Category</label>
+                class="text-xs font-medium tracking-wide uppercase text-slate-500 dark:text-slate-400 block mb-1">{{ $t('filters.category') }}</label>
               <div class="flex flex-wrap lg:flex-col gap-1.5">
                 <motion.button v-for="cat in categoriesList" :key="cat" @click="toggleCategoryFilter(cat)"
                   class="px-3 py-1.5 lg:w-full lg:text-left text-xs font-medium rounded-lg border transition-all flex items-center justify-between gap-2 cursor-pointer"
@@ -273,8 +274,7 @@ const selectProgramFromWizard = (programId: string) => {
             <!-- Target Demographics / Audience Filter -->
             <div class="space-y-2">
               <label
-                class="text-xs font-medium tracking-wide uppercase text-slate-500 dark:text-slate-400 block mb-1">Target
-                Audience</label>
+                class="text-xs font-medium tracking-wide uppercase text-slate-500 dark:text-slate-400 block mb-1">{{ $t('filters.audience') }}</label>
               <div class="flex flex-wrap gap-1">
                 <motion.button v-for="aud in audienceTags" :key="aud" @click="toggleAudienceFilter(aud)"
                   class="px-2 py-1 text-[10px] font-medium rounded-md border transition-all cursor-pointer"
@@ -295,20 +295,19 @@ const selectProgramFromWizard = (programId: string) => {
             <!-- Filter summary stats -->
             <div
               class="flex justify-between items-center text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide">
-              <span>Showing {{ filteredPrograms.length }} of {{ programsData.length }} benefits</span>
+              <span>{{ $t('feed.showing', { count: filteredPrograms.length, total: programsData.length }) }}</span>
             </div>
 
             <!-- Empty Results -->
             <div v-if="filteredPrograms.length === 0"
               class="text-center py-16 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 border-dashed rounded-2xl">
               <Search class="w-12 h-12 text-slate-300 dark:text-slate-700 mx-auto" />
-              <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mt-4">No matching programs found</h3>
-              <p class="text-slate-500 dark:text-slate-400 text-sm mt-1 max-w-md mx-auto">Try refining your keyword
-                search, selecting broader filter tags, or clearing filters to see all available listings.</p>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mt-4">{{ $t('feed.noMatches') }}</h3>
+              <p class="text-slate-500 dark:text-slate-400 text-sm mt-1 max-w-md mx-auto">{{ $t('feed.noMatchesDesc') }}</p>
               <motion.button @click="clearFilters"
                 class="mt-4 px-4 py-2 bg-blue-900 dark:bg-blue-800 hover:bg-blue-800 dark:hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-all cursor-pointer"
                 :whileHover="{ scale: 1.04 }" :whileTap="{ scale: 0.96 }">
-                Reset Filters
+                {{ $t('feed.resetFilters') }}
               </motion.button>
             </div>
 
@@ -328,10 +327,9 @@ const selectProgramFromWizard = (programId: string) => {
       <div v-if="activeTab === 'wizard'" class="space-y-6 max-w-3xl mx-auto animate-fade-in">
         <div class="text-center mb-8">
           <!-- <Sparkles class="w-12 h-12 text-blue-900 dark:text-white mx-auto" /> -->
-          <h2 class="text-3xl font-bold text-blue-900 dark:text-white mt-3">Ayuda Finder Wizard</h2>
+          <h2 class="text-3xl font-bold text-blue-900 dark:text-white mt-3">{{ $t('wizard.title') }}</h2>
           <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm sm:text-base font-normal">
-            Answer a few quick questions about your demographics and current situation. Our engine will calculate
-            compatibility scores and recommend the best government programs for you.
+            {{ $t('wizard.desc') }}
           </p>
         </div>
 
@@ -343,11 +341,10 @@ const selectProgramFromWizard = (programId: string) => {
 
         <div class="text-left mb-8 max-w-2xl">
           <h2 class="text-3xl font-bold text-slate-900 dark:text-slate-100 tracking-tight flex items-center gap-2">
-            <Star class="w-8 h-8 text-yellow-500 fill-current" /> Your Saved Benefits
+            <Star class="w-8 h-8 text-yellow-500 fill-current" /> {{ $t('shortlist.title') }}
           </h2>
           <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm sm:text-base font-normal">
-            Review the requirements and steps for the benefits you bookmarked. All checklists and data are saved locally
-            to your device browser.
+            {{ $t('shortlist.desc') }}
           </p>
         </div>
 
@@ -355,13 +352,12 @@ const selectProgramFromWizard = (programId: string) => {
         <div v-if="shortlistedPrograms.length === 0"
           class="text-center py-16 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 border-dashed rounded-2xl max-w-2xl mx-auto">
           <Star class="w-12 h-12 text-slate-300 dark:text-slate-700 mx-auto" />
-          <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mt-4">No bookmarked benefits yet</h3>
-          <p class="text-slate-500 dark:text-slate-400 text-sm mt-1 max-w-md mx-auto px-4">Browse the Benefits Directory
-            and click the star icon on any program to save it here for offline reference.</p>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mt-4">{{ $t('shortlist.noBookmarks') }}</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm mt-1 max-w-md mx-auto px-4">{{ $t('shortlist.noBookmarksDesc') }}</p>
           <motion.button @click="activeTab = 'directory'"
             class="mt-4 px-5 py-2.5 bg-blue-900 dark:bg-blue-800 hover:bg-blue-800 dark:hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-all cursor-pointer"
             :whileHover="{ scale: 1.04 }" :whileTap="{ scale: 0.96 }">
-            Browse Directory
+            {{ $t('shortlist.browse') }}
           </motion.button>
         </div>
 
@@ -377,22 +373,22 @@ const selectProgramFromWizard = (programId: string) => {
                   class="px-2 py-0.5 bg-blue-100 dark:bg-blue-900/40 text-blue-900 dark:text-blue-300 text-[9px] font-bold uppercase rounded-md tracking-wider border border-blue-200/50 dark:border-blue-900/30">
                   {{ program.agency }}
                 </span>
-                <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mt-1">{{ program.name }}</h3>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mt-1">{{ $t(`programs.${program.id}.name`) }}</h3>
               </div>
               <motion.button @click="toggleSaveProgram(program.id, $event)"
                 class="hover:text-slate-400 dark:hover:text-slate-500 transition-colors p-1 cursor-pointer"
-                title="Remove from shortlist" :whileHover="{ scale: 1.2 }" :whileTap="{ scale: 0.8 }">
+                :title="$t('card.removeBookmark')" :whileHover="{ scale: 1.2 }" :whileTap="{ scale: 0.8 }">
                 <Star class="w-5 h-5 text-yellow-500 fill-current" />
               </motion.button>
             </div>
 
-            <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 line-clamp-2">{{ program.description }}</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 line-clamp-2">{{ $t(`programs.${program.id}.description`) }}</p>
 
             <!-- Shortlist Progress Line -->
             <div class="mt-4">
               <div class="flex items-center justify-between mb-1.5">
                 <span
-                  class="text-[10px] font-medium text-slate-400 dark:text-slate-500 uppercase tracking-wide">Readiness</span>
+                  class="text-[10px] font-medium text-slate-400 dark:text-slate-500 uppercase tracking-wide">{{ $t('card.readiness') }}</span>
                 <span class="text-[10px] font-bold text-blue-900 dark:text-blue-400">
                   {{ getCheckedCount(program.id) }} / {{ program.requirements.length }} ({{ getPreparedPercent(program)
                   }}%)
@@ -409,7 +405,7 @@ const selectProgramFromWizard = (programId: string) => {
             <motion.button @click="selectProgramFromWizard(program.id)"
               class="w-full mt-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl text-[10px] font-bold text-slate-700 dark:text-slate-300 transition-colors cursor-pointer"
               :whileHover="{ scale: 1.02 }" :whileTap="{ scale: 0.98 }">
-              Expand Checklist & Steps ➔
+              {{ $t('card.expand') }}
             </motion.button>
           </motion.div>
         </div>
@@ -420,11 +416,10 @@ const selectProgramFromWizard = (programId: string) => {
       <div v-if="activeTab === 'hotlines'" class="space-y-6 max-w-4xl mx-auto animate-fade-in">
         <div class="text-left mb-8">
           <h2 class="text-3xl font-bold text-blue-900 dark:text-white tracking-tight flex items-center gap-2">
-            <Phone class="w-8 h-8 text-blue-900 dark:text-white" /> Official Agency Directory & Support
+            <Phone class="w-8 h-8 text-blue-900 dark:text-white" /> {{ $t('hotlines.title') }}
           </h2>
           <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm sm:text-base font-normal">
-            Direct hotlines, support emails, and inquiry channels for national social benefit providers. Keep these
-            contact points handy when submitting claims.
+            {{ $t('hotlines.desc') }}
           </p>
         </div>
 
@@ -462,11 +457,9 @@ const selectProgramFromWizard = (programId: string) => {
           :initial="{ opacity: 0, scale: 0.95 }" :animate="{ opacity: 1, scale: 1 }" :transition="{ duration: 0.3 }">
           <AlertTriangle class="w-8 h-8 text-blue-900 dark:text-blue-400 shrink-0" />
           <div>
-            <h4 class="font-bold text-blue-900 dark:text-blue-400 text-sm">Important Notice on Inquiries</h4>
+            <h4 class="font-bold text-blue-900 dark:text-blue-400 text-sm">{{ $t('hotlines.noticeTitle') }}</h4>
             <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed mt-1 font-normal">
-              Official operating times for most government hotlines are Monday to Friday, 8:00 AM to 5:00 PM (Philippine
-              Standard Time), except for Pag-IBIG which operates 24/7. Standard local call rates apply. When contacting,
-              ensure you have your SSS/GSIS/PhilHealth/Pag-IBIG membership ID number ready.
+              {{ $t('hotlines.noticeDesc') }}
             </p>
           </div>
         </motion.div>

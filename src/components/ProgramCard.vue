@@ -49,7 +49,7 @@ const preparedPercent = computed(() => {
           </span>
         </div>
         <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-100 mt-1">
-          {{ program.name }}
+          {{ $t(`programs.${program.id}.name`) }}
         </h3>
       </div>
 
@@ -57,8 +57,8 @@ const preparedPercent = computed(() => {
       <motion.button 
         @click="emit('toggle-save', $event)" 
         class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors flex-shrink-0 cursor-pointer"
-        :title="isSaved ? 'Remove bookmark' : 'Bookmark for later'"
-        :aria-label="isSaved ? 'Remove bookmark' : 'Bookmark for later'"
+        :title="isSaved ? $t('card.removeBookmark') : $t('card.bookmark')"
+        :aria-label="isSaved ? $t('card.removeBookmark') : $t('card.bookmark')"
         :whileHover="{ scale: 1.15 }"
         :whileTap="{ scale: 0.85 }"
       >
@@ -68,7 +68,7 @@ const preparedPercent = computed(() => {
 
     <!-- Card Body (Description) -->
     <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-3 leading-relaxed font-normal">
-      {{ program.description }}
+      {{ $t(`programs.${program.id}.description`) }}
     </p>
 
     <!-- Target Audiences Tags -->
@@ -87,7 +87,7 @@ const preparedPercent = computed(() => {
     <div class="mt-6 border-t border-slate-100 dark:border-slate-800 pt-5">
       <div class="flex items-center justify-between mb-2">
         <span class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide flex items-center gap-1.5">
-          <FolderOpen class="w-4 h-4" /> Documents Preparation Progress
+          <FolderOpen class="w-4 h-4" /> {{ $t('card.readiness') }}
         </span>
         <span class="text-xs font-bold text-blue-900 dark:text-blue-400">
           {{ checkedCount }} / {{ totalCount }} ({{ preparedPercent }}%)
@@ -110,7 +110,7 @@ const preparedPercent = computed(() => {
         :whileHover="{ scale: 1.01 }"
         :whileTap="{ scale: 0.99 }"
       >
-        <span>{{ isExpanded ? 'Hide Application Steps & Checklist' : 'Show Application Steps & Checklist' }}</span>
+        <span>{{ isExpanded ? $t('card.hide') : $t('card.show') }}</span>
         <ChevronUp v-if="isExpanded" class="w-4 h-4" />
         <ChevronDown v-else class="w-4 h-4" />
       </motion.button>
@@ -153,18 +153,18 @@ const preparedPercent = computed(() => {
         <!-- Application Steps (Timeline) -->
         <div class="space-y-4">
           <h4 class="text-sm font-bold text-blue-900 dark:text-blue-400 uppercase tracking-wide flex items-center gap-2">
-            <MapPin class="w-4 h-4" /> Step-by-Step Claim Process
+            <MapPin class="w-4 h-4" /> {{ $t('card.steps') }}
           </h4>
           <div class="relative pl-6 border-l border-slate-200 dark:border-slate-800 space-y-5 ml-2 mt-2">
             <div 
-              v-for="(step, idx) in program.steps" 
+              v-for="(step, idx) in $tm(`programs.${program.id}.steps`)" 
               :key="idx" 
               class="relative"
             >
               <!-- Circle Indicator -->
               <span class="absolute -left-[31px] top-0.5 w-4.5 h-4.5 rounded-full bg-blue-900 dark:bg-blue-800 border-4 border-white dark:border-slate-900 flex items-center justify-center"></span>
               <div class="space-y-1">
-                <p class="text-xs font-bold text-blue-900 dark:text-blue-400 uppercase tracking-wide">Step {{ idx + 1 }}</p>
+                <p class="text-xs font-bold text-blue-900 dark:text-blue-400 uppercase tracking-wide">Step {{ Number(idx) + 1 }}</p>
                 <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300 leading-relaxed">{{ step }}</p>
               </div>
             </div>
@@ -174,12 +174,11 @@ const preparedPercent = computed(() => {
         <!-- Requirements Checklist -->
         <div class="space-y-4 bg-slate-50 dark:bg-slate-950 p-5 rounded-2xl border border-slate-200/50 dark:border-slate-800/50">
           <h4 class="text-sm font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wide flex items-center gap-2 mb-2">
-            <FileText class="w-4 h-4" /> Document Checklist
+            <FileText class="w-4 h-4" /> {{ $t('card.requirements') }}
           </h4>
-          <p class="text-[10px] text-slate-400 dark:text-slate-400 font-medium uppercase tracking-wide mb-4">Check off items as you prepare them:</p>
           <div class="space-y-3">
             <label 
-              v-for="(req, idx) in program.requirements" 
+              v-for="(req, idx) in $tm(`programs.${program.id}.requirements`)" 
               :key="idx" 
               class="flex items-start gap-3 cursor-pointer group/item select-none"
             >
