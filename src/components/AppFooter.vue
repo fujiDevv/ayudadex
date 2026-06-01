@@ -36,15 +36,15 @@ const officialPortals = [
         <!-- Column 1: Brand & Slogan -->
         <div class="space-y-3">
           <div class="flex items-center gap-2">
-            <img src="/betterGov_Icon-Primary.svg" alt="betterGov Logo"
+            <img src="/betterGov_Icon.svg" alt="betterGov Logo"
               class="w-7 h-7 object-contain drop-shadow-sm dark:brightness-0 dark:invert opacity-90" />
-            <span class="font-bold text-base text-slate-900 dark:text-slate-100 tracking-tight">{{ t('header.title')
-              }}</span>
+            <span class="font-bold text-base text-slate-900 dark:text-slate-100 tracking-tight">{{
+              t('header.title') }}</span>
           </div>
           <p class="leading-relaxed text-slate-500 dark:text-slate-400" v-html="t('footer.desc')"></p>
 
           <div class="pt-1">
-            <a href="https://github.com/joshuasarmiento/ayudadex" target="_blank"
+            <a href="https://github.com/fujiDevv/ayudadex" target="_blank"
               class="hover:text-blue-900 dark:hover:text-blue-400 transition-colors flex items-center gap-1.5 font-bold">
               <Github class="w-3.5 h-3.5" />
               <span>{{ t('footer.repo') }}</span>

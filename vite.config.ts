@@ -7,11 +7,11 @@ import { VitePWA } from 'vite-plugin-pwa'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
-    vue(), 
+    vue(),
     tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'betterGov_Icon-Primary.svg'],
+      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'betterGov_Favicon.svg'],
       manifest: {
         name: 'AyudaDex',
         short_name: 'AyudaDex',
@@ -20,7 +20,7 @@ export default defineConfig({
         background_color: '#f8fafc',
         icons: [
           {
-            src: 'betterGov_Icon-Primary.svg',
+            src: 'betterGov_Favicon.svg',
             sizes: 'any',
             type: 'image/svg+xml'
           }
