@@ -57,12 +57,11 @@ const emit = defineEmits<{
           </svg>
           <div>
             <div class="flex items-center gap-1.5">
-              <h1 class="text-2xl font-bold tracking-tight text-blue-900 dark:text-white">AyudaDex</h1>
+              <h1 class="text-2xl font-bold tracking-tight text-blue-900 dark:text-white">{{ $t('header.title') }}</h1>
               <span
                 class="text-[10px] font-medium tracking-wide uppercase px-1.5 py-0.5 bg-blue-100 dark:bg-blue-900/40 text-blue-900 dark:text-blue-300 rounded-md border border-blue-200/50 dark:border-blue-900/30">BetterGov.ph</span>
             </div>
-            <p class="text-xs text-slate-500 dark:text-slate-400 font-medium hidden sm:block">Philippine Government
-              Social Benefits Navigator</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 font-medium hidden sm:block">{{ $t('header.subtitle') }}</p>
           </div>
         </motion.div>
 
@@ -74,14 +73,14 @@ const emit = defineEmits<{
               ? 'bg-white dark:bg-slate-900 text-blue-900 dark:text-white shadow-sm'
               : 'text-slate-600 dark:text-slate-350 hover:text-gray-900 dark:hover:text-gray-400'"
             :whileHover="{ scale: 1.05 }" :whileTap="{ scale: 0.95 }">
-            <ClipboardList class="w-4 h-4 inline-block mr-1" /> Benefits Directory
+            <ClipboardList class="w-4 h-4 inline-block mr-1" /> {{ $t('nav.directory') }}
           </motion.button>
           <motion.button @click="activeTab = 'wizard'"
             class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all cursor-pointer" :class="activeTab === 'wizard'
               ? 'bg-white dark:bg-slate-900 text-blue-900 dark:text-white shadow-sm'
               : 'text-slate-600 dark:text-slate-350 hover:text-gray-900 dark:hover:text-gray-400'"
             :whileHover="{ scale: 1.05 }" :whileTap="{ scale: 0.95 }">
-            <Wand2 class="w-4 h-4 inline-block mr-1" /> Eligibility Quiz
+            <Wand2 class="w-4 h-4 inline-block mr-1" /> {{ $t('nav.wizard') }}
           </motion.button>
           <motion.button @click="activeTab = 'shortlist'"
             class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all flex items-center gap-1.5 cursor-pointer"
@@ -89,19 +88,32 @@ const emit = defineEmits<{
               ? 'bg-white dark:bg-slate-900 text-blue-900 dark:text-white shadow-sm'
               : 'text-slate-600 dark:text-slate-350 hover:text-gray-900 dark:hover:text-gray-400'"
             :whileHover="{ scale: 1.05 }" :whileTap="{ scale: 0.95 }">
-            <Star class="w-4 h-4" /> Saved ({{ savedCount }})
+            <Star class="w-4 h-4" /> {{ $t('nav.saved') }} ({{ savedCount }})
           </motion.button>
           <motion.button @click="activeTab = 'hotlines'"
             class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all cursor-pointer" :class="activeTab === 'hotlines'
               ? 'bg-white dark:bg-slate-900 text-blue-900 dark:text-white shadow-sm'
               : 'text-slate-600 dark:text-slate-350 hover:text-gray-900 dark:hover:text-gray-400'"
             :whileHover="{ scale: 1.05 }" :whileTap="{ scale: 0.95 }">
-            <Phone class="w-4 h-4 inline-block mr-1" /> Hotlines
+            <Phone class="w-4 h-4 inline-block mr-1" /> {{ $t('nav.hotlines') }}
           </motion.button>
         </nav>
 
-        <!-- Dark Mode Toggle -->
-        <div class="w-10">
+        <!-- Actions: Lang & Dark Mode Toggle -->
+        <div class="flex items-center gap-2">
+          <!-- Language Switcher -->
+          <div class="relative flex items-center">
+            <select v-model="$i18n.locale"
+              class="appearance-none bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold rounded-lg pl-3 pr-8 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer">
+              <option value="en">EN</option>
+              <option value="tl">TL</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-500">
+              <svg class="w-3 h-3 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+            </div>
+          </div>
+          
+          <!-- Dark Mode -->
           <motion.button @click="emit('toggle-dark')" aria-label="Toggle Dark Mode"
             class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
             :whileHover="{ scale: 1.12, rotate: 12 }" :whileTap="{ scale: 0.88 }">
@@ -121,25 +133,25 @@ const emit = defineEmits<{
           :class="activeTab === 'directory' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400'"
           :whileTap="{ scale: 0.95 }">
           <ClipboardList class="w-5 h-5" />
-          <span>Directory</span>
+          <span>{{ $t('nav.directory') }}</span>
         </motion.button>
         <motion.button @click="activeTab = 'wizard'" class="py-3 flex flex-col items-center gap-1 cursor-pointer"
           :class="activeTab === 'wizard' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400'"
           :whileTap="{ scale: 0.95 }">
           <Wand2 class="w-5 h-5" />
-          <span>Quiz</span>
+          <span>{{ $t('nav.wizard') }}</span>
         </motion.button>
         <motion.button @click="activeTab = 'shortlist'" class="py-3 flex flex-col items-center gap-1 cursor-pointer"
           :class="activeTab === 'shortlist' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400'"
           :whileTap="{ scale: 0.95 }">
           <Star class="w-5 h-5" />
-          <span>Saved ({{ savedCount }})</span>
+          <span>{{ $t('nav.saved') }} ({{ savedCount }})</span>
         </motion.button>
         <motion.button @click="activeTab = 'hotlines'" class="py-3 flex flex-col items-center gap-1 cursor-pointer"
           :class="activeTab === 'hotlines' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400'"
           :whileTap="{ scale: 0.95 }">
           <Phone class="w-5 h-5" />
-          <span>Hotlines</span>
+          <span>{{ $t('nav.hotlines') }}</span>
         </motion.button>
       </div>
     </div>
