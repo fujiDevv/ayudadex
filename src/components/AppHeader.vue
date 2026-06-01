@@ -69,21 +69,21 @@ const emit = defineEmits<{
         <nav
           class="hidden md:flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700">
           <motion.button @click="activeTab = 'directory'"
-            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all cursor-pointer" :class="activeTab === 'directory'
+            class="px-2 lg:px-4 py-1.5 rounded-lg text-xs lg:text-sm font-medium transition-all cursor-pointer whitespace-nowrap" :class="activeTab === 'directory'
               ? 'bg-white dark:bg-slate-900 text-blue-900 dark:text-white shadow-sm'
               : 'text-slate-600 dark:text-slate-350 hover:text-gray-900 dark:hover:text-gray-400'"
             :whileHover="{ scale: 1.05 }" :whileTap="{ scale: 0.95 }">
             <ClipboardList class="w-4 h-4 inline-block mr-1" /> {{ $t('nav.directory') }}
           </motion.button>
           <motion.button @click="activeTab = 'wizard'"
-            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all cursor-pointer" :class="activeTab === 'wizard'
+            class="px-2 lg:px-4 py-1.5 rounded-lg text-xs lg:text-sm font-medium transition-all cursor-pointer whitespace-nowrap" :class="activeTab === 'wizard'
               ? 'bg-white dark:bg-slate-900 text-blue-900 dark:text-white shadow-sm'
               : 'text-slate-600 dark:text-slate-350 hover:text-gray-900 dark:hover:text-gray-400'"
             :whileHover="{ scale: 1.05 }" :whileTap="{ scale: 0.95 }">
             <Wand2 class="w-4 h-4 inline-block mr-1" /> {{ $t('nav.wizard') }}
           </motion.button>
           <motion.button @click="activeTab = 'shortlist'"
-            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all flex items-center gap-1.5 cursor-pointer"
+            class="px-2 lg:px-4 py-1.5 rounded-lg text-xs lg:text-sm font-medium transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
             :class="activeTab === 'shortlist'
               ? 'bg-white dark:bg-slate-900 text-blue-900 dark:text-white shadow-sm'
               : 'text-slate-600 dark:text-slate-350 hover:text-gray-900 dark:hover:text-gray-400'"
@@ -91,7 +91,7 @@ const emit = defineEmits<{
             <Star class="w-4 h-4" /> {{ $t('nav.saved') }} ({{ savedCount }})
           </motion.button>
           <motion.button @click="activeTab = 'hotlines'"
-            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all cursor-pointer" :class="activeTab === 'hotlines'
+            class="px-2 lg:px-4 py-1.5 rounded-lg text-xs lg:text-sm font-medium transition-all cursor-pointer whitespace-nowrap" :class="activeTab === 'hotlines'
               ? 'bg-white dark:bg-slate-900 text-blue-900 dark:text-white shadow-sm'
               : 'text-slate-600 dark:text-slate-350 hover:text-gray-900 dark:hover:text-gray-400'"
             :whileHover="{ scale: 1.05 }" :whileTap="{ scale: 0.95 }">

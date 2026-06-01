@@ -4,10 +4,10 @@
     "subtitle": "Gabay sa mga Benepisyo at Sosyal na Programa ng Pilipinas"
   },
   "nav": {
-    "directory": "Listahan ng Benepisyo",
-    "wizard": "Pagsusuri ng Pagiging Kwalipikado",
-    "saved": "Nai-save",
-    "hotlines": "Mga Hotline"
+    "directory": "Direktoryo",
+    "wizard": "Pagsusulit",
+    "saved": "Naka-save",
+    "hotlines": "Hotlines"
   },
   "filters": {
     "title": "Mga Filter",
