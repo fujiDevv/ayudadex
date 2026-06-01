@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { 
-  Star, Clock, Globe, ArrowRight, MapPin, FileText, 
-  ChevronUp, ChevronDown, FolderOpen 
+  Star, FolderOpen 
 } from 'lucide-vue-next'
 import { motion } from 'motion-v'
 import type { Program } from '../types'
@@ -102,106 +101,15 @@ const preparedPercent = computed(() => {
       </div>
     </div>
 
-    <!-- Collapsed / Expanded Content Toggle -->
     <div class="mt-6">
       <motion.button 
         @click="emit('toggle-expansion')" 
-        class="w-full py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl text-xs font-bold flex items-center justify-center gap-1 transition-all active:scale-[0.99] text-slate-700 dark:text-slate-350 cursor-pointer"
+        class="w-full py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all active:scale-[0.99] text-slate-700 dark:text-slate-350 cursor-pointer"
         :whileHover="{ scale: 1.01 }"
         :whileTap="{ scale: 0.99 }"
       >
-        <span>{{ isExpanded ? $t('card.hide') : $t('card.show') }}</span>
-        <ChevronUp v-if="isExpanded" class="w-4 h-4" />
-        <ChevronDown v-else class="w-4 h-4" />
+        <span>{{ $t('card.expand') }}</span>
       </motion.button>
-    </div>
-
-    <!-- Expanded Details Drawer -->
-    <div v-if="isExpanded" class="mt-6 space-y-6 border-t border-slate-100 dark:border-slate-800 pt-6 animate-slide-down">
-      
-      <!-- Quick Info Metrics -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div class="bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800/80 p-4 rounded-xl flex items-center gap-3">
-          <Clock class="w-6 h-6 text-slate-400 dark:text-slate-500" />
-          <div>
-            <p class="text-[10px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide">Processing Time</p>
-            <p class="text-sm font-bold text-slate-900 dark:text-slate-100">{{ program.processing_time }}</p>
-          </div>
-        </div>
-
-        <motion.a 
-          :href="program.official_url" 
-          target="_blank" 
-          class="bg-white dark:bg-slate-900 border border-blue-200 dark:border-blue-900/50 p-4 rounded-xl flex items-center justify-between hover:bg-blue-50/50 dark:hover:bg-blue-950/20 transition-colors group/link"
-          :whileHover="{ scale: 1.02 }"
-          :whileTap="{ scale: 0.98 }"
-        >
-          <div class="flex items-center gap-3">
-            <Globe class="w-6 h-6 text-blue-900 dark:text-blue-400" />
-            <div>
-              <p class="text-[10px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide">Official Portal</p>
-              <p class="text-sm font-bold text-blue-900 dark:text-blue-400">Go to Website</p>
-            </div>
-          </div>
-          <ArrowRight class="w-4 h-4 text-blue-900 dark:text-blue-400 group-hover/link:translate-x-1 transition-transform" />
-        </motion.a>
-      </div>
-
-      <!-- Left-Right Grid for Steps vs Requirements Checklist -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
-        <!-- Application Steps (Timeline) -->
-        <div class="space-y-4">
-          <h4 class="text-sm font-bold text-blue-900 dark:text-blue-400 uppercase tracking-wide flex items-center gap-2">
-            <MapPin class="w-4 h-4" /> {{ $t('card.steps') }}
-          </h4>
-          <div class="relative pl-6 border-l border-slate-200 dark:border-slate-800 space-y-5 ml-2 mt-2">
-            <div 
-              v-for="(step, idx) in $tm(`programs.${program.id}.steps`)" 
-              :key="idx" 
-              class="relative"
-            >
-              <!-- Circle Indicator -->
-              <span class="absolute -left-[31px] top-0.5 w-4.5 h-4.5 rounded-full bg-blue-900 dark:bg-blue-800 border-4 border-white dark:border-slate-900 flex items-center justify-center"></span>
-              <div class="space-y-1">
-                <p class="text-xs font-bold text-blue-900 dark:text-blue-400 uppercase tracking-wide">Step {{ Number(idx) + 1 }}</p>
-                <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300 leading-relaxed">{{ step }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Requirements Checklist -->
-        <div class="space-y-4 bg-slate-50 dark:bg-slate-950 p-5 rounded-2xl border border-slate-200/50 dark:border-slate-800/50">
-          <h4 class="text-sm font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wide flex items-center gap-2 mb-2">
-            <FileText class="w-4 h-4" /> {{ $t('card.requirements') }}
-          </h4>
-          <div class="space-y-3">
-            <label 
-              v-for="(req, idx) in $tm(`programs.${program.id}.requirements`)" 
-              :key="idx" 
-              class="flex items-start gap-3 cursor-pointer group/item select-none"
-            >
-              <input 
-                type="checkbox" 
-                :checked="checkedRequirements.includes(req)"
-                @change="emit('toggle-requirement', req)"
-                class="w-5 h-5 text-blue-900 bg-white dark:bg-slate-900 rounded border-slate-300 dark:border-slate-700 focus:ring-blue-900 focus:ring-2 transition-colors cursor-pointer mt-0.5"
-              />
-              <span 
-                class="text-xs sm:text-sm font-medium transition-colors"
-                :class="checkedRequirements.includes(req) 
-                  ? 'text-slate-400 dark:text-slate-500 line-through' 
-                  : 'text-slate-700 dark:text-slate-300 group-hover/item:text-blue-900 dark:group-hover/item:text-blue-400'"
-              >
-                {{ req }}
-              </span>
-            </label>
-          </div>
-        </div>
-
-      </div>
-
     </div>
   </motion.div>
 </template>

@@ -69,36 +69,41 @@ const emit = defineEmits<{
         </motion.div>
 
         <!-- Navigation Tabs (Desktop) -->
-        <nav
-          class="hidden md:flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700">
+        <nav class="hidden md:flex items-center gap-1">
           <motion.button @click="router.push('/')"
-            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all cursor-pointer" :class="route.path === '/'
-              ? 'bg-white dark:bg-slate-900 text-blue-900 dark:text-white shadow-sm'
-              : 'text-slate-600 dark:text-slate-350 hover:text-gray-900 dark:hover:text-gray-400'"
-            :whileHover="{ scale: 1.05 }" :whileTap="{ scale: 0.95 }">
-            <ClipboardList class="w-4 h-4 inline-block mr-1" /> {{ $t('nav.directory') }}
+            class="px-3.5 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 border border-transparent" 
+            :class="route.path === '/' 
+              ? 'bg-blue-50 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 border-blue-100 dark:border-blue-900/50 shadow-sm' 
+              : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60'"
+            :whileHover="{ scale: 1.02 }" :whileTap="{ scale: 0.98 }">
+            <ClipboardList class="w-4 h-4" /> {{ $t('nav.directory') }}
           </motion.button>
+          
           <motion.button @click="router.push('/wizard')"
-            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all cursor-pointer" :class="route.path === '/wizard'
-              ? 'bg-white dark:bg-slate-900 text-blue-900 dark:text-white shadow-sm'
-              : 'text-slate-600 dark:text-slate-350 hover:text-gray-900 dark:hover:text-gray-400'"
-            :whileHover="{ scale: 1.05 }" :whileTap="{ scale: 0.95 }">
-            <Wand2 class="w-4 h-4 inline-block mr-1" /> {{ $t('nav.quiz') }}
+            class="px-3.5 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 border border-transparent" 
+            :class="route.path === '/wizard' 
+              ? 'bg-blue-50 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 border-blue-100 dark:border-blue-900/50 shadow-sm' 
+              : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60'"
+            :whileHover="{ scale: 1.02 }" :whileTap="{ scale: 0.98 }">
+            <Wand2 class="w-4 h-4" /> {{ $t('nav.quiz') }}
           </motion.button>
+
           <motion.button @click="router.push('/shortlist')"
-            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all flex items-center gap-1.5 cursor-pointer"
-            :class="route.path === '/shortlist'
-              ? 'bg-white dark:bg-slate-900 text-blue-900 dark:text-white shadow-sm'
-              : 'text-slate-600 dark:text-slate-350 hover:text-gray-900 dark:hover:text-gray-400'"
-            :whileHover="{ scale: 1.05 }" :whileTap="{ scale: 0.95 }">
+            class="px-3.5 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 border border-transparent" 
+            :class="route.path === '/shortlist' 
+              ? 'bg-blue-50 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 border-blue-100 dark:border-blue-900/50 shadow-sm' 
+              : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60'"
+            :whileHover="{ scale: 1.02 }" :whileTap="{ scale: 0.98 }">
             <Star class="w-4 h-4" /> {{ $t('nav.saved') }} ({{ savedCount }})
           </motion.button>
+
           <motion.button @click="router.push('/hotlines')"
-            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all cursor-pointer" :class="route.path === '/hotlines'
-              ? 'bg-white dark:bg-slate-900 text-blue-900 dark:text-white shadow-sm'
-              : 'text-slate-600 dark:text-slate-350 hover:text-gray-900 dark:hover:text-gray-400'"
-            :whileHover="{ scale: 1.05 }" :whileTap="{ scale: 0.95 }">
-            <Phone class="w-4 h-4 inline-block mr-1" /> {{ $t('nav.hotlines') }}
+            class="px-3.5 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 border border-transparent" 
+            :class="route.path === '/hotlines' 
+              ? 'bg-blue-50 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 border-blue-100 dark:border-blue-900/50 shadow-sm' 
+              : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60'"
+            :whileHover="{ scale: 1.02 }" :whileTap="{ scale: 0.98 }">
+            <Phone class="w-4 h-4" /> {{ $t('nav.hotlines') }}
           </motion.button>
         </nav>
 
