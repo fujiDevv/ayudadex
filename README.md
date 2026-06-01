@@ -21,8 +21,9 @@ Built with a premium modern design, it helps Filipinos search through benefits f
 * **Shareable Direct Links**: Send direct, shareable links for specific benefit pages to family and friends via Messenger or social media.
 * **Benefits Directory**: A unified repository of national welfare schemes, searchable by keywords and filterable by agency, benefit category, and target audience.
 * **Eligibility Quiz (Ayuda Finder)**: An interactive 3-step wizard that scores and recommends government programs tailored to a user's employment status, needs, and demographics.
+* **Print Checklist to PDF**: Generate clean, ink-saving A4-ready layouts by stripping out UI elements using native `@media print` CSS.
 * **Interactive Requirement Checklists**: Dynamic checklist tracking for application documents with a visual readiness progress bar (e.g. `2 / 5 (40% Ready)`).
-* **Bookmarks & Shortlist**: Save matching benefits to a personal dashboard, fully persisted locally in the browser via `localStorage`.
+* **Bookmarks & Shortlist**: Save matching benefits to a personal dashboard, fully persisted locally in the browser via Pinia and `localStorage`.
 * **Official Hotlines**: Contact numbers, email addresses, and support guidelines for government assistance centers.
 * **Dark Mode Switcher**: Modern responsive dashboard styling with premium dark and light theme options.
 
@@ -31,7 +32,7 @@ Built with a premium modern design, it helps Filipinos search through benefits f
 ## Tech Stack
 
 * **Framework**: [Vue 3](https://vuejs.org/) (Composition API, `<script setup>` with TypeScript)
-* **Routing & State**: [Vue Router v4](https://router.vuejs.org/) and custom Composables
+* **Routing & State**: [Vue Router v4](https://router.vuejs.org/) and [Pinia v3](https://pinia.vuejs.org/)
 * **Localization**: [Vue I18n](https://vue-i18n.intlify.dev/)
 * **Offline / PWA**: `vite-plugin-pwa` with Workbox
 * **Build Tool**: [Vite](https://vite.dev/)
@@ -80,7 +81,7 @@ bun run build
 │   ├── style.css           # Global stylesheets & Tailwind imports
 │   ├── constants.ts        # Static datasets (hotlines, audience tags)
 │   ├── types.ts            # Shared TypeScript interface definitions
-│   ├── composables/        # Shared logic and global state (e.g., useAyudaState)
+│   ├── stores/             # Global Pinia state management (e.g., ayudaStore.ts)
 │   ├── locales/            # i18n translation files (en.json, tl.json)
 │   ├── views/              # Vue Router page components
 │   ├── components/
