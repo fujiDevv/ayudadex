@@ -40,7 +40,7 @@ To run the application locally on your computer, ensure you have [Bun](https://b
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/joshuasarmiento/ayudadex.git
+git clone https://github.com/fujiDevv/ayudadex.git
 cd AyudaDex
 ```
 
