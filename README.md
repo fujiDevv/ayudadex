@@ -23,6 +23,7 @@ Built with a premium modern design, it helps Filipinos search through benefits f
 * **Eligibility Quiz (Ayuda Finder)**: An interactive 3-step wizard that scores and recommends government programs tailored to a user's employment status, needs, and demographics.
 * **Print Checklist to PDF**: Generate clean, ink-saving A4-ready layouts by stripping out UI elements using native `@media print` CSS.
 * **Interactive Requirement Checklists**: Dynamic checklist tracking for application documents with a visual readiness progress bar (e.g. `2 / 5 (40% Ready)`).
+* **Accessibility (a11y) Optimized**: WCAG-friendly contrast ratios, full screen reader ARIA support, and a dedicated "Large Text" mode for seniors and PWDs.
 * **Bookmarks & Shortlist**: Save matching benefits to a personal dashboard, fully persisted locally in the browser via Pinia and `localStorage`.
 * **Official Hotlines**: Contact numbers, email addresses, and support guidelines for government assistance centers.
 * **Dark Mode Switcher**: Modern responsive dashboard styling with premium dark and light theme options.
@@ -84,6 +85,11 @@ bun run build
 │   ├── stores/             # Global Pinia state management (e.g., ayudaStore.ts)
 │   ├── locales/            # i18n translation files (en.json, tl.json)
 │   ├── views/              # Vue Router page components
+│   │   ├── DirectoryView.vue
+│   │   ├── ProgramDetailView.vue
+│   │   ├── WizardView.vue
+│   │   ├── SavedView.vue
+│   │   └── HotlinesView.vue
 │   ├── components/
 │   │   ├── AppHeader.vue   # Brand logo, tab navigation, and dark switcher
 │   │   ├── AppFooter.vue   # Redesigned civic footer, portals, and disclaimer
