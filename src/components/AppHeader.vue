@@ -71,39 +71,39 @@ const emit = defineEmits<{
         <!-- Navigation Tabs (Desktop) -->
         <nav class="hidden md:flex items-center gap-1">
           <motion.button @click="router.push('/')"
-            class="px-3.5 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 border border-transparent" 
-            :class="route.path === '/' 
-              ? 'bg-blue-50 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 border-blue-100 dark:border-blue-900/50 shadow-sm' 
+            class="px-3.5 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 border border-transparent"
+            :class="route.path === '/'
+              ? 'bg-blue-50 text-blue-900 dark:bg-blue-900/40 dark:text-blue-300 border-blue-100 dark:border-blue-900/50 shadow-sm'
               : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60'"
             :whileHover="{ scale: 1.02 }" :whileTap="{ scale: 0.98 }">
-            <ClipboardList class="w-4 h-4" /> {{ $t('nav.directory') }}
+            {{ $t('nav.directory') }}
           </motion.button>
-          
+
           <motion.button @click="router.push('/wizard')"
-            class="px-3.5 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 border border-transparent" 
-            :class="route.path === '/wizard' 
-              ? 'bg-blue-50 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 border-blue-100 dark:border-blue-900/50 shadow-sm' 
+            class="px-3.5 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 border border-transparent"
+            :class="route.path === '/wizard'
+              ? 'bg-blue-50 text-blue-900 dark:bg-blue-900/40 dark:text-blue-300 border-blue-100 dark:border-blue-900/50 shadow-sm'
               : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60'"
             :whileHover="{ scale: 1.02 }" :whileTap="{ scale: 0.98 }">
-            <Wand2 class="w-4 h-4" /> {{ $t('nav.quiz') }}
+            {{ $t('nav.quiz') }}
           </motion.button>
 
           <motion.button @click="router.push('/shortlist')"
-            class="px-3.5 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 border border-transparent" 
-            :class="route.path === '/shortlist' 
-              ? 'bg-blue-50 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 border-blue-100 dark:border-blue-900/50 shadow-sm' 
+            class="px-3.5 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 border border-transparent"
+            :class="route.path === '/shortlist'
+              ? 'bg-blue-50 text-blue-900 dark:bg-blue-900/40 dark:text-blue-300 border-blue-100 dark:border-blue-900/50 shadow-sm'
               : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60'"
             :whileHover="{ scale: 1.02 }" :whileTap="{ scale: 0.98 }">
-            <Star class="w-4 h-4" /> {{ $t('nav.saved') }} ({{ savedCount }})
+            {{ $t('nav.saved') }} ({{ savedCount }})
           </motion.button>
 
           <motion.button @click="router.push('/hotlines')"
-            class="px-3.5 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 border border-transparent" 
-            :class="route.path === '/hotlines' 
-              ? 'bg-blue-50 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300 border-blue-100 dark:border-blue-900/50 shadow-sm' 
+            class="px-3.5 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 border border-transparent"
+            :class="route.path === '/hotlines'
+              ? 'bg-blue-50 text-blue-900 dark:bg-blue-900/40 dark:text-blue-300 border-blue-100 dark:border-blue-900/50 shadow-sm'
               : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60'"
             :whileHover="{ scale: 1.02 }" :whileTap="{ scale: 0.98 }">
-            <Phone class="w-4 h-4" /> {{ $t('nav.hotlines') }}
+            {{ $t('nav.hotlines') }}
           </motion.button>
         </nav>
 
@@ -117,7 +117,10 @@ const emit = defineEmits<{
               <option value="tl">TL</option>
             </select>
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-500">
-              <svg class="w-3 h-3 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+              <svg class="w-3 h-3 fill-current" viewBox="0 0 20 20">
+                <path
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+              </svg>
             </div>
           </div>
 
