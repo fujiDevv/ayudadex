@@ -169,11 +169,11 @@
         "Kunin ang cash gamit ang Pag-IBIG Loyalty Card Plus o cash card."
       ],
       "requirements": [
-        "Completed MPL Application Form",
-        "Photocopy of 2 valid government IDs",
-        "Proof of Income (latest 1-month payslip)",
-        "Active Loyalty Card Plus or enrolled LandBank/UCPB cash card",
-        "At least 24 monthly membership contributions"
+        "Kumpletong MPL Application Form",
+        "Photocopy ng 2 valid government ID",
+        "Katibayan ng Kita (pinakabagong 1-buwang payslip)",
+        "Aktibong Loyalty Card Plus o nakarehistrong LandBank/UCPB cash card",
+        "Kahit 24 buwanang kontribusyon sa pagiging miyembro"
       ]
     },
     "sss-maternity": {
@@ -186,11 +186,11 @@
         "Para sa mga voluntary/self-employed: Direktang ibabayad ng SSS sa nakarehistrong bank account."
       ],
       "requirements": [
-        "Maternity Notification submitted prior to delivery",
-        "Proof of Childbirth (Certified True Copy of Birth Certificate / Certificate of Live Birth)",
-        "At least 3 monthly SSS contributions in the 12-month period immediately preceding the semester of childbirth",
-        "Enrolled bank account (DAEM)",
-        "Medical certificate or ultrasound report (for miscarriages)"
+        "Naipasang Maternity Notification bago manganak",
+        "Katibayan ng Panganganak (Certified True Copy ng Birth Certificate / Certificate of Live Birth)",
+        "Kahit 3 buwanang kontribusyon sa SSS sa loob ng 12 buwan bago ang semestre ng panganganak",
+        "Nakarehistrong bank account (DAEM)",
+        "Medical certificate o ultrasound report (para sa mga nakunan)"
       ]
     },
     "dswd-4ps": {
@@ -203,11 +203,11 @@
         "Tanggapin ang LandBank cash cards para sa buwanan/kalahating buwang cash grant payouts."
       ],
       "requirements": [
-        "DSWD Listahanan poor classification (must be targeted)",
-        "Pregnant women must receive pre- and post-natal care",
-        "Children 0-5 years old must receive regular checkups and vaccines",
-        "Children 3-18 years old must be enrolled in school with 85% attendance",
-        "Parents must attend monthly Family Development Sessions (FDS)"
+        "DSWD Listahanan poor classification (dapat targetin)",
+        "Ang mga buntis ay dapat makatanggap ng pre- at post-natal care",
+        "Ang mga batang 0-5 taong gulang ay dapat magkaroon ng regular checkups at bakuna",
+        "Ang mga batang 3-18 taong gulang ay dapat naka-enroll sa paaralan na may 85% attendance",
+        "Dapat dumalo ang mga magulang sa buwanang Family Development Sessions (FDS)"
       ]
     },
     "dole-tupad": {
@@ -223,9 +223,9 @@
       "requirements": [
         "TUPAD Application Profile Sheet",
         "1 valid ID",
-        "Indigency Certificate from the Barangay",
-        "Must be at least 18 years old",
-        "Must not be an active government employee"
+        "Indigency Certificate mula sa Barangay",
+        "Dapat hindi bababa sa 18 taong gulang",
+        "Dapat hindi aktibong empleyado ng gobyerno"
       ]
     },
     "doh-maip": {
@@ -238,11 +238,11 @@
         "Tanggapin ang Guarantee Letter (GL) na ibabawas nang direkta sa iyong bill sa ospital."
       ],
       "requirements": [
-        "Medical Certificate or Clinical Summary",
-        "Certificate of Indigency from Barangay or DSWD Social Case Study",
-        "Hospital Bill or Laboratory/Diagnostic Request",
-        "Doctor's Prescription with price estimation",
-        "Valid ID of patient or immediate relative representative"
+        "Medical Certificate o Clinical Summary",
+        "Certificate of Indigency mula sa Barangay o DSWD Social Case Study",
+        "Bill sa Ospital o Laboratory/Diagnostic Request",
+        "Reseta ng Doktor na may pagtatantya ng presyo",
+        "Valid ID ng pasyente o kamag-anak na kinatawan"
       ]
     },
     "pagibig-housing": {
@@ -256,12 +256,12 @@
         "Tanggapin ang loan proceeds check o bank transfer."
       ],
       "requirements": [
-        "At least 24 monthly contributions (consecutive or lump sum)",
-        "Completed Housing Loan Application Form with photos",
-        "Proof of Income (Payslip / Income Tax Return / Job Contract for OFWs)",
-        "Transfer Certificate of Title (TCT) copy of property",
-        "Tax Declaration and Real Estate Tax Receipt",
-        "No outstanding Pag-IBIG loans in default"
+        "Kahit 24 buwanang kontribusyon (sunod-sunod o lump sum)",
+        "Kumpletong Housing Loan Application Form na may litrato",
+        "Katibayan ng Kita (Payslip / Income Tax Return / Job Contract para sa mga OFW)",
+        "Kopya ng Transfer Certificate of Title (TCT) ng ari-arian",
+        "Tax Declaration at Real Estate Tax Receipt",
+        "Walang hindi nababayarang pautang sa Pag-IBIG"
       ]
     },
     "gsis-retirement": {
@@ -274,11 +274,11 @@
         "Ang pensyon ay direktang idedeposito sa iyong GSIS eCard (UMID) account."
       ],
       "requirements": [
-        "Completed Application Form for Retirement Benefit",
+        "Kumpletong Application Form para sa Retirement Benefit",
         "Declaration of Pendency/Non-Pendency of Case form",
-        "Service Record from the government agency",
-        "At least 15 years of government service",
-        "Must be at least 60 years old at retirement"
+        "Service Record mula sa ahensya ng gobyerno",
+        "Kahit 15 taon sa serbisyo ng gobyerno",
+        "Dapat kahit 60 taong gulang pagretiro"
       ]
     },
     "owwa-edsp": {
@@ -292,10 +292,10 @@
         "Kunin ang disbursement para sa matrikula at allowance bawat semestre."
       ],
       "requirements": [
-        "Child of active OFW, or sibling of unmarried OFW",
-        "Grade 12 student with General Weighted Average of at least 85%",
-        "Proof of active SSS/OWWA membership of OFW parent/sibling",
-        "Birth Certificate of student (and OFW if sibling relation)",
+        "Anak ng aktibong OFW, o kapatid ng walang asawang OFW",
+        "Grade 12 student na may General Weighted Average na hindi bababa sa 85%",
+        "Katibayan ng aktibong SSS/OWWA membership ng OFW na magulang/kapatid",
+        "Birth Certificate ng estudyante (at ng OFW kung magkapatid)",
         "Certificate of Good Moral Character"
       ]
     },
@@ -309,11 +309,11 @@
         "Makatanggap ng pang-araw-araw na cash reimbursement sa iyong nakarehistrong bank account (o sa pamamagitan ng iyong employer)."
       ],
       "requirements": [
-        "Completed Sickness Benefit Application online",
-        "Medical Certificate (Form MM-1) signed by attending physician",
-        "At least 3 monthly SSS contributions in the 12-month period immediately preceding the semester of sickness",
-        "Laboratory/diagnostic results supporting the diagnosis",
-        "Enrolled bank account (DAEM)"
+        "Kumpletong Sickness Benefit Application online",
+        "Medical Certificate (Form MM-1) na pinirmahan ng attending physician",
+        "Kahit 3 buwanang kontribusyon sa SSS sa loob ng 12 buwan bago ang semestre ng pagkakasakit",
+        "Mga resulta ng laboratoryo/diagnostics na sumusuporta sa diagnosis",
+        "Nakarehistrong bank account (DAEM)"
       ]
     }
   },
