@@ -16,20 +16,20 @@ const browseDirectory = () => router.push('/')
     <div class="space-y-6">
       <div class="text-left mb-8 max-w-2xl">
         <h2 class="text-3xl font-bold text-slate-900 dark:text-slate-100 tracking-tight flex items-center gap-2">
-          <Star class="w-8 h-8 text-yellow-500 fill-current" /> Your Saved Benefits
+          <Star class="w-8 h-8 text-yellow-500 fill-current" /> {{ $t('shortlist.title') }}
         </h2>
         <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm sm:text-base font-normal">
-          Review the requirements and steps for the benefits you bookmarked. All checklists and data are saved locally to your device browser.
+          {{ $t('shortlist.desc') }}
         </p>
       </div>
 
       <div v-if="shortlistedPrograms.length === 0" class="text-center py-16 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 border-dashed rounded-2xl max-w-2xl mx-auto">
         <Star class="w-12 h-12 text-slate-300 dark:text-slate-700 mx-auto" />
-        <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mt-4">No bookmarked benefits yet</h3>
-        <p class="text-slate-500 dark:text-slate-400 text-sm mt-1 max-w-md mx-auto px-4">Browse the Benefits Directory and click the star icon on any program to save it here for offline reference.</p>
+        <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mt-4">{{ $t('shortlist.noBookmarks') }}</h3>
+        <p class="text-slate-500 dark:text-slate-400 text-sm mt-1 max-w-md mx-auto px-4">{{ $t('shortlist.noBookmarksDesc') }}</p>
         <motion.button @click="browseDirectory" class="mt-4 px-5 py-2.5 bg-blue-900 dark:bg-blue-800 hover:bg-blue-800 text-white text-xs font-bold rounded-xl transition-all cursor-pointer"
           :whileHover="{ scale: 1.04 }" :whileTap="{ scale: 0.96 }">
-          Browse Directory
+          {{ $t('shortlist.browse') }}
         </motion.button>
       </div>
 
@@ -45,7 +45,7 @@ const browseDirectory = () => router.push('/')
               <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mt-1">{{ program.name }}</h3>
             </div>
             <motion.button @click="toggleSaveProgram(program.id, $event)" class="hover:text-slate-400 dark:hover:text-slate-500 transition-colors p-1 cursor-pointer"
-              title="Remove from shortlist" :whileHover="{ scale: 1.2 }" :whileTap="{ scale: 0.8 }">
+              :title="$t('card.removeBookmark')" :whileHover="{ scale: 1.2 }" :whileTap="{ scale: 0.8 }">
               <Star class="w-5 h-5 text-yellow-500 fill-current" />
             </motion.button>
           </div>
@@ -54,7 +54,7 @@ const browseDirectory = () => router.push('/')
 
           <div class="mt-4">
             <div class="flex items-center justify-between mb-1.5">
-              <span class="text-[10px] font-medium text-slate-400 dark:text-slate-500 uppercase tracking-wide">Readiness</span>
+              <span class="text-[10px] font-medium text-slate-400 dark:text-slate-500 uppercase tracking-wide">{{ $t('card.readiness') }}</span>
               <span class="text-[10px] font-bold text-blue-900 dark:text-blue-400">
                 {{ getCheckedCount(program.id) }} / {{ program.requirements.length }} ({{ getPreparedPercent(program) }}%)
               </span>
@@ -66,7 +66,7 @@ const browseDirectory = () => router.push('/')
 
           <motion.button @click="goToProgram(program.id)" class="w-full mt-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl text-[10px] font-bold text-slate-700 dark:text-slate-300 transition-colors cursor-pointer"
             :whileHover="{ scale: 1.02 }" :whileTap="{ scale: 0.98 }">
-            Expand Checklist & Steps ➔
+            {{ $t('card.expand') }}
           </motion.button>
         </motion.div>
       </div>

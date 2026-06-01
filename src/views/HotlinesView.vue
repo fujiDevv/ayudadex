@@ -9,10 +9,10 @@ import { hotlines } from '../constants'
     <div class="space-y-6 max-w-4xl mx-auto">
       <div class="text-left mb-8">
         <h2 class="text-3xl font-bold text-blue-900 dark:text-white tracking-tight flex items-center gap-2">
-          <Phone class="w-8 h-8 text-blue-900 dark:text-white" /> Official Agency Directory & Support
+          <Phone class="w-8 h-8 text-blue-900 dark:text-white" /> {{ $t('hotlines.title') }}
         </h2>
         <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm sm:text-base font-normal">
-          Direct hotlines, support emails, and inquiry channels for national social benefit providers. Keep these contact points handy when submitting claims.
+          {{ $t('hotlines.desc') }}
         </p>
       </div>
 
@@ -45,9 +45,9 @@ import { hotlines } from '../constants'
         :initial="{ opacity: 0, scale: 0.95 }" :animate="{ opacity: 1, scale: 1 }" :transition="{ duration: 0.3 }">
         <AlertTriangle class="w-8 h-8 text-blue-900 dark:text-blue-400 shrink-0" />
         <div>
-          <h4 class="font-bold text-blue-900 dark:text-blue-400 text-sm">Important Notice on Inquiries</h4>
+          <h4 class="font-bold text-blue-900 dark:text-blue-400 text-sm">{{ $t('hotlines.noticeTitle') }}</h4>
           <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed mt-1 font-normal">
-            Official operating times for most government hotlines are Monday to Friday, 8:00 AM to 5:00 PM (Philippine Standard Time), except for Pag-IBIG which operates 24/7. Standard local call rates apply. When contacting, ensure you have your SSS/GSIS/PhilHealth/Pag-IBIG membership ID number ready.
+            {{ $t('hotlines.noticeDesc') }}
           </p>
         </div>
       </motion.div>

@@ -6,6 +6,7 @@ import {
   Share2, Check, ExternalLink
 } from 'lucide-vue-next'
 import { motion } from 'motion-v'
+import { useI18n } from 'vue-i18n'
 import programsData from '../data/programs.json'
 import type { Program } from '../types'
 import { useAyudaState } from '../composables/useAyudaState'
@@ -18,9 +19,10 @@ const router = useRouter()
 const { 
   savedPrograms, 
   checkedRequirements,
-  toggleSaveProgram, 
+  toggleSaveProgram,
   toggleRequirement
 } = useAyudaState()
+const { t } = useI18n()
 
 const program = computed<Program | undefined>(() => {
   return (programsData as Program[]).find(p => p.id === props.id)
@@ -38,8 +40,8 @@ const showShareToast = ref(false)
 const shareProgram = () => {
   if (navigator.share) {
     navigator.share({
-      title: program.value?.name,
-      text: program.value?.description,
+      title: program.value ? t(`programs.${program.value.id}.name`) : '',
+      text: program.value ? t(`programs.${program.value.id}.description`) : '',
       url: window.location.href
     }).catch(console.error)
   } else {
@@ -79,7 +81,7 @@ const shareProgram = () => {
             </span>
           </div>
           <h1 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-slate-100 tracking-tight leading-tight">
-            {{ program.name }}
+            {{ $t(`programs.${program.id}.name`) }}
           </h1>
         </div>
         
@@ -109,11 +111,11 @@ const shareProgram = () => {
       </div>
 
       <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-6 leading-relaxed">
-        {{ program.description }}
+        {{ $t(`programs.${program.id}.description`) }}
       </p>
 
       <div class="flex items-center flex-wrap gap-1.5 mt-6">
-        <span class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide mr-1">Target Audience:</span>
+        <span class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide mr-1">{{ $t('filters.audience') }}:</span>
         <span 
           v-for="aud in program.target_audience" 
           :key="aud"
@@ -157,17 +159,17 @@ const shareProgram = () => {
         <!-- Application Steps (Timeline) -->
         <div class="space-y-6">
           <h4 class="text-sm font-black text-blue-900 dark:text-blue-400 uppercase tracking-widest flex items-center gap-2">
-            <MapPin class="w-4 h-4" /> Step-by-Step Process
+            <MapPin class="w-4 h-4" /> {{ $t('card.steps') }}
           </h4>
           <div class="relative pl-6 border-l-2 border-slate-100 dark:border-slate-800 space-y-8 ml-2 mt-2">
             <div 
-              v-for="(step, idx) in program.steps" 
+              v-for="(step, idx) in $tm(`programs.${program.id}.steps`)" 
               :key="idx" 
               class="relative"
             >
               <span class="absolute -left-[33px] top-1 w-5 h-5 rounded-full bg-blue-900 dark:bg-blue-800 border-4 border-white dark:border-slate-900 flex items-center justify-center"></span>
               <div class="space-y-1.5">
-                <p class="text-[10px] font-black text-blue-900 dark:text-blue-400 uppercase tracking-widest">Step {{ idx + 1 }}</p>
+                <p class="text-[10px] font-black text-blue-900 dark:text-blue-400 uppercase tracking-widest">Step {{ Number(idx) + 1 }}</p>
                 <p class="text-sm font-semibold text-slate-700 dark:text-slate-300 leading-relaxed">{{ step }}</p>
               </div>
             </div>
@@ -178,7 +180,7 @@ const shareProgram = () => {
         <div class="space-y-5 bg-slate-50 dark:bg-slate-950 p-6 sm:p-8 rounded-3xl border border-slate-200/50 dark:border-slate-800/50">
           <div class="flex items-center justify-between border-b border-slate-200/60 dark:border-slate-800 pb-4">
             <h4 class="text-sm font-black text-slate-900 dark:text-slate-100 uppercase tracking-widest flex items-center gap-2">
-              <FileText class="w-4 h-4" /> Checklist
+              <FileText class="w-4 h-4" /> {{ $t('card.requirements') }}
             </h4>
             <span class="text-[10px] font-bold text-blue-900 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 px-2 py-1 rounded-md">
               {{ checkedList.length }} / {{ program.requirements.length }} Prepared
@@ -187,7 +189,7 @@ const shareProgram = () => {
 
           <div class="space-y-4 pt-2">
             <label 
-              v-for="(req, idx) in program.requirements" 
+              v-for="(req, idx) in $tm(`programs.${program.id}.requirements`)" 
               :key="idx" 
               class="flex items-start gap-4 cursor-pointer group/item select-none"
             >

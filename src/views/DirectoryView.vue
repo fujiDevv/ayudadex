@@ -76,9 +76,9 @@ const goToProgram = (id: string) => router.push(`/program/${id}`)
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 animate-fade-in">
     <div class="space-y-6">
       <motion.div class="text-left mb-8 max-w-2xl" :initial="{ opacity: 0, y: -10 }" :animate="{ opacity: 1, y: 0 }" :transition="{ duration: 0.4 }">
-        <h2 class="text-3xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">Explore Philippine Welfare & Benefits</h2>
+        <h2 class="text-3xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">{{ $t('hero.title') }}</h2>
         <p class="text-slate-500 dark:text-slate-400 mt-2 text-base font-normal leading-relaxed">
-          Search, filter, and track requirements for national assistance schemes. Bookmark programs to save your document checklists offline.
+          {{ $t('hero.desc') }}
         </p>
       </motion.div>
 
@@ -87,26 +87,26 @@ const goToProgram = (id: string) => router.push(`/program/${id}`)
           :initial="{ opacity: 0, x: -15 }" :animate="{ opacity: 1, x: 0 }" :transition="{ duration: 0.35 }">
           <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
             <h3 class="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
-              <Settings class="w-5 h-5" /> Filters
+              <Settings class="w-5 h-5" /> {{ $t('filters.title') }}
             </h3>
             <motion.button v-if="selectedAgencies.length || selectedCategories.length || selectedAudiences.length || searchQuery"
               @click="clearFilters" class="text-xs text-blue-900 dark:text-blue-400 font-bold hover:underline cursor-pointer"
               :whileHover="{ scale: 1.03 }" :whileTap="{ scale: 0.97 }">
-              Clear All
+              {{ $t('filters.clearAll') }}
             </motion.button>
           </div>
 
           <div class="space-y-2">
-            <label class="text-xs font-medium tracking-wide uppercase text-slate-500 dark:text-slate-400">Search</label>
+            <label class="text-xs font-medium tracking-wide uppercase text-slate-500 dark:text-slate-400">{{ $t('filters.search') }}</label>
             <div class="relative">
-              <input type="text" v-model="searchQuery" placeholder="e.g. AICS, Maternity, Loan..."
+              <input type="text" v-model="searchQuery" :placeholder="$t('filters.searchPlaceholder')"
                 class="w-full bg-white dark:bg-slate-950 text-sm font-normal rounded-xl border border-slate-200 dark:border-slate-800 py-3 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-slate-900 dark:text-slate-100 shadow-sm" />
               <Search class="w-4 h-4 absolute left-3.5 top-3.5 text-slate-400 dark:text-slate-500" />
             </div>
           </div>
 
           <div class="space-y-2">
-            <label class="text-xs font-medium tracking-wide uppercase text-slate-500 dark:text-slate-400 block mb-1">Government Agency</label>
+            <label class="text-xs font-medium tracking-wide uppercase text-slate-500 dark:text-slate-400 block mb-1">{{ $t('filters.agency') }}</label>
             <div class="flex flex-wrap lg:flex-col gap-1.5">
               <motion.button v-for="agency in agenciesList" :key="agency" @click="toggleAgencyFilter(agency)"
                 class="px-3 py-1.5 lg:w-full lg:text-left text-xs font-medium rounded-lg border transition-all flex items-center justify-between gap-2 cursor-pointer"
@@ -121,7 +121,7 @@ const goToProgram = (id: string) => router.push(`/program/${id}`)
           </div>
 
           <div class="space-y-2">
-            <label class="text-xs font-medium tracking-wide uppercase text-slate-500 dark:text-slate-400 block mb-1">Category</label>
+            <label class="text-xs font-medium tracking-wide uppercase text-slate-500 dark:text-slate-400 block mb-1">{{ $t('filters.category') }}</label>
             <div class="flex flex-wrap lg:flex-col gap-1.5">
               <motion.button v-for="cat in categoriesList" :key="cat" @click="toggleCategoryFilter(cat)"
                 class="px-3 py-1.5 lg:w-full lg:text-left text-xs font-medium rounded-lg border transition-all flex items-center justify-between gap-2 cursor-pointer"
@@ -133,7 +133,7 @@ const goToProgram = (id: string) => router.push(`/program/${id}`)
           </div>
 
           <div class="space-y-2">
-            <label class="text-xs font-medium tracking-wide uppercase text-slate-500 dark:text-slate-400 block mb-1">Target Audience</label>
+            <label class="text-xs font-medium tracking-wide uppercase text-slate-500 dark:text-slate-400 block mb-1">{{ $t('filters.audience') }}</label>
             <div class="flex flex-wrap gap-1">
               <motion.button v-for="aud in audienceTags" :key="aud" @click="toggleAudienceFilter(aud)"
                 class="px-2 py-1 text-[10px] font-medium rounded-md border transition-all cursor-pointer"
@@ -147,16 +147,16 @@ const goToProgram = (id: string) => router.push(`/program/${id}`)
 
         <section class="lg:col-span-3 space-y-6">
           <div class="flex justify-between items-center text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide">
-            <span>Showing {{ filteredPrograms.length }} of {{ programsData.length }} benefits</span>
+            <span>{{ $t('feed.showing', { count: filteredPrograms.length, total: programsData.length }) }}</span>
           </div>
 
           <div v-if="filteredPrograms.length === 0" class="text-center py-16 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 border-dashed rounded-2xl">
             <Search class="w-12 h-12 text-slate-300 dark:text-slate-700 mx-auto" />
-            <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mt-4">No matching programs found</h3>
-            <p class="text-slate-500 dark:text-slate-400 text-sm mt-1 max-w-md mx-auto">Try refining your keyword search, selecting broader filter tags, or clearing filters to see all available listings.</p>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mt-4">{{ $t('feed.noMatches') }}</h3>
+            <p class="text-slate-500 dark:text-slate-400 text-sm mt-1 max-w-md mx-auto">{{ $t('feed.noMatchesDesc') }}</p>
             <motion.button @click="clearFilters" class="mt-4 px-4 py-2 bg-blue-900 dark:bg-blue-800 hover:bg-blue-800 text-white text-xs font-bold rounded-xl transition-all cursor-pointer"
               :whileHover="{ scale: 1.04 }" :whileTap="{ scale: 0.96 }">
-              Reset Filters
+              {{ $t('feed.resetFilters') }}
             </motion.button>
           </div>
 
