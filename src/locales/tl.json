@@ -160,7 +160,7 @@
     },
     "pagibig-mpl": {
       "name": "Multi-Purpose Loan (MPL)",
-      "description": "A cash loan designed to help active Pag-IBIG members with immediate financial needs, including tuition, medical expenses, home minor repairs, or travel.",
+      "description": "Isang cash loan na dinisenyo upang tulungan ang mga aktibong miyembro ng Pag-IBIG sa mga agarang pangangailangang pinansyal, kabilang ang matrikula, gastusing medikal, maliliit na pag-aayos sa bahay, o paglalakbay.",
       "steps": [
         "Fill out the Pag-IBIG Multi-Purpose Loan Application Form (MPLAF).",
         "Secure Employer's Declaration section signature.",
@@ -178,7 +178,7 @@
     },
     "sss-maternity": {
       "name": "Maternity Benefit",
-      "description": "A cash benefit paid to female SSS members who gave birth, suffered a miscarriage, or underwent emergency termination of pregnancy.",
+      "description": "Isang benepisyong cash na ibinibigay sa mga babaeng miyembro ng SSS na nanganak, nakunan, o sumailalim sa emergency termination of pregnancy.",
       "steps": [
         "Submit Maternity Notification (Mat-1) online through My.SSS portal as soon as pregnancy is confirmed.",
         "After delivery/miscarriage, submit the Maternity Benefit Application (Mat-2) with required documents.",
@@ -195,7 +195,7 @@
     },
     "dswd-4ps": {
       "name": "Pantawid Pamilyang Pilipino Program (4Ps)",
-      "description": "A human development measure that provides conditional cash grants to the poorest of the poor to improve the health, nutrition, and education of children aged 0-18.",
+      "description": "Isang programa sa pagpapaunlad ng tao na nagbibigay ng conditional cash grants sa mga pinakamahihirap na pamilya upang mapabuti ang kalusugan, nutrisyon, at edukasyon ng mga batang may edad 0-18.",
       "steps": [
         "Wait for household assessment by DSWD's National Household Targeting System for Poverty Reduction (Listahanan).",
         "Selected households will undergo community validation.",
@@ -212,7 +212,7 @@
     },
     "dole-tupad": {
       "name": "TUPAD (Emergency Employment)",
-      "description": "A community-based package of assistance that provides emergency employment for displaced workers, underemployed, and seasonal workers, for a minimum period of 10 days up to 30 days.",
+      "description": "Isang community-based na tulong na nagbibigay ng emergency employment para sa mga nawalan ng trabaho, underemployed, at seasonal workers, sa minimum na 10 araw hanggang 30 araw.",
       "steps": [
         "Visit the nearest DOLE Regional/Field Office or local PESO (Public Employment Service Office) in your LGU.",
         "Submit application and profile sheet for evaluation.",
@@ -230,7 +230,7 @@
     },
     "doh-maip": {
       "name": "Medical Assistance to Indigent Patients (MAIP)",
-      "description": "DOH program providing financial support through guarantee letters to cover medical expenses (hospitalization, laboratory tests, drugs, medicines) in government and select private hospitals.",
+      "description": "Programa ng DOH na nagbibigay ng suportang pinansyal sa pamamagitan ng guarantee letters upang saklawin ang mga gastusing medikal (ospital, laboratoryo, gamot) sa mga pampublikong ospital at piling pribadong ospital.",
       "steps": [
         "Visit the Malasakit Center or Medical Social Service unit inside a participating government hospital.",
         "Present requirements to the officer for social welfare evaluation.",
@@ -247,7 +247,7 @@
     },
     "pagibig-housing": {
       "name": "Regular Housing Loan",
-      "description": "Provides financing up to ₱6 Million for purchasing residential lots, house and lot packages, condominiums, or construction/renovation of homes, payable up to 30 years.",
+      "description": "Nagbibigay ng pautang hanggang ₱6 Milyon para pambili ng residential lot, house and lot package, condominium, o pagpapatayo/pag-aayos ng bahay, at babayaran ng hanggang 30 taon.",
       "steps": [
         "Submit Housing Loan Application Form and initial documents online or at a Pag-IBIG hub.",
         "Pay the non-refundable ₱1,000 processing fee.",
@@ -266,7 +266,7 @@
     },
     "gsis-retirement": {
       "name": "Retirement Benefit",
-      "description": "Ensures active GSIS members receive pensions (either as a lump-sum check + monthly annuity, or immediately as monthly pension) upon retiring from government service.",
+      "description": "Sinisiguro na ang mga aktibong miyembro ng GSIS ay makakatanggap ng pensyon (maaaring lump-sum check + buwanang annuity, o agad na buwanang pensyon) pagretiro sa serbisyo sa gobyerno.",
       "steps": [
         "Submit application online through the GSIS Touch mobile app or at a GSIS wireless kiosk (GW@PS).",
         "Submit physical copies of service records and clearances to your agency's Human Resources officer.",
@@ -283,7 +283,7 @@
     },
     "owwa-edsp": {
       "name": "Education for Development Scholarship Program (EDSP)",
-      "description": "A scholarship grant of up to ₱60,000 per school year for qualified dependents of active OFW members, who intend to enroll in a 4- to 5-year baccalaureate course.",
+      "description": "Isang scholarship grant na aabot sa ₱60,000 bawat taon para sa mga kwalipikadong dependent ng mga aktibong miyembro ng OFW na nagnanais kumuha ng 4 hanggang 5-taong baccalaureate course.",
       "steps": [
         "Apply online through the OWWA Scholarship portal during the application window.",
         "Upload scholastic records and proof of active OFW membership.",
@@ -301,7 +301,7 @@
     },
     "sss-sickness": {
       "name": "Sickness Benefit",
-      "description": "A daily cash allowance paid for the number of days a member is unable to work due to sickness or injury, confined either in a hospital or at home for at least 4 days.",
+      "description": "Isang pang-araw-araw na cash allowance na binabayaran para sa mga araw na ang isang miyembro ay hindi makapagtrabaho dahil sa sakit o pinsala, at naka-confine sa ospital o sa bahay nang hindi bababa sa 4 na araw.",
       "steps": [
         "If employed: Notify your employer within 5 days of sickness onset. The employer will submit the claim to SSS.",
         "If self-employed/voluntary: File the SSS Sickness Benefit Application online via My.SSS portal within 14 days of sickness onset.",
