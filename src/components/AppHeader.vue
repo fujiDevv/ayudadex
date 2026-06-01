@@ -93,6 +93,7 @@ const emit = defineEmits<{
         <div class="w-10">
           <motion.button 
             @click="emit('toggle-dark')" 
+            aria-label="Toggle Dark Mode"
             class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
             :whileHover="{ scale: 1.12, rotate: 12 }"
             :whileTap="{ scale: 0.88 }"

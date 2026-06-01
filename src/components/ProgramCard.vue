@@ -58,6 +58,7 @@ const preparedPercent = computed(() => {
         @click="emit('toggle-save', $event)" 
         class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors flex-shrink-0 cursor-pointer"
         :title="isSaved ? 'Remove bookmark' : 'Bookmark for later'"
+        :aria-label="isSaved ? 'Remove bookmark' : 'Bookmark for later'"
         :whileHover="{ scale: 1.15 }"
         :whileTap="{ scale: 0.85 }"
       >
