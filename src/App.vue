@@ -7,7 +7,7 @@ import AppHeader from './components/AppHeader.vue'
 import AppFooter from './components/AppFooter.vue'
 import {
   Star, Phone, Settings, Search,
-  FileText, Sparkles, AlertTriangle
+  FileText, AlertTriangle
 } from 'lucide-vue-next'
 import { useDark, useToggle } from '@vueuse/core'
 import { motion } from 'motion-v'
