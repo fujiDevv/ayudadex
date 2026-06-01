@@ -16,7 +16,8 @@ const officialPortals = [
   { name: 'GovPH Official Portal', url: 'https://www.gov.ph' },
   { name: 'DSWD Citizen Charter', url: 'https://www.dswd.gov.ph' },
   { name: 'SSS Member Portal', url: 'https://www.sss.gov.ph' },
-  { name: 'PhilHealth Benefits Portal', url: 'https://www.philhealth.gov.ph' }
+  { name: 'PhilHealth Benefits Portal', url: 'https://www.philhealth.gov.ph' },
+  { name: 'betterGov.ph', url: 'https://bettergov.ph/' }
 ] as const
 </script>
 
@@ -31,10 +32,8 @@ const officialPortals = [
         <!-- Column 1: Brand & Slogan -->
         <div class="space-y-3">
           <div class="flex items-center gap-2">
-            <div
-              class="w-7 h-7 rounded-lg bg-blue-900 flex items-center justify-center text-white font-extrabold text-xs">
-              AD
-            </div>
+            <img src="/betterGov_Icon-Primary.svg" alt="betterGov Logo"
+              class="w-7 h-7 object-contain drop-shadow-sm dark:brightness-0 dark:invert opacity-90" />
             <span class="font-bold text-base text-slate-900 dark:text-slate-100 tracking-tight">AyudaDex</span>
           </div>
           <p class="leading-relaxed text-slate-500 dark:text-slate-400">
@@ -101,7 +100,7 @@ const officialPortals = [
       <!-- Bottom Bar -->
       <div
         class="flex flex-col sm:flex-row justify-between items-center gap-3 pt-4 border-t border-slate-100 dark:border-slate-900 text-[10px] text-slate-400 dark:text-slate-500 font-medium">
-        <span>© 2026 AyudaDex Project. Released under public open-source license.</span>
+        <span>© 2026 AyudaDex Project.</span>
         <div class="flex items-center gap-1 text-slate-400">
           <span>Made with</span>
           <Heart class="w-3 h-3 text-red-500 fill-current inline animate-pulse" />

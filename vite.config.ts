@@ -11,7 +11,7 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'pwa-192x192.svg', 'pwa-512x512.svg'],
+      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'betterGov_Icon-Primary.svg'],
       manifest: {
         name: 'AyudaDex',
         short_name: 'AyudaDex',
@@ -20,13 +20,8 @@ export default defineConfig({
         background_color: '#f8fafc',
         icons: [
           {
-            src: 'pwa-192x192.svg',
-            sizes: '192x192',
-            type: 'image/svg+xml'
-          },
-          {
-            src: 'pwa-512x512.svg',
-            sizes: '512x512',
+            src: 'betterGov_Icon-Primary.svg',
+            sizes: 'any',
             type: 'image/svg+xml'
           }
         ]
