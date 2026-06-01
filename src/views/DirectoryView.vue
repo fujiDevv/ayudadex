@@ -6,10 +6,10 @@ import ProgramCard from '../components/ProgramCard.vue'
 import { Settings, Search } from 'lucide-vue-next'
 import { motion } from 'motion-v'
 import type { Program } from '../types'
-import { useAyudaState } from '../composables/useAyudaState'
+import { useAyudaStore } from '../stores/ayudaStore'
 
 const router = useRouter()
-const { savedPrograms, checkedRequirements, toggleSaveProgram, toggleRequirement } = useAyudaState()
+const store = useAyudaStore()
 
 const searchQuery = ref('')
 const selectedAgencies = ref<string[]>([])
@@ -44,6 +44,7 @@ const clearFilters = () => {
   selectedAudiences.value = []
   searchQuery.value = ''
 }
+
 
 const filteredPrograms = computed<Program[]>(() => {
   return (programsData as Program[]).filter(program => {
@@ -161,10 +162,8 @@ const goToProgram = (id: string) => router.push(`/program/${id}`)
           </div>
 
           <ProgramCard v-for="program in filteredPrograms" :key="program.id" :program="program"
-            :is-saved="savedPrograms.includes(program.id)" :is-expanded="false"
-            :checked-requirements="checkedRequirements[program.id] || []"
-            @toggle-save="toggleSaveProgram(program.id, $event)"
-            @toggle-requirement="toggleRequirement(program.id, $event)"
+            :is-saved="store.savedPrograms.includes(program.id)" :is-expanded="false" :checked-requirements="store.checkedRequirements[program.id] || []"
+            @toggle-save="store.toggleSaveProgram(program.id, $event)"
             @toggle-expansion="goToProgram(program.id)" />
         </section>
       </div>

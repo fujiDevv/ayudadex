@@ -2,18 +2,18 @@
 import { useDark, useToggle } from '@vueuse/core'
 import AppHeader from './components/AppHeader.vue'
 import AppFooter from './components/AppFooter.vue'
-import { useAyudaState } from './composables/useAyudaState'
+import { useAyudaStore } from './stores/ayudaStore'
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
 
-const { savedPrograms } = useAyudaState()
+const store = useAyudaStore()
 </script>
 
 <template>
   <div
     class="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans selection:bg-blue-900 selection:text-white pb-16 transition-colors duration-200">
-    <AppHeader :saved-count="savedPrograms.length" :is-dark="isDark" @toggle-dark="toggleDark()" />
+    <AppHeader class="print:hidden" :saved-count="store.savedPrograms.length" :is-dark="isDark" @toggle-dark="toggleDark()" />
 
     <!-- Router View for Dashboard or Program Detail -->
     <router-view v-slot="{ Component }">
@@ -23,7 +23,7 @@ const { savedPrograms } = useAyudaState()
     </router-view>
 
     <!-- Footer / Disclaimer & Authenticity Section -->
-    <AppFooter />
+    <AppFooter class="print:hidden" />
   </div>
 </template>
 

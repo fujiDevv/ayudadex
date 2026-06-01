@@ -1,15 +1,14 @@
+import { defineStore } from 'pinia'
 import { computed } from 'vue'
 import { useStorage } from '@vueuse/core'
 import programsData from '../data/programs.json'
 import type { Program } from '../types'
 
-// Shared global state using useStorage for persistence
-// By declaring these outside the function, they act as a global store (singleton state)
-const savedPrograms = useStorage<string[]>('ayudadex_saved', [])
-const checkedRequirements = useStorage<Record<string, string[]>>('ayudadex_checked_reqs', {})
+export const useAyudaStore = defineStore('ayuda', () => {
+  // Shared global state using useStorage for persistence
+  const savedPrograms = useStorage<string[]>('ayudadex_saved', [])
+  const checkedRequirements = useStorage<Record<string, string[]>>('ayudadex_checked_reqs', {})
 
-
-export function useAyudaState() {
   const toggleSaveProgram = (id: string, event?: Event) => {
     if (event) event.stopPropagation()
     const idx = savedPrograms.value.indexOf(id)
@@ -63,4 +62,4 @@ export function useAyudaState() {
     getPreparedPercent,
     shortlistedPrograms
   }
-}
+})

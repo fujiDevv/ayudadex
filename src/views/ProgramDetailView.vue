@@ -3,33 +3,28 @@ import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { 
   ArrowLeft, Star, Clock, Globe, MapPin, FileText, 
-  Share2, Check, ExternalLink
+  Share2, Check, ExternalLink, Printer
 } from 'lucide-vue-next'
 import { motion } from 'motion-v'
 import { useI18n } from 'vue-i18n'
 import programsData from '../data/programs.json'
 import type { Program } from '../types'
-import { useAyudaState } from '../composables/useAyudaState'
+import { useAyudaStore } from '../stores/ayudaStore'
 
 const props = defineProps<{
   id: string
 }>()
 
 const router = useRouter()
-const { 
-  savedPrograms, 
-  checkedRequirements,
-  toggleSaveProgram,
-  toggleRequirement
-} = useAyudaState()
+const store = useAyudaStore()
 const { t } = useI18n()
 
 const program = computed<Program | undefined>(() => {
   return (programsData as Program[]).find(p => p.id === props.id)
 })
 
-const isSaved = computed(() => program.value ? savedPrograms.value.includes(program.value.id) : false)
-const checkedList = computed(() => program.value ? (checkedRequirements.value[program.value.id] || []) : [])
+const isSaved = computed(() => program.value ? store.savedPrograms.includes(program.value.id) : false)
+const checkedList = computed(() => program.value ? (store.checkedRequirements[program.value.id] || []) : [])
 
 
 const goBack = () => {
@@ -51,6 +46,10 @@ const shareProgram = () => {
       showShareToast.value = false
     }, 3000)
   }
+}
+
+const printChecklist = () => {
+  window.print()
 }
 </script>
 
@@ -86,10 +85,20 @@ const shareProgram = () => {
         </div>
         
         <!-- Actions -->
-        <div class="flex items-center gap-3 shrink-0">
+        <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+          <motion.button 
+            @click="printChecklist" 
+            class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors flex items-center gap-2 font-bold text-sm cursor-pointer print:hidden"
+            :title="$t('detail.print') || 'Print'"
+            :whileHover="{ scale: 1.05 }" :whileTap="{ scale: 0.95 }"
+          >
+            <Printer class="w-5 h-5" />
+            <span class="hidden sm:inline">{{ $t('detail.print') || 'Print' }}</span>
+          </motion.button>
+
           <motion.button 
             @click="shareProgram" 
-            class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400 relative cursor-pointer"
+            class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400 relative cursor-pointer print:hidden"
             :title="$t('detail.share')"
             :whileHover="{ scale: 1.05 }" :whileTap="{ scale: 0.95 }"
           >
@@ -100,7 +109,7 @@ const shareProgram = () => {
           </motion.button>
           
           <motion.button 
-            @click="toggleSaveProgram(program.id, $event)" 
+            @click="store.toggleSaveProgram(program.id, $event)" 
             class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
             :title="isSaved ? $t('card.removeBookmark') : $t('card.bookmark')"
             :whileHover="{ scale: 1.05 }" :whileTap="{ scale: 0.95 }"
@@ -196,7 +205,7 @@ const shareProgram = () => {
               <input 
                 type="checkbox" 
                 :checked="checkedList.includes(req)"
-                @change="toggleRequirement(program.id, req)"
+                @change="store.toggleRequirement(program.id, req)"
                 class="w-5 h-5 text-blue-900 bg-white dark:bg-slate-900 rounded border-slate-300 dark:border-slate-700 focus:ring-blue-900 focus:ring-2 transition-colors cursor-pointer mt-0.5 shrink-0"
               />
               <span 
