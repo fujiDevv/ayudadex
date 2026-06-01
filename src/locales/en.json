@@ -35,6 +35,52 @@
     "steps": "Application Process",
     "applyNow": "Apply Now / Learn More"
   },
+  "finder": {
+    "title": "Ayuda Finder Wizard",
+    "subtitle": "Find Your Eligible Benefits",
+    "step": "Step {step} of {total}",
+    "q1": "What is your current employment or life status?",
+    "q2": "What service or aid do you require help with?",
+    "q3": "Select all other tags that describe you (Optional):",
+    "status": {
+      "employed": "Employed (Private Sector/Kasambahay)",
+      "gov": "Government Employee",
+      "unemployed": "Unemployed / Laid off",
+      "student": "Student",
+      "senior": "Senior Citizen (60+)",
+      "ofw": "Overseas Filipino Worker (OFW)"
+    },
+    "needs": {
+      "medical": "Medical & Healthcare (Bills, Medicines, Checkups)",
+      "financial": "Direct Cash & Livelihood (Emergency cash, loans, work)",
+      "housing": "Housing & Home Loans",
+      "education": "Education & Scholarships (Tuition, allowances)"
+    },
+    "demographics": {
+      "indigent": "Low-income / Indigent Family",
+      "crisis": "Experiencing an immediate crisis (death, disaster)",
+      "pregnant": "Pregnant or Expectant Mother",
+      "pwd": "Person with Disability (PWD)"
+    },
+    "recommendations": "Handpicked Recommendations",
+    "noMatchTitle": "No specialized programs matched these combinations.",
+    "noMatchDesc": "Try selecting different options or view all benefits in the Directory.",
+    "viewDetails": "View Details",
+    "back": "Back",
+    "reset": "Reset Quiz"
+  },
+  "detail": {
+    "backToDir": "Back to Directory",
+    "notFoundTitle": "Program Not Found",
+    "notFoundDesc": "The benefit you are looking for does not exist or the link is broken.",
+    "returnHome": "Return Home",
+    "share": "Share this program",
+    "linkCopied": "Link Copied",
+    "processingTime": "Processing Time",
+    "officialPortal": "Official Portal",
+    "visitWebsite": "Visit Agency Website",
+    "prepared": "Prepared"
+  },
   "wizard": {
     "title": "Ayuda Finder Wizard",
     "desc": "Answer a few quick questions about your demographics and current situation. Our engine will calculate compatibility scores and recommend the best government programs for you.",

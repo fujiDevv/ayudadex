@@ -7,6 +7,7 @@ import {
   HelpCircle, ArrowLeft, ArrowRight
 } from 'lucide-vue-next'
 import { motion } from 'motion-v'
+import { useI18n } from 'vue-i18n'
 import type { Program } from '../types'
 
 const emit = defineEmits<{
@@ -21,29 +22,31 @@ const status = ref('')
 const need = ref('')
 const demographics = ref<string[]>([])
 
+const { t } = useI18n()
+
 // Options
-const statusOptions = [
-  { value: 'Employed', label: 'Employed (Private Sector/Kasambahay)', icon: markRaw(Briefcase) },
-  { value: 'Government Employees', label: 'Government Employee', icon: markRaw(Building2) },
-  { value: 'Unemployed', label: 'Unemployed / Laid off', icon: markRaw(Ban) },
-  { value: 'Students', label: 'Student', icon: markRaw(GraduationCap) },
-  { value: 'Seniors', label: 'Senior Citizen (60+)', icon: markRaw(User) },
-  { value: 'OFW', label: 'Overseas Filipino Worker (OFW)', icon: markRaw(Plane) }
-]
+const statusOptions = computed(() => [
+  { value: 'Employed', label: t('finder.status.employed'), icon: markRaw(Briefcase) },
+  { value: 'Government Employees', label: t('finder.status.gov'), icon: markRaw(Building2) },
+  { value: 'Unemployed', label: t('finder.status.unemployed'), icon: markRaw(Ban) },
+  { value: 'Students', label: t('finder.status.student'), icon: markRaw(GraduationCap) },
+  { value: 'Seniors', label: t('finder.status.senior'), icon: markRaw(User) },
+  { value: 'OFW', label: t('finder.status.ofw'), icon: markRaw(Plane) }
+])
 
-const needOptions = [
-  { value: 'medical', label: 'Medical & Healthcare (Bills, Medicines, Checkups)', icon: markRaw(Hospital) },
-  { value: 'financial', label: 'Direct Cash & Livelihood (Emergency cash, loans, work)', icon: markRaw(Coins) },
-  { value: 'housing', label: 'Housing & Home Loans', icon: markRaw(Home) },
-  { value: 'education', label: 'Education & Scholarships (Tuition, allowances)', icon: markRaw(BookOpen) }
-]
+const needOptions = computed(() => [
+  { value: 'medical', label: t('finder.needs.medical'), icon: markRaw(Hospital) },
+  { value: 'financial', label: t('finder.needs.financial'), icon: markRaw(Coins) },
+  { value: 'housing', label: t('finder.needs.housing'), icon: markRaw(Home) },
+  { value: 'education', label: t('finder.needs.education'), icon: markRaw(BookOpen) }
+])
 
-const demographicOptions = [
-  { value: 'Indigent', label: 'Low-income / Indigent Family', icon: markRaw(HeartHandshake) },
-  { value: 'Crisis Victims', label: 'Experiencing an immediate crisis (death, disaster)', icon: markRaw(AlertTriangle) },
-  { value: 'Pregnant', label: 'Pregnant or Expectant Mother', icon: markRaw(Baby) },
-  { value: 'PWD', label: 'Person with Disability (PWD)', icon: markRaw(Accessibility) }
-]
+const demographicOptions = computed(() => [
+  { value: 'Indigent', label: t('finder.demographics.indigent'), icon: markRaw(HeartHandshake) },
+  { value: 'Crisis Victims', label: t('finder.demographics.crisis'), icon: markRaw(AlertTriangle) },
+  { value: 'Pregnant', label: t('finder.demographics.pregnant'), icon: markRaw(Baby) },
+  { value: 'PWD', label: t('finder.demographics.pwd'), icon: markRaw(Accessibility) }
+])
 
 const toggleDemographic = (val: string) => {
   const idx = demographics.value.indexOf(val)
@@ -141,11 +144,11 @@ const recommendedPrograms = computed<Program[]>(() => {
     <!-- Header and progress indicator -->
     <div class="flex items-center justify-between mb-8 border-b border-slate-100 dark:border-slate-800 pb-4">
       <div>
-        <h3 class="text-xs uppercase font-medium tracking-wide text-slate-500 dark:text-slate-400">Ayuda Finder Wizard</h3>
-        <p class="text-xl font-bold text-blue-900 dark:text-blue-400 mt-0.5">Find Your Eligible Benefits</p>
+        <h3 class="text-xs uppercase font-medium tracking-wide text-slate-500 dark:text-slate-400">{{ $t('finder.title') }}</h3>
+        <p class="text-xl font-bold text-blue-900 dark:text-blue-400 mt-0.5">{{ $t('finder.subtitle') }}</p>
       </div>
       <div class="flex items-center gap-2">
-        <span class="text-sm font-medium text-slate-500 dark:text-slate-400">Step {{ step }} of {{ totalSteps }}</span>
+        <span class="text-sm font-medium text-slate-500 dark:text-slate-400">{{ $t('finder.step', { step: step, total: totalSteps }) }}</span>
         <div class="w-20 bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden border border-slate-200/50 dark:border-slate-800/50">
           <div class="bg-blue-900 dark:bg-blue-800 h-full transition-all duration-300" :style="{ width: `${(step / totalSteps) * 100}%` }"></div>
         </div>
@@ -157,7 +160,7 @@ const recommendedPrograms = computed<Program[]>(() => {
       
       <!-- Step 1: Employment / Status -->
       <div v-if="step === 1" class="space-y-4 animate-fade-in">
-        <h4 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-4">What is your current employment or life status?</h4>
+        <h4 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-4">{{ $t('finder.q1') }}</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
           <motion.button 
             v-for="opt in statusOptions" 
@@ -181,7 +184,7 @@ const recommendedPrograms = computed<Program[]>(() => {
 
       <!-- Step 2: Main Area of Need -->
       <div v-if="step === 2" class="space-y-4 animate-fade-in">
-        <h4 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-4">What service or aid do you require help with?</h4>
+        <h4 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-4">{{ $t('finder.q2') }}</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
           <motion.button 
             v-for="opt in needOptions" 
@@ -205,7 +208,7 @@ const recommendedPrograms = computed<Program[]>(() => {
 
       <!-- Step 3: Demographics & Special conditions -->
       <div v-if="step === 3" class="space-y-4 animate-fade-in">
-        <h4 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-4">Select all other tags that describe you (Optional):</h4>
+        <h4 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-4">{{ $t('finder.q3') }}</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
           <motion.button 
             v-for="opt in demographicOptions" 
@@ -230,13 +233,13 @@ const recommendedPrograms = computed<Program[]>(() => {
         <div class="mt-6 border-t border-slate-200 dark:border-slate-800 pt-6">
           <h5 class="text-sm font-bold text-blue-900 dark:text-blue-400 mb-4 flex items-center gap-2">
             <Briefcase class="w-4 h-4" />
-            Handpicked Recommendations ({{ recommendedPrograms.length }})
+            {{ $t('finder.recommendations') }} ({{ recommendedPrograms.length }})
           </h5>
 
           <div v-if="recommendedPrograms.length === 0" class="text-center py-8 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-200 dark:border-slate-800">
             <HelpCircle class="w-8 h-8 text-slate-400 dark:text-slate-600 mx-auto" />
-            <p class="text-slate-600 dark:text-slate-300 font-medium mt-2">No specialized programs matched these combinations.</p>
-            <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Try selecting different options or view all benefits in the Directory.</p>
+            <p class="text-slate-600 dark:text-slate-300 font-medium mt-2">{{ $t('finder.noMatchTitle') }}</p>
+            <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">{{ $t('finder.noMatchDesc') }}</p>
           </div>
 
           <div v-else class="space-y-3 max-h-[250px] overflow-y-auto pr-1">
@@ -261,7 +264,7 @@ const recommendedPrograms = computed<Program[]>(() => {
                 :whileHover="{ scale: 1.05 }"
                 :whileTap="{ scale: 0.95 }"
               >
-                <span>View Details</span>
+                <span>{{ $t('finder.viewDetails') }}</span>
                 <ArrowRight class="w-3 h-3" />
               </motion.button>
             </motion.div>
@@ -278,7 +281,7 @@ const recommendedPrograms = computed<Program[]>(() => {
           :whileHover="{ scale: 1.03 }"
           :whileTap="{ scale: 0.97 }"
         >
-          <ArrowLeft class="w-4 h-4" /> Back
+          <ArrowLeft class="w-4 h-4" /> {{ $t('finder.back') }}
         </motion.button>
         <div v-else></div>
 
@@ -289,7 +292,7 @@ const recommendedPrograms = computed<Program[]>(() => {
           :whileHover="{ scale: 1.03 }"
           :whileTap="{ scale: 0.97 }"
         >
-          Reset Quiz
+          {{ $t('finder.reset') }}
         </motion.button>
       </div>
 

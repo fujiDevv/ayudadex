@@ -58,13 +58,13 @@ const shareProgram = () => {
   <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 mb-16 animate-fade-in">
     
     <button @click="goBack" class="flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 transition-colors mb-6 cursor-pointer">
-      <ArrowLeft class="w-4 h-4" /> Back to Directory
+      <ArrowLeft class="w-4 h-4" /> {{ $t('detail.backToDir') }}
     </button>
 
     <div v-if="!program" class="text-center py-20 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
-      <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100">Program Not Found</h2>
-      <p class="text-slate-500 dark:text-slate-400 mt-2">The benefit you are looking for does not exist or the link is broken.</p>
-      <button @click="goBack" class="mt-6 px-6 py-2.5 bg-blue-900 text-white font-bold rounded-xl hover:bg-blue-800 transition-colors cursor-pointer">Return Home</button>
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100">{{ $t('detail.notFoundTitle') }}</h2>
+      <p class="text-slate-500 dark:text-slate-400 mt-2">{{ $t('detail.notFoundDesc') }}</p>
+      <button @click="goBack" class="mt-6 px-6 py-2.5 bg-blue-900 text-white font-bold rounded-xl hover:bg-blue-800 transition-colors cursor-pointer">{{ $t('detail.returnHome') }}</button>
     </div>
 
     <div v-else class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-sm">
@@ -90,19 +90,19 @@ const shareProgram = () => {
           <motion.button 
             @click="shareProgram" 
             class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400 relative cursor-pointer"
-            title="Share this program"
+            :title="$t('detail.share')"
             :whileHover="{ scale: 1.05 }" :whileTap="{ scale: 0.95 }"
           >
             <Share2 class="w-5 h-5" />
             <div v-if="showShareToast" class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg whitespace-nowrap flex items-center gap-1.5">
-              <Check class="w-3 h-3" /> Link Copied
+              <Check class="w-3 h-3" /> {{ $t('detail.linkCopied') }}
             </div>
           </motion.button>
           
           <motion.button 
             @click="toggleSaveProgram(program.id, $event)" 
             class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
-            :title="isSaved ? 'Remove bookmark' : 'Bookmark for later'"
+            :title="isSaved ? $t('card.removeBookmark') : $t('card.bookmark')"
             :whileHover="{ scale: 1.05 }" :whileTap="{ scale: 0.95 }"
           >
             <Star :class="isSaved ? 'text-yellow-500 fill-current scale-110' : 'text-slate-400 dark:text-slate-500'" class="w-5 h-5 transition-transform" />
@@ -132,7 +132,7 @@ const shareProgram = () => {
         <div class="bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800/80 p-5 rounded-2xl flex items-center gap-4">
           <Clock class="w-8 h-8 text-slate-400 dark:text-slate-500" />
           <div>
-            <p class="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Processing Time</p>
+            <p class="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">{{ $t('detail.processingTime') }}</p>
             <p class="text-base font-bold text-slate-900 dark:text-slate-100 mt-0.5">{{ program.processing_time }}</p>
           </div>
         </div>
@@ -145,8 +145,8 @@ const shareProgram = () => {
           <div class="flex items-center gap-4">
             <Globe class="w-8 h-8 text-blue-900 dark:text-blue-400" />
             <div>
-              <p class="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Official Portal</p>
-              <p class="text-base font-bold text-blue-900 dark:text-blue-400 mt-0.5">Visit Agency Website</p>
+              <p class="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">{{ $t('detail.officialPortal') }}</p>
+              <p class="text-base font-bold text-blue-900 dark:text-blue-400 mt-0.5">{{ $t('detail.visitWebsite') }}</p>
             </div>
           </div>
           <ExternalLink class="w-5 h-5 text-blue-900 dark:text-blue-400 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-transform" />
@@ -183,7 +183,7 @@ const shareProgram = () => {
               <FileText class="w-4 h-4" /> {{ $t('card.requirements') }}
             </h4>
             <span class="text-[10px] font-bold text-blue-900 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 px-2 py-1 rounded-md">
-              {{ checkedList.length }} / {{ program.requirements.length }} Prepared
+              {{ checkedList.length }} / {{ program.requirements.length }} {{ $t('detail.prepared') }}
             </span>
           </div>
 

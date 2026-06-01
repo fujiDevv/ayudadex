@@ -26,14 +26,60 @@
   },
   "card": {
     "bookmark": "I-save para sa mamaya",
-    "removeBookmark": "Alisin sa nai-save",
+    "removeBookmark": "Alisin sa naka-save",
     "readiness": "Kahandaan",
-    "expand": "Tingnan ang Listahan at Hakbang ➔",
-    "hide": "Itago ang Proseso at Listahan",
-    "show": "Tingnan ang Proseso at Listahan",
-    "requirements": "Mga Kinakailangang Dokumento",
+    "expand": "Tingnan ang Checklist at Hakbang ➔",
+    "hide": "Itago ang Mga Hakbang at Checklist",
+    "show": "Ipakita ang Mga Hakbang at Checklist",
+    "requirements": "Mga Dokumentong Kailangan",
     "steps": "Proseso ng Aplikasyon",
-    "applyNow": "Mag-apply Ngayon / Alamin ang Iba pa"
+    "applyNow": "Mag-apply Ngayon / Alamin ang Iba Pa"
+  },
+  "finder": {
+    "title": "Ayuda Finder Wizard",
+    "subtitle": "Hanapin ang mga Benepisyong Nararapat Sayo",
+    "step": "Hakbang {step} ng {total}",
+    "q1": "Ano ang iyong kasalukuyang katayuan sa trabaho o buhay?",
+    "q2": "Anong serbisyo o tulong ang kailangan mo?",
+    "q3": "Piliin ang iba pang mga tags na naglalarawan sa iyo (Opsiyonal):",
+    "status": {
+      "employed": "May Trabaho (Pribadong Sektor/Kasambahay)",
+      "gov": "Empleyado ng Gobyerno",
+      "unemployed": "Walang Trabaho / Natanggal sa trabaho",
+      "student": "Estudyante",
+      "senior": "Senior Citizen (60+)",
+      "ofw": "Overseas Filipino Worker (OFW)"
+    },
+    "needs": {
+      "medical": "Medikal at Kalusugan (Bills, Gamot, Checkups)",
+      "financial": "Direktang Pera at Kabuhayan (Emergency cash, utang, trabaho)",
+      "housing": "Pabahay at Home Loans",
+      "education": "Edukasyon at Scholarship (Tuition, allowances)"
+    },
+    "demographics": {
+      "indigent": "Mababang kita / Indigent na Pamilya",
+      "crisis": "Kasalukuyang nakakaranas ng krisis (kamatayan, sakuna)",
+      "pregnant": "Buntis o Inaasahang Ina",
+      "pwd": "Person with Disability (PWD)"
+    },
+    "recommendations": "Mga Inirerekomendang Programa",
+    "noMatchTitle": "Walang partikular na programa ang tumugma sa mga napili.",
+    "noMatchDesc": "Subukang pumili ng ibang opsyon o tingnan ang lahat ng benepisyo sa Direktoryo.",
+    "viewDetails": "Tingnan ang Detalye",
+    "back": "Bumalik",
+    "reset": "Ulitin ang Pagsusulit"
+  },
+  "detail": {
+    "backToDir": "Bumalik sa Direktoryo",
+    "notFoundTitle": "Hindi Nahanap ang Programa",
+    "notFoundDesc": "Ang benepisyong hinahanap mo ay hindi umiiral o sira ang link.",
+    "returnHome": "Bumalik sa Home",
+    "share": "Ibahagi ang programang ito",
+    "linkCopied": "Nakopya ang Link",
+    "processingTime": "Oras ng Pagproseso",
+    "officialPortal": "Opisyal na Portal",
+    "visitWebsite": "Bisitahin ang Website",
+    "prepared": "Nakahanda"
   },
   "wizard": {
     "title": "Ayuda Finder Wizard",
