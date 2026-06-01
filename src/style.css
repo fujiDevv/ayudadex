@@ -16,3 +16,7 @@
     print-color-adjust: exact !important;
   }
 }
+
+html.large-text {
+  font-size: 115%;
+}

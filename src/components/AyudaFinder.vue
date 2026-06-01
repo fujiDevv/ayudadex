@@ -146,7 +146,7 @@ const recommendedPrograms = computed<Program[]>(() => {
         <p class="text-xl font-bold text-slate-900 dark:text-slate-200 mt-0.5">{{ $t('finder.subtitle') }}</p>
       </div>
       <div class="flex items-center gap-2">
-        <span class="text-sm font-medium text-slate-500 dark:text-slate-400">{{ $t('finder.step', {
+        <span class="text-sm font-bold text-slate-600 dark:text-slate-400">{{ $t('finder.step', {
           step: step, total:
             totalSteps
         }) }}</span>
@@ -163,8 +163,8 @@ const recommendedPrograms = computed<Program[]>(() => {
 
       <!-- Step 1: Employment / Status -->
       <div v-if="step === 1" class="space-y-4 animate-fade-in">
-        <h4 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-4">{{ $t('finder.q1') }}</h4>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <h4 id="q1-title" class="text-base font-bold text-slate-900 dark:text-slate-100 mb-4">{{ $t('finder.q1') }}</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3" role="group" aria-labelledby="q1-title">
           <motion.button v-for="opt in statusOptions" :key="opt.value" @click="status = opt.value; nextStep()"
             class="flex items-center gap-4 p-4 text-left rounded-xl border transition-all duration-205 group active:scale-[0.98] cursor-pointer"
             :class="status === opt.value
@@ -183,8 +183,8 @@ const recommendedPrograms = computed<Program[]>(() => {
 
       <!-- Step 2: Main Area of Need -->
       <div v-if="step === 2" class="space-y-4 animate-fade-in">
-        <h4 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-4">{{ $t('finder.q2') }}</h4>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <h4 id="q2-title" class="text-base font-bold text-slate-900 dark:text-slate-100 mb-4">{{ $t('finder.q2') }}</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3" role="group" aria-labelledby="q2-title">
           <motion.button v-for="opt in needOptions" :key="opt.value" @click="need = opt.value; nextStep()"
             class="flex items-center gap-4 p-4 text-left rounded-xl border transition-all duration-205 group active:scale-[0.98] cursor-pointer"
             :class="need === opt.value
@@ -203,8 +203,8 @@ const recommendedPrograms = computed<Program[]>(() => {
 
       <!-- Step 3: Demographics & Special conditions -->
       <div v-if="step === 3" class="space-y-4 animate-fade-in">
-        <h4 class="text-base font-bold text-slate-900 dark:text-slate-100 mb-4">{{ $t('finder.q3') }}</h4>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+        <h4 id="q3-title" class="text-base font-bold text-slate-900 dark:text-slate-100 mb-4">{{ $t('finder.q3') }}</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6" role="group" aria-labelledby="q3-title">
           <motion.button v-for="opt in demographicOptions" :key="opt.value" @click="toggleDemographic(opt.value)"
             class="flex items-center gap-4 p-4 text-left rounded-xl border transition-all duration-205 group active:scale-[0.98] cursor-pointer"
             :class="demographics.includes(opt.value)
@@ -231,7 +231,7 @@ const recommendedPrograms = computed<Program[]>(() => {
             class="text-center py-8 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-200 dark:border-slate-800">
             <HelpCircle class="w-8 h-8 text-slate-400 dark:text-slate-600 mx-auto" />
             <p class="text-slate-600 dark:text-slate-300 font-medium mt-2">{{ $t('finder.noMatchTitle') }}</p>
-            <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">{{ $t('finder.noMatchDesc') }}</p>
+            <p class="text-slate-600 dark:text-slate-300 text-xs mt-1">{{ $t('finder.noMatchDesc') }}</p>
           </div>
 
           <div v-else class="space-y-3 max-h-[250px] overflow-y-auto pr-1">

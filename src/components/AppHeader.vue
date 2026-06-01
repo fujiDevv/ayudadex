@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import {
-  ClipboardList, Wand2, Star, Phone, Sun, Moon
+  ClipboardList, Wand2, Star, Phone, Sun, Moon, Type
 } from 'lucide-vue-next'
 import { motion } from 'motion-v'
+import { useAyudaStore } from '../stores/ayudaStore'
+
+const store = useAyudaStore()
 
 import { useRoute, useRouter } from 'vue-router'
 
@@ -124,8 +127,20 @@ const emit = defineEmits<{
             </div>
           </div>
 
+          <!-- Large Text Toggle -->
+          <motion.button @click="store.toggleLargeText()" 
+            :aria-label="$t('nav.largeText') || 'Toggle Large Text'"
+            :aria-pressed="store.isLargeText"
+            class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+            :class="store.isLargeText ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-slate-800' : ''"
+            :whileHover="{ scale: 1.12 }" :whileTap="{ scale: 0.88 }">
+            <Type class="w-5 h-5" />
+          </motion.button>
+
           <!-- Dark Mode Toggle -->
-          <motion.button @click="emit('toggle-dark')" aria-label="Toggle Dark Mode"
+          <motion.button @click="emit('toggle-dark')" 
+            :aria-label="$t('nav.darkMode') || 'Toggle Dark Mode'"
+            :aria-pressed="isDark"
             class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
             :whileHover="{ scale: 1.12, rotate: 12 }" :whileTap="{ scale: 0.88 }">
             <Sun v-if="isDark" class="w-5 h-5" />

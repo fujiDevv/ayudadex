@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { watchEffect } from 'vue'
 import { useDark, useToggle } from '@vueuse/core'
 import AppHeader from './components/AppHeader.vue'
 import AppFooter from './components/AppFooter.vue'
@@ -8,6 +9,14 @@ const isDark = useDark({ initialValue: 'light' })
 const toggleDark = useToggle(isDark)
 
 const store = useAyudaStore()
+
+watchEffect(() => {
+  if (store.isLargeText) {
+    document.documentElement.classList.add('large-text')
+  } else {
+    document.documentElement.classList.remove('large-text')
+  }
+})
 </script>
 
 <template>

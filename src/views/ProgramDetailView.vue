@@ -62,7 +62,7 @@ const printChecklist = () => {
 
     <div v-if="!program" class="text-center py-20 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
       <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100">{{ $t('detail.notFoundTitle') }}</h2>
-      <p class="text-slate-500 dark:text-slate-400 mt-2">{{ $t('detail.notFoundDesc') }}</p>
+      <p class="text-slate-600 dark:text-slate-300 mt-2">{{ $t('detail.notFoundDesc') }}</p>
       <button @click="goBack" class="mt-6 px-6 py-2.5 bg-blue-900 text-white font-bold rounded-xl hover:bg-blue-800 transition-colors cursor-pointer">{{ $t('detail.returnHome') }}</button>
     </div>
 
@@ -90,6 +90,7 @@ const printChecklist = () => {
             @click="printChecklist" 
             class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors flex items-center gap-2 font-bold text-sm cursor-pointer print:hidden"
             :title="$t('detail.print') || 'Print'"
+            :aria-label="$t('detail.print') || 'Print'"
             :whileHover="{ scale: 1.05 }" :whileTap="{ scale: 0.95 }"
           >
             <Printer class="w-5 h-5" />
@@ -100,6 +101,7 @@ const printChecklist = () => {
             @click="shareProgram" 
             class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400 relative cursor-pointer print:hidden"
             :title="$t('detail.share')"
+            :aria-label="$t('detail.share')"
             :whileHover="{ scale: 1.05 }" :whileTap="{ scale: 0.95 }"
           >
             <Share2 class="w-5 h-5" />
@@ -112,6 +114,8 @@ const printChecklist = () => {
             @click="store.toggleSaveProgram(program.id, $event)" 
             class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
             :title="isSaved ? $t('card.removeBookmark') : $t('card.bookmark')"
+            :aria-label="isSaved ? $t('card.removeBookmark') : $t('card.bookmark')"
+            :aria-pressed="isSaved"
             :whileHover="{ scale: 1.05 }" :whileTap="{ scale: 0.95 }"
           >
             <Star :class="isSaved ? 'text-yellow-500 fill-current scale-110' : 'text-slate-400 dark:text-slate-500'" class="w-5 h-5 transition-transform" />
@@ -124,7 +128,7 @@ const printChecklist = () => {
       </p>
 
       <div class="flex items-center flex-wrap gap-1.5 mt-6">
-        <span class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide mr-1">{{ $t('filters.audience') }}:</span>
+        <span class="text-xs font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wide mr-1">{{ $t('filters.audience') }}:</span>
         <span 
           v-for="aud in program.target_audience" 
           :key="aud"
@@ -141,7 +145,7 @@ const printChecklist = () => {
         <div class="bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800/80 p-5 rounded-2xl flex items-center gap-4">
           <Clock class="w-8 h-8 text-slate-400 dark:text-slate-500" />
           <div>
-            <p class="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">{{ $t('detail.processingTime') }}</p>
+            <p class="text-[10px] font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider">{{ $t('detail.processingTime') }}</p>
             <p class="text-base font-bold text-slate-900 dark:text-slate-100 mt-0.5">{{ program.processing_time }}</p>
           </div>
         </div>
@@ -154,7 +158,7 @@ const printChecklist = () => {
           <div class="flex items-center gap-4">
             <Globe class="w-8 h-8 text-blue-900 dark:text-blue-400" />
             <div>
-              <p class="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">{{ $t('detail.officialPortal') }}</p>
+              <p class="text-[10px] font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider">{{ $t('detail.officialPortal') }}</p>
               <p class="text-base font-bold text-blue-900 dark:text-blue-400 mt-0.5">{{ $t('detail.visitWebsite') }}</p>
             </div>
           </div>
@@ -203,6 +207,7 @@ const printChecklist = () => {
               class="flex items-start gap-4 cursor-pointer group/item select-none"
             >
               <input 
+                :id="`req-${idx}`"
                 type="checkbox" 
                 :checked="checkedList.includes(req)"
                 @change="store.toggleRequirement(program.id, req)"
@@ -212,7 +217,7 @@ const printChecklist = () => {
                 class="text-sm font-medium transition-colors"
                 :class="checkedList.includes(req) 
                   ? 'text-slate-400 dark:text-slate-500 line-through' 
-                  : 'text-slate-700 dark:text-slate-300 group-hover/item:text-blue-900 dark:group-hover/item:text-blue-400'"
+                  : 'text-slate-700 dark:text-slate-200 group-hover/item:text-blue-900 dark:group-hover/item:text-blue-400'"
               >
                 {{ req }}
               </span>

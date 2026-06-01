@@ -57,7 +57,8 @@ const preparedPercent = computed(() => {
         @click="emit('toggle-save', $event)" 
         class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors flex-shrink-0 cursor-pointer"
         :title="isSaved ? $t('card.removeBookmark') : $t('card.bookmark')"
-        :aria-label="isSaved ? $t('card.removeBookmark') : $t('card.bookmark')"
+        :aria-label="(isSaved ? $t('card.removeBookmark') : $t('card.bookmark')) + ' ' + $t(`programs.${program.id}.name`)"
+        :aria-pressed="isSaved"
         :whileHover="{ scale: 1.15 }"
         :whileTap="{ scale: 0.85 }"
       >
@@ -72,7 +73,7 @@ const preparedPercent = computed(() => {
 
     <!-- Target Audiences Tags -->
     <div class="flex items-center flex-wrap gap-1.5 mt-4">
-      <span class="text-[10px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide mr-1">For:</span>
+      <span class="text-[10px] font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wide mr-1">For:</span>
       <span 
         v-for="aud in program.target_audience" 
         :key="aud"
@@ -85,7 +86,7 @@ const preparedPercent = computed(() => {
     <!-- Eligibility Checklist Progress Bar -->
     <div class="mt-6 border-t border-slate-100 dark:border-slate-800 pt-5">
       <div class="flex items-center justify-between mb-2">
-        <span class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide flex items-center gap-1.5">
+        <span class="text-xs font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wide flex items-center gap-1.5">
           <FolderOpen class="w-4 h-4" /> {{ $t('card.readiness') }}
         </span>
         <span class="text-xs font-bold text-blue-900 dark:text-blue-400">
@@ -104,7 +105,9 @@ const preparedPercent = computed(() => {
     <div class="mt-6">
       <motion.button 
         @click="emit('toggle-expansion')" 
-        class="w-full py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all active:scale-[0.99] text-slate-700 dark:text-slate-350 cursor-pointer"
+        :aria-expanded="isExpanded"
+        :aria-controls="`program-card-${program.id}`"
+        class="w-full py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all active:scale-[0.99] text-slate-700 dark:text-slate-200 cursor-pointer"
         :whileHover="{ scale: 1.01 }"
         :whileTap="{ scale: 0.99 }"
       >
