@@ -31,5 +31,25 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     globals: true
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('vue') || id.includes('@vue') || id.includes('pinia') || id.includes('vue-router')) {
+              return 'vue-vendor';
+            }
+            if (id.includes('lucide-vue-next')) {
+              return 'icons';
+            }
+            if (id.includes('motion')) {
+              return 'motion';
+            }
+            return 'vendor';
+          }
+        }
+      }
+    }
   }
 })

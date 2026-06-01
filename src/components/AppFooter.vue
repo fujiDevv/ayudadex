@@ -27,7 +27,7 @@ const officialPortals = [
 
 <template>
   <footer
-    class="mt-20 border-t border-slate-200 dark:border-slate-800 pt-10 pb-8 text-xs text-slate-500 dark:text-slate-400">
+    class="mt-20 border-t border-slate-200 dark:border-slate-800 pt-10 pb-8 text-xs text-slate-600 dark:text-slate-400">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
 
       <!-- Top Row: 3 Columns Grid -->
@@ -41,7 +41,7 @@ const officialPortals = [
             <span class="font-bold text-base text-slate-900 dark:text-slate-100 tracking-tight">{{
               t('header.title') }}</span>
           </div>
-          <p class="leading-relaxed text-slate-500 dark:text-slate-400" v-html="t('footer.desc')"></p>
+          <p class="leading-relaxed text-slate-600 dark:text-slate-400" v-html="t('footer.desc')"></p>
 
           <div class="pt-1">
             <a href="https://github.com/fujiDevv/ayudadex" target="_blank"
@@ -87,8 +87,8 @@ const officialPortals = [
       <div class="border-t border-slate-100 dark:border-slate-900"></div>
 
       <!-- Disclaimer Box -->
-      <div class="space-y-1.5 text-[11px] leading-relaxed text-slate-400 dark:text-slate-500 italic">
-        <p class="flex items-center gap-1.5 font-semibold text-slate-500 dark:text-slate-400 not-italic">
+      <div class="space-y-1.5 text-[11px] leading-relaxed text-slate-600 dark:text-slate-400 italic">
+        <p class="flex items-center gap-1.5 font-semibold text-slate-700 dark:text-slate-300 not-italic">
           <AlertTriangle class="w-3.5 h-3.5 text-amber-500" /> {{ t('footer.disclaimerTitle') }}
         </p>
         <p>{{ t('footer.disclaimerDesc') }}</p>
@@ -96,9 +96,9 @@ const officialPortals = [
 
       <!-- Bottom Bar -->
       <div
-        class="flex flex-col sm:flex-row justify-between items-center gap-3 pt-4 border-t border-slate-100 dark:border-slate-900 text-[10px] text-slate-400 dark:text-slate-500 font-medium">
+        class="flex flex-col sm:flex-row justify-between items-center gap-3 pt-4 border-t border-slate-100 dark:border-slate-900 text-[10px] text-slate-500 dark:text-slate-400 font-medium">
         <span>© 2026 {{ t('header.title') }} Project.</span>
-        <div class="flex items-center gap-1 text-slate-400">
+        <div class="flex items-center gap-1 text-slate-500 dark:text-slate-400">
           <span>Made with</span>
           <Heart class="w-3 h-3 text-red-500 fill-current inline animate-pulse" />
           <span>for the Filipino Community.</span>
