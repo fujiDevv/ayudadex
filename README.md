@@ -16,6 +16,9 @@ Built with a premium modern design, it helps Filipinos search through benefits f
 
 ## Features
 
+* **Offline Support (PWA)**: Installable as a Progressive Web App. Browse programs, access your saved checklist, and view requirements even without an active internet connection.
+* **Localization (English & Tagalog)**: Fully accessible bilingual interface allowing users to switch between English and Tagalog for easier comprehension.
+* **Shareable Direct Links**: Send direct, shareable links for specific benefit pages to family and friends via Messenger or social media.
 * **Benefits Directory**: A unified repository of national welfare schemes, searchable by keywords and filterable by agency, benefit category, and target audience.
 * **Eligibility Quiz (Ayuda Finder)**: An interactive 3-step wizard that scores and recommends government programs tailored to a user's employment status, needs, and demographics.
 * **Interactive Requirement Checklists**: Dynamic checklist tracking for application documents with a visual readiness progress bar (e.g. `2 / 5 (40% Ready)`).
@@ -28,6 +31,9 @@ Built with a premium modern design, it helps Filipinos search through benefits f
 ## Tech Stack
 
 * **Framework**: [Vue 3](https://vuejs.org/) (Composition API, `<script setup>` with TypeScript)
+* **Routing & State**: [Vue Router v4](https://router.vuejs.org/) and custom Composables
+* **Localization**: [Vue I18n](https://vue-i18n.intlify.dev/)
+* **Offline / PWA**: `vite-plugin-pwa` with Workbox
 * **Build Tool**: [Vite](https://vite.dev/)
 * **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
 * **Runtime / Package Manager**: [Bun](https://bun.sh/)
@@ -74,6 +80,9 @@ bun run build
 │   ├── style.css           # Global stylesheets & Tailwind imports
 │   ├── constants.ts        # Static datasets (hotlines, audience tags)
 │   ├── types.ts            # Shared TypeScript interface definitions
+│   ├── composables/        # Shared logic and global state (e.g., useAyudaState)
+│   ├── locales/            # i18n translation files (en.json, tl.json)
+│   ├── views/              # Vue Router page components
 │   ├── components/
 │   │   ├── AppHeader.vue   # Brand logo, tab navigation, and dark switcher
 │   │   ├── AppFooter.vue   # Redesigned civic footer, portals, and disclaimer
