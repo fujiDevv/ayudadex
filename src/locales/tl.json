@@ -162,11 +162,11 @@
       "name": "Multi-Purpose Loan (MPL)",
       "description": "Isang cash loan na dinisenyo upang tulungan ang mga aktibong miyembro ng Pag-IBIG sa mga agarang pangangailangang pinansyal, kabilang ang matrikula, gastusing medikal, maliliit na pag-aayos sa bahay, o paglalakbay.",
       "steps": [
-        "Fill out the Pag-IBIG Multi-Purpose Loan Application Form (MPLAF).",
-        "Secure Employer's Declaration section signature.",
-        "Submit online via Virtual Pag-IBIG or at the nearest branch.",
-        "Wait for text notification of approval.",
-        "Claim cash via Pag-IBIG Loyalty Card Plus or cash card."
+        "Punan ang Pag-IBIG Multi-Purpose Loan Application Form (MPLAF).",
+        "Kumuha ng pirma para sa Employer's Declaration section.",
+        "Isumite online gamit ang Virtual Pag-IBIG o sa pinakamalapit na branch.",
+        "Maghintay ng text notification ng pag-apruba.",
+        "Kunin ang cash gamit ang Pag-IBIG Loyalty Card Plus o cash card."
       ],
       "requirements": [
         "Completed MPL Application Form",
@@ -180,10 +180,10 @@
       "name": "Maternity Benefit",
       "description": "Isang benepisyong cash na ibinibigay sa mga babaeng miyembro ng SSS na nanganak, nakunan, o sumailalim sa emergency termination of pregnancy.",
       "steps": [
-        "Submit Maternity Notification (Mat-1) online through My.SSS portal as soon as pregnancy is confirmed.",
-        "After delivery/miscarriage, submit the Maternity Benefit Application (Mat-2) with required documents.",
-        "For employed members: SSS advances payment to the employer, who must pay the employee. SSS reimburses the employer.",
-        "For voluntary/self-employed members: SSS pays directly to the enrolled bank account."
+        "Isumite ang Maternity Notification (Mat-1) online sa pamamagitan ng My.SSS portal kapag nakumpirma na ang pagbubuntis.",
+        "Pagkatapos manganak o makunan, isumite ang Maternity Benefit Application (Mat-2) kasama ang mga kailangang dokumento.",
+        "Para sa mga empleyado: Ang SSS ay nag-a-advance ng bayad sa employer, na siyang magbabayad sa empleyado. Ibabalik ng SSS ang pera sa employer.",
+        "Para sa mga voluntary/self-employed: Direktang ibabayad ng SSS sa nakarehistrong bank account."
       ],
       "requirements": [
         "Maternity Notification submitted prior to delivery",
@@ -197,10 +197,10 @@
       "name": "Pantawid Pamilyang Pilipino Program (4Ps)",
       "description": "Isang programa sa pagpapaunlad ng tao na nagbibigay ng conditional cash grants sa mga pinakamahihirap na pamilya upang mapabuti ang kalusugan, nutrisyon, at edukasyon ng mga batang may edad 0-18.",
       "steps": [
-        "Wait for household assessment by DSWD's National Household Targeting System for Poverty Reduction (Listahanan).",
-        "Selected households will undergo community validation.",
-        "Sign the 4Ps Oath of Commitment, pledging compliance with health and education conditions.",
-        "Receive LandBank cash cards for monthly/bi-monthly cash grant payouts."
+        "Maghintay ng household assessment ng National Household Targeting System for Poverty Reduction (Listahanan) ng DSWD.",
+        "Ang mga napiling kabahayan ay sasailalim sa community validation.",
+        "Pirmahan ang 4Ps Oath of Commitment, nangangakong susunod sa mga kondisyon sa kalusugan at edukasyon.",
+        "Tanggapin ang LandBank cash cards para sa buwanan/kalahating buwang cash grant payouts."
       ],
       "requirements": [
         "DSWD Listahanan poor classification (must be targeted)",
@@ -214,11 +214,11 @@
       "name": "TUPAD (Emergency Employment)",
       "description": "Isang community-based na tulong na nagbibigay ng emergency employment para sa mga nawalan ng trabaho, underemployed, at seasonal workers, sa minimum na 10 araw hanggang 30 araw.",
       "steps": [
-        "Visit the nearest DOLE Regional/Field Office or local PESO (Public Employment Service Office) in your LGU.",
-        "Submit application and profile sheet for evaluation.",
-        "Attend the orientation on safety and health at work.",
-        "Perform assigned community work (e.g. street cleaning, minor repairs, tree planting) for 10-30 days.",
-        "Claim salary payout via money remittance centers upon submission of daily time record."
+        "Bisitahin ang pinakamalapit na DOLE Regional/Field Office o lokal na PESO (Public Employment Service Office) sa iyong LGU.",
+        "Isumite ang aplikasyon at profile sheet para sa pagsusuri.",
+        "Dumalo sa oryentasyon tungkol sa kaligtasan at kalusugan sa trabaho.",
+        "Gawin ang nakatalagang trabaho sa komunidad (hal. paglilinis ng kalsada, maliliit na pag-aayos, pagtatanim) sa loob ng 10-30 araw.",
+        "Kunin ang sweldo sa pamamagitan ng money remittance centers pagkatapos isumite ang daily time record."
       ],
       "requirements": [
         "TUPAD Application Profile Sheet",
@@ -232,10 +232,10 @@
       "name": "Medical Assistance to Indigent Patients (MAIP)",
       "description": "Programa ng DOH na nagbibigay ng suportang pinansyal sa pamamagitan ng guarantee letters upang saklawin ang mga gastusing medikal (ospital, laboratoryo, gamot) sa mga pampublikong ospital at piling pribadong ospital.",
       "steps": [
-        "Visit the Malasakit Center or Medical Social Service unit inside a participating government hospital.",
-        "Present requirements to the officer for social welfare evaluation.",
-        "Sign the assessment sheet.",
-        "Receive the Guarantee Letter (GL) which will be deducted directly from your hospital billing."
+        "Bisitahin ang Malasakit Center o Medical Social Service unit sa loob ng kasaling pampublikong ospital.",
+        "Ipakita ang mga kinakailangan sa opisyal para sa social welfare evaluation.",
+        "Pirmahan ang assessment sheet.",
+        "Tanggapin ang Guarantee Letter (GL) na ibabawas nang direkta sa iyong bill sa ospital."
       ],
       "requirements": [
         "Medical Certificate or Clinical Summary",
@@ -249,11 +249,11 @@
       "name": "Regular Housing Loan",
       "description": "Nagbibigay ng pautang hanggang ₱6 Milyon para pambili ng residential lot, house and lot package, condominium, o pagpapatayo/pag-aayos ng bahay, at babayaran ng hanggang 30 taon.",
       "steps": [
-        "Submit Housing Loan Application Form and initial documents online or at a Pag-IBIG hub.",
-        "Pay the non-refundable ₱1,000 processing fee.",
-        "Receive Notice of Approval (NOA) and Letter of Guaranty (LOG).",
-        "Complete post-approval requirements (e.g. transfer of title, tax declaration) within 90 days.",
-        "Receive loan proceeds check or bank transfer."
+        "Isumite ang Housing Loan Application Form at mga inisyal na dokumento online o sa isang Pag-IBIG hub.",
+        "Magbayad ng non-refundable ₱1,000 processing fee.",
+        "Tanggapin ang Notice of Approval (NOA) at Letter of Guaranty (LOG).",
+        "Kumpletuhin ang mga post-approval requirements (hal. paglipat ng titulo, tax declaration) sa loob ng 90 araw.",
+        "Tanggapin ang loan proceeds check o bank transfer."
       ],
       "requirements": [
         "At least 24 monthly contributions (consecutive or lump sum)",
@@ -268,10 +268,10 @@
       "name": "Retirement Benefit",
       "description": "Sinisiguro na ang mga aktibong miyembro ng GSIS ay makakatanggap ng pensyon (maaaring lump-sum check + buwanang annuity, o agad na buwanang pensyon) pagretiro sa serbisyo sa gobyerno.",
       "steps": [
-        "Submit application online through the GSIS Touch mobile app or at a GSIS wireless kiosk (GW@PS).",
-        "Submit physical copies of service records and clearances to your agency's Human Resources officer.",
-        "Receive notification from GSIS on calculation of pension benefits.",
-        "Pension is credited directly to your GSIS eCard (UMID) account."
+        "Isumite ang aplikasyon online sa pamamagitan ng GSIS Touch mobile app o sa GSIS wireless kiosk (GW@PS).",
+        "Isumite ang pisikal na kopya ng service records at clearances sa Human Resources officer ng iyong ahensya.",
+        "Makatanggap ng abiso mula sa GSIS tungkol sa kalkulasyon ng benepisyo sa pensyon.",
+        "Ang pensyon ay direktang idedeposito sa iyong GSIS eCard (UMID) account."
       ],
       "requirements": [
         "Completed Application Form for Retirement Benefit",
@@ -285,11 +285,11 @@
       "name": "Education for Development Scholarship Program (EDSP)",
       "description": "Isang scholarship grant na aabot sa ₱60,000 bawat taon para sa mga kwalipikadong dependent ng mga aktibong miyembro ng OFW na nagnanais kumuha ng 4 hanggang 5-taong baccalaureate course.",
       "steps": [
-        "Apply online through the OWWA Scholarship portal during the application window.",
-        "Upload scholastic records and proof of active OFW membership.",
-        "Take the qualifying examination administered by DOST-SEI.",
-        "Once selected, attend the scholarship orientation and sign the Scholarship Agreement.",
-        "Claim tuition and allowance disbursements every semester."
+        "Mag-apply online sa pamamagitan ng OWWA Scholarship portal sa panahon ng application window.",
+        "I-upload ang mga scholastic record at patunay ng aktibong pagiging miyembro ng OFW.",
+        "Kumuha ng qualifying examination na pinangangasiwaan ng DOST-SEI.",
+        "Kapag napili, dumalo sa scholarship orientation at pirmahan ang Scholarship Agreement.",
+        "Kunin ang disbursement para sa matrikula at allowance bawat semestre."
       ],
       "requirements": [
         "Child of active OFW, or sibling of unmarried OFW",
@@ -303,10 +303,10 @@
       "name": "Sickness Benefit",
       "description": "Isang pang-araw-araw na cash allowance na binabayaran para sa mga araw na ang isang miyembro ay hindi makapagtrabaho dahil sa sakit o pinsala, at naka-confine sa ospital o sa bahay nang hindi bababa sa 4 na araw.",
       "steps": [
-        "If employed: Notify your employer within 5 days of sickness onset. The employer will submit the claim to SSS.",
-        "If self-employed/voluntary: File the SSS Sickness Benefit Application online via My.SSS portal within 14 days of sickness onset.",
-        "Submit medical certificates and laboratory results for review by the SSS Medical Evaluation Department.",
-        "Receive daily cash reimbursement in your enrolled bank account (or via your employer)."
+        "Para sa mga empleyado: Ipaalam sa employer sa loob ng 5 araw ng pagsisimula ng sakit. Ang employer ang magsusumite ng claim sa SSS.",
+        "Para sa self-employed/voluntary: I-file ang SSS Sickness Benefit Application online sa My.SSS portal sa loob ng 14 araw ng pagsisimula ng sakit.",
+        "Isumite ang mga medical certificate at resulta ng laboratoryo para suriin ng SSS Medical Evaluation Department.",
+        "Makatanggap ng pang-araw-araw na cash reimbursement sa iyong nakarehistrong bank account (o sa pamamagitan ng iyong employer)."
       ],
       "requirements": [
         "Completed Sickness Benefit Application online",
