@@ -1,4 +1,4 @@
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { useStorage } from '@vueuse/core'
 import programsData from '../data/programs.json'
 import type { Program } from '../types'
@@ -8,8 +8,6 @@ import type { Program } from '../types'
 const savedPrograms = useStorage<string[]>('ayudadex_saved', [])
 const checkedRequirements = useStorage<Record<string, string[]>>('ayudadex_checked_reqs', {})
 
-// Active Tab state for Dashboard (Directory, Quiz, Saved, Hotlines)
-const activeTab = ref<'directory' | 'wizard' | 'shortlist' | 'hotlines'>('directory')
 
 export function useAyudaState() {
   const toggleSaveProgram = (id: string, event?: Event) => {
@@ -59,7 +57,6 @@ export function useAyudaState() {
   return {
     savedPrograms,
     checkedRequirements,
-    activeTab,
     toggleSaveProgram,
     toggleRequirement,
     getCheckedCount,

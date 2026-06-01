@@ -4,8 +4,10 @@ import {
 } from 'lucide-vue-next'
 import { motion } from 'motion-v'
 
-const activeTab = defineModel<'directory' | 'wizard' | 'shortlist' | 'hotlines'>({ required: true })
+import { useRoute, useRouter } from 'vue-router'
 
+const route = useRoute()
+const router = useRouter()
 defineProps<{
   savedCount: number
   isDark: boolean
@@ -69,30 +71,30 @@ const emit = defineEmits<{
         <!-- Navigation Tabs (Desktop) -->
         <nav
           class="hidden md:flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700">
-          <motion.button @click="activeTab = 'directory'"
-            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all cursor-pointer" :class="activeTab === 'directory'
+          <motion.button @click="router.push('/')"
+            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all cursor-pointer" :class="route.path === '/'
               ? 'bg-white dark:bg-slate-900 text-blue-900 dark:text-white shadow-sm'
               : 'text-slate-600 dark:text-slate-350 hover:text-gray-900 dark:hover:text-gray-400'"
             :whileHover="{ scale: 1.05 }" :whileTap="{ scale: 0.95 }">
             <ClipboardList class="w-4 h-4 inline-block mr-1" /> Benefits Directory
           </motion.button>
-          <motion.button @click="activeTab = 'wizard'"
-            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all cursor-pointer" :class="activeTab === 'wizard'
+          <motion.button @click="router.push('/wizard')"
+            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all cursor-pointer" :class="route.path === '/wizard'
               ? 'bg-white dark:bg-slate-900 text-blue-900 dark:text-white shadow-sm'
               : 'text-slate-600 dark:text-slate-350 hover:text-gray-900 dark:hover:text-gray-400'"
             :whileHover="{ scale: 1.05 }" :whileTap="{ scale: 0.95 }">
             <Wand2 class="w-4 h-4 inline-block mr-1" /> Eligibility Quiz
           </motion.button>
-          <motion.button @click="activeTab = 'shortlist'"
+          <motion.button @click="router.push('/shortlist')"
             class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all flex items-center gap-1.5 cursor-pointer"
-            :class="activeTab === 'shortlist'
+            :class="route.path === '/shortlist'
               ? 'bg-white dark:bg-slate-900 text-blue-900 dark:text-white shadow-sm'
               : 'text-slate-600 dark:text-slate-350 hover:text-gray-900 dark:hover:text-gray-400'"
             :whileHover="{ scale: 1.05 }" :whileTap="{ scale: 0.95 }">
             <Star class="w-4 h-4" /> Saved ({{ savedCount }})
           </motion.button>
-          <motion.button @click="activeTab = 'hotlines'"
-            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all cursor-pointer" :class="activeTab === 'hotlines'
+          <motion.button @click="router.push('/hotlines')"
+            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all cursor-pointer" :class="route.path === '/hotlines'
               ? 'bg-white dark:bg-slate-900 text-blue-900 dark:text-white shadow-sm'
               : 'text-slate-600 dark:text-slate-350 hover:text-gray-900 dark:hover:text-gray-400'"
             :whileHover="{ scale: 1.05 }" :whileTap="{ scale: 0.95 }">
@@ -117,26 +119,26 @@ const emit = defineEmits<{
     <div
       class="md:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-20 z-30">
       <div class="grid grid-cols-4 text-center text-xs font-bold divide-x divide-slate-100 dark:divide-slate-800">
-        <motion.button @click="activeTab = 'directory'" class="py-3 flex flex-col items-center gap-1 cursor-pointer"
-          :class="activeTab === 'directory' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400'"
+        <motion.button @click="router.push('/')" class="py-3 flex flex-col items-center gap-1 cursor-pointer"
+          :class="route.path === '/' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400'"
           :whileTap="{ scale: 0.95 }">
           <ClipboardList class="w-5 h-5" />
           <span>Directory</span>
         </motion.button>
-        <motion.button @click="activeTab = 'wizard'" class="py-3 flex flex-col items-center gap-1 cursor-pointer"
-          :class="activeTab === 'wizard' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400'"
+        <motion.button @click="router.push('/wizard')" class="py-3 flex flex-col items-center gap-1 cursor-pointer"
+          :class="route.path === '/wizard' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400'"
           :whileTap="{ scale: 0.95 }">
           <Wand2 class="w-5 h-5" />
           <span>Quiz</span>
         </motion.button>
-        <motion.button @click="activeTab = 'shortlist'" class="py-3 flex flex-col items-center gap-1 cursor-pointer"
-          :class="activeTab === 'shortlist' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400'"
+        <motion.button @click="router.push('/shortlist')" class="py-3 flex flex-col items-center gap-1 cursor-pointer"
+          :class="route.path === '/shortlist' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400'"
           :whileTap="{ scale: 0.95 }">
           <Star class="w-5 h-5" />
           <span>Saved ({{ savedCount }})</span>
         </motion.button>
-        <motion.button @click="activeTab = 'hotlines'" class="py-3 flex flex-col items-center gap-1 cursor-pointer"
-          :class="activeTab === 'hotlines' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400'"
+        <motion.button @click="router.push('/hotlines')" class="py-3 flex flex-col items-center gap-1 cursor-pointer"
+          :class="route.path === '/hotlines' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400'"
           :whileTap="{ scale: 0.95 }">
           <Phone class="w-5 h-5" />
           <span>Hotlines</span>

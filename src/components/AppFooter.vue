@@ -3,13 +3,15 @@ import {
   AlertTriangle, Github, Heart, ArrowUpRight
 } from 'lucide-vue-next'
 
-const activeTab = defineModel<'directory' | 'wizard' | 'shortlist' | 'hotlines'>({ required: true })
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const navigationItems = [
-  { value: 'directory', label: 'Benefits Directory' },
-  { value: 'wizard', label: 'Eligibility Quiz' },
-  { value: 'shortlist', label: 'Saved Checklist' },
-  { value: 'hotlines', label: 'Support Hotlines' }
+  { value: '/', label: 'Benefits Directory' },
+  { value: '/wizard', label: 'Eligibility Quiz' },
+  { value: '/shortlist', label: 'Saved Checklist' },
+  { value: '/hotlines', label: 'Support Hotlines' }
 ] as const
 
 const officialPortals = [
@@ -56,7 +58,7 @@ const officialPortals = [
             class="font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider text-[10px]">Navigation</span>
           <ul class="space-y-2 mt-3">
             <li v-for="tab in navigationItems" :key="tab.value">
-              <button @click="activeTab = tab.value"
+              <button @click="router.push(tab.value)"
                 class="hover:text-blue-900 dark:hover:text-blue-400 transition-colors flex items-center gap-1.5 cursor-pointer text-left font-medium">
                 <span>{{ tab.label }}</span>
               </button>
