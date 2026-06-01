@@ -4,8 +4,10 @@ import {
 } from 'lucide-vue-next'
 import { motion } from 'motion-v'
 
-const activeTab = defineModel<'directory' | 'wizard' | 'shortlist' | 'hotlines'>({ required: true })
+import { useRoute, useRouter } from 'vue-router'
 
+const route = useRoute()
+const router = useRouter()
 defineProps<{
   savedCount: number
   isDark: boolean
@@ -57,41 +59,42 @@ const emit = defineEmits<{
           </svg>
           <div>
             <div class="flex items-center gap-1.5">
-              <h1 class="text-2xl font-bold tracking-tight text-blue-900 dark:text-white">{{ $t('header.title') }}</h1>
+              <h1 class="text-2xl font-bold tracking-tight text-blue-900 dark:text-white">AyudaDex</h1>
               <span
                 class="text-[10px] font-medium tracking-wide uppercase px-1.5 py-0.5 bg-blue-100 dark:bg-blue-900/40 text-blue-900 dark:text-blue-300 rounded-md border border-blue-200/50 dark:border-blue-900/30">BetterGov.ph</span>
             </div>
-            <p class="text-xs text-slate-500 dark:text-slate-400 font-medium hidden sm:block">{{ $t('header.subtitle') }}</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 font-medium hidden sm:block">Philippine Government
+              Social Benefits Navigator</p>
           </div>
         </motion.div>
 
         <!-- Navigation Tabs (Desktop) -->
         <nav
           class="hidden md:flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700">
-          <motion.button @click="activeTab = 'directory'"
-            class="px-2 lg:px-4 py-1.5 rounded-lg text-xs lg:text-sm font-medium transition-all cursor-pointer whitespace-nowrap" :class="activeTab === 'directory'
+          <motion.button @click="router.push('/')"
+            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all cursor-pointer" :class="route.path === '/'
               ? 'bg-white dark:bg-slate-900 text-blue-900 dark:text-white shadow-sm'
               : 'text-slate-600 dark:text-slate-350 hover:text-gray-900 dark:hover:text-gray-400'"
             :whileHover="{ scale: 1.05 }" :whileTap="{ scale: 0.95 }">
             <ClipboardList class="w-4 h-4 inline-block mr-1" /> {{ $t('nav.directory') }}
           </motion.button>
-          <motion.button @click="activeTab = 'wizard'"
-            class="px-2 lg:px-4 py-1.5 rounded-lg text-xs lg:text-sm font-medium transition-all cursor-pointer whitespace-nowrap" :class="activeTab === 'wizard'
+          <motion.button @click="router.push('/wizard')"
+            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all cursor-pointer" :class="route.path === '/wizard'
               ? 'bg-white dark:bg-slate-900 text-blue-900 dark:text-white shadow-sm'
               : 'text-slate-600 dark:text-slate-350 hover:text-gray-900 dark:hover:text-gray-400'"
             :whileHover="{ scale: 1.05 }" :whileTap="{ scale: 0.95 }">
-            <Wand2 class="w-4 h-4 inline-block mr-1" /> {{ $t('nav.wizard') }}
+            <Wand2 class="w-4 h-4 inline-block mr-1" /> {{ $t('nav.quiz') }}
           </motion.button>
-          <motion.button @click="activeTab = 'shortlist'"
-            class="px-2 lg:px-4 py-1.5 rounded-lg text-xs lg:text-sm font-medium transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
-            :class="activeTab === 'shortlist'
+          <motion.button @click="router.push('/shortlist')"
+            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all flex items-center gap-1.5 cursor-pointer"
+            :class="route.path === '/shortlist'
               ? 'bg-white dark:bg-slate-900 text-blue-900 dark:text-white shadow-sm'
               : 'text-slate-600 dark:text-slate-350 hover:text-gray-900 dark:hover:text-gray-400'"
             :whileHover="{ scale: 1.05 }" :whileTap="{ scale: 0.95 }">
             <Star class="w-4 h-4" /> {{ $t('nav.saved') }} ({{ savedCount }})
           </motion.button>
-          <motion.button @click="activeTab = 'hotlines'"
-            class="px-2 lg:px-4 py-1.5 rounded-lg text-xs lg:text-sm font-medium transition-all cursor-pointer whitespace-nowrap" :class="activeTab === 'hotlines'
+          <motion.button @click="router.push('/hotlines')"
+            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-all cursor-pointer" :class="route.path === '/hotlines'
               ? 'bg-white dark:bg-slate-900 text-blue-900 dark:text-white shadow-sm'
               : 'text-slate-600 dark:text-slate-350 hover:text-gray-900 dark:hover:text-gray-400'"
             :whileHover="{ scale: 1.05 }" :whileTap="{ scale: 0.95 }">
@@ -100,7 +103,7 @@ const emit = defineEmits<{
         </nav>
 
         <!-- Actions: Lang & Dark Mode Toggle -->
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-2 w-auto">
           <!-- Language Switcher -->
           <div class="relative flex items-center">
             <select v-model="$i18n.locale"
@@ -112,8 +115,8 @@ const emit = defineEmits<{
               <svg class="w-3 h-3 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
             </div>
           </div>
-          
-          <!-- Dark Mode -->
+
+          <!-- Dark Mode Toggle -->
           <motion.button @click="emit('toggle-dark')" aria-label="Toggle Dark Mode"
             class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
             :whileHover="{ scale: 1.12, rotate: 12 }" :whileTap="{ scale: 0.88 }">
@@ -129,26 +132,26 @@ const emit = defineEmits<{
     <div
       class="md:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-20 z-30">
       <div class="grid grid-cols-4 text-center text-xs font-bold divide-x divide-slate-100 dark:divide-slate-800">
-        <motion.button @click="activeTab = 'directory'" class="py-3 flex flex-col items-center gap-1 cursor-pointer"
-          :class="activeTab === 'directory' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400'"
+        <motion.button @click="router.push('/')" class="py-3 flex flex-col items-center gap-1 cursor-pointer"
+          :class="route.path === '/' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400'"
           :whileTap="{ scale: 0.95 }">
           <ClipboardList class="w-5 h-5" />
           <span>{{ $t('nav.directory') }}</span>
         </motion.button>
-        <motion.button @click="activeTab = 'wizard'" class="py-3 flex flex-col items-center gap-1 cursor-pointer"
-          :class="activeTab === 'wizard' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400'"
+        <motion.button @click="router.push('/wizard')" class="py-3 flex flex-col items-center gap-1 cursor-pointer"
+          :class="route.path === '/wizard' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400'"
           :whileTap="{ scale: 0.95 }">
           <Wand2 class="w-5 h-5" />
-          <span>{{ $t('nav.wizard') }}</span>
+          <span>{{ $t('nav.quiz') }}</span>
         </motion.button>
-        <motion.button @click="activeTab = 'shortlist'" class="py-3 flex flex-col items-center gap-1 cursor-pointer"
-          :class="activeTab === 'shortlist' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400'"
+        <motion.button @click="router.push('/shortlist')" class="py-3 flex flex-col items-center gap-1 cursor-pointer"
+          :class="route.path === '/shortlist' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400'"
           :whileTap="{ scale: 0.95 }">
           <Star class="w-5 h-5" />
           <span>{{ $t('nav.saved') }} ({{ savedCount }})</span>
         </motion.button>
-        <motion.button @click="activeTab = 'hotlines'" class="py-3 flex flex-col items-center gap-1 cursor-pointer"
-          :class="activeTab === 'hotlines' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400'"
+        <motion.button @click="router.push('/hotlines')" class="py-3 flex flex-col items-center gap-1 cursor-pointer"
+          :class="route.path === '/hotlines' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400'"
           :whileTap="{ scale: 0.95 }">
           <Phone class="w-5 h-5" />
           <span>{{ $t('nav.hotlines') }}</span>
