@@ -7,7 +7,16 @@
     "directory": "Benefits Directory",
     "quiz": "Ayuda Finder",
     "saved": "Saved",
-    "hotlines": "Hotlines"
+    "hotlines": "Hotlines",
+    "locator": "Branch Locator"
+  },
+  "locator": {
+    "title": "Agency Branch Locator",
+    "desc": "Find the nearest government agency branches like PhilHealth, Pag-IBIG, and DSWD based on your current location.",
+    "filterBy": "Filter by Agency",
+    "allAgencies": "All Agencies",
+    "selectRegion": "Select Region",
+    "selectProvince": "Select Province/City"
   },
   "filters": {
     "title": "Filters",

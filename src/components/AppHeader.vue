@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { onClickOutside } from '@vueuse/core'
 import {
-  ClipboardList, Wand2, Star, Phone, Sun, Moon, Type, MoreVertical
+  ClipboardList, Wand2, Star, Phone, Sun, Moon, Type, MoreVertical, MapPin
 } from 'lucide-vue-next'
 import { motion } from 'motion-v'
 import { useAyudaStore } from '../stores/ayudaStore'
@@ -90,6 +90,15 @@ onClickOutside(dropdownRef, () => {
               : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60'"
             :whileHover="{ scale: 1.02 }" :whileTap="{ scale: 0.98 }">
             {{ $t('nav.hotlines') }}
+          </motion.button>
+
+          <motion.button @click="router.push('/locator')"
+            class="px-3.5 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 border border-transparent"
+            :class="route.path === '/locator'
+              ? 'bg-blue-50 text-blue-900 dark:bg-blue-900/40 dark:text-blue-300 border-blue-100 dark:border-blue-900/50 shadow-sm'
+              : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60'"
+            :whileHover="{ scale: 1.02 }" :whileTap="{ scale: 0.98 }">
+            {{ $t('nav.locator') }}
           </motion.button>
         </nav>
 
@@ -194,30 +203,36 @@ onClickOutside(dropdownRef, () => {
     <!-- Bottom Navigation Bar (Mobile First) -->
     <nav
       class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 pb-[env(safe-area-inset-bottom)]">
-      <div class="grid grid-cols-4 h-16 text-center text-[10px] sm:text-xs font-bold">
+      <div class="grid grid-cols-5 h-16 text-center text-[10px] sm:text-xs font-bold">
         <motion.button @click="router.push('/')" class="flex flex-col items-center justify-center gap-1 cursor-pointer transition-colors"
           :class="route.path === '/' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50'"
           :whileTap="{ scale: 0.95 }">
           <ClipboardList class="w-5 h-5 sm:w-6 sm:h-6" :class="route.path === '/' ? 'text-blue-600 dark:text-blue-400' : ''" />
-          <span>{{ $t('nav.directory') }}</span>
+          <span class="truncate w-full px-1">{{ $t('nav.directory') }}</span>
         </motion.button>
         <motion.button @click="router.push('/wizard')" class="flex flex-col items-center justify-center gap-1 cursor-pointer transition-colors"
           :class="route.path === '/wizard' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50'"
           :whileTap="{ scale: 0.95 }">
           <Wand2 class="w-5 h-5 sm:w-6 sm:h-6" :class="route.path === '/wizard' ? 'text-blue-600 dark:text-blue-400' : ''" />
-          <span>{{ $t('nav.quiz') }}</span>
+          <span class="truncate w-full px-1">{{ $t('nav.quiz') }}</span>
         </motion.button>
         <motion.button @click="router.push('/shortlist')" class="flex flex-col items-center justify-center gap-1 cursor-pointer transition-colors"
           :class="route.path === '/shortlist' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50'"
           :whileTap="{ scale: 0.95 }">
           <Star class="w-5 h-5 sm:w-6 sm:h-6" :class="route.path === '/shortlist' ? 'text-blue-600 dark:text-blue-400' : ''" />
-          <span>{{ $t('nav.saved') }} ({{ savedCount }})</span>
+          <span class="truncate w-full px-1">{{ $t('nav.saved') }} ({{ savedCount }})</span>
         </motion.button>
         <motion.button @click="router.push('/hotlines')" class="flex flex-col items-center justify-center gap-1 cursor-pointer transition-colors"
           :class="route.path === '/hotlines' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50'"
           :whileTap="{ scale: 0.95 }">
           <Phone class="w-5 h-5 sm:w-6 sm:h-6" :class="route.path === '/hotlines' ? 'text-blue-600 dark:text-blue-400' : ''" />
-          <span>{{ $t('nav.hotlines') }}</span>
+          <span class="truncate w-full px-1">{{ $t('nav.hotlines') }}</span>
+        </motion.button>
+        <motion.button @click="router.push('/locator')" class="flex flex-col items-center justify-center gap-1 cursor-pointer transition-colors"
+          :class="route.path === '/locator' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50'"
+          :whileTap="{ scale: 0.95 }">
+          <MapPin class="w-5 h-5 sm:w-6 sm:h-6" :class="route.path === '/locator' ? 'text-blue-600 dark:text-blue-400' : ''" />
+          <span class="truncate w-full px-1">{{ $t('nav.locator') }}</span>
         </motion.button>
       </div>
     </nav>

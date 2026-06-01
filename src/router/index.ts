@@ -7,6 +7,7 @@ const router = createRouter({
     { path: '/wizard', name: 'wizard', component: () => import('../views/WizardView.vue') },
     { path: '/shortlist', name: 'shortlist', component: () => import('../views/SavedView.vue') },
     { path: '/hotlines', name: 'hotlines', component: () => import('../views/HotlinesView.vue') },
+    { path: '/locator', name: 'locator', component: () => import('../views/BranchLocatorView.vue') },
     {
       path: '/program/:id',
       name: 'program-detail',

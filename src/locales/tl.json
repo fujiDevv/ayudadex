@@ -7,7 +7,16 @@
     "directory": "Direktoryo",
     "quiz": "Hanapin ang Ayuda",
     "saved": "Naka-save",
-    "hotlines": "Hotlines"
+    "hotlines": "Hotlines",
+    "locator": "Locator ng Sangay"
+  },
+  "locator": {
+    "title": "Locator ng Sangay ng Ahensya",
+    "desc": "Hanapin ang pinakamalapit na sangay ng ahensya ng gobyerno tulad ng PhilHealth, Pag-IBIG, at DSWD base sa iyong lokasyon.",
+    "filterBy": "I-filter ayon sa Ahensya",
+    "allAgencies": "Lahat ng Ahensya",
+    "selectRegion": "Pumili ng Rehiyon",
+    "selectProvince": "Pumili ng Probinsya/Siyudad"
   },
   "filters": {
     "title": "Mga Filter",
