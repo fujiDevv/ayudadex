@@ -26,6 +26,8 @@ Built with a premium modern design, it helps Filipinos search through benefits f
 * **Accessibility (a11y) Optimized**: WCAG-friendly contrast ratios, full screen reader ARIA support, and a dedicated "Large Text" mode for seniors and PWDs.
 * **Bookmarks & Shortlist**: Save matching benefits to a personal dashboard, fully persisted locally in the browser via Pinia and `localStorage`.
 * **Official Hotlines**: Contact numbers, email addresses, and support guidelines for government assistance centers.
+* **Branch Locator**: Interactive map powered by OpenStreetMap & Overpass API to find nearby DSWD, PhilHealth, Pag-IBIG, and SSS offices. Filter by agency and search by region/province with automatic geocoding.
+* **Community Suggestions**: An elder-friendly crowdsourcing form that lets any user suggest corrections, new programs, or report outdated info — submittable via email, messaging apps (Viber, Messenger, SMS), clipboard, or GitHub Issues for developers.
 * **Dark Mode Switcher**: Modern responsive dashboard styling with premium dark and light theme options.
 
 ---
@@ -89,7 +91,9 @@ bun run build
 │   │   ├── ProgramDetailView.vue
 │   │   ├── WizardView.vue
 │   │   ├── SavedView.vue
-│   │   └── HotlinesView.vue
+│   │   ├── HotlinesView.vue
+│   │   ├── BranchLocatorView.vue  # Interactive map for finding agency offices
+│   │   └── SuggestUpdateView.vue  # Community crowdsourcing suggestion form
 │   ├── components/
 │   │   ├── AppHeader.vue   # Brand logo, tab navigation, and dark switcher
 │   │   ├── AppFooter.vue   # Redesigned civic footer, portals, and disclaimer
