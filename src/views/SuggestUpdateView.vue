@@ -109,7 +109,7 @@ function buildIssueBody(): string {
 
 function buildPlainText(): string {
   const lines: string[] = []
-  lines.push(`=== AyudaDex Suggestion ===`)
+  lines.push(`AyudaDex Suggestion`)
   lines.push('')
   lines.push(`Type: ${typeLabels[updateType.value]}`)
   lines.push(`Program: ${programName.value}`)
@@ -117,7 +117,7 @@ function buildPlainText(): string {
     lines.push(`Agency: ${selectedProgram.value.agency}`)
   }
   lines.push('')
-  lines.push(`--- Suggestion ---`)
+  lines.push(`Suggestion`)
   lines.push(suggestion.value)
   lines.push('')
   if (sourceUrl.value.trim()) {
@@ -340,7 +340,7 @@ const updateTypes: { value: UpdateType; icon: typeof PenLine; key: string }[] = 
               selectedProgramId ? 'text-slate-900 dark:text-slate-100' : 'text-slate-400 dark:text-slate-500'
             ]">
             <span>{{ selectedProgram ? $t(`programs.${selectedProgram.id}.name`) : $t('suggest.programPlaceholder')
-            }}</span>
+              }}</span>
             <ChevronDown class="w-4 h-4 text-slate-400 transition-transform"
               :class="isSelectOpen ? 'rotate-180' : ''" />
           </button>
