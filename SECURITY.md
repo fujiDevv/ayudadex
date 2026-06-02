@@ -10,5 +10,5 @@ Use this section to tell people about which versions of your project are current
 
 ## Reporting a Vulnerability
 
-Please report security vulnerabilities by emailing [EMAIL_ADDRESS] directly.
+Please report security vulnerabilities by emailing [fujidevv@duck.com] directly.
 We will try to respond to security issues as quickly as possible.

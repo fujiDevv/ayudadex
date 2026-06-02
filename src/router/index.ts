@@ -8,6 +8,7 @@ const router = createRouter({
     { path: '/shortlist', name: 'shortlist', component: () => import('../views/SavedView.vue') },
     { path: '/hotlines', name: 'hotlines', component: () => import('../views/HotlinesView.vue') },
     { path: '/locator', name: 'locator', component: () => import('../views/BranchLocatorView.vue') },
+    { path: '/suggest', name: 'suggest', component: () => import('../views/SuggestUpdateView.vue') },
     {
       path: '/program/:id',
       name: 'program-detail',

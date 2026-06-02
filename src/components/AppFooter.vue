@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {
-  AlertTriangle, Github, Heart, ArrowUpRight
+  AlertTriangle, Github, Heart, ArrowUpRight, Lightbulb
 } from 'lucide-vue-next'
 import { useI18n } from 'vue-i18n'
 
@@ -61,6 +61,13 @@ const officialPortals = [
               <button @click="router.push(tab.value)"
                 class="hover:text-blue-900 dark:hover:text-blue-400 transition-colors flex items-center gap-1.5 cursor-pointer text-left font-medium">
                 <span>{{ t(`nav.${tab.key}`) }}</span>
+              </button>
+            </li>
+            <li>
+              <button @click="router.push('/suggest')"
+                class="hover:text-blue-900 dark:hover:text-blue-400 transition-colors flex items-center gap-1.5 cursor-pointer text-left font-medium">
+                <Lightbulb class="w-3 h-3" />
+                <span>{{ t('suggest.title') }}</span>
               </button>
             </li>
           </ul>
