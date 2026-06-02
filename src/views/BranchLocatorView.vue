@@ -214,15 +214,31 @@ const searchArea = async () => {
     out center;
   `
   
+  const OVERPASS_ENDPOINTS = [
+    'https://overpass.kumi.systems/api/interpreter',
+    'https://overpass.osm.ch/api/interpreter',
+    'https://overpass-api.de/api/interpreter'
+  ]
+  
   try {
-    const response = await fetch('https://overpass-api.de/api/interpreter', {
-      method: 'POST',
-      body: 'data=' + encodeURIComponent(query)
-    })
-    
-    if (!response.ok) throw new Error('Failed to fetch from OpenStreetMap')
-    
-    const data = await response.json()
+    let data: any = null
+    let lastError: any = null
+
+    for (const endpoint of OVERPASS_ENDPOINTS) {
+      try {
+        const res = await fetch(`${endpoint}?data=${encodeURIComponent(query)}`)
+        if (res.ok) {
+          data = await res.json()
+          break
+        } else {
+          lastError = new Error(`Server returned ${res.status}: ${res.statusText}`)
+        }
+      } catch (err) {
+        lastError = err
+      }
+    }
+
+    if (!data) throw lastError || new Error('Failed to fetch from OpenStreetMap')
     
     const newBranches: Branch[] = data.elements.map((el: any) => {
       const lat = el.lat || el.center?.lat
