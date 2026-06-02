@@ -204,35 +204,35 @@ onClickOutside(dropdownRef, () => {
     <nav
       class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 pb-[env(safe-area-inset-bottom)]">
       <div class="grid grid-cols-5 h-16 text-center text-[10px] sm:text-xs font-bold">
-        <motion.button @click="router.push('/')" class="flex flex-col items-center justify-center gap-1 cursor-pointer transition-colors"
+        <motion.button @click="router.push('/')" class="flex flex-col items-center justify-center gap-0 sm:gap-1 cursor-pointer transition-colors"
           :class="route.path === '/' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50'"
           :whileTap="{ scale: 0.95 }">
-          <ClipboardList class="w-5 h-5 sm:w-6 sm:h-6" :class="route.path === '/' ? 'text-blue-600 dark:text-blue-400' : ''" />
-          <span class="truncate w-full px-1">{{ $t('nav.directory') }}</span>
+          <ClipboardList class="w-6 h-6 sm:w-5 sm:h-5" :class="route.path === '/' ? 'text-blue-600 dark:text-blue-400' : ''" />
+          <span class="hidden sm:block truncate w-full px-1">{{ $t('nav.directory') }}</span>
         </motion.button>
-        <motion.button @click="router.push('/wizard')" class="flex flex-col items-center justify-center gap-1 cursor-pointer transition-colors"
+        <motion.button @click="router.push('/wizard')" class="flex flex-col items-center justify-center gap-0 sm:gap-1 cursor-pointer transition-colors"
           :class="route.path === '/wizard' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50'"
           :whileTap="{ scale: 0.95 }">
-          <Wand2 class="w-5 h-5 sm:w-6 sm:h-6" :class="route.path === '/wizard' ? 'text-blue-600 dark:text-blue-400' : ''" />
-          <span class="truncate w-full px-1">{{ $t('nav.quiz') }}</span>
+          <Wand2 class="w-6 h-6 sm:w-5 sm:h-5" :class="route.path === '/wizard' ? 'text-blue-600 dark:text-blue-400' : ''" />
+          <span class="hidden sm:block truncate w-full px-1">{{ $t('nav.quiz') }}</span>
         </motion.button>
-        <motion.button @click="router.push('/shortlist')" class="flex flex-col items-center justify-center gap-1 cursor-pointer transition-colors"
+        <motion.button @click="router.push('/shortlist')" class="flex flex-col items-center justify-center gap-0 sm:gap-1 cursor-pointer transition-colors"
           :class="route.path === '/shortlist' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50'"
           :whileTap="{ scale: 0.95 }">
-          <Star class="w-5 h-5 sm:w-6 sm:h-6" :class="route.path === '/shortlist' ? 'text-blue-600 dark:text-blue-400' : ''" />
-          <span class="truncate w-full px-1">{{ $t('nav.saved') }} ({{ savedCount }})</span>
+          <Star class="w-6 h-6 sm:w-5 sm:h-5" :class="route.path === '/shortlist' ? 'text-blue-600 dark:text-blue-400' : ''" />
+          <span class="hidden sm:block truncate w-full px-1">{{ $t('nav.saved') }} ({{ savedCount }})</span>
         </motion.button>
-        <motion.button @click="router.push('/hotlines')" class="flex flex-col items-center justify-center gap-1 cursor-pointer transition-colors"
+        <motion.button @click="router.push('/hotlines')" class="flex flex-col items-center justify-center gap-0 sm:gap-1 cursor-pointer transition-colors"
           :class="route.path === '/hotlines' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50'"
           :whileTap="{ scale: 0.95 }">
-          <Phone class="w-5 h-5 sm:w-6 sm:h-6" :class="route.path === '/hotlines' ? 'text-blue-600 dark:text-blue-400' : ''" />
-          <span class="truncate w-full px-1">{{ $t('nav.hotlines') }}</span>
+          <Phone class="w-6 h-6 sm:w-5 sm:h-5" :class="route.path === '/hotlines' ? 'text-blue-600 dark:text-blue-400' : ''" />
+          <span class="hidden sm:block truncate w-full px-1">{{ $t('nav.hotlines') }}</span>
         </motion.button>
-        <motion.button @click="router.push('/locator')" class="flex flex-col items-center justify-center gap-1 cursor-pointer transition-colors"
+        <motion.button @click="router.push('/locator')" class="flex flex-col items-center justify-center gap-0 sm:gap-1 cursor-pointer transition-colors"
           :class="route.path === '/locator' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50'"
           :whileTap="{ scale: 0.95 }">
-          <MapPin class="w-5 h-5 sm:w-6 sm:h-6" :class="route.path === '/locator' ? 'text-blue-600 dark:text-blue-400' : ''" />
-          <span class="truncate w-full px-1">{{ $t('nav.locator') }}</span>
+          <MapPin class="w-6 h-6 sm:w-5 sm:h-5" :class="route.path === '/locator' ? 'text-blue-600 dark:text-blue-400' : ''" />
+          <span class="hidden sm:block truncate w-full px-1">{{ $t('nav.locator') }}</span>
         </motion.button>
       </div>
     </nav>
