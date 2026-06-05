@@ -156,6 +156,76 @@ const tlOverrides = {
       "Form 137 o Transcript ng mga Rekord (Transcript of Records)",
       "4 na kopya ng passport size na larawan (white background, may kwelyo, at may name tag)"
     ]
+  },
+  'dswd-spisc': {
+    name: "Sosyal na Pension para sa mga Mahihirap na Senior Citizen (Social Pension for Indigent Senior Citizens)",
+    description: "Isang buwanang allowance na ₱1,000 (ipinamamahagi bilang ₱3,000 quarterly) na ibinibigay sa mga mahihirap na senior citizen upang madagdagan ang kailangang pang-araw-araw na pagkain at medikal na gastusin.",
+    steps: [
+      "Makipag-ugnayan sa Office for Senior Citizens Affairs (OSCA) sa inyong lokal na pamahalaan (LGU).",
+      "Isumite ang mga kinakailangang dokumento para sa pagsusuri.",
+      "Sumailalim sa validation ng mga social worker ng DSWD at LGU gamit ang data ng Community-Based Monitoring System (CBMS).",
+      "Kapag naaprubahan, maghintay para sa anunsyo ng nakaiskedyul na quarterly na payout."
+    ],
+    requirements: [
+      "Dapat ay 60 taong gulang pataas",
+      "Mahina, may sakit, o may kapansanan",
+      "Walang regular na pinagkukunan ng kita o pinansyal na suporta mula sa pamilya",
+      "Hindi tumatanggap ng anumang pension mula sa SSS, GSIS, PVAO, o iba pang ahensya ng gobyerno",
+      "Valid na Senior Citizen ID"
+    ]
+  },
+  'sss-retirement': {
+    name: "Benepisyo sa Pagreretiro (Retirement Benefit)",
+    description: "Isang benepisyong cash na ibinibigay sa miyembro ng SSS na hindi na makapagtrabaho dahil sa katandaan, na ipinagkakaloob bilang panghabambuhay na buwanang pension o lump sum.",
+    steps: [
+      "Tiyaking mayroon kang naaprubahang bank account sa SSS Disbursement Account Enrollment Module (DAEM).",
+      "Mag-log in sa iyong My.SSS online portal.",
+      "Pumunta sa E-Services at i-file ang Retirement Claim Application online.",
+      "I-upload ang anumang kinakailangang sumusuportang dokumento (hal. Certificate of Separation).",
+      "Maghintay ng pag-apruba at ng unang pension sa inyong bank account."
+    ],
+    requirements: [
+      "Dapat ay hindi bababa sa 60 taong gulang (opsyonal) o 65 taong gulang (teknikal na pagreretiro)",
+      "Dapat ay hiwalay na sa trabaho o huminto na sa self-employment (para sa opsyonal na pagreretiro sa edad na 60)",
+      "Hindi bababa sa 120 buwanang kontribusyon bago ang semestre ng pagreretiro (upang maging kwalipikado para sa buwanang pension)",
+      "Retirement Claim Application (SSS Form DDR-1)",
+      "UMID Card o dalawang valid government ID"
+    ]
+  },
+  'ched-tes': {
+    name: "Subsidy sa Tersyaryong Edukasyon (Tertiary Education Subsidy - TES)",
+    description: "Isang programa ng tulong-pinansyal na nagbibigay ng suporta sa mga kwalipikadong estudyanteng Pilipino na naka-enroll sa mga pampubliko at pribadong kolehiyo upang makatalong sa mga gastusin sa edukasyon.",
+    steps: [
+      "Mag-enroll sa isang kwalipikadong higher education institution (State Universities, Local Universities, o mga pribadong HEI na kinikilala ng CHED).",
+      "Isumite ang iyong aplikasyon at mga kinakailangan sa itinalagang TES Focal Person ng inyong paaralan.",
+      "Ie-encode at isusumite ng paaralan ang iyong profile sa UniFAST portal.",
+      "Maghintay para sa validation ng CHED/UniFAST at sa opisyal na pagpapalabas ng listahan ng mga iskolar (master list of grantees).",
+      "Kunin ang subsidy disbursement sa pamamagitan ng inyong paaralan o partner na institusyong pinansyal."
+    ],
+    requirements: [
+      "Dapat ay naka-enroll sa isang kinikilalang undergraduate program",
+      "Sertipiko ng Rehistrasyon/Enrollment para sa kasalukuyang semestre",
+      "Priyoridad ang mga mag-aaral na nasa DSWD Listahanan (Pantawid Pamilya) o nakatira sa mga lugar na walang pampublikong unibersidad",
+      "Certificate of Indigency (kung hindi kasama sa Listahanan)",
+      "Dapat mapanatili ang mga pasadong marka sa mga asignaturang akademiko"
+    ]
+  },
+  'lgu-soloparent': {
+    name: "Pinalawak na mga Benepisyo para sa Solo Parent (Expanded Solo Parents Benefits)",
+    description: "Nagbibigay ng ipinag-uutos na pinansyal at panlipunang suporta sa mga solo parent, kabilang ang ₱1,000 buwanang subsidy para sa mga minimum wage earner, 10% discount sa mga pangunahing pangangailangan ng bata, at bayad na parental leave.",
+    steps: [
+      "Bisitahin ang Solo Parent Office o City/Municipal Social Welfare and Development Office (C/MSWDO) sa inyong lokal na pamahalaan (LGU).",
+      "Dumalo sa oryentasyon tungkol sa iyong mga karapatan at benepisyo sa ilalim ng RA 11861.",
+      "Isumite ang mga dokumentong kailangan at sumailalim sa isang interview kasama ang isang social worker.",
+      "Kapag napatunayan na, kunin ang iyong Solo Parent Identification Card (SPIC) at Certificate of Eligibility."
+    ],
+    requirements: [
+      "Dapat ay solong nag-aaruga at nagtataguyod sa anak/mga anak nang walang kinakasama o cohabitation",
+      "Birth certificate ng mga dependent (sakop hanggang 22 taong gulang kung walang asawa, walang trabaho, at nag-aaral)",
+      "Barangay certificate ng residency",
+      "Katibayan ng katayuan bilang solo parent (hal. death certificate ng asawa, deklarasyon ng nullity ng kasal, o medical certificate ng kapansanan ng asawa)",
+      "Income Tax Return o Certificate of Indigency"
+    ]
   }
 };
 

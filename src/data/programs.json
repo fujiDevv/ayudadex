@@ -1,5 +1,135 @@
 [
     {
+        "id": "dswd-spisc",
+        "agency": "DSWD",
+        "name": "Social Pension for Indigent Senior Citizens (SPISC)",
+        "category": "Pension / Seniors",
+        "description": "A monthly stipend of ₱1,000 (distributed as ₱3,000 quarterly) provided to indigent senior citizens to augment their daily subsistence and medical needs.",
+        "target_audience": [
+            "Seniors",
+            "Indigent",
+            "Low Income"
+        ],
+        "processing_time": "Varies by LGU assessment",
+        "official_url": "https://www.dswd.gov.ph",
+        "steps": [
+            "Coordinate with the Office for Senior Citizens Affairs (OSCA) in your local government unit.",
+            "Submit the required documents for evaluation.",
+            "Undergo validation by DSWD and LGU social workers using the Community-Based Monitoring System (CBMS) data.",
+            "Once approved, wait for the scheduled quarterly payout announcements."
+        ],
+        "requirements": [
+            "Must be 60 years old and above",
+            "Frail, sickly, or with disability",
+            "No regular source of income or financial support from family",
+            "Not receiving any pension from SSS, GSIS, PVAO, or other government agencies",
+            "Valid Senior Citizen ID"
+        ],
+        "tags": [
+            "pension",
+            "seniors",
+            "financial"
+        ]
+    },
+    {
+        "id": "sss-retirement",
+        "agency": "SSS",
+        "name": "Retirement Benefit",
+        "category": "Pension / Retirement",
+        "description": "A cash benefit paid to an SSS member who can no longer work due to old age, granted either as a lifetime monthly pension or a lump sum amount.",
+        "target_audience": [
+            "Retirees",
+            "SSS Members",
+            "Seniors"
+        ],
+        "processing_time": "15-20 working days",
+        "official_url": "https://www.sss.gov.ph",
+        "steps": [
+            "Ensure you have an approved disbursement account in the SSS Disbursement Account Enrollment Module (DAEM).",
+            "Log in to your My.SSS online portal.",
+            "Navigate to E-Services and file the Retirement Claim Application online.",
+            "Upload any required supporting documents (e.g., Certificate of Separation).",
+            "Wait for approval and the initial pension credit to your bank account."
+        ],
+        "requirements": [
+            "Must be at least 60 years old (optional) or 65 years old (technical retirement)",
+            "Must be separated from employment or ceased self-employment (for optional retirement at 60)",
+            "At least 120 monthly contributions prior to the semester of retirement (to qualify for a monthly pension)",
+            "Retirement Claim Application (SSS Form DDR-1)",
+            "UMID Card or two valid government IDs"
+        ],
+        "tags": [
+            "pension",
+            "retirement",
+            "financial"
+        ]
+    },
+    {
+        "id": "ched-tes",
+        "agency": "CHED / UniFAST",
+        "name": "Tertiary Education Subsidy (TES)",
+        "category": "Education / Subsidy",
+        "description": "A grant-in-aid program that provides financial assistance to qualified Filipino students enrolled in public and private tertiary institutions to help cover educational expenses.",
+        "target_audience": [
+            "Students",
+            "Low Income",
+            "College"
+        ],
+        "processing_time": "Per Academic Year Cycle",
+        "official_url": "https://unifast.gov.ph",
+        "steps": [
+            "Enroll in an eligible higher education institution (State Universities, Local Universities, or CHED-recognized private HEIs).",
+            "Submit your application and requirements to your school's designated TES Focal Person.",
+            "The school will encode and submit your profile into the UniFAST portal.",
+            "Wait for CHED/UniFAST validation and the official release of the master list of grantees.",
+            "Claim the subsidy disbursement through your school or a partner financial institution."
+        ],
+        "requirements": [
+            "Must be enrolled in a recognized undergraduate program",
+            "Certificate of Registration/Enrollment for the current semester",
+            "Priority is given to students in the DSWD Listahanan (Pantawid Pamilya) or residing in areas without public universities",
+            "Certificate of Indigency (if not included in the Listahanan)",
+            "Must maintain passing grades in academic subjects"
+        ],
+        "tags": [
+            "education",
+            "financial",
+            "students"
+        ]
+    },
+    {
+        "id": "lgu-soloparent",
+        "agency": "LGU / DSWD",
+        "name": "Expanded Solo Parents Benefits",
+        "category": "Financial / Family",
+        "description": "Provides mandated financial and social support to solo parents, including a ₱1,000 monthly subsidy for minimum wage earners, 10% discounts on basic child needs, and paid parental leave.",
+        "target_audience": [
+            "Solo Parents",
+            "Families",
+            "Low Income"
+        ],
+        "processing_time": "7-15 working days",
+        "official_url": "https://www.dswd.gov.ph",
+        "steps": [
+            "Visit the Solo Parent Office or City/Municipal Social Welfare and Development Office (C/MSWDO) in your LGU.",
+            "Attend an orientation regarding your rights and benefits under RA 11861.",
+            "Submit your documentary requirements and undergo an assessment interview with a social worker.",
+            "Once validated, claim your Solo Parent Identification Card (SPIC) and Certificate of Eligibility."
+        ],
+        "requirements": [
+            "Must exclusively exercise sole parental care and support to the child/children without cohabitation",
+            "Birth certificate(s) of dependents (coverage extended up to 22 years old if unmarried, unemployed, and in school)",
+            "Barangay certificate of residency",
+            "Proof of solo parent status (e.g., spouse's death certificate, declaration of nullity of marriage, or medical certificate of spouse's incapacity)",
+            "Income Tax Return or Certificate of Indigency"
+        ],
+        "tags": [
+            "family",
+            "financial",
+            "discounts"
+        ]
+    },
+    {
         "id": "dswd-aics",
         "agency": "DSWD",
         "name": "AICS (Assistance to Individuals in Crisis Situation)",
