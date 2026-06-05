@@ -32,31 +32,31 @@ const viewMode = computed(() => props.viewMode || 'grid')
 const getAgencyStyles = (agency: string) => {
   const normalized = agency.toLowerCase()
   if (normalized.includes('dswd')) {
-    return 'bg-gradient-to-r from-orange-500/10 to-red-500/10 text-orange-700 dark:text-orange-300 border-orange-200/50 dark:border-orange-900/30'
+    return 'bg-orange-500/10 sm:bg-gradient-to-r sm:from-orange-500/10 sm:to-red-500/10 text-orange-700 dark:text-orange-300 border-orange-200/50 dark:border-orange-900/30'
   }
   if (normalized.includes('sss')) {
-    return 'bg-gradient-to-r from-blue-600/10 to-indigo-600/10 text-blue-700 dark:text-blue-300 border-blue-200/50 dark:border-blue-900/30'
+    return 'bg-blue-600/10 sm:bg-gradient-to-r sm:from-blue-600/10 sm:to-indigo-600/10 text-blue-700 dark:text-blue-300 border-blue-200/50 dark:border-blue-900/30'
   }
   if (normalized.includes('philhealth')) {
-    return 'bg-gradient-to-r from-green-500/10 to-emerald-500/10 text-green-700 dark:text-emerald-300 border-green-200/50 dark:border-green-900/30'
+    return 'bg-green-500/10 sm:bg-gradient-to-r sm:from-green-500/10 sm:to-emerald-500/10 text-green-700 dark:text-emerald-300 border-green-200/50 dark:border-green-900/30'
   }
   if (normalized.includes('pag-ibig') || normalized.includes('hdmf')) {
-    return 'bg-gradient-to-r from-amber-500/10 to-yellow-500/10 text-amber-700 dark:text-amber-300 border-amber-200/50 dark:border-amber-900/30'
+    return 'bg-amber-500/10 sm:bg-gradient-to-r sm:from-amber-500/10 sm:to-yellow-500/10 text-amber-700 dark:text-amber-300 border-amber-200/50 dark:border-amber-900/30'
   }
   if (normalized.includes('gsis')) {
-    return 'bg-gradient-to-r from-teal-500/10 to-cyan-500/10 text-teal-700 dark:text-teal-300 border-teal-200/50 dark:border-teal-900/30'
+    return 'bg-teal-500/10 sm:bg-gradient-to-r sm:from-teal-500/10 sm:to-cyan-500/10 text-teal-700 dark:text-teal-300 border-teal-200/50 dark:border-teal-900/30'
   }
   if (normalized.includes('dole')) {
-    return 'bg-gradient-to-r from-indigo-500/10 to-purple-500/10 text-indigo-700 dark:text-indigo-300 border-indigo-200/50 dark:border-indigo-900/30'
+    return 'bg-indigo-500/10 sm:bg-gradient-to-r sm:from-indigo-500/10 sm:to-purple-500/10 text-indigo-700 dark:text-indigo-300 border-indigo-200/50 dark:border-indigo-900/30'
   }
   if (normalized.includes('doh')) {
-    return 'bg-gradient-to-r from-rose-500/10 to-red-500/10 text-rose-700 dark:text-rose-300 border-rose-200/50 dark:border-rose-900/30'
+    return 'bg-rose-500/10 sm:bg-gradient-to-r sm:from-rose-500/10 sm:to-red-500/10 text-rose-700 dark:text-rose-300 border-rose-200/50 dark:border-rose-900/30'
   }
   if (normalized.includes('owwa')) {
-    return 'bg-gradient-to-r from-violet-500/10 to-fuchsia-500/10 text-violet-700 dark:text-violet-300 border-violet-200/50 dark:border-violet-900/30'
+    return 'bg-violet-500/10 sm:bg-gradient-to-r sm:from-violet-500/10 sm:to-fuchsia-500/10 text-violet-700 dark:text-violet-300 border-violet-200/50 dark:border-violet-900/30'
   }
   if (normalized.includes('ched') || normalized.includes('unifast')) {
-    return 'bg-gradient-to-r from-sky-500/10 to-blue-500/10 text-sky-700 dark:text-sky-300 border-sky-200/50 dark:border-sky-900/30'
+    return 'bg-sky-500/10 sm:bg-gradient-to-r sm:from-sky-500/10 sm:to-blue-500/10 text-sky-700 dark:text-sky-300 border-sky-200/50 dark:border-sky-900/30'
   }
   return 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
 }
@@ -149,7 +149,7 @@ const getCategoryIcon = (category: string) => {
         <div class="w-full bg-slate-100 dark:bg-slate-950 h-2 rounded-full overflow-hidden border border-slate-200/30 dark:border-slate-800/30">
           <div 
             class="h-full transition-all duration-300"
-            :class="[preparedPercent === 100 ? 'bg-gradient-to-r from-emerald-500 to-teal-500' : 'bg-gradient-to-r from-blue-600 to-indigo-600']"
+            :class="[preparedPercent === 100 ? 'bg-emerald-500 sm:bg-gradient-to-r sm:from-emerald-500 sm:to-teal-500' : 'bg-blue-600 sm:bg-gradient-to-r sm:from-blue-600 sm:to-indigo-600']"
             :style="{ width: `${preparedPercent}%` }"
           ></div>
         </div>
@@ -233,7 +233,7 @@ const getCategoryIcon = (category: string) => {
           <div class="w-full bg-slate-100 dark:bg-slate-950 h-2 rounded-full overflow-hidden border border-slate-200/30 dark:border-slate-800/30">
             <div 
               class="h-full transition-all duration-300" 
-              :class="[preparedPercent === 100 ? 'bg-gradient-to-r from-emerald-500 to-teal-500' : 'bg-gradient-to-r from-blue-600 to-indigo-600']"
+              :class="[preparedPercent === 100 ? 'bg-emerald-500 sm:bg-gradient-to-r sm:from-emerald-500 sm:to-teal-500' : 'bg-blue-600 sm:bg-gradient-to-r sm:from-blue-600 sm:to-indigo-600']"
               :style="{ width: `${preparedPercent}%` }"
             ></div>
           </div>

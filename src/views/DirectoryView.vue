@@ -29,12 +29,12 @@ const categoriesList = computed(() => Array.from(new Set(programsData.map(p => p
 const audienceTags = ["Indigent", "Senior Citizen", "Student", "PWD", "Unemployed", "Pregnant", "Worker", "Solo Parent", "MSME"]
 
 const visualCategories = [
-  { id: 'financial', nameEn: 'Financial Aid', nameTl: 'Pinansyal na Tulong', icon: Coins, tags: ['Financial Aid', 'Cash Loan'], color: 'from-amber-500 to-yellow-500', glow: 'hover:shadow-amber-500/10' },
-  { id: 'health', nameEn: 'Medical & Health', nameTl: 'Medikal at Kalusugan', icon: Heart, tags: ['Health', 'Medical'], color: 'from-emerald-500 to-teal-500', glow: 'hover:shadow-emerald-500/10' },
-  { id: 'education', nameEn: 'Education', nameTl: 'Edukasyon', icon: GraduationCap, tags: ['Education', 'Scholarship'], color: 'from-blue-500 to-sky-500', glow: 'hover:shadow-blue-500/10' },
-  { id: 'pension', nameEn: 'Pensions & Seniors', nameTl: 'Pension at Senior', icon: HeartHandshake, tags: ['Pension', 'Seniors'], color: 'from-purple-500 to-indigo-500', glow: 'hover:shadow-purple-500/10' },
-  { id: 'housing', nameEn: 'Housing & Property', nameTl: 'Pabahay at Lupa', icon: Home, tags: ['Housing', 'Property'], color: 'from-rose-500 to-pink-500', glow: 'hover:shadow-rose-500/10' },
-  { id: 'livelihood', nameEn: 'Livelihood & Jobs', nameTl: 'Kabuhayan at Trabaho', icon: Briefcase, tags: ['Employment', 'Livelihood'], color: 'from-indigo-500 to-violet-500', glow: 'hover:shadow-indigo-500/10' }
+  { id: 'financial', nameEn: 'Financial Aid', nameTl: 'Pinansyal na Tulong', icon: Coins, tags: ['Financial Aid', 'Cash Loan'], color: 'bg-amber-500 sm:bg-gradient-to-br sm:from-amber-500 sm:to-yellow-500', glow: 'hover:shadow-amber-500/10' },
+  { id: 'health', nameEn: 'Medical & Health', nameTl: 'Medikal at Kalusugan', icon: Heart, tags: ['Health', 'Medical'], color: 'bg-emerald-500 sm:bg-gradient-to-br sm:from-emerald-500 sm:to-teal-500', glow: 'hover:shadow-emerald-500/10' },
+  { id: 'education', nameEn: 'Education', nameTl: 'Edukasyon', icon: GraduationCap, tags: ['Education', 'Scholarship'], color: 'bg-blue-500 sm:bg-gradient-to-br sm:from-blue-500 sm:to-sky-500', glow: 'hover:shadow-blue-500/10' },
+  { id: 'pension', nameEn: 'Pensions & Seniors', nameTl: 'Pension at Senior', icon: HeartHandshake, tags: ['Pension', 'Seniors'], color: 'bg-purple-500 sm:bg-gradient-to-br sm:from-purple-500 sm:to-indigo-500', glow: 'hover:shadow-purple-500/10' },
+  { id: 'housing', nameEn: 'Housing & Property', nameTl: 'Pabahay at Lupa', icon: Home, tags: ['Housing', 'Property'], color: 'bg-rose-500 sm:bg-gradient-to-br sm:from-rose-500 sm:to-pink-500', glow: 'hover:shadow-rose-500/10' },
+  { id: 'livelihood', nameEn: 'Livelihood & Jobs', nameTl: 'Kabuhayan at Trabaho', icon: Briefcase, tags: ['Employment', 'Livelihood'], color: 'bg-indigo-500 sm:bg-gradient-to-br sm:from-indigo-500 sm:to-violet-500', glow: 'hover:shadow-indigo-500/10' }
 ]
 
 const getCategoryName = (vc: any) => {
@@ -44,31 +44,31 @@ const getCategoryName = (vc: any) => {
 const getAgencyStyles = (agency: string) => {
   const normalized = agency.toLowerCase()
   if (normalized.includes('dswd')) {
-    return 'bg-gradient-to-r from-orange-500/10 to-red-500/10 text-orange-700 dark:text-orange-300 border-orange-200/50 dark:border-orange-900/30'
+    return 'bg-orange-500/10 sm:bg-gradient-to-r sm:from-orange-500/10 sm:to-red-500/10 text-orange-700 dark:text-orange-300 border-orange-200/50 dark:border-orange-900/30'
   }
   if (normalized.includes('sss')) {
-    return 'bg-gradient-to-r from-blue-600/10 to-indigo-600/10 text-blue-700 dark:text-blue-300 border-blue-200/50 dark:border-blue-900/30'
+    return 'bg-blue-600/10 sm:bg-gradient-to-r sm:from-blue-600/10 sm:to-indigo-600/10 text-blue-700 dark:text-blue-300 border-blue-200/50 dark:border-blue-900/30'
   }
   if (normalized.includes('philhealth')) {
-    return 'bg-gradient-to-r from-green-500/10 to-emerald-500/10 text-green-700 dark:text-emerald-300 border-green-200/50 dark:border-green-900/30'
+    return 'bg-green-500/10 sm:bg-gradient-to-r sm:from-green-500/10 sm:to-emerald-500/10 text-green-700 dark:text-emerald-300 border-green-200/50 dark:border-green-900/30'
   }
   if (normalized.includes('pag-ibig') || normalized.includes('hdmf')) {
-    return 'bg-gradient-to-r from-amber-500/10 to-yellow-500/10 text-amber-700 dark:text-amber-300 border-amber-200/50 dark:border-amber-900/30'
+    return 'bg-amber-500/10 sm:bg-gradient-to-r sm:from-amber-500/10 sm:to-yellow-500/10 text-amber-700 dark:text-amber-300 border-amber-200/50 dark:border-amber-900/30'
   }
   if (normalized.includes('gsis')) {
-    return 'bg-gradient-to-r from-teal-500/10 to-cyan-500/10 text-teal-700 dark:text-teal-300 border-teal-200/50 dark:border-teal-900/30'
+    return 'bg-teal-500/10 sm:bg-gradient-to-r sm:from-teal-500/10 sm:to-cyan-500/10 text-teal-700 dark:text-teal-300 border-teal-200/50 dark:border-teal-900/30'
   }
   if (normalized.includes('dole')) {
-    return 'bg-gradient-to-r from-indigo-500/10 to-purple-500/10 text-indigo-700 dark:text-indigo-300 border-indigo-200/50 dark:border-indigo-900/30'
+    return 'bg-indigo-500/10 sm:bg-gradient-to-r sm:from-indigo-500/10 sm:to-purple-500/10 text-indigo-700 dark:text-indigo-300 border-indigo-200/50 dark:border-indigo-900/30'
   }
   if (normalized.includes('doh')) {
-    return 'bg-gradient-to-r from-rose-500/10 to-red-500/10 text-rose-700 dark:text-rose-300 border-rose-200/50 dark:border-rose-900/30'
+    return 'bg-rose-500/10 sm:bg-gradient-to-r sm:from-rose-500/10 sm:to-red-500/10 text-rose-700 dark:text-rose-300 border-rose-200/50 dark:border-rose-900/30'
   }
   if (normalized.includes('owwa')) {
-    return 'bg-gradient-to-r from-violet-500/10 to-fuchsia-500/10 text-violet-700 dark:text-violet-300 border-violet-200/50 dark:border-violet-900/30'
+    return 'bg-violet-500/10 sm:bg-gradient-to-r sm:from-violet-500/10 sm:to-fuchsia-500/10 text-violet-700 dark:text-violet-300 border-violet-200/50 dark:border-violet-900/30'
   }
   if (normalized.includes('ched') || normalized.includes('unifast')) {
-    return 'bg-gradient-to-r from-sky-500/10 to-blue-500/10 text-sky-700 dark:text-sky-300 border-sky-200/50 dark:border-sky-900/30'
+    return 'bg-sky-500/10 sm:bg-gradient-to-r sm:from-sky-500/10 sm:to-blue-500/10 text-sky-700 dark:text-sky-300 border-sky-200/50 dark:border-sky-900/30'
   }
   return 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200/50 dark:border-slate-800/30'
 }
@@ -159,7 +159,7 @@ const handleBlur = () => {
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 animate-fade-in space-y-10">
     <!-- Premium Hero Section -->
     <motion.div
-      class="relative bg-gradient-to-br from-slate-50 via-slate-100/70 to-blue-50/50 text-slate-900 dark:from-slate-900 dark:via-slate-950 dark:to-blue-950 dark:text-white rounded-3xl p-8 sm:p-12 md:p-14 shadow-xs dark:shadow-2xl border border-slate-200 dark:border-slate-800/80"
+      class="relative bg-slate-100 dark:bg-slate-900 sm:bg-gradient-to-br sm:from-slate-50 sm:via-slate-100/70 sm:to-blue-50/50 text-slate-900 sm:dark:from-slate-900 sm:dark:via-slate-950 sm:dark:to-blue-950 dark:text-white rounded-3xl p-8 sm:p-12 md:p-14 shadow-xs dark:shadow-2xl border border-slate-200 dark:border-slate-800/80"
       :initial="{ opacity: 0, y: -20 }" :animate="{ opacity: 1, y: 0 }" :transition="{ duration: 0.5 }">
       <!-- Dashed Bottom Left Fade Grid -->
       <div class="absolute inset-0 z-0 pointer-events-none opacity-25 dark:opacity-15" style="
@@ -187,7 +187,7 @@ const handleBlur = () => {
         </div>
 
         <h2
-          class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-none bg-gradient-to-r from-slate-900 via-slate-800 to-blue-900 dark:from-white dark:via-slate-100 dark:to-blue-200 bg-clip-text text-transparent">
+          class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-none text-slate-900 dark:text-white sm:text-transparent sm:bg-clip-text sm:bg-gradient-to-r sm:from-slate-900 sm:via-slate-800 sm:to-blue-900 sm:dark:from-white sm:dark:via-slate-100 sm:dark:to-blue-200">
           {{ $t('hero.title') }}
         </h2>
 
@@ -240,11 +240,12 @@ const handleBlur = () => {
                 class="p-8 text-center text-slate-500 dark:text-slate-400 text-sm">
                 No matching benefits found
               </div>
+
             </div>
 
             <!-- View all results / scroll down option -->
             <div v-if="filteredPrograms.length > 5" @mousedown="scrollToResults"
-              class="p-3 text-center border-t border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50 hover:bg-slate-100 dark:hover:bg-slate-800/80 cursor-pointer text-xs font-bold text-blue-600 dark:text-blue-400 flex items-center justify-center gap-1 transition-colors">
+              class="p-3 text-center border-t border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-955/50 hover:bg-slate-100 dark:hover:bg-slate-800/80 cursor-pointer text-xs font-bold text-blue-600 dark:text-blue-400 flex items-center justify-center gap-1 transition-colors">
               View all {{ filteredPrograms.length }} results below
               <ArrowRight class="w-3.5 h-3.5" />
             </div>
@@ -264,7 +265,7 @@ const handleBlur = () => {
             <span class="block text-2xl sm:text-3xl font-extrabold text-teal-600 dark:text-teal-400">{{
               agenciesList.length }}</span>
             <span
-              class="text-[10px] sm:text-xs font-bold text-slate-550 dark:text-slate-500 uppercase tracking-wide">Agencies
+              class="text-[10px] sm:text-xs font-bold text-slate-555 dark:text-slate-500 uppercase tracking-wide">Agencies
               Covered</span>
           </div>
           <div>
@@ -294,7 +295,7 @@ const handleBlur = () => {
           ]" :whileHover="{ y: -3, scale: 1.02 }" :whileTap="{ scale: 0.98 }">
           <!-- Colored Icon Circle -->
           <div
-            class="w-12 h-12 rounded-2xl bg-gradient-to-br flex items-center justify-center text-white mb-3 shadow-md"
+            class="w-12 h-12 rounded-2xl flex items-center justify-center text-white mb-3 shadow-md"
             :class="vc.color">
             <component :is="vc.icon" class="w-6 h-6" />
           </div>
