@@ -86,42 +86,42 @@ const navigate = (path: string) => {
           </div>
         </motion.div>
 
-        <!-- Navigation Dropdown (Desktop) -->
-        <div class="hidden md:flex items-center">
-          <div ref="navDropdownRef" class="relative">
-            <motion.button @click="isNavDropdownOpen = !isNavDropdownOpen"
-              class="px-2.5 py-1.5 text-sm font-bold transition-all cursor-pointer flex items-center gap-2 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white"
-              :whileHover="{ scale: 1.02 }" :whileTap="{ scale: 0.98 }" aria-label="Navigation menu"
-              :aria-expanded="isNavDropdownOpen">
-              <component :is="currentNavItem.icon" class="w-4 h-4 text-slate-500 dark:text-slate-400" />
-              <span>{{ currentNavItem.label }}</span>
-              <ChevronDown class="w-4 h-4 text-slate-400 dark:text-slate-500 transition-transform duration-200"
-                :class="{ 'rotate-180': isNavDropdownOpen }" />
-            </motion.button>
-
-            <!-- Dropdown Menu -->
-            <transition enter-active-class="transition duration-200 ease-out"
-              enter-from-class="transform scale-95 -translate-y-2 opacity-0"
-              enter-to-class="transform scale-100 translate-y-0 opacity-100"
-              leave-active-class="transition duration-75 ease-in"
-              leave-from-class="transform scale-100 translate-y-0 opacity-100"
-              leave-to-class="transform scale-95 -translate-y-2 opacity-0">
-              <div v-if="isNavDropdownOpen"
-                class="absolute left-0 mt-2 w-56 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 overflow-hidden z-50 py-1.5">
-                <button v-for="item in navItems" :key="item.path" @click="navigate(item.path)"
-                  class="w-full px-4 py-2.5 text-left flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer text-slate-700 dark:text-slate-300"
-                  :class="route.path === item.path ? 'bg-blue-50/50 dark:bg-blue-950/20 font-bold text-blue-900 dark:text-blue-200' : ''">
-                  <component :is="item.icon" class="w-4 h-4 text-slate-400"
-                    :class="route.path === item.path ? 'text-blue-600 dark:text-blue-400' : ''" />
-                  <span class="text-sm">{{ item.label }}</span>
-                </button>
-              </div>
-            </transition>
-          </div>
-        </div>
-
         <!-- Actions -->
         <div class="flex items-center gap-2 w-auto">
+
+          <!-- Navigation Dropdown (Desktop) -->
+          <div class="hidden md:flex items-center">
+            <div ref="navDropdownRef" class="relative">
+              <motion.button @click="isNavDropdownOpen = !isNavDropdownOpen"
+                class="px-2.5 py-1.5 text-sm font-bold transition-all cursor-pointer flex items-center gap-2 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white"
+                :whileHover="{ scale: 1.02 }" :whileTap="{ scale: 0.98 }" aria-label="Navigation menu"
+                :aria-expanded="isNavDropdownOpen">
+                <component :is="currentNavItem.icon" class="w-4 h-4 text-slate-500 dark:text-slate-400" />
+                <span>{{ currentNavItem.label }}</span>
+                <ChevronDown class="w-4 h-4 text-slate-400 dark:text-slate-500 transition-transform duration-200"
+                  :class="{ 'rotate-180': isNavDropdownOpen }" />
+              </motion.button>
+
+              <!-- Dropdown Menu -->
+              <transition enter-active-class="transition duration-200 ease-out"
+                enter-from-class="transform scale-95 -translate-y-2 opacity-0"
+                enter-to-class="transform scale-100 translate-y-0 opacity-100"
+                leave-active-class="transition duration-75 ease-in"
+                leave-from-class="transform scale-100 translate-y-0 opacity-100"
+                leave-to-class="transform scale-95 -translate-y-2 opacity-0">
+                <div v-if="isNavDropdownOpen"
+                  class="absolute right-0 mt-2 w-56 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 overflow-hidden z-50 py-1.5">
+                  <button v-for="item in navItems" :key="item.path" @click="navigate(item.path)"
+                    class="w-full px-4 py-2.5 text-left flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer text-slate-700 dark:text-slate-300"
+                    :class="route.path === item.path ? 'bg-blue-50/50 dark:bg-blue-950/20 font-bold text-blue-900 dark:text-blue-200' : ''">
+                    <component :is="item.icon" class="w-4 h-4 text-slate-400"
+                      :class="route.path === item.path ? 'text-blue-600 dark:text-blue-400' : ''" />
+                    <span class="text-sm">{{ item.label }}</span>
+                  </button>
+                </div>
+              </transition>
+            </div>
+          </div>
 
           <!-- Desktop Inline Actions (Hidden on Mobile/Tablet) -->
           <div class="hidden lg:flex items-center gap-2">
