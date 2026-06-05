@@ -1,6 +1,6 @@
 {
   "header": {
-    "title": "AyudaDex",
+    "title": "Ayuda",
     "subtitle": "Gabay sa mga Benepisyo at Sosyal na Programa ng Pilipinas"
   },
   "nav": {
@@ -94,7 +94,7 @@
   },
   "suggest": {
     "title": "Magmungkahi ng Update",
-    "subtitle": "Tulungang panatilihing tama at napapanahon ang AyudaDex. Pumili kung paano mo gustong ipadala ang mga pagwawasto, mungkahi, o ulat ng problema sa aming team:",
+    "subtitle": "Tulungang panatilihing tama at napapanahon ang Ayuda. Pumili kung paano mo gustong ipadala ang mga pagwawasto, mungkahi, o ulat ng problema sa aming team:",
     "emailUs": "Mag-email sa Amin",
     "emailUsDesc": "Ipadala ang iyong mga mungkahi o feedback direkta sa aming email.",
     "discord": "Komunidad ng Discord",
@@ -127,7 +127,7 @@
     "navLabel": "Nabigasyon",
     "resourcesLabel": "Mga Mapagkukunan",
     "disclaimerTitle": "Opisyal na Paunawa ng Pagtanggi (Disclaimer)",
-    "disclaimerDesc": "Ang AyudaDex ay isang independiyenteng gabay at HINDI konektado, itinataguyod, o pinondohan ng gobyerno ng Pilipinas o alinman sa mga opisina nito. Ang mga trademark ay pag-aari ng kani-kanilang may-ari. Palaging kumpirmahin ang mga patakaran sa opisyal na website ng mga ahensya ng gobyerno."
+    "disclaimerDesc": "Ang Ayuda ay isang independiyenteng gabay at HINDI konektado, itinataguyod, o pinondohan ng gobyerno ng Pilipinas o alinman sa mga opisina nito. Ang mga trademark ay pag-aari ng kani-kanilang may-ari. Palaging kumpirmahin ang mga patakaran sa opisyal na website ng mga ahensya ng gobyerno."
   },
   "programs": {
     "dswd-aics": {

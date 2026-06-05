@@ -44,7 +44,7 @@ const officialPortals = [
           <p class="leading-relaxed text-slate-600 dark:text-slate-400" v-html="t('footer.desc')"></p>
 
           <div class="pt-1">
-            <a href="https://github.com/fujiDevv/ayudadex" target="_blank"
+            <a href="https://github.com/fujiDevv/ayuda" target="_blank"
               class="hover:text-blue-900 dark:hover:text-blue-400 transition-colors flex items-center gap-1.5 font-bold">
               <Github class="w-3.5 h-3.5" />
               <span>{{ t('footer.repo') }}</span>

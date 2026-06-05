@@ -12,8 +12,8 @@ export default defineConfig({
     registerType: 'autoUpdate',
     includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'betterGov_Favicon.svg'],
     manifest: {
-      name: 'AyudaDex',
-      short_name: 'AyudaDex',
+      name: 'Ayuda',
+      short_name: 'Ayuda',
       description: 'Philippine Government Social Benefits Navigator',
       theme_color: '#1e3a8a',
       background_color: '#f8fafc',

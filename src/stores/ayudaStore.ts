@@ -6,9 +6,9 @@ import type { Program } from '../types'
 
 export const useAyudaStore = defineStore('ayuda', () => {
   // Shared global state using useStorage for persistence
-  const savedPrograms = useStorage<string[]>('ayudadex_saved', [])
-  const checkedRequirements = useStorage<Record<string, string[]>>('ayudadex_checked_reqs', {})
-  const isLargeText = useStorage<boolean>('ayudadex_large_text', false)
+  const savedPrograms = useStorage<string[]>('ayuda_saved', [])
+  const checkedRequirements = useStorage<Record<string, string[]>>('ayuda_checked_reqs', {})
+  const isLargeText = useStorage<boolean>('ayuda_large_text', false)
 
   const toggleLargeText = () => {
     isLargeText.value = !isLargeText.value

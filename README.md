@@ -1,4 +1,4 @@
-# AyudaDex
+# Ayuda
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
@@ -6,12 +6,12 @@
 [![Cloudflare Pages](https://img.shields.io/badge/Cloudflare_Pages-F38020?logo=cloudflare&logoColor=white)](https://pages.cloudflare.com/)
 [![Bun](https://img.shields.io/badge/Bun-000000?logo=bun&logoColor=white)](https://bun.sh/)
 
-**AyudaDex** is an open-source citizen initiative designed to simplify, navigate, and track access to public welfare programs and social benefits in the Philippines.
+**Ayuda** is an open-source citizen initiative designed to simplify, navigate, and track access to public welfare programs and social benefits in the Philippines.
 
 Built with a premium modern design, it helps Filipinos search through benefits from **DSWD, SSS, GSIS, PhilHealth, Pag-IBIG, DOLE, DOH, and OWWA**, calculate eligibility via a smart wizard, and track required documents offline.
 
 > [!NOTE]
-> *AyudaDex is an unofficial navigator and is not affiliated with the Philippine Government.*
+> *Ayuda is an unofficial navigator and is not affiliated with the Philippine Government.*
 
 ---
 
@@ -45,8 +45,8 @@ Ensure you have [Bun](https://bun.sh/) installed locally, then follow these step
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/fujiDevv/ayudadex.git
-cd AyudaDex
+git clone https://github.com/fujiDevv/ayuda.git
+cd Ayuda
 ```
 
 ### 2. Install dependencies
@@ -102,6 +102,6 @@ We welcome contributions from developers, researchers, designers, and policy adv
 
 ## Disclaimer
 
-AyudaDex is an independent open-source initiative and is **not affiliated, associated, authorized, endorsed by, or in any way officially connected with the government of the Philippines** or any of its offices. All official names (DSWD, SSS, GSIS, PhilHealth, Pag-IBIG, DOLE, DOH, OWWA) and trademarks belong to their respective holders.
+Ayuda is an independent open-source initiative and is **not affiliated, associated, authorized, endorsed by, or in any way officially connected with the government of the Philippines** or any of its offices. All official names (DSWD, SSS, GSIS, PhilHealth, Pag-IBIG, DOLE, DOH, OWWA) and trademarks belong to their respective holders.
 
 The data presented is for general educational and informational purposes only. Rules, requirements, and deadlines should always be verified on official government portals.

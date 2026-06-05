@@ -46,19 +46,19 @@ const selectedProvinceCode = ref('')
 
 const initMap = () => {
   if (!mapContainer.value) return
-  
+
   // Default to Metro Manila center (Zoom 13 for smaller initial bounding box)
   map = L.map(mapContainer.value).setView([14.5995, 121.0366], 13)
-  
+
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
     subdomains: 'abcd',
     maxZoom: 20
   }).addTo(map)
-  
+
   // Render cached markers initially
   renderMarkers()
-  
+
   // Fetch initial data
   searchArea()
 }
@@ -89,9 +89,9 @@ const fetchRegions = async () => {
 const onRegionChange = async () => {
   selectedProvinceCode.value = ''
   provinces.value = []
-  
+
   if (!selectedRegionCode.value) return
-  
+
   const cacheKey = `psgc_provinces_${selectedRegionCode.value}`
   const cached = localStorage.getItem(cacheKey)
   if (cached) {
@@ -110,10 +110,10 @@ const onRegionChange = async () => {
       fetch(`https://psgc.gitlab.io/api/regions/${selectedRegionCode.value}/provinces`),
       fetch(`https://psgc.gitlab.io/api/regions/${selectedRegionCode.value}/cities`)
     ])
-    
+
     const provData = provRes.ok ? await provRes.json() : []
     const cityData = cityRes.ok ? await cityRes.json() : []
-    
+
     // Combine and sort
     const combined = [...provData, ...cityData].sort((a: any, b: any) => a.name.localeCompare(b.name))
     provinces.value = combined
@@ -127,15 +127,15 @@ const onRegionChange = async () => {
 
 const onProvinceChange = async () => {
   if (!selectedProvinceCode.value || !map) return
-  
+
   isLoading.value = true
   searchError.value = ''
-  
+
   const province = provinces.value.find(p => p.code === selectedProvinceCode.value)
   const region = regions.value.find(r => r.code === selectedRegionCode.value)
-  
+
   if (!province || !region) return
-  
+
   const query = `${province.name}, ${region.name}, Philippines`
   const cacheKey = `geocode_${query.replace(/\s+/g, '_')}`
   const cached = localStorage.getItem(cacheKey)
@@ -155,7 +155,7 @@ const onProvinceChange = async () => {
     // Geocode the selected province/city using OSM Nominatim
     const res = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=1`)
     const data = await res.json()
-    
+
     if (data && data.length > 0) {
       const { lat, lon } = data[0]
       const latNum = parseFloat(lat)
@@ -190,7 +190,7 @@ const getAgencyBgColor = (agency: string) => {
 const createCustomIcon = (agency: string) => {
   const bgColor = getAgencyBgColor(agency)
   const borderTopColor = bgColor.replace('bg-', 'border-t-')
-  
+
   const html = `
     <div class="relative flex flex-col items-center group">
       <!-- Shadow cast on the map base -->
@@ -216,21 +216,21 @@ const createCustomIcon = (agency: string) => {
 
 const renderMarkers = () => {
   if (!map) return
-  
+
   // Clear existing markers
   markers.value.forEach(m => m.remove())
   markers.value = []
-  
-  const filtered = selectedAgency.value === 'All Agencies' 
-    ? fetchedBranches.value 
+
+  const filtered = selectedAgency.value === 'All Agencies'
+    ? fetchedBranches.value
     : fetchedBranches.value.filter(b => b.agency === selectedAgency.value)
-    
+
   filtered.forEach(branch => {
     try {
       const marker = L.marker([branch.lat, branch.lng], {
         icon: createCustomIcon(branch.agency)
       }).addTo(map!)
-      
+
       marker.bindPopup(`
         <div class="font-sans min-w-[200px] p-0.5">
           <h3 class="font-bold text-slate-900 text-[15px] leading-tight">${branch.name}</h3>
@@ -249,33 +249,33 @@ const renderMarkers = () => {
 
 const searchArea = async (force = false) => {
   if (!map) return
-  
+
   // Enforce a minimum zoom level to prevent oversized queries
   if (map.getZoom() < 12) {
     searchError.value = 'Please zoom in closer to search for branches.'
     return
   }
-  
+
   // Self-healing desync check: if cached branches are empty but we have cached bboxes, reset them
   if (fetchedBranches.value.length === 0 && cachedBboxes.size > 0) {
     cachedBboxes.clear()
-    localStorage.removeItem('ayudadex_cached_bboxes')
+    localStorage.removeItem('ayuda_cached_bboxes')
   }
-  
+
   const bounds = map.getBounds()
   // Round coordinates to 2 decimal places (roughly 1km precision) to create a cache key
   const cacheKey = `${bounds.getSouth().toFixed(2)},${bounds.getWest().toFixed(2)},${bounds.getNorth().toFixed(2)},${bounds.getEast().toFixed(2)}`
-  
+
   if (!force && cachedBboxes.has(cacheKey)) {
     renderMarkers()
     return
   }
-  
+
   isLoading.value = true
   searchError.value = ''
-  
+
   const bbox = `${bounds.getSouth()},${bounds.getWest()},${bounds.getNorth()},${bounds.getEast()}`
-  
+
   const query = `
     [out:json][timeout:15];
     (
@@ -284,13 +284,13 @@ const searchArea = async (force = false) => {
     );
     out center;
   `
-  
+
   const OVERPASS_ENDPOINTS = [
     'https://overpass-api.de/api/interpreter',
     'https://lz4.overpass-api.de/api/interpreter',
     'https://z.overpass-api.de/api/interpreter'
   ]
-  
+
   try {
     let data: any = null
     let lastError: any = null
@@ -299,12 +299,12 @@ const searchArea = async (force = false) => {
       try {
         const controller = new AbortController()
         const id = setTimeout(() => controller.abort(), 6000) // 6-second timeout per mirror
-        
+
         const res = await fetch(`${endpoint}?data=${encodeURIComponent(query)}`, {
           signal: controller.signal
         })
         clearTimeout(id)
-        
+
         if (res.ok) {
           data = await res.json()
           break
@@ -317,25 +317,25 @@ const searchArea = async (force = false) => {
     }
 
     if (!data) throw lastError || new Error('Failed to fetch from OpenStreetMap')
-    
+
     const newBranches: Branch[] = data.elements.map((el: any) => {
       const lat = el.lat || el.center?.lat
       const lon = el.lon || el.center?.lon
       const name = el.tags?.name || 'Unknown Branch'
       let agency = 'Other'
-      
+
       const nameLower = name.toLowerCase()
       if (nameLower.includes('dswd')) agency = 'DSWD'
       else if (nameLower.includes('philhealth')) agency = 'PhilHealth'
       else if (nameLower.includes('pag-ibig') || nameLower.includes('pag ibig')) agency = 'Pag-IBIG'
       else if (nameLower.includes('sss') || nameLower.includes('social security system')) agency = 'SSS'
-      
+
       const address = [
         el.tags?.['addr:housenumber'],
         el.tags?.['addr:street'],
         el.tags?.['addr:city']
       ].filter(Boolean).join(', ') || 'No address provided'
-      
+
       return {
         id: el.id.toString(),
         agency,
@@ -345,19 +345,19 @@ const searchArea = async (force = false) => {
         address
       }
     })
-    
+
     const existingIds = new Set(fetchedBranches.value.map(b => b.id))
     const uniqueNewBranches = newBranches.filter(b => !existingIds.has(b.id))
-    
+
     if (uniqueNewBranches.length > 0) {
       fetchedBranches.value = [...fetchedBranches.value, ...uniqueNewBranches]
-      localStorage.setItem('ayudadex_branches', JSON.stringify(fetchedBranches.value))
+      localStorage.setItem('ayuda_branches', JSON.stringify(fetchedBranches.value))
     }
-    
+
     cachedBboxes.add(cacheKey)
-    localStorage.setItem('ayudadex_cached_bboxes', JSON.stringify(Array.from(cachedBboxes)))
+    localStorage.setItem('ayuda_cached_bboxes', JSON.stringify(Array.from(cachedBboxes)))
     renderMarkers()
-    
+
   } catch (error: any) {
     console.error(error)
     searchError.value = 'Failed to load branches. Please try again.'
@@ -372,7 +372,7 @@ watch(selectedAgency, () => {
 
 onMounted(() => {
   // Load cached branches from localStorage
-  const cachedBranches = localStorage.getItem('ayudadex_branches')
+  const cachedBranches = localStorage.getItem('ayuda_branches')
   if (cachedBranches) {
     try {
       fetchedBranches.value = JSON.parse(cachedBranches)
@@ -382,7 +382,7 @@ onMounted(() => {
   }
 
   // Load cached bboxes from localStorage
-  const cachedBboxesJson = localStorage.getItem('ayudadex_cached_bboxes')
+  const cachedBboxesJson = localStorage.getItem('ayuda_cached_bboxes')
   if (cachedBboxesJson) {
     try {
       const arr = JSON.parse(cachedBboxesJson)
@@ -411,7 +411,7 @@ onUnmounted(() => {
         <div class="p-2.5 bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 rounded-xl">
           <MapIcon class="w-6 h-6" />
         </div>
-        <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white">
+        <h2 class="text-3xl font-bold text-slate-900 dark:text-slate-200 tracking-tight flex items-center gap-2">
           {{ $t('locator.title') }}
         </h2>
       </div>
@@ -420,15 +420,18 @@ onUnmounted(() => {
       </p>
     </motion.div>
 
-    <motion.div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 p-4 md:p-6 shadow-sm mb-8"
+    <motion.div
+      class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 p-4 md:p-6 shadow-sm mb-8"
       :initial="{ opacity: 0, y: 20 }" :animate="{ opacity: 1, y: 0 }" :transition="{ duration: 0.5, delay: 0.1 }">
-      
+
       <!-- Top Filters & Manual Location Picker -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
         <!-- Agency Filter -->
         <div class="flex flex-col gap-1.5">
-          <label class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">{{ $t('locator.filterBy') }}</label>
-          <select v-model="selectedAgency" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold rounded-xl px-3 py-2.5 text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <label class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">{{
+            $t('locator.filterBy') }}</label>
+          <select v-model="selectedAgency"
+            class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold rounded-xl px-3 py-2.5 text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
             <option v-for="agency in agencies" :key="agency" :value="agency">
               {{ agency === 'All Agencies' ? $t('locator.allAgencies') : agency }}
             </option>
@@ -437,8 +440,10 @@ onUnmounted(() => {
 
         <!-- Region Dropdown -->
         <div class="flex flex-col gap-1.5">
-          <label class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">{{ $t('locator.selectRegion') }}</label>
-          <select v-model="selectedRegionCode" @change="onRegionChange" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold rounded-xl px-3 py-2.5 text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <label class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">{{
+            $t('locator.selectRegion') }}</label>
+          <select v-model="selectedRegionCode" @change="onRegionChange"
+            class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold rounded-xl px-3 py-2.5 text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
             <option value="" disabled>-- {{ $t('locator.selectRegion') }} --</option>
             <option v-for="region in regions" :key="region.code" :value="region.code">
               {{ region.name }}
@@ -448,8 +453,11 @@ onUnmounted(() => {
 
         <!-- Province Dropdown -->
         <div class="flex flex-col gap-1.5">
-          <label class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">{{ $t('locator.selectProvince') }}</label>
-          <select v-model="selectedProvinceCode" @change="onProvinceChange" :disabled="!selectedRegionCode || provinces.length === 0" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold rounded-xl px-3 py-2.5 text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed">
+          <label class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">{{
+            $t('locator.selectProvince') }}</label>
+          <select v-model="selectedProvinceCode" @change="onProvinceChange"
+            :disabled="!selectedRegionCode || provinces.length === 0"
+            class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold rounded-xl px-3 py-2.5 text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed">
             <option value="" disabled>-- {{ $t('locator.selectProvince') }} --</option>
             <option v-for="province in provinces" :key="province.code" :value="province.code">
               {{ province.name }}
@@ -459,14 +467,16 @@ onUnmounted(() => {
       </div>
 
       <div class="flex justify-between items-center mb-4 flex-wrap gap-3">
-        <button @click="searchArea(true)" :disabled="isLoading" class="flex items-center gap-2 bg-blue-50 dark:bg-blue-900/40 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-400 px-4 py-2 rounded-xl text-sm font-semibold transition-colors cursor-pointer disabled:opacity-50">
+        <button @click="searchArea(true)" :disabled="isLoading"
+          class="flex items-center gap-2 bg-blue-50 dark:bg-blue-900/40 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-400 px-4 py-2 rounded-xl text-sm font-semibold transition-colors cursor-pointer disabled:opacity-50">
           <Loader2 v-if="isLoading" class="w-4 h-4 animate-spin" />
           <Search v-else class="w-4 h-4" />
           Search Map Area
         </button>
 
         <!-- Agency Color Legend -->
-        <div class="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs font-semibold text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/40 px-4 py-2.5 rounded-xl border border-slate-100 dark:border-slate-800/80">
+        <div
+          class="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs font-semibold text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/40 px-4 py-2.5 rounded-xl border border-slate-100 dark:border-slate-800/80">
           <span class="text-[10px] uppercase tracking-wider text-slate-400 dark:text-slate-500 mr-1">Legend</span>
           <div class="flex items-center gap-1.5">
             <span class="w-2.5 h-2.5 rounded-full bg-red-500 shadow-sm"></span>
@@ -487,17 +497,22 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <div v-if="searchError" class="mb-4 p-3 bg-red-50 text-red-600 dark:bg-red-900/30 dark:text-red-400 text-sm font-medium rounded-lg">
+      <div v-if="searchError"
+        class="mb-4 p-3 bg-red-50 text-red-600 dark:bg-red-900/30 dark:text-red-400 text-sm font-medium rounded-lg">
         {{ searchError }}
       </div>
 
-      <div class="w-full h-[500px] rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 relative z-0">
+      <div
+        class="w-full h-[500px] rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 relative z-0">
         <div ref="mapContainer" class="w-full h-full"></div>
       </div>
-      
-      <div class="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-medium text-slate-500 dark:text-slate-400">
+
+      <div
+        class="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-medium text-slate-500 dark:text-slate-400">
         <p>Location data via Philippine Standard Geographic Code (PSGC). Map by OpenStreetMap.</p>
-        <p v-if="fetchedBranches.length > 0" class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded-md whitespace-nowrap">Found {{ fetchedBranches.length }} branches cached.</p>
+        <p v-if="fetchedBranches.length > 0"
+          class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded-md whitespace-nowrap">Found {{ fetchedBranches.length
+          }} branches cached.</p>
       </div>
     </motion.div>
   </main>
@@ -507,6 +522,7 @@ onUnmounted(() => {
 :deep(.leaflet-tile) {
   filter: grayscale(100%) brightness(105%) contrast(92%);
 }
+
 .dark :deep(.leaflet-tile) {
   filter: grayscale(100%) brightness(75%) contrast(100%) invert(100%);
 }

@@ -78,9 +78,7 @@ const navigate = (path: string) => {
             class="w-8 h-8 md:w-10 md:h-10 object-contain drop-shadow-md drop-shadow-sm dark:brightness-0 dark:invert opacity-90" />
           <div>
             <div class="flex items-center gap-1.5">
-              <h1 class="text-xl md:text-2xl font-bold tracking-tight text-blue-900 dark:text-white">AyudaDex</h1>
-              <span
-                class="text-[9px] md:text-[10px] font-medium tracking-wide uppercase px-1.5 py-0.5 bg-blue-100 dark:bg-blue-900/40 text-blue-900 dark:text-blue-300 rounded-md border border-blue-200/50 dark:border-blue-900/30">BetterGov.ph</span>
+              <h1 class="text-xl md:text-2xl font-bold tracking-tight text-blue-900 dark:text-white">Ayuda</h1>
             </div>
             <p class="text-[10px] md:text-xs text-slate-500 dark:text-slate-400 font-medium hidden sm:block">Philippine
               Government
@@ -93,24 +91,28 @@ const navigate = (path: string) => {
           <div ref="navDropdownRef" class="relative">
             <motion.button @click="isNavDropdownOpen = !isNavDropdownOpen"
               class="px-3.5 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 border border-slate-200 dark:border-slate-800 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700/80 text-slate-700 dark:text-slate-200 shadow-sm font-bold"
-              :whileHover="{ scale: 1.02 }" :whileTap="{ scale: 0.98 }"
-              aria-label="Navigation menu" :aria-expanded="isNavDropdownOpen">
+              :whileHover="{ scale: 1.02 }" :whileTap="{ scale: 0.98 }" aria-label="Navigation menu"
+              :aria-expanded="isNavDropdownOpen">
               <component :is="currentNavItem.icon" class="w-4 h-4 text-blue-600 dark:text-blue-400" />
               <span>{{ currentNavItem.label }}</span>
-              <ChevronDown class="w-4 h-4 text-slate-400 dark:text-slate-500 transition-transform duration-200" :class="{ 'rotate-180': isNavDropdownOpen }" />
+              <ChevronDown class="w-4 h-4 text-slate-400 dark:text-slate-500 transition-transform duration-200"
+                :class="{ 'rotate-180': isNavDropdownOpen }" />
             </motion.button>
 
             <!-- Dropdown Menu -->
             <transition enter-active-class="transition duration-200 ease-out"
-              enter-from-class="transform scale-95 -translate-y-2 opacity-0" enter-to-class="transform scale-100 translate-y-0 opacity-100"
-              leave-active-class="transition duration-75 ease-in" leave-from-class="transform scale-100 translate-y-0 opacity-100"
+              enter-from-class="transform scale-95 -translate-y-2 opacity-0"
+              enter-to-class="transform scale-100 translate-y-0 opacity-100"
+              leave-active-class="transition duration-75 ease-in"
+              leave-from-class="transform scale-100 translate-y-0 opacity-100"
               leave-to-class="transform scale-95 -translate-y-2 opacity-0">
               <div v-if="isNavDropdownOpen"
                 class="absolute left-0 mt-2 w-56 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 overflow-hidden z-50 py-1.5">
                 <button v-for="item in navItems" :key="item.path" @click="navigate(item.path)"
                   class="w-full px-4 py-2.5 text-left flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer text-slate-700 dark:text-slate-300"
                   :class="route.path === item.path ? 'bg-blue-50/50 dark:bg-blue-950/20 font-bold text-blue-900 dark:text-blue-200' : ''">
-                  <component :is="item.icon" class="w-4 h-4 text-slate-400" :class="route.path === item.path ? 'text-blue-600 dark:text-blue-400' : ''" />
+                  <component :is="item.icon" class="w-4 h-4 text-slate-400"
+                    :class="route.path === item.path ? 'text-blue-600 dark:text-blue-400' : ''" />
                   <span class="text-sm">{{ item.label }}</span>
                 </button>
               </div>
@@ -142,7 +144,7 @@ const navigate = (path: string) => {
             </a>
 
             <!-- GitHub Link -->
-            <a href="https://github.com/fujiDevv/ayudadex" target="_blank" rel="noopener noreferrer"
+            <a href="https://github.com/fujiDevv/ayuda" target="_blank" rel="noopener noreferrer"
               class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center cursor-pointer"
               title="GitHub Repository">
               <Github class="w-5 h-5" />
@@ -249,7 +251,8 @@ const navigate = (path: string) => {
                 <button @click="router.push('/suggest'); isMenuOpen = false"
                   class="w-full px-4 py-2.5 text-left flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer text-slate-700 dark:text-slate-300"
                   :class="route.path === '/suggest' ? 'bg-blue-50/50 dark:bg-blue-950/20 font-bold text-blue-900 dark:text-blue-200' : ''">
-                  <Lightbulb class="w-4 h-4 text-slate-500" :class="route.path === '/suggest' ? 'text-blue-600 dark:text-blue-400' : ''" />
+                  <Lightbulb class="w-4 h-4 text-slate-500"
+                    :class="route.path === '/suggest' ? 'text-blue-600 dark:text-blue-400' : ''" />
                   <span class="text-sm font-medium">{{ $t('detail.suggestUpdate') }}</span>
                 </button>
 
@@ -261,7 +264,8 @@ const navigate = (path: string) => {
                 </a>
 
                 <!-- GitHub Link -->
-                <a href="https://github.com/fujiDevv/ayudadex" target="_blank" rel="noopener noreferrer" @click="isMenuOpen = false"
+                <a href="https://github.com/fujiDevv/ayuda" target="_blank" rel="noopener noreferrer"
+                  @click="isMenuOpen = false"
                   class="w-full px-4 py-2.5 text-left flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer text-slate-700 dark:text-slate-300 font-medium">
                   <Github class="w-4 h-4 text-slate-500" />
                   <span class="text-sm font-medium">GitHub</span>

@@ -15,7 +15,7 @@ programs.forEach(p => {
 
 const uiStrings = {
   header: {
-    title: "AyudaDex",
+    title: "Ayuda",
     subtitle: "Philippine Government Social Benefits Navigator"
   },
   nav: {
@@ -74,7 +74,7 @@ const uiStrings = {
     navLabel: "Navigation",
     resourcesLabel: "Resources",
     disclaimerTitle: "Official Disclaimer Notice",
-    disclaimerDesc: "AyudaDex is an independent open-source navigator and is NOT affiliated with, sponsored by, or endorsed by the government of the Philippines or any of its offices (DSWD, SSS, GSIS, PhilHealth, Pag-IBIG, DOLE, DOH, OWWA). Trademarks are property of their respective owners. All guidelines are for informational reference only. Always verify rules, requirements, and deadlines on official government agency portals."
+    disclaimerDesc: "Ayuda is an independent open-source navigator and is NOT affiliated with, sponsored by, or endorsed by the government of the Philippines or any of its offices (DSWD, SSS, GSIS, PhilHealth, Pag-IBIG, DOLE, DOH, OWWA). Trademarks are property of their respective owners. All guidelines are for informational reference only. Always verify rules, requirements, and deadlines on official government agency portals."
   }
 };
 
@@ -136,7 +136,7 @@ tlLocale.footer.repo = "GitHub Repository";
 tlLocale.footer.navLabel = "Nabigasyon";
 tlLocale.footer.resourcesLabel = "Mga Mapagkukunan";
 tlLocale.footer.disclaimerTitle = "Opisyal na Paunawa ng Pagtanggi (Disclaimer)";
-tlLocale.footer.disclaimerDesc = "Ang AyudaDex ay isang independiyenteng gabay at HINDI konektado, itinataguyod, o pinondohan ng gobyerno ng Pilipinas o alinman sa mga opisina nito. Ang mga trademark ay pag-aari ng kani-kanilang may-ari. Palaging kumpirmahin ang mga patakaran sa opisyal na website ng mga ahensya ng gobyerno.";
+tlLocale.footer.disclaimerDesc = "Ang Ayuda ay isang independiyenteng gabay at HINDI konektado, itinataguyod, o pinondohan ng gobyerno ng Pilipinas o alinman sa mga opisina nito. Ang mga trademark ay pag-aari ng kani-kanilang may-ari. Palaging kumpirmahin ang mga patakaran sa opisyal na website ng mga ahensya ng gobyerno.";
 
 // Translate 3 programs
 tlLocale.programs['dswd-aics'].name = "AICS (Tulong para sa mga Indibidwal na nasa Krisis)";

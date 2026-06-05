@@ -1,4 +1,4 @@
-# Contributing to AyudaDex
+# Contributing to Ayuda
 
 We welcome contributions from developers, researchers, designers, and policy advocates! Here is how you can help:
 

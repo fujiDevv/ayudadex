@@ -1,6 +1,6 @@
 {
   "header": {
-    "title": "AyudaDex",
+    "title": "Ayuda",
     "subtitle": "Philippine Government Social Benefits Navigator"
   },
   "nav": {
@@ -94,7 +94,7 @@
   },
   "suggest": {
     "title": "Suggest an Update",
-    "subtitle": "Help keep AyudaDex accurate and up-to-date. Choose how you would like to submit corrections, suggestions, or bug reports to our team:",
+    "subtitle": "Help keep Ayuda accurate and up-to-date. Choose how you would like to submit corrections, suggestions, or bug reports to our team:",
     "emailUs": "Email Us",
     "emailUsDesc": "Send us your suggestions or feedback directly via email.",
     "discord": "Discord Community",
@@ -127,7 +127,7 @@
     "navLabel": "Navigation",
     "resourcesLabel": "Resources",
     "disclaimerTitle": "Official Disclaimer Notice",
-    "disclaimerDesc": "AyudaDex is an independent open-source navigator and is NOT affiliated with, sponsored by, or endorsed by the government of the Philippines or any of its offices (DSWD, SSS, GSIS, PhilHealth, Pag-IBIG, DOLE, DOH, OWWA). Trademarks are property of their respective owners. All guidelines are for informational reference only. Always verify rules, requirements, and deadlines on official government agency portals."
+    "disclaimerDesc": "Ayuda is an independent open-source navigator and is NOT affiliated with, sponsored by, or endorsed by the government of the Philippines or any of its offices (DSWD, SSS, GSIS, PhilHealth, Pag-IBIG, DOLE, DOH, OWWA). Trademarks are property of their respective owners. All guidelines are for informational reference only. Always verify rules, requirements, and deadlines on official government agency portals."
   },
   "programs": {
     "dswd-aics": {
