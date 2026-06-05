@@ -165,6 +165,7 @@
         "Must be at least 60 years old (optional) or 65 years old (technical retirement)",
         "Must be separated from employment or ceased self-employment (for optional retirement at 60)",
         "At least 120 monthly contributions prior to the semester of retirement (to qualify for a monthly pension)",
+        "No outstanding SSS salary loan in default",
         "Retirement Claim Application (SSS Form DDR-1)",
         "UMID Card or two valid government IDs"
       ]
@@ -192,6 +193,7 @@
       "description": "Provides mandated financial and social support to solo parents, including a ₱1,000 monthly subsidy for minimum wage earners, 10% discounts on basic child needs, and paid parental leave.",
       "steps": [
         "Visit the Solo Parent Office or City/Municipal Social Welfare and Development Office (C/MSWDO) in your LGU.",
+        "Secure a Barangay Solo Parent Certification from your local barangay desk.",
         "Attend an orientation regarding your rights and benefits under RA 11861.",
         "Submit your documentary requirements and undergo an assessment interview with a social worker.",
         "Once validated, claim your Solo Parent Identification Card (SPIC) and Certificate of Eligibility."
@@ -546,6 +548,15 @@
     "jobLossTitle": "Job Loss / Transition",
     "jobLossDesc": "Apply for SSS unemployment benefits, register for free TESDA skill training, and find immediate local emergency work.",
     "jobLossTips": "File for your DOLE separation certificate within 60 days of involuntary termination. Check if your SSS account has at least 36 monthly contributions registered to secure unemployment payouts.",
+    "retirementTitle": "Retirement & Senior Care",
+    "retirementDesc": "Transition into retirement by securing SSS/GSIS pensions, claiming indigent senior support, and managing elderly benefits.",
+    "retirementTips": "Submit your retirement application within the month of your birthday or retirement date to avoid delays. Ensure your UMID card is active and linked to your bank account.",
+    "studentTitle": "Entering College & Training",
+    "studentDesc": "Secure tertiary education subsidies, apply for active scholarship funds, and enroll in vocational training courses.",
+    "studentTips": "Check the UniFAST portal regularly for school eligibility. Keep your GPA/grades above the school threshold to maintain status for subsidies.",
+    "familyTitle": "Solo Parents & Family Care",
+    "familyDesc": "Access expanded solo parent discounts, monthly LGU subsidies, and primary family healthcare benefits.",
+    "familyTips": "Renew your Solo Parent ID yearly at your LGU social welfare office to keep receiving discounts and subsidies.",
     "selectEvent": "Select another Life Event",
     "progress": "Overall Pathway Progress",
     "coordinationTips": "Expert Guidance & Checklist Instructions",

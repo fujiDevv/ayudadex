@@ -188,6 +188,7 @@ const tlOverrides = {
       "Dapat ay hindi bababa sa 60 taong gulang (opsyonal) o 65 taong gulang (teknikal na pagreretiro)",
       "Dapat ay hiwalay na sa trabaho o huminto na sa self-employment (para sa opsyonal na pagreretiro sa edad na 60)",
       "Hindi bababa sa 120 buwanang kontribusyon bago ang semestre ng pagreretiro (upang maging kwalipikado para sa buwanang pension)",
+      "Walang hindi nababayarang SSS salary loan na nasa default",
       "Retirement Claim Application (SSS Form DDR-1)",
       "UMID Card o dalawang valid government ID"
     ]
@@ -197,7 +198,7 @@ const tlOverrides = {
     description: "Isang programa ng tulong-pinansyal na nagbibigay ng suporta sa mga kwalipikadong estudyanteng Pilipino na naka-enroll sa mga pampubliko at pribadong kolehiyo upang makatalong sa mga gastusin sa edukasyon.",
     steps: [
       "Mag-enroll sa isang kwalipikadong higher education institution (State Universities, Local Universities, o mga pribadong HEI na kinikilala ng CHED).",
-      "Isumite ang iyong aplikasyon at mga kinakailangan sa itinalagang TES Focal Person ng inyong paaralan.",
+      "Isumite ang iyong aplikasyon at mga kinakailangan sa itinalagang TES Focal Person ng inyong paraalan.",
       "Ie-encode at isusumite ng paaralan ang iyong profile sa UniFAST portal.",
       "Maghintay para sa validation ng CHED/UniFAST at sa opisyal na pagpapalabas ng listahan ng mga iskolar (master list of grantees).",
       "Kunin ang subsidy disbursement sa pamamagitan ng inyong paaralan o partner na institusyong pinansyal."
@@ -215,6 +216,7 @@ const tlOverrides = {
     description: "Nagbibigay ng ipinag-uutos na pinansyal at panlipunang suporta sa mga solo parent, kabilang ang ₱1,000 buwanang subsidy para sa mga minimum wage earner, 10% discount sa mga pangunahing pangangailangan ng bata, at bayad na parental leave.",
     steps: [
       "Bisitahin ang Solo Parent Office o City/Municipal Social Welfare and Development Office (C/MSWDO) sa inyong lokal na pamahalaan (LGU).",
+      "Kumuha ng Barangay Solo Parent Certification mula sa inyong barangay desk.",
       "Dumalo sa oryentasyon tungkol sa iyong mga karapatan at benepisyo sa ilalim ng RA 11861.",
       "Isumite ang mga dokumentong kailangan at sumailalim sa isang interview kasama ang isang social worker.",
       "Kapag napatunayan na, kunin ang iyong Solo Parent Identification Card (SPIC) at Certificate of Eligibility."

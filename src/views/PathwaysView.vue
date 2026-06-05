@@ -4,15 +4,16 @@ import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { motion } from 'motion-v'
 import {
-  Baby, Heart, Briefcase, ArrowLeft, ChevronRight, CheckCircle, Info, ExternalLink
+  Baby, Heart, Briefcase, ArrowLeft, ChevronRight, CheckCircle, Info, ExternalLink,
+  HeartHandshake, GraduationCap, Users
 } from 'lucide-vue-next'
 import programsData from '../data/programs.json'
 
 const router = useRouter()
 const { t } = useI18n()
 
-// Selected pathway: null (selection screen), 'baby', 'death', or 'job_loss'
-const selectedPathway = ref<'baby' | 'death' | 'job_loss' | null>(null)
+// Selected pathway: null (selection screen), 'baby', 'death', 'job_loss', 'retirement', 'student', or 'family'
+const selectedPathway = ref<'baby' | 'death' | 'job_loss' | 'retirement' | 'student' | 'family' | null>(null)
 
 interface PathwayItem {
   programId?: string // if it points to a first-class program
@@ -25,7 +26,7 @@ interface PathwayItem {
 }
 
 // Pathway Data definition
-const pathwaysData = computed<Record<'baby' | 'death' | 'job_loss', {
+const pathwaysData = computed<Record<'baby' | 'death' | 'job_loss' | 'retirement' | 'student' | 'family', {
   titleKey: string
   descKey: string
   tipsKey: string
@@ -155,6 +156,123 @@ const pathwaysData = computed<Record<'baby' | 'death' | 'job_loss', {
         steps: (programsData.find(p => p.id === 'tesda-training')?.steps || [])
       }
     ]
+  },
+  retirement: {
+    titleKey: 'pathways.retirementTitle',
+    descKey: 'pathways.retirementDesc',
+    tipsKey: 'pathways.retirementTips',
+    icon: HeartHandshake,
+    colorClass: 'from-amber-600 to-orange-500 text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/20 border-amber-100 dark:border-amber-900/40',
+    items: [
+      {
+        programId: 'sss-retirement',
+        name: t('programs.sss-retirement.name'),
+        agency: 'SSS',
+        purpose: 'Provides a lifetime monthly pension or lump sum benefit to retired SSS members.',
+        requirements: (programsData.find(p => p.id === 'sss-retirement')?.requirements || []),
+        steps: (programsData.find(p => p.id === 'sss-retirement')?.steps || [])
+      },
+      {
+        programId: 'gsis-retirement',
+        name: t('programs.gsis-retirement.name'),
+        agency: 'GSIS',
+        purpose: 'Ensures retired government employees receive monthly annuity pensions and cash benefits.',
+        requirements: (programsData.find(p => p.id === 'gsis-retirement')?.requirements || []),
+        steps: (programsData.find(p => p.id === 'gsis-retirement')?.steps || [])
+      },
+      {
+        programId: 'dswd-spisc',
+        name: t('programs.dswd-spisc.name'),
+        agency: 'DSWD',
+        purpose: 'Provides indigent seniors with a ₱1,000 monthly allowance for basic livelihood.',
+        requirements: (programsData.find(p => p.id === 'dswd-spisc')?.requirements || []),
+        steps: (programsData.find(p => p.id === 'dswd-spisc')?.steps || [])
+      },
+      {
+        isCustom: true,
+        name: 'LGU Senior Citizen ID Application',
+        agency: 'OSCA / LGU',
+        purpose: 'Secures a Senior Citizen ID to avail of 20% discounts, VAT exemptions, and free medical checkups.',
+        requirements: [
+          'Completed OSCA Application Form',
+          'Birth Certificate (PSA copy) or valid passport proving age (60+)',
+          'Barangay Certification of Residency (minimum 6 months)',
+          '1x1 recent ID photo (white background)'
+        ],
+        steps: [
+          'Visit the Office for Senior Citizens Affairs (OSCA) or social welfare desk in your LGU.',
+          'Submit the application form and age verification documents.',
+          'Undergo immediate processing and validation of your residency.',
+          'Receive your physical Senior Citizen ID card and booklet for purchasing medicine.'
+        ]
+      }
+    ]
+  },
+  student: {
+    titleKey: 'pathways.studentTitle',
+    descKey: 'pathways.studentDesc',
+    tipsKey: 'pathways.studentTips',
+    icon: GraduationCap,
+    colorClass: 'from-indigo-600 to-blue-500 text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/20 border-blue-100 dark:border-blue-900/40',
+    items: [
+      {
+        programId: 'ched-tes',
+        name: t('programs.ched-tes.name'),
+        agency: 'CHED / UniFAST',
+        purpose: 'Provides tertiary education grants to cover tuition, allowances, and other learning expenses.',
+        requirements: (programsData.find(p => p.id === 'ched-tes')?.requirements || []),
+        steps: (programsData.find(p => p.id === 'ched-tes')?.steps || [])
+      },
+      {
+        programId: 'owwa-edsp',
+        name: t('programs.owwa-edsp.name'),
+        agency: 'OWWA',
+        purpose: 'Grants educational scholarships of up to ₱60,000 per school year for dependents of active OFWs.',
+        requirements: (programsData.find(p => p.id === 'owwa-edsp')?.requirements || []),
+        steps: (programsData.find(p => p.id === 'owwa-edsp')?.steps || [])
+      },
+      {
+        programId: 'tesda-training',
+        name: t('programs.tesda-training.name'),
+        agency: 'TESDA',
+        purpose: 'Offers free vocational skills training, entrepreneurship tools, and national certifications.',
+        requirements: (programsData.find(p => p.id === 'tesda-training')?.requirements || []),
+        steps: (programsData.find(p => p.id === 'tesda-training')?.steps || [])
+      }
+    ]
+  },
+  family: {
+    titleKey: 'pathways.familyTitle',
+    descKey: 'pathways.familyDesc',
+    tipsKey: 'pathways.familyTips',
+    icon: Users,
+    colorClass: 'from-purple-600 to-pink-500 text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/20 border-purple-100 dark:border-purple-900/40',
+    items: [
+      {
+        programId: 'lgu-soloparent',
+        name: t('programs.lgu-soloparent.name'),
+        agency: 'LGU / DSWD',
+        purpose: 'Grants expanded single-parent subsidies, tax breaks, and child care discounts.',
+        requirements: (programsData.find(p => p.id === 'lgu-soloparent')?.requirements || []),
+        steps: (programsData.find(p => p.id === 'lgu-soloparent')?.steps || [])
+      },
+      {
+        programId: 'dswd-4ps',
+        name: t('programs.dswd-4ps.name'),
+        agency: 'DSWD',
+        purpose: 'Provides conditional health and educational cash grants to indigent Filipino families.',
+        requirements: (programsData.find(p => p.id === 'dswd-4ps')?.requirements || []),
+        steps: (programsData.find(p => p.id === 'dswd-4ps')?.steps || [])
+      },
+      {
+        programId: 'dswd-aics',
+        name: t('programs.dswd-aics.name'),
+        agency: 'DSWD',
+        purpose: 'Offers direct financial, food, and medical aid to families dealing with immediate crises.',
+        requirements: (programsData.find(p => p.id === 'dswd-aics')?.requirements || []),
+        steps: (programsData.find(p => p.id === 'dswd-aics')?.steps || [])
+      }
+    ]
   }
 }))
 
@@ -235,77 +353,36 @@ onMounted(() => {
 
     <!-- Selection Cards (when selectedPathway is null) -->
     <div v-if="!selectedPathway" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-      <!-- Having a Baby (Panganganak) Card -->
-      <motion.div @click="selectedPathway = 'baby'"
+      <motion.div 
+        v-for="(pathway, key) in pathwaysData" 
+        :key="key"
+        @click="selectedPathway = key"
         class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer flex flex-col justify-between group overflow-hidden relative"
-        :whileHover="{ y: -4, scale: 1.01 }" :whileTap="{ scale: 0.99 }">
+        :whileHover="{ y: -4, scale: 1.01 }" 
+        :whileTap="{ scale: 0.99 }"
+      >
         <div class="space-y-4">
-          <div class="inline-flex p-3 rounded-2xl bg-rose-50 dark:bg-rose-950/20 text-rose-600 dark:text-rose-400">
-            <Baby class="w-6 h-6" />
+          <div :class="`inline-flex p-3 rounded-2xl ${pathway.colorClass.split(' ').slice(2).join(' ')}`">
+            <component :is="pathway.icon" class="w-6 h-6" />
           </div>
           <h3
-            class="text-xl font-bold text-slate-900 dark:text-slate-100 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
-            {{ t('pathways.babyTitle') }}
+            class="text-xl font-bold text-slate-900 dark:text-slate-100 transition-colors"
+            :class="`group-hover:${pathway.colorClass.split(' ')[2]} dark:group-hover:${pathway.colorClass.split(' ')[3].split(':')[1]}`"
+          >
+            {{ t(pathway.titleKey) }}
           </h3>
           <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed font-normal">
-            {{ t('pathways.babyDesc') }}
+            {{ t(pathway.descKey) }}
           </p>
         </div>
         <div
-          class="mt-6 flex items-center justify-between text-xs font-bold text-slate-400 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
-          <span>3 programs / checklists</span>
+          class="mt-6 flex items-center justify-between text-xs font-bold text-slate-400 transition-colors"
+          :class="`group-hover:${pathway.colorClass.split(' ')[2]} dark:group-hover:${pathway.colorClass.split(' ')[3].split(':')[1]}`"
+        >
+          <span>{{ pathway.items.length }} programs / checklists</span>
           <ChevronRight class="w-4 h-4 transition-transform group-hover:translate-x-1" />
         </div>
       </motion.div>
-
-      <!-- Loss of a Family Member (Kamatayan) Card -->
-      <motion.div @click="selectedPathway = 'death'"
-        class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer flex flex-col justify-between group overflow-hidden relative"
-        :whileHover="{ y: -4, scale: 1.01 }" :whileTap="{ scale: 0.99 }">
-        <div class="space-y-4">
-          <div
-            class="inline-flex p-3 rounded-2xl bg-indigo-50 dark:bg-indigo-950/20 text-indigo-600 dark:text-indigo-400">
-            <Heart class="w-6 h-6" />
-          </div>
-          <h3
-            class="text-xl font-bold text-slate-900 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-            {{ t('pathways.deathTitle') }}
-          </h3>
-          <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed font-normal">
-            {{ t('pathways.deathDesc') }}
-          </p>
-        </div>
-        <div
-          class="mt-6 flex items-center justify-between text-xs font-bold text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-          <span>4 programs / checklists</span>
-          <ChevronRight class="w-4 h-4 transition-transform group-hover:translate-x-1" />
-        </div>
-      </motion.div>
-
-      <!-- Job Loss (Pagkawala ng Trabaho) Card -->
-      <motion.div @click="selectedPathway = 'job_loss'"
-        class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer flex flex-col justify-between group overflow-hidden relative"
-        :whileHover="{ y: -4, scale: 1.01 }" :whileTap="{ scale: 0.99 }">
-        <div class="space-y-4">
-          <div class="inline-flex p-3 rounded-2xl bg-teal-50 dark:bg-teal-950/20 text-teal-600 dark:text-teal-400">
-            <Briefcase class="w-6 h-6" />
-          </div>
-          <h3
-            class="text-xl font-bold text-slate-900 dark:text-slate-100 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
-            {{ t('pathways.jobLossTitle') }}
-          </h3>
-          <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed font-normal">
-            {{ t('pathways.jobLossDesc') }}
-          </p>
-        </div>
-        <div
-          class="mt-6 flex items-center justify-between text-xs font-bold text-slate-400 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
-          <span>3 programs / checklists</span>
-          <ChevronRight class="w-4 h-4 transition-transform group-hover:translate-x-1" />
-        </div>
-      </motion.div>
-
     </div>
 
     <!-- Active Pathway detail wizard -->

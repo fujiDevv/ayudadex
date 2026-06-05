@@ -55,6 +55,7 @@
             "Must be at least 60 years old (optional) or 65 years old (technical retirement)",
             "Must be separated from employment or ceased self-employment (for optional retirement at 60)",
             "At least 120 monthly contributions prior to the semester of retirement (to qualify for a monthly pension)",
+            "No outstanding SSS salary loan in default",
             "Retirement Claim Application (SSS Form DDR-1)",
             "UMID Card or two valid government IDs"
         ],
@@ -75,7 +76,7 @@
             "Low Income",
             "College"
         ],
-        "processing_time": "Per Academic Year Cycle",
+        "processing_time": "Processed per semester / released per academic year",
         "official_url": "https://unifast.gov.ph",
         "steps": [
             "Enroll in an eligible higher education institution (State Universities, Local Universities, or CHED-recognized private HEIs).",
@@ -112,6 +113,7 @@
         "official_url": "https://www.dswd.gov.ph",
         "steps": [
             "Visit the Solo Parent Office or City/Municipal Social Welfare and Development Office (C/MSWDO) in your LGU.",
+            "Secure a Barangay Solo Parent Certification from your local barangay desk.",
             "Attend an orientation regarding your rights and benefits under RA 11861.",
             "Submit your documentary requirements and undergo an assessment interview with a social worker.",
             "Once validated, claim your Solo Parent Identification Card (SPIC) and Certificate of Eligibility."
