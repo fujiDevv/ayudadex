@@ -10,6 +10,7 @@
     "saved": "Naka-save",
     "hotlines": "Hotlines",
     "locator": "Locator ng Sangay",
+    "pathways": "Yugto ng Buhay",
     "largeText": "Baguhin ang Laki ng Teksto",
     "darkMode": "Baguhin ang Dark Mode"
   },
@@ -168,18 +169,18 @@
         "Wala pang 60 taong gulang sa panahon ng pagkawala ng trabaho"
       ]
     },
-    "philhealth-konsulta": {
-      "name": "Konsulta Package",
-      "description": "Isang komprehensibong pakete ng benepisyo sa pangunahing pangangalaga na nagbibigay ng libreng konsultasyon, health risk screening, laboratory tests, at mahahalagang gamot.",
+    "philhealth-yakap": {
+      "name": "YAKAP (Yaman ng Kalusugan Program)",
+      "description": "Isang pinahusay na pakete ng benepisyo sa pangunahing pangangalaga (na pumapalit sa dating Konsulta Package) na nagbibigay ng holistic na pangangalagang pangkalusugan kabilang ang libreng konsultasyong medikal, pinalawak na laboratoryo at cancer screening tests, at mga pangunahing gamot.",
       "steps": [
         "Tiyaking aktibo ang iyong membership sa PhilHealth at magparehistro online o sa lokal na opisina.",
-        "Pumili at magparehistro sa isang itinalagang PhilHealth Konsulta accredited provider (klinika/ospital).",
+        "Pumili at magparehistro sa isang itinalagang PhilHealth YAKAP accredited provider (klinika/ospital).",
         "Mag-iskedyul ng appointment para sa libreng konsultasyon at diagnostic testing.",
         "Kunin ang mga niresetang gamot sa botika ng provider ng libre."
       ],
       "requirements": [
         "Kopya ng Member Data Record (MDR)",
-        "Registration form para sa PhilHealth Konsulta Provider",
+        "Registration form para sa PhilHealth YAKAP Provider",
         "Kahit 1 valid government ID"
       ]
     },
@@ -340,6 +341,77 @@
         "Mga resulta ng laboratoryo/diagnostics na sumusuporta sa diagnosis",
         "Nakarehistrong bank account (DAEM)"
       ]
+    },
+    "philhealth-newborn": {
+      "name": "Pakete ng Pangangalaga sa Bagong Silang (Newborn Care Package)",
+      "description": "Nagbibigay ng mga pangunahing serbisyong pangkalusugan para sa mga bagong silang na sanggol kabilang ang physical examination, eye prophylaxis, pagbibigay ng vitamin K, bakunang BCG, unang dosis ng bakuna sa hepatitis B, at newborn screening test.",
+      "steps": [
+        "Tiyaking aktibo ang membership sa PhilHealth bago manganak.",
+        "Isumite ang kopya ng Member Data Record (MDR) at valid ID sa billing section ng ospital.",
+        "Punan ang PhilHealth Claim Form 1 (CF-1) at Claim Form 2 (CF-2) sa ospital.",
+        "Ang Newborn Care Package ay awtomatikong ibabawas mula sa bill sa ospital para sa parehong ina at anak."
+      ],
+      "requirements": [
+        "Aktibong membership sa PhilHealth o pagpaparehistro ng dependent",
+        "Kumpletong PhilHealth Claim Form 1 (CF1)",
+        "Kumpletong PhilHealth Claim Form 2 (CF2)",
+        "Kopya ng Member Data Record (MDR)",
+        "Valid government ID ng miyembrong magulang"
+      ]
+    },
+    "sss-funeral": {
+      "name": "Benepisyo sa Pagpapalibing (Funeral Benefit)",
+      "description": "Isang benepisyong cash mula sa fixed na ₱12,000 (para sa 1-35 kontribusyon) hanggang ₱20,000 - ₱60,000 (para sa 36 o higit pang kontribusyon) na ibinibigay sa sinumang nagbayad ng gastusin sa pagpapalibing ng yumaong miyembro ng SSS.",
+      "steps": [
+        "Kumuha ng Certified True Copy ng Death Certificate mula sa lokal na civil registry o PSA.",
+        "Kunin ang opisyal na resibo mula sa funeral parlor na nagpapakita ng pangalan ng aplikante bilang nagbayad.",
+        "Mag-log in sa My.SSS Portal (E-Services tab) at piliin ang 'Apply for Funeral Benefit Claim'.",
+        "Punan ang online application at i-upload ang Death Certificate, Resibo ng Punerarya, at ID ng aplikante.",
+        "Maghintay ng pag-apruba at direktang pag-credit sa nakarehistrong bank account ng aplikante."
+      ],
+      "requirements": [
+        "Death Certificate ng yumaong miyembro (PSA copy o Certified True Copy)",
+        "Opisyal na Resibo ng gastusin sa libing na nakapangalan sa aplikante",
+        "Valid ID ng aplikante (Orihinal at Photocopy)",
+        "Pagpaparehistro ng Disbursement Account (DAEM) ng aplikante",
+        "Katibayan ng mga kontribusyon ng yumaong miyembro (kahit 1 kontribusyon)"
+      ]
+    },
+    "gsis-funeral": {
+      "name": "Benepisyo sa Pagpapalibing (Funeral Benefit)",
+      "description": "Isang benepisyong cash na nagkakahalaga ng ₱30,000 na ibinibigay sa nabubuhay na asawa, mga anak, o kung sino man ang nagbayad ng gastusin sa pagpapalibing ng yumaong miyembro o retirado ng GSIS.",
+      "steps": [
+        "I-download at punan ang GSIS Application Form para sa Funeral Benefit.",
+        "Kumuha ng certified photocopy ng Death Certificate.",
+        "Isumite ang aplikasyon sa pamamagitan ng GSIS Wireless Kiosk (GW@PS), GSIS Touch app, o i-email sa regional branch.",
+        "Isumite ang opisyal na resibo ng gastusin sa libing kung ang aplikante ay hindi ang nabubuhay na asawa.",
+        "Maghintay ng pag-credit sa eCard o bank account ng aplikante."
+      ],
+      "requirements": [
+        "Kumpletong GSIS Funeral Benefit Application Form",
+        "Death Certificate ng yumaong miyembro ng GSIS (PSA o Certified Local Copy)",
+        "Marriage Contract (PSA copy) kung ang nabubuhay na asawa ang aplikante",
+        "Opisyal na Resibo ng gastusin sa libing kung ang aplikante ay hindi asawa",
+        "Valid ID ng aplikante"
+      ]
+    },
+    "tesda-training": {
+      "name": "Libreng Pagsasanay sa Kasanayan at Scholarship (Free Skills Training & Scholarship)",
+      "description": "Nagbibigay ng libreng pagsasanay sa bokasyonal, assessment, at mga toolkit para sa pangkabuhayan sa ilalim ng mga programa tulad ng TWSP, STEP, at PESFA upang matulungan ang mga mamamayan na makahanap ng bagong trabaho.",
+      "steps": [
+        "Maghanap ng mga magagamit na kurso sa pagsasanay sa mga lokal na paaralang accredited ng TESDA o mga opisina nito.",
+        "Isumite ang mga application form kasama ang mga kinakailangang dokumento sa akademiko at demograpiko.",
+        "Dumalo sa screening o selection interview sa training center.",
+        "Kumpletuhin ang itinalagang oras ng pagsasanay sa silid-aralan at praktikal na aplikasyon.",
+        "Kumuha ng National Assessment upang matanggap ang National Certificate (NC I o NC II) pati ang toolkit o allowance."
+      ],
+      "requirements": [
+        "Kumpletong TESDA Enrollment Form",
+        "Barangay Clearance o Certificate of Indigency",
+        "Report card ng kahit High School Graduate o ALS Certificate",
+        "Form 137 o Transcript ng mga Rekord (Transcript of Records)",
+        "4 na kopya ng passport size na larawan (white background, may kwelyo, at may name tag)"
+      ]
     }
   },
   "hero": {
@@ -391,5 +463,22 @@
     "complete": "Tapos Na",
     "incomplete": "Hindi Pa Gawa",
     "progress": "Progreso ng Paghahanda"
+  },
+  "pathways": {
+    "title": "Mga Pathway ng Buhay (Life Event Pathways)",
+    "desc": "Pumili ng mahalagang yugto ng buhay upang tingnan, pamahalaan, at markahan ang mga kinakailangang dokumento at hakbang sa aplikasyon sa gobyerno.",
+    "babyTitle": "Pagkakaroon ng Sanggol",
+    "babyDesc": "Mag-claim ng maternity benefit sa SSS, medical package para sa bagong silang, at mairehistro ang birth certificate ng bata.",
+    "babyTips": "Ipaalam sa iyong employer o SSS ang pagbubuntis agad kapag ito ay nakumpirma. Siguraduhing updated ang iyong mga kontribusyon sa PhilHealth bago manganak upang maging kwalipikado para sa mga newborn care package.",
+    "deathTitle": "Pagpanaw ng Kasapi ng Pamilya",
+    "deathDesc": "Kumuha ng death certificate, mag-apply ng funeral benefit sa SSS/GSIS, at pamahalaan ang mga paunang claim sa oras ng pagdadalamhati.",
+    "deathTips": "Siguraduhing ang opisyal na resibo ng punerarya ay nakapangalan sa iyo bilang nagbayad, dahil ang benepisyo ay ibinabayad sa taong gumastos sa pagpapalibing. Itabi ang kopya ng lokal at PSA-certified na death certificate.",
+    "jobLossTitle": "Pagkawala ng Trabaho / Transition",
+    "jobLossDesc": "Mag-apply para sa SSS unemployment benefit, magparehistro para sa libreng pagsasanay sa TESDA, at maghanap ng emergency na trabaho sa inyong lokalidad.",
+    "jobLossTips": "I-file ang iyong DOLE separation certificate sa loob ng 60 araw mula sa pagkakatanggal sa trabaho. Siguraduhing mayroon kang hindi bababa sa 36 na buwanang kontribusyon sa SSS upang makakuha ng unemployment payout.",
+    "selectEvent": "Pumili ng ibang Yugto ng Buhay",
+    "progress": "Progreso ng Kabuuang Pathway",
+    "coordinationTips": "Mga Gabay at Tagubilin mula sa Eksperto",
+    "bundleIncludes": "Ang pathway na ito ay pinagsasama ang mga sumusunod na programa ng gobyerno:"
   }
 }

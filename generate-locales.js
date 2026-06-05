@@ -1,8 +1,15 @@
 import fs from 'fs';
 import path from 'path';
 
-const programs = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'src/data/programs.json'), 'utf8'));
+// Resolve paths
+const enPath = path.join(process.cwd(), 'src/locales/en.json');
+const tlPath = path.join(process.cwd(), 'src/locales/tl.json');
+const programsPath = path.join(process.cwd(), 'src/data/programs.json');
 
+// Read programs from programs.json
+const programs = JSON.parse(fs.readFileSync(programsPath, 'utf8'));
+
+// Rebuild enPrograms from programs.json
 const enPrograms = {};
 programs.forEach(p => {
   enPrograms[p.id] = {
@@ -13,179 +20,161 @@ programs.forEach(p => {
   };
 });
 
-const uiStrings = {
-  header: {
-    title: "Ayuda",
-    subtitle: "Philippine Government Social Benefits Navigator"
+// Read existing en.json and tl.json to keep non-program UI keys intact
+let enLocale = {};
+if (fs.existsSync(enPath)) {
+  enLocale = JSON.parse(fs.readFileSync(enPath, 'utf8'));
+} else {
+  // If en.json doesn't exist, try backup or initialize
+  const backupPath = path.join(process.cwd(), 'en_backup.json');
+  if (fs.existsSync(backupPath)) {
+    enLocale = JSON.parse(fs.readFileSync(backupPath, 'utf8'));
+  }
+}
+
+let tlLocale = {};
+if (fs.existsSync(tlPath)) {
+  tlLocale = JSON.parse(fs.readFileSync(tlPath, 'utf8'));
+} else {
+  const backupPath = path.join(process.cwd(), 'tl_backup.json');
+  if (fs.existsSync(backupPath)) {
+    tlLocale = JSON.parse(fs.readFileSync(backupPath, 'utf8'));
+  }
+}
+
+// Update the English programs
+enLocale.programs = enPrograms;
+
+// Build tlPrograms by copying the enPrograms structures as a base
+const tlPrograms = JSON.parse(JSON.stringify(enPrograms));
+
+// Preserve existing Tagalog program translations from tlLocale if they exist
+const existingTlPrograms = tlLocale.programs || {};
+Object.keys(existingTlPrograms).forEach(pid => {
+  if (tlPrograms[pid]) {
+    const newProg = tlPrograms[pid];
+    const oldTlProg = existingTlPrograms[pid];
+    
+    // Copy name and description if they were translated
+    if (oldTlProg.name) newProg.name = oldTlProg.name;
+    if (oldTlProg.description) newProg.description = oldTlProg.description;
+    
+    // Only copy steps and requirements if the number of entries matches to avoid structural drift
+    if (oldTlProg.steps && oldTlProg.steps.length === newProg.steps.length) {
+      newProg.steps = oldTlProg.steps;
+    }
+    if (oldTlProg.requirements && oldTlProg.requirements.length === newProg.requirements.length) {
+      newProg.requirements = oldTlProg.requirements;
+    }
+  }
+});
+
+// Define Tagalog translation overrides for new, renamed, or updated programs
+const tlOverrides = {
+  'philhealth-yakap': {
+    name: "YAKAP (Yaman ng Kalusugan Program)",
+    description: "Isang pinahusay na pakete ng benepisyo sa pangunahing pangangalaga (na pumapalit sa dating Konsulta Package) na nagbibigay ng holistic na pangangalagang pangkalusugan kabilang ang libreng konsultasyong medikal, pinalawak na laboratoryo at cancer screening tests, at mga pangunahing gamot.",
+    steps: [
+      "Tiyaking aktibo ang iyong membership sa PhilHealth at magparehistro online o sa lokal na opisina.",
+      "Pumili at magparehistro sa isang itinalagang PhilHealth YAKAP accredited provider (klinika/ospital).",
+      "Mag-iskedyul ng appointment para sa libreng konsultasyon at diagnostic testing.",
+      "Kunin ang mga niresetang gamot sa botika ng provider ng libre."
+    ],
+    requirements: [
+      "Kopya ng Member Data Record (MDR)",
+      "Registration form para sa PhilHealth YAKAP Provider",
+      "Kahit 1 valid government ID"
+    ]
   },
-  nav: {
-    directory: "Benefits Directory",
-    wizard: "Eligibility Quiz",
-    saved: "Saved",
-    hotlines: "Hotlines"
+  'philhealth-newborn': {
+    name: "Pakete ng Pangangalaga sa Bagong Silang (Newborn Care Package)",
+    description: "Nagbibigay ng mga pangunahing serbisyong pangkalusugan para sa mga bagong silang na sanggol kabilang ang physical examination, eye prophylaxis, pagbibigay ng vitamin K, bakunang BCG, unang dosis ng bakuna sa hepatitis B, at newborn screening test.",
+    steps: [
+      "Tiyaking aktibo ang membership sa PhilHealth bago manganak.",
+      "Isumite ang kopya ng Member Data Record (MDR) at valid ID sa billing section ng ospital.",
+      "Punan ang PhilHealth Claim Form 1 (CF-1) at Claim Form 2 (CF-2) sa ospital.",
+      "Ang Newborn Care Package ay awtomatikong ibabawas mula sa bill sa ospital para sa parehong ina at anak."
+    ],
+    requirements: [
+      "Aktibong membership sa PhilHealth o pagpaparehistro ng dependent",
+      "Kumpletong PhilHealth Claim Form 1 (CF1)",
+      "Kumpletong PhilHealth Claim Form 2 (CF2)",
+      "Kopya ng Member Data Record (MDR)",
+      "Valid government ID ng miyembrong magulang"
+    ]
   },
-  filters: {
-    title: "Filters",
-    clearAll: "Clear All",
-    search: "Search",
-    searchPlaceholder: "e.g. AICS, Maternity, Loan...",
-    agency: "Government Agency",
-    category: "Category",
-    audience: "Target Audience"
+  'sss-funeral': {
+    name: "Benepisyo sa Pagpapalibing (Funeral Benefit)",
+    description: "Isang benepisyong cash mula sa fixed na ₱12,000 (para sa 1-35 kontribusyon) hanggang ₱20,000 - ₱60,000 (para sa 36 o higit pang kontribusyon) na ibinibigay sa sinumang nagbayad ng gastusin sa pagpapalibing ng yumaong miyembro ng SSS.",
+    steps: [
+      "Kumuha ng Certified True Copy ng Death Certificate mula sa lokal na civil registry o PSA.",
+      "Kunin ang opisyal na resibo mula sa funeral parlor na nagpapakita ng pangalan ng aplikante bilang nagbayad.",
+      "Mag-log in sa My.SSS Portal (E-Services tab) at piliin ang 'Apply for Funeral Benefit Claim'.",
+      "Punan ang online application at i-upload ang Death Certificate, Resibo ng Punerarya, at ID ng aplikante.",
+      "Maghintay ng pag-apruba at direktang pag-credit sa nakarehistrong bank account ng aplikante."
+    ],
+    requirements: [
+      "Death Certificate ng yumaong miyembro (PSA copy o Certified True Copy)",
+      "Opisyal na Resibo ng gastusin sa libing na nakapangalan sa aplikante",
+      "Valid ID ng aplikante (Orihinal at Photocopy)",
+      "Pagpaparehistro ng Disbursement Account (DAEM) ng aplikante",
+      "Katibayan ng mga kontribusyon ng yumaong miyembro (kahit 1 kontribusyon)"
+    ]
   },
-  feed: {
-    showing: "Showing {count} of {total} benefits",
-    noMatches: "No matching programs found",
-    noMatchesDesc: "Try refining your keyword search, selecting broader filter tags, or clearing filters to see all available listings.",
-    resetFilters: "Reset Filters"
+  'gsis-funeral': {
+    name: "Benepisyo sa Pagpapalibing (Funeral Benefit)",
+    description: "Isang benepisyong cash na nagkakahalaga ng ₱30,000 na ibinibigay sa nabubuhay na asawa, mga anak, o kung sino man ang nagbayad ng gastusin sa pagpapalibing ng yumaong miyembro o retirado ng GSIS.",
+    steps: [
+      "I-download at punan ang GSIS Application Form para sa Funeral Benefit.",
+      "Kumuha ng certified photocopy ng Death Certificate.",
+      "Isumite ang aplikasyon sa pamamagitan ng GSIS Wireless Kiosk (GW@PS), GSIS Touch app, o i-email sa regional branch.",
+      "Isumite ang opisyal na resibo ng gastusin sa libing kung ang aplikante ay hindi ang nabubuhay na asawa.",
+      "Maghintay ng pag-credit sa eCard o bank account ng aplikante."
+    ],
+    requirements: [
+      "Kumpletong GSIS Funeral Benefit Application Form",
+      "Death Certificate ng yumaong miyembro ng GSIS (PSA o Certified Local Copy)",
+      "Marriage Contract (PSA copy) kung ang nabubuhay na asawa ang aplikante",
+      "Opisyal na Resibo ng gastusin sa libing kung ang aplikante ay hindi asawa",
+      "Valid ID ng aplikante"
+    ]
   },
-  card: {
-    bookmark: "Bookmark for later",
-    removeBookmark: "Remove bookmark",
-    readiness: "Readiness",
-    expand: "Expand Checklist & Steps ➔",
-    hide: "Hide Application Steps & Checklist",
-    show: "Show Application Steps & Checklist",
-    requirements: "Document Requirements",
-    steps: "Application Process",
-    applyNow: "Apply Now / Learn More"
-  },
-  wizard: {
-    title: "Ayuda Finder Wizard",
-    desc: "Answer a few quick questions about your demographics and current situation. Our engine will calculate compatibility scores and recommend the best government programs for you.",
-    button: "Start Quiz"
-  },
-  shortlist: {
-    title: "Your Saved Benefits",
-    desc: "Review the requirements and steps for the benefits you bookmarked. All checklists and data are saved locally to your device browser.",
-    noBookmarks: "No bookmarked benefits yet",
-    noBookmarksDesc: "Browse the Benefits Directory and click the star icon on any program to save it here for offline reference.",
-    browse: "Browse Directory"
-  },
-  hotlines: {
-    title: "Official Agency Directory & Support",
-    desc: "Direct hotlines, support emails, and inquiry channels for national social benefit providers. Keep these contact points handy when submitting claims.",
-    noticeTitle: "Important Notice on Inquiries",
-    noticeDesc: "Official operating times for most government hotlines are Monday to Friday, 8:00 AM to 5:00 PM (Philippine Standard Time), except for Pag-IBIG which operates 24/7. Standard local call rates apply. When contacting, ensure you have your SSS/GSIS/PhilHealth/Pag-IBIG membership ID number ready."
-  },
-  footer: {
-    desc: "An open-source citizen initiative by betterGov.ph designed to simplify and track access to public welfare programs in the Philippines. Developed for informational guidance.",
-    repo: "GitHub Repository",
-    navLabel: "Navigation",
-    resourcesLabel: "Resources",
-    disclaimerTitle: "Official Disclaimer Notice",
-    disclaimerDesc: "Ayuda is an independent open-source navigator and is NOT affiliated with, sponsored by, or endorsed by the government of the Philippines or any of its offices (DSWD, SSS, GSIS, PhilHealth, Pag-IBIG, DOLE, DOH, OWWA). Trademarks are property of their respective owners. All guidelines are for informational reference only. Always verify rules, requirements, and deadlines on official government agency portals."
+  'tesda-training': {
+    name: "Libreng Pagsasanay sa Kasanayan at Scholarship (Free Skills Training & Scholarship)",
+    description: "Nagbibigay ng libreng pagsasanay sa bokasyonal, assessment, at mga toolkit para sa pangkabuhayan sa ilalim ng mga programa tulad ng TWSP, STEP, at PESFA upang matulungan ang mga mamamayan na makahanap ng bagong trabaho.",
+    steps: [
+      "Maghanap ng mga magagamit na kurso sa pagsasanay sa mga lokal na paaralang accredited ng TESDA o mga opisina nito.",
+      "Isumite ang mga application form kasama ang mga kinakailangang dokumento sa akademiko at demograpiko.",
+      "Dumalo sa screening o selection interview sa training center.",
+      "Kumpletuhin ang itinalagang oras ng pagsasanay sa silid-aralan at praktikal na aplikasyon.",
+      "Kumuha ng National Assessment upang matanggap ang National Certificate (NC I o NC II) pati ang toolkit o allowance."
+    ],
+    requirements: [
+      "Kumpletong TESDA Enrollment Form",
+      "Barangay Clearance o Certificate of Indigency",
+      "Report card ng kahit High School Graduate o ALS Certificate",
+      "Form 137 o Transcript ng mga Rekord (Transcript of Records)",
+      "4 na kopya ng passport size na larawan (white background, may kwelyo, at may name tag)"
+    ]
   }
 };
 
-const enLocale = {
-  ...uiStrings,
-  programs: enPrograms
-};
+// Apply overrides for new/updated programs
+Object.keys(tlOverrides).forEach(pid => {
+  if (tlPrograms[pid]) {
+    tlPrograms[pid] = tlOverrides[pid];
+  }
+});
 
-// Create locales dir if not exists
-if (!fs.existsSync(path.join(process.cwd(), 'src/locales'))) {
-  fs.mkdirSync(path.join(process.cwd(), 'src/locales'));
+tlLocale.programs = tlPrograms;
+
+// Create locales directory if it does not exist
+if (!fs.existsSync(path.dirname(enPath))) {
+  fs.mkdirSync(path.dirname(enPath), { recursive: true });
 }
 
-fs.writeFileSync(path.join(process.cwd(), 'src/locales/en.json'), JSON.stringify(enLocale, null, 2));
-
-// For tl.json, we start with en.json clone
-const tlLocale = JSON.parse(JSON.stringify(enLocale));
-
-// Translate UI Strings
-tlLocale.header.subtitle = "Gabay sa mga Benepisyo at Sosyal na Programa ng Pilipinas";
-tlLocale.nav.directory = "Listahan ng Benepisyo";
-tlLocale.nav.wizard = "Pagsusuri ng Pagiging Kwalipikado";
-tlLocale.nav.saved = "Nai-save";
-tlLocale.nav.hotlines = "Mga Hotline";
-tlLocale.filters.title = "Mga Filter";
-tlLocale.filters.clearAll = "Alisin Lahat";
-tlLocale.filters.search = "Hanapin";
-tlLocale.filters.searchPlaceholder = "hal. AICS, Maternity, Loan...";
-tlLocale.filters.agency = "Ahensya ng Gobyerno";
-tlLocale.filters.category = "Kategorya";
-tlLocale.filters.audience = "Para Kanino";
-tlLocale.feed.showing = "Nagpapakita ng {count} mula sa {total} na benepisyo";
-tlLocale.feed.noMatches = "Walang nahanap na programa";
-tlLocale.feed.noMatchesDesc = "Subukang palitan ang iyong paghahanap, pumili ng ibang filter, o alisin ang mga filter upang makita ang lahat ng listahan.";
-tlLocale.feed.resetFilters = "I-reset ang mga Filter";
-tlLocale.card.bookmark = "I-save para sa mamaya";
-tlLocale.card.removeBookmark = "Alisin sa nai-save";
-tlLocale.card.readiness = "Kahandaan";
-tlLocale.card.expand = "Tingnan ang Listahan at Hakbang ➔";
-tlLocale.card.hide = "Itago ang Proseso at Listahan";
-tlLocale.card.show = "Tingnan ang Proseso at Listahan";
-tlLocale.card.requirements = "Mga Kinakailangang Dokumento";
-tlLocale.card.steps = "Proseso ng Aplikasyon";
-tlLocale.card.applyNow = "Mag-apply Ngayon / Alamin ang Iba pa";
-tlLocale.wizard.title = "Ayuda Finder Wizard";
-tlLocale.wizard.desc = "Sagutan ang ilang mabilis na tanong tungkol sa iyong sitwasyon. Kakalkulahin ng aming system ang iyong compatibility at magrerekomenda ng mga pinakamahusay na programa ng gobyerno para sa iyo.";
-tlLocale.wizard.button = "Simulan ang Pagsusuri";
-tlLocale.shortlist.title = "Iyong Mga Nai-save na Benepisyo";
-tlLocale.shortlist.desc = "Suriin ang mga kinakailangan at hakbang para sa mga benepisyong iyong nai-save. Lahat ng data ay naka-imbak nang lokal sa iyong browser.";
-tlLocale.shortlist.noBookmarks = "Wala pang nai-save na benepisyo";
-tlLocale.shortlist.noBookmarksDesc = "Maghanap sa Listahan ng Benepisyo at i-click ang star icon sa anumang programa upang i-save ito para mabasa kahit walang internet.";
-tlLocale.shortlist.browse = "Tingnan ang Listahan";
-tlLocale.hotlines.title = "Opisyal na Direktoryo at Suporta ng mga Ahensya";
-tlLocale.hotlines.desc = "Mga direktang hotline, email, at channel ng pagtatanong para sa mga tagapagbigay ng benepisyo. Itabi ang mga kontact na ito kapag nag-a-apply ng claim.";
-tlLocale.hotlines.noticeTitle = "Mahalagang Paunawa sa Pagtatanong";
-tlLocale.hotlines.noticeDesc = "Ang opisyal na oras ng operasyon para sa karamihan ng hotline ng gobyerno ay Lunes hanggang Biyernes, 8:00 AM hanggang 5:00 PM (Philippine Standard Time), maliban sa Pag-IBIG na bukas 24/7. Siguraduhing handa ang iyong SSS/GSIS/PhilHealth/Pag-IBIG ID number kapag tatawag.";
-tlLocale.footer.desc = "Isang open-source na inisyatiba ng mga mamamayan sa pamamagitan ng betterGov.ph, ginawa upang gawing simple ang paghahanap sa mga pampublikong programa sa Pilipinas. Binuo para sa impormasyonal na gabay.";
-tlLocale.footer.repo = "GitHub Repository";
-tlLocale.footer.navLabel = "Nabigasyon";
-tlLocale.footer.resourcesLabel = "Mga Mapagkukunan";
-tlLocale.footer.disclaimerTitle = "Opisyal na Paunawa ng Pagtanggi (Disclaimer)";
-tlLocale.footer.disclaimerDesc = "Ang Ayuda ay isang independiyenteng gabay at HINDI konektado, itinataguyod, o pinondohan ng gobyerno ng Pilipinas o alinman sa mga opisina nito. Ang mga trademark ay pag-aari ng kani-kanilang may-ari. Palaging kumpirmahin ang mga patakaran sa opisyal na website ng mga ahensya ng gobyerno.";
-
-// Translate 3 programs
-tlLocale.programs['dswd-aics'].name = "AICS (Tulong para sa mga Indibidwal na nasa Krisis)";
-tlLocale.programs['dswd-aics'].description = "Nagbibigay ng agarang tulong medikal, pagpapalibing, edukasyon, transportasyon, pagkain, o pinansyal sa mga indibidwal at pamilyang nakakaranas ng hindi inaasahang krisis sa buhay.";
-tlLocale.programs['dswd-aics'].steps = [
-  "Ipakita ang mga kinakailangang dokumento sa DSWD Crisis Intervention Unit (CIU) o satellite office.",
-  "Sumailalim sa screening at interview kasama ang isang DSWD Social Worker.",
-  "Maghintay para sa paghahanda ng Social Case Study Report o Certificate of Eligibility.",
-  "Tanggapin ang tulong pinansyal o Guarantee Letter (GL) para sa ospital/punerarya."
-];
-tlLocale.programs['dswd-aics'].requirements = [
-  "Valid ID ng aplikante (Orihinal at Photocopy)",
-  "Barangay Certificate of Indigency o Residency",
-  "Medical Certificate / Abstract (para sa tulong medikal) o Death Certificate (para sa tulong pagpapalibing)",
-  "Hospital Bill, Laboratory Request, o Funeral Contract",
-  "Referral Letter (kung naaangkop)"
-];
-
-tlLocale.programs['sss-unemp'].name = "Benepisyo sa Kawalan ng Trabaho";
-tlLocale.programs['sss-unemp'].description = "Isang benepisyong cash na ibinibigay sa mga miyembrong empleyado (kabilang ang mga OFW at Kasambahay) na nawalan ng trabaho dahil sa retrenchment, redundancy, o pagsasara ng negosyo.";
-tlLocale.programs['sss-unemp'].steps = [
-  "Kumuha ng DOLE Certification of Involuntary Separation.",
-  "Mag-log in sa iyong SSS Member Portal (My.SSS) online.",
-  "Pumunta sa 'Apply for Unemployment Benefit Claim' sa ilalim ng E-Services tab.",
-  "Punan ang mga detalye ng aplikasyon at i-upload ang DOLE Certification at valid ID.",
-  "Maghintay ng pag-apruba at pag-credit sa iyong nakarehistrong bank account."
-];
-tlLocale.programs['sss-unemp'].requirements = [
-  "DOLE Certification of Involuntary Separation",
-  "Notice of Termination mula sa Employer O Notarized Affidavit of Termination",
-  "Kahit 36 buwanang kontribusyon sa SSS (12 dito ay dapat nasa loob ng 18 buwan bago ang pagkawala ng trabaho)",
-  "Nakarehistrong bank account sa SSS Disbursement Account Enrollment Module (DAEM)",
-  "Wala pang 60 taong gulang sa panahon ng pagkawala ng trabaho"
-];
-
-tlLocale.programs['philhealth-konsulta'].name = "Konsulta Package";
-tlLocale.programs['philhealth-konsulta'].description = "Isang komprehensibong pakete ng benepisyo sa pangunahing pangangalaga na nagbibigay ng libreng konsultasyon, health risk screening, laboratory tests, at mahahalagang gamot.";
-tlLocale.programs['philhealth-konsulta'].steps = [
-  "Tiyaking aktibo ang iyong membership sa PhilHealth at magparehistro online o sa lokal na opisina.",
-  "Pumili at magparehistro sa isang itinalagang PhilHealth Konsulta accredited provider (klinika/ospital).",
-  "Mag-iskedyul ng appointment para sa libreng konsultasyon at diagnostic testing.",
-  "Kunin ang mga niresetang gamot sa botika ng provider ng libre."
-];
-tlLocale.programs['philhealth-konsulta'].requirements = [
-  "Kopya ng Member Data Record (MDR)",
-  "Registration form para sa PhilHealth Konsulta Provider",
-  "Kahit 1 valid government ID"
-];
-
-fs.writeFileSync(path.join(process.cwd(), 'src/locales/tl.json'), JSON.stringify(tlLocale, null, 2));
+// Write the updated locale files back
+fs.writeFileSync(enPath, JSON.stringify(enLocale, null, 2));
+fs.writeFileSync(tlPath, JSON.stringify(tlLocale, null, 2));
 
 console.log('Successfully generated locales');

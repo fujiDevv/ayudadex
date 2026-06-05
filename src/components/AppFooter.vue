@@ -13,7 +13,8 @@ const navigationItems = [
   { value: '/', key: 'directory' },
   { value: '/wizard', key: 'quiz' },
   { value: '/shortlist', key: 'saved' },
-  { value: '/hotlines', key: 'hotlines' }
+  { value: '/hotlines', key: 'hotlines' },
+  { value: '/pathways', key: 'pathways' }
 ] as const
 
 const officialPortals = [

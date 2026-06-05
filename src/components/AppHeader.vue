@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 import { onClickOutside } from '@vueuse/core'
 import {
   ClipboardList, Wand2, Star, Phone, Sun, Moon, Type, MoreVertical, MapPin,
-  Github, Lightbulb, Globe, ChevronDown, FileText
+  Github, Lightbulb, Globe, ChevronDown, FileText, Layers
 } from 'lucide-vue-next'
 import { motion } from 'motion-v'
 import { useAyudaStore } from '../stores/ayudaStore'
@@ -46,6 +46,7 @@ onClickOutside(navDropdownRef, () => {
 const navItems = computed(() => [
   { path: '/', label: t('nav.directory'), icon: ClipboardList },
   { path: '/wizard', label: t('nav.quiz'), icon: Wand2 },
+  { path: '/pathways', label: t('nav.pathways'), icon: Layers },
   { path: '/assistance', label: t('nav.assistance'), icon: FileText },
   { path: '/shortlist', label: t('nav.saved') + ` (${props.savedCount})`, icon: Star },
   { path: '/hotlines', label: t('nav.hotlines'), icon: Phone },
@@ -256,6 +257,15 @@ const navigate = (path: string) => {
                   <Lightbulb class="w-4 h-4 text-slate-500"
                     :class="route.path === '/contact' ? 'text-blue-600 dark:text-blue-400' : ''" />
                   <span class="text-sm font-medium">{{ $t('detail.contactUs') }}</span>
+                </button>
+
+                <!-- Life Events -->
+                <button @click="router.push('/pathways'); isMenuOpen = false"
+                  class="w-full px-4 py-2.5 text-left flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer text-slate-700 dark:text-slate-300"
+                  :class="route.path === '/pathways' ? 'bg-blue-50/50 dark:bg-blue-950/20 font-bold text-blue-900 dark:text-blue-200' : ''">
+                  <Layers class="w-4 h-4 text-slate-500"
+                    :class="route.path === '/pathways' ? 'text-blue-600 dark:text-blue-400' : ''" />
+                  <span class="text-sm font-medium">{{ $t('nav.pathways') }}</span>
                 </button>
 
                 <!-- BetterGov.ph Link -->
