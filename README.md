@@ -19,6 +19,7 @@ Built with a premium modern design, it helps Filipinos search through benefits f
 
 * **Unified Benefits Directory**: A searchable and filterable database of national welfare schemes, filterable by agency, benefit category, and target audience.
 * **Smart Eligibility Wizard**: An interactive quiz that evaluates demographic and employment status to match users with qualifying programs.
+* **Integrated Life Event Pathways**: Group related government assistance and custom local requirements into structured, trackable timelines for major milestones (such as *Having a Baby*, *Loss of a Family Member*, *Job Loss*, *Retirement & Senior Care*, *Entering College / Training*, and *Solo Parents & Family Care*).
 * **Checklist & Requirement Tracker**: Save matching programs to a personal shortlist and track required application documents offline.
 * **Interactive Branch Locator**: An integrated map powered by OpenStreetMap and cached Overpass API queries to find nearby agency branches instantly.
 * **Document Prep & Generator**: Draft formal letters (Authorization Letters, Affidavits of Low Income, and Request Letters) in real-time with an interactive, draggable A4 sheet preview, printable and downloadable directly as a PDF.
@@ -72,6 +73,12 @@ bun run preview
 Deploy directly to Cloudflare Pages:
 ```bash
 bun run deploy
+```
+
+### 6. Compile Program Data & Locales
+If you add or update programs in `src/data/programs.json`, run the sync script to compile new schemas and merge translations:
+```bash
+node generate-locales.js
 ```
 
 ---

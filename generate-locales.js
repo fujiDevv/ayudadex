@@ -54,11 +54,11 @@ Object.keys(existingTlPrograms).forEach(pid => {
   if (tlPrograms[pid]) {
     const newProg = tlPrograms[pid];
     const oldTlProg = existingTlPrograms[pid];
-    
+
     // Copy name and description if they were translated
     if (oldTlProg.name) newProg.name = oldTlProg.name;
     if (oldTlProg.description) newProg.description = oldTlProg.description;
-    
+
     // Only copy steps and requirements if the number of entries matches to avoid structural drift
     if (oldTlProg.steps && oldTlProg.steps.length === newProg.steps.length) {
       newProg.steps = oldTlProg.steps;
@@ -101,6 +101,24 @@ const tlOverrides = {
       "Kumpletong PhilHealth Claim Form 2 (CF2)",
       "Kopya ng Member Data Record (MDR)",
       "Valid government ID ng miyembrong magulang"
+    ]
+  },
+  'dole-tupad': {
+    name: "TUPAD (Emergency Employment)",
+    description: "Isang community-based na tulong na nagbibigay ng emergency employment para sa mga nawalan ng trabaho, underemployed, at seasonal workers, sa minimum na 10 araw hanggang 90 araw sa mga natatanging sitwasyon.",
+    steps: [
+      "Bisitahin ang pinakamalapit na DOLE Regional/Field Office o lokal na PESO (Public Employment Service Office) sa iyong LGU.",
+      "Isumite ang aplikasyon at profile sheet para sa pagsusuri.",
+      "Dumalo sa oryentasyon tungkol sa kaligtasan at kalusugan sa trabaho.",
+      "Gawin ang nakatalagang trabaho sa komunidad (hal. paglilinis ng kalsada, maliliit na pag-aayos, pagtatanim) sa loob ng 10-90 araw.",
+      "Kunin ang sweldo sa pamamagitan ng money remittance centers pagkatapos isumite ang daily time record."
+    ],
+    requirements: [
+      "TUPAD Application Profile Sheet",
+      "1 valid ID",
+      "Indigency Certificate mula sa Barangay",
+      "Dapat hindi bababa sa 18 taong gulang",
+      "Dapat hindi aktibong empleyado ng gobyerno"
     ]
   },
   'sss-funeral': {
@@ -198,7 +216,7 @@ const tlOverrides = {
     description: "Isang programa ng tulong-pinansyal na nagbibigay ng suporta sa mga kwalipikadong estudyanteng Pilipino na naka-enroll sa mga pampubliko at pribadong kolehiyo upang makatalong sa mga gastusin sa edukasyon.",
     steps: [
       "Mag-enroll sa isang kwalipikadong higher education institution (State Universities, Local Universities, o mga pribadong HEI na kinikilala ng CHED).",
-      "Isumite ang iyong aplikasyon at mga kinakailangan sa itinalagang TES Focal Person ng inyong paraalan.",
+      "Isumite ang iyong aplikasyon at mga kinakailangan sa itinalagang TES Focal Person ng inyong paaralan.",
       "Ie-encode at isusumite ng paaralan ang iyong profile sa UniFAST portal.",
       "Maghintay para sa validation ng CHED/UniFAST at sa opisyal na pagpapalabas ng listahan ng mga iskolar (master list of grantees).",
       "Kunin ang subsidy disbursement sa pamamagitan ng inyong paaralan o partner na institusyong pinansyal."
