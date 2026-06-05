@@ -90,10 +90,10 @@ const navigate = (path: string) => {
         <div class="hidden md:flex items-center">
           <div ref="navDropdownRef" class="relative">
             <motion.button @click="isNavDropdownOpen = !isNavDropdownOpen"
-              class="px-3.5 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 border border-slate-200 dark:border-slate-800 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700/80 text-slate-700 dark:text-slate-200 shadow-sm font-bold"
+              class="px-2.5 py-1.5 text-sm font-bold transition-all cursor-pointer flex items-center gap-2 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white"
               :whileHover="{ scale: 1.02 }" :whileTap="{ scale: 0.98 }" aria-label="Navigation menu"
               :aria-expanded="isNavDropdownOpen">
-              <component :is="currentNavItem.icon" class="w-4 h-4 text-blue-600 dark:text-blue-400" />
+              <component :is="currentNavItem.icon" class="w-4 h-4 text-slate-500 dark:text-slate-400" />
               <span>{{ currentNavItem.label }}</span>
               <ChevronDown class="w-4 h-4 text-slate-400 dark:text-slate-500 transition-transform duration-200"
                 :class="{ 'rotate-180': isNavDropdownOpen }" />
