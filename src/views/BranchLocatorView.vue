@@ -47,23 +47,40 @@ const selectedProvinceCode = ref('')
 const initMap = () => {
   if (!mapContainer.value) return
   
-  // Default to Metro Manila center
-  map = L.map(mapContainer.value).setView([14.5995, 121.0366], 12)
+  // Default to Metro Manila center (Zoom 13 for smaller initial bounding box)
+  map = L.map(mapContainer.value).setView([14.5995, 121.0366], 13)
   
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 20
   }).addTo(map)
+  
+  // Render cached markers initially
+  renderMarkers()
   
   // Fetch initial data
   searchArea()
 }
 
 const fetchRegions = async () => {
+  const cached = localStorage.getItem('psgc_regions')
+  if (cached) {
+    try {
+      regions.value = JSON.parse(cached)
+      return
+    } catch (e) {
+      console.error('Failed to parse cached regions', e)
+    }
+  }
+
   try {
     const res = await fetch('https://psgc.gitlab.io/api/regions')
     const data = await res.json()
     // Sort regions alphabetically by name
-    regions.value = data.sort((a: any, b: any) => a.name.localeCompare(b.name))
+    const sorted = data.sort((a: any, b: any) => a.name.localeCompare(b.name))
+    regions.value = sorted
+    localStorage.setItem('psgc_regions', JSON.stringify(sorted))
   } catch (error) {
     console.error('Failed to fetch regions', error)
   }
@@ -75,6 +92,17 @@ const onRegionChange = async () => {
   
   if (!selectedRegionCode.value) return
   
+  const cacheKey = `psgc_provinces_${selectedRegionCode.value}`
+  const cached = localStorage.getItem(cacheKey)
+  if (cached) {
+    try {
+      provinces.value = JSON.parse(cached)
+      return
+    } catch (e) {
+      console.error('Failed to parse cached provinces', e)
+    }
+  }
+
   isLoading.value = true
   try {
     // Some regions (like NCR) don't have provinces but have cities, so we fetch both and combine.
@@ -87,7 +115,9 @@ const onRegionChange = async () => {
     const cityData = cityRes.ok ? await cityRes.json() : []
     
     // Combine and sort
-    provinces.value = [...provData, ...cityData].sort((a: any, b: any) => a.name.localeCompare(b.name))
+    const combined = [...provData, ...cityData].sort((a: any, b: any) => a.name.localeCompare(b.name))
+    provinces.value = combined
+    localStorage.setItem(cacheKey, JSON.stringify(combined))
   } catch (error) {
     console.error('Failed to fetch provinces', error)
   } finally {
@@ -106,16 +136,34 @@ const onProvinceChange = async () => {
   
   if (!province || !region) return
   
+  const query = `${province.name}, ${region.name}, Philippines`
+  const cacheKey = `geocode_${query.replace(/\s+/g, '_')}`
+  const cached = localStorage.getItem(cacheKey)
+  if (cached) {
+    try {
+      const coords = JSON.parse(cached)
+      map.setView([coords.lat, coords.lng], 13)
+      searchArea()
+      isLoading.value = false
+      return
+    } catch (e) {
+      console.error('Failed to parse cached geocode', e)
+    }
+  }
+
   try {
     // Geocode the selected province/city using OSM Nominatim
-    const query = `${province.name}, ${region.name}, Philippines`
     const res = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=1`)
     const data = await res.json()
     
     if (data && data.length > 0) {
       const { lat, lon } = data[0]
+      const latNum = parseFloat(lat)
+      const lngNum = parseFloat(lon)
       // Pan map to new location
-      map.setView([parseFloat(lat), parseFloat(lon)], 12)
+      map.setView([latNum, lngNum], 13)
+      // Store in cache
+      localStorage.setItem(cacheKey, JSON.stringify({ lat: latNum, lng: lngNum }))
       // Automatically search the new area
       searchArea()
     } else {
@@ -144,11 +192,17 @@ const createCustomIcon = (agency: string) => {
   const borderTopColor = bgColor.replace('bg-', 'border-t-')
   
   const html = `
-    <div class="relative flex flex-col items-center">
-      <div class="flex items-center justify-center w-8 h-8 rounded-full ${bgColor} text-white shadow-lg border-[2.5px] border-white z-10">
+    <div class="relative flex flex-col items-center group">
+      <!-- Shadow cast on the map base -->
+      <div class="absolute bottom-[-1.5px] left-1/2 -translate-x-1/2 w-5 h-1.5 bg-black/25 dark:bg-black/45 rounded-full blur-[1.5px] z-0 transition-transform group-hover:scale-75"></div>
+      
+      <!-- Pin Circle with enhanced shadow -->
+      <div class="flex items-center justify-center w-8 h-8 rounded-full ${bgColor} text-white shadow-[0_6px_12px_rgba(0,0,0,0.35)] border-[2.5px] border-white relative z-10 transition-transform group-hover:-translate-y-0.5">
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>
       </div>
-      <div class="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] ${borderTopColor} -mt-1.5 z-0 drop-shadow-md"></div>
+      
+      <!-- Pin Triangle tip with drop shadow -->
+      <div class="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] ${borderTopColor} -mt-1.5 relative z-10 drop-shadow-[0_2px_3px_rgba(0,0,0,0.3)] transition-transform group-hover:-translate-y-0.5"></div>
     </div>
   `
   return L.divIcon({
@@ -172,31 +226,48 @@ const renderMarkers = () => {
     : fetchedBranches.value.filter(b => b.agency === selectedAgency.value)
     
   filtered.forEach(branch => {
-    const marker = L.marker([branch.lat, branch.lng], {
-      icon: createCustomIcon(branch.agency)
-    }).addTo(map!)
-    
-    marker.bindPopup(`
-      <div class="font-sans min-w-[200px] p-0.5">
-        <h3 class="font-bold text-slate-900 text-[15px] leading-tight">${branch.name}</h3>
-        <p class="text-[11px] text-slate-500 mt-1.5 leading-relaxed">${branch.address}</p>
-        <div class="mt-2.5 text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-full inline-block text-white shadow-sm ${getAgencyBgColor(branch.agency)}">
-          ${branch.agency}
+    try {
+      const marker = L.marker([branch.lat, branch.lng], {
+        icon: createCustomIcon(branch.agency)
+      }).addTo(map!)
+      
+      marker.bindPopup(`
+        <div class="font-sans min-w-[200px] p-0.5">
+          <h3 class="font-bold text-slate-900 text-[15px] leading-tight">${branch.name}</h3>
+          <p class="text-[11px] text-slate-500 mt-1.5 leading-relaxed">${branch.address}</p>
+          <div class="mt-2.5 text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-full inline-block text-white shadow-sm ${getAgencyBgColor(branch.agency)}">
+            ${branch.agency}
+          </div>
         </div>
-      </div>
-    `)
-    markers.value.push(marker)
+      `)
+      markers.value.push(marker)
+    } catch (err) {
+      console.error(`Error rendering marker for ${branch.name}:`, err)
+    }
   })
 }
 
-const searchArea = async () => {
+const searchArea = async (force = false) => {
   if (!map) return
+  
+  // Enforce a minimum zoom level to prevent oversized queries
+  if (map.getZoom() < 12) {
+    searchError.value = 'Please zoom in closer to search for branches.'
+    return
+  }
+  
+  // Self-healing desync check: if cached branches are empty but we have cached bboxes, reset them
+  if (fetchedBranches.value.length === 0 && cachedBboxes.size > 0) {
+    cachedBboxes.clear()
+    localStorage.removeItem('ayudadex_cached_bboxes')
+  }
   
   const bounds = map.getBounds()
   // Round coordinates to 2 decimal places (roughly 1km precision) to create a cache key
   const cacheKey = `${bounds.getSouth().toFixed(2)},${bounds.getWest().toFixed(2)},${bounds.getNorth().toFixed(2)},${bounds.getEast().toFixed(2)}`
   
-  if (cachedBboxes.has(cacheKey)) {
+  if (!force && cachedBboxes.has(cacheKey)) {
+    renderMarkers()
     return
   }
   
@@ -206,7 +277,7 @@ const searchArea = async () => {
   const bbox = `${bounds.getSouth()},${bounds.getWest()},${bounds.getNorth()},${bounds.getEast()}`
   
   const query = `
-    [out:json][timeout:25];
+    [out:json][timeout:15];
     (
       node["name"~"DSWD|PhilHealth|Pag-IBIG|Pag IBIG|SSS|Social Security System",i](${bbox});
       way["name"~"DSWD|PhilHealth|Pag-IBIG|Pag IBIG|SSS|Social Security System",i](${bbox});
@@ -215,9 +286,9 @@ const searchArea = async () => {
   `
   
   const OVERPASS_ENDPOINTS = [
-    'https://overpass.kumi.systems/api/interpreter',
-    'https://overpass.osm.ch/api/interpreter',
-    'https://overpass-api.de/api/interpreter'
+    'https://overpass-api.de/api/interpreter',
+    'https://lz4.overpass-api.de/api/interpreter',
+    'https://z.overpass-api.de/api/interpreter'
   ]
   
   try {
@@ -226,7 +297,14 @@ const searchArea = async () => {
 
     for (const endpoint of OVERPASS_ENDPOINTS) {
       try {
-        const res = await fetch(`${endpoint}?data=${encodeURIComponent(query)}`)
+        const controller = new AbortController()
+        const id = setTimeout(() => controller.abort(), 6000) // 6-second timeout per mirror
+        
+        const res = await fetch(`${endpoint}?data=${encodeURIComponent(query)}`, {
+          signal: controller.signal
+        })
+        clearTimeout(id)
+        
         if (res.ok) {
           data = await res.json()
           break
@@ -273,10 +351,12 @@ const searchArea = async () => {
     
     if (uniqueNewBranches.length > 0) {
       fetchedBranches.value = [...fetchedBranches.value, ...uniqueNewBranches]
-      renderMarkers()
+      localStorage.setItem('ayudadex_branches', JSON.stringify(fetchedBranches.value))
     }
     
     cachedBboxes.add(cacheKey)
+    localStorage.setItem('ayudadex_cached_bboxes', JSON.stringify(Array.from(cachedBboxes)))
+    renderMarkers()
     
   } catch (error: any) {
     console.error(error)
@@ -291,6 +371,27 @@ watch(selectedAgency, () => {
 })
 
 onMounted(() => {
+  // Load cached branches from localStorage
+  const cachedBranches = localStorage.getItem('ayudadex_branches')
+  if (cachedBranches) {
+    try {
+      fetchedBranches.value = JSON.parse(cachedBranches)
+    } catch (e) {
+      console.error('Failed to parse cached branches', e)
+    }
+  }
+
+  // Load cached bboxes from localStorage
+  const cachedBboxesJson = localStorage.getItem('ayudadex_cached_bboxes')
+  if (cachedBboxesJson) {
+    try {
+      const arr = JSON.parse(cachedBboxesJson)
+      arr.forEach((key: string) => cachedBboxes.add(key))
+    } catch (e) {
+      console.error('Failed to parse cached bboxes', e)
+    }
+  }
+
   initMap()
   fetchRegions()
 })
@@ -358,7 +459,7 @@ onUnmounted(() => {
       </div>
 
       <div class="flex justify-between items-center mb-4">
-        <button @click="searchArea" :disabled="isLoading" class="flex items-center gap-2 bg-blue-50 dark:bg-blue-900/40 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-400 px-4 py-2 rounded-xl text-sm font-semibold transition-colors cursor-pointer disabled:opacity-50">
+        <button @click="searchArea(true)" :disabled="isLoading" class="flex items-center gap-2 bg-blue-50 dark:bg-blue-900/40 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-400 px-4 py-2 rounded-xl text-sm font-semibold transition-colors cursor-pointer disabled:opacity-50">
           <Loader2 v-if="isLoading" class="w-4 h-4 animate-spin" />
           <Search v-else class="w-4 h-4" />
           Search Map Area
@@ -380,3 +481,12 @@ onUnmounted(() => {
     </motion.div>
   </main>
 </template>
+
+<style scoped>
+:deep(.leaflet-tile) {
+  filter: grayscale(100%) brightness(105%) contrast(92%);
+}
+.dark :deep(.leaflet-tile) {
+  filter: grayscale(100%) brightness(75%) contrast(100%) invert(100%);
+}
+</style>
