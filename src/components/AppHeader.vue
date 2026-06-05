@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 import { onClickOutside } from '@vueuse/core'
 import {
   ClipboardList, Wand2, Star, Phone, Sun, Moon, Type, MoreVertical, MapPin,
-  Github, Lightbulb, Globe, ChevronDown
+  Github, Lightbulb, Globe, ChevronDown, FileText
 } from 'lucide-vue-next'
 import { motion } from 'motion-v'
 import { useAyudaStore } from '../stores/ayudaStore'
@@ -46,6 +46,7 @@ onClickOutside(navDropdownRef, () => {
 const navItems = computed(() => [
   { path: '/', label: t('nav.directory'), icon: ClipboardList },
   { path: '/wizard', label: t('nav.quiz'), icon: Wand2 },
+  { path: '/assistance', label: t('nav.assistance'), icon: FileText },
   { path: '/shortlist', label: t('nav.saved') + ` (${props.savedCount})`, icon: Star },
   { path: '/hotlines', label: t('nav.hotlines'), icon: Phone },
   { path: '/locator', label: t('nav.locator'), icon: MapPin }
@@ -281,7 +282,7 @@ const navigate = (path: string) => {
     <!-- Bottom Navigation Bar (Mobile First) -->
     <nav
       class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 pb-[env(safe-area-inset-bottom)]">
-      <div class="grid grid-cols-5 h-16 text-center text-[10px] sm:text-xs font-bold">
+      <div class="grid grid-cols-6 h-16 text-center text-[10px] sm:text-xs font-bold">
         <motion.button @click="router.push('/')"
           class="flex flex-col items-center justify-center gap-0 sm:gap-1 cursor-pointer transition-colors"
           :class="route.path === '/' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50'"
@@ -297,6 +298,14 @@ const navigate = (path: string) => {
           <Wand2 class="w-6 h-6 sm:w-5 sm:h-5"
             :class="route.path === '/wizard' ? 'text-blue-600 dark:text-blue-400' : ''" />
           <span class="hidden sm:block truncate w-full px-1">{{ $t('nav.quiz') }}</span>
+        </motion.button>
+        <motion.button @click="router.push('/assistance')"
+          class="flex flex-col items-center justify-center gap-0 sm:gap-1 cursor-pointer transition-colors"
+          :class="route.path === '/assistance' ? 'text-blue-900 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50'"
+          :whileTap="{ scale: 0.95 }">
+          <FileText class="w-6 h-6 sm:w-5 sm:h-5"
+            :class="route.path === '/assistance' ? 'text-blue-600 dark:text-blue-400' : ''" />
+          <span class="hidden sm:block truncate w-full px-1">{{ $t('nav.assistance') }}</span>
         </motion.button>
         <motion.button @click="router.push('/shortlist')"
           class="flex flex-col items-center justify-center gap-0 sm:gap-1 cursor-pointer transition-colors"
