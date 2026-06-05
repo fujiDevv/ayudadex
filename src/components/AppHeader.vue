@@ -127,19 +127,19 @@ const navigate = (path: string) => {
           <div class="hidden lg:flex items-center gap-2">
             <!-- Suggest Update Button -->
             <motion.button @click="router.push('/suggest')"
-              class="px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all flex items-center gap-1.5 cursor-pointer font-bold"
+              class="px-2 py-1.5 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
               :class="route.path === '/suggest'
-                ? 'border-amber-300 dark:border-amber-800 bg-amber-100 dark:bg-amber-900/40 text-amber-900 dark:text-amber-200 shadow-sm'
-                : 'border-amber-200 dark:border-amber-900/60 bg-amber-50 dark:bg-amber-950/20 text-amber-800 dark:text-amber-300 hover:bg-amber-100 dark:hover:bg-amber-900/30'"
+                ? 'text-amber-600 dark:text-amber-400 font-extrabold'
+                : 'text-slate-600 hover:text-amber-600 dark:text-slate-400 dark:hover:text-amber-400'"
               :whileHover="{ scale: 1.02 }" :whileTap="{ scale: 0.98 }">
-              <Lightbulb class="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />
+              <Lightbulb class="w-4 h-4 text-amber-500" />
               <span>{{ $t('detail.suggestUpdate') }}</span>
             </motion.button>
 
             <!-- BetterGov.ph Link -->
             <a href="https://bettergov.ph/" target="_blank" rel="noopener noreferrer"
-              class="px-3 py-1.5 rounded-lg text-xs font-semibold border border-blue-200 dark:border-blue-900/60 bg-blue-50 dark:bg-blue-950/20 text-blue-800 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-all flex items-center gap-1.5 cursor-pointer font-bold">
-              <Globe class="w-3.5 h-3.5 text-blue-500 dark:text-blue-450" />
+              class="px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-all flex items-center gap-1.5 cursor-pointer">
+              <Globe class="w-4 h-4 text-blue-500" />
               <span>BetterGov.ph</span>
             </a>
 
