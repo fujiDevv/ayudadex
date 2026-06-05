@@ -22,7 +22,7 @@ let map: L.Map | null = null
 const markers = ref<L.Marker[]>([])
 
 const selectedAgency = ref('All Agencies')
-const agencies = ['All Agencies', 'DSWD', 'PhilHealth', 'Pag-IBIG', 'SSS']
+const agencies = ['All Agencies', 'DSWD', 'PhilHealth', 'Pag-IBIG', 'SSS', 'DOLE', 'DOH', 'OWWA']
 const isLoading = ref(false)
 const searchError = ref('')
 
@@ -183,6 +183,9 @@ const getAgencyBgColor = (agency: string) => {
     case 'PhilHealth': return 'bg-green-500'
     case 'Pag-IBIG': return 'bg-blue-600'
     case 'SSS': return 'bg-indigo-600'
+    case 'DOLE': return 'bg-orange-500'
+    case 'DOH': return 'bg-pink-600'
+    case 'OWWA': return 'bg-cyan-600'
     default: return 'bg-slate-500'
   }
 }
@@ -279,8 +282,8 @@ const searchArea = async (force = false) => {
   const query = `
     [out:json][timeout:15];
     (
-      node["name"~"DSWD|PhilHealth|Pag-IBIG|Pag IBIG|SSS|Social Security System",i](${bbox});
-      way["name"~"DSWD|PhilHealth|Pag-IBIG|Pag IBIG|SSS|Social Security System",i](${bbox});
+      node["name"~"DSWD|PhilHealth|Pag-IBIG|Pag IBIG|SSS|Social Security System|DOLE|Department of Labor|DOH|Department of Health|OWWA|Overseas Workers",i](${bbox});
+      way["name"~"DSWD|PhilHealth|Pag-IBIG|Pag IBIG|SSS|Social Security System|DOLE|Department of Labor|DOH|Department of Health|OWWA|Overseas Workers",i](${bbox});
     );
     out center;
   `
@@ -329,6 +332,9 @@ const searchArea = async (force = false) => {
       else if (nameLower.includes('philhealth')) agency = 'PhilHealth'
       else if (nameLower.includes('pag-ibig') || nameLower.includes('pag ibig')) agency = 'Pag-IBIG'
       else if (nameLower.includes('sss') || nameLower.includes('social security system')) agency = 'SSS'
+      else if (nameLower.includes('dole') || nameLower.includes('department of labor')) agency = 'DOLE'
+      else if (nameLower.includes('doh') || nameLower.includes('department of health')) agency = 'DOH'
+      else if (nameLower.includes('owwa') || nameLower.includes('overseas workers')) agency = 'OWWA'
 
       const address = [
         el.tags?.['addr:housenumber'],
@@ -493,6 +499,18 @@ onUnmounted(() => {
           <div class="flex items-center gap-1.5">
             <span class="w-2.5 h-2.5 rounded-full bg-indigo-600 shadow-sm"></span>
             <span>SSS</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-orange-500 shadow-sm"></span>
+            <span>DOLE</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-pink-600 shadow-sm"></span>
+            <span>DOH</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-cyan-600 shadow-sm"></span>
+            <span>OWWA</span>
           </div>
         </div>
       </div>
