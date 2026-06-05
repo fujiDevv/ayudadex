@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "ayuda",
+  "name": "ayudadex",
   "compatibility_date": "2026-06-05",
   "observability": {
     "enabled": true
