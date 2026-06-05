@@ -4,6 +4,7 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: '/', name: 'directory', component: () => import('../views/DirectoryView.vue') },
+    { path: '/pathways', name: 'pathways', component: () => import('../views/PathwaysView.vue') },
     { path: '/wizard', name: 'wizard', component: () => import('../views/WizardView.vue') },
     { path: '/shortlist', name: 'shortlist', component: () => import('../views/SavedView.vue') },
     { path: '/hotlines', name: 'hotlines', component: () => import('../views/HotlinesView.vue') },

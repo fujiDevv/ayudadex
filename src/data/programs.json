@@ -5,7 +5,11 @@
         "name": "AICS (Assistance to Individuals in Crisis Situation)",
         "category": "Financial / Medical / Burial",
         "description": "Provides immediate medical, burial, educational, transportation, food, or financial assistance to individuals and families experiencing unexpected life crises.",
-        "target_audience": ["Indigent", "Crisis Victims", "Low Income"],
+        "target_audience": [
+            "Indigent",
+            "Crisis Victims",
+            "Low Income"
+        ],
         "processing_time": "1-3 working days",
         "official_url": "https://www.dswd.gov.ph",
         "steps": [
@@ -21,7 +25,11 @@
             "Hospital Bill, Laboratory Request, or Funeral Contract",
             "Referral Letter (if applicable)"
         ],
-        "tags": ["crisis", "medical", "financial"]
+        "tags": [
+            "crisis",
+            "medical",
+            "financial"
+        ]
     },
     {
         "id": "sss-unemp",
@@ -29,7 +37,10 @@
         "name": "Unemployment Benefit",
         "category": "Cash Allowance",
         "description": "A cash benefit granted to covered employees (including OFWs and Kasambahays) who were involuntarily separated from employment due to retrenchment, redundancy, or business closure.",
-        "target_audience": ["Unemployed", "SSS Members"],
+        "target_audience": [
+            "Unemployed",
+            "SSS Members"
+        ],
         "processing_time": "5-10 working days",
         "official_url": "https://member.sss.gov.ph",
         "steps": [
@@ -46,29 +57,38 @@
             "Enrolled bank account in SSS Disbursement Account Enrollment Module (DAEM)",
             "Under 60 years old at the time of separation"
         ],
-        "tags": ["unemployed", "financial"]
+        "tags": [
+            "unemployed",
+            "financial"
+        ]
     },
     {
-        "id": "philhealth-konsulta",
+        "id": "philhealth-yakap",
         "agency": "PhilHealth",
-        "name": "Konsulta Package",
+        "name": "YAKAP (Yaman ng Kalusugan Program)",
         "category": "Healthcare / Preventive",
-        "description": "A comprehensive primary care benefit package providing free medical consultations, health risk screening, laboratory tests, and essential medicines.",
-        "target_audience": ["All Citizens", "PhilHealth Members"],
+        "description": "An enhanced primary care benefit package (replacing the former Konsulta Package) providing holistic healthcare including free medical consultations, expanded laboratory and cancer screening tests, and essential medicines.",
+        "target_audience": [
+            "All Citizens",
+            "PhilHealth Members"
+        ],
         "processing_time": "Immediate (upon registration)",
         "official_url": "https://www.philhealth.gov.ph",
         "steps": [
             "Ensure your PhilHealth membership is active and register online or via local office.",
-            "Choose and register with a designated PhilHealth Konsulta accredited provider (clinic/hospital).",
+            "Choose and register with a designated PhilHealth YAKAP accredited provider (clinic/hospital).",
             "Schedule an appointment for free consultations and diagnostic testing.",
             "Avail of the prescribed medicines at the provider's in-house pharmacy for free."
         ],
         "requirements": [
             "Member Data Record (MDR) copy",
-            "Registration form for PhilHealth Konsulta Provider",
+            "Registration form for PhilHealth YAKAP Provider",
             "At least 1 valid government ID"
         ],
-        "tags": ["medical", "preventive"]
+        "tags": [
+            "medical",
+            "preventive"
+        ]
     },
     {
         "id": "pagibig-mpl",
@@ -76,7 +96,10 @@
         "name": "Multi-Purpose Loan (MPL)",
         "category": "Financial / Loan",
         "description": "A cash loan designed to help active Pag-IBIG members with immediate financial needs, including tuition, medical expenses, home minor repairs, or travel.",
-        "target_audience": ["Employed", "Pag-IBIG Members"],
+        "target_audience": [
+            "Employed",
+            "Pag-IBIG Members"
+        ],
         "processing_time": "2-3 working days",
         "official_url": "https://www.pagibigfundservices.com/virtualpagibig",
         "steps": [
@@ -93,7 +116,10 @@
             "Active Loyalty Card Plus or enrolled LandBank/UCPB cash card",
             "At least 24 monthly membership contributions"
         ],
-        "tags": ["financial", "loans"]
+        "tags": [
+            "financial",
+            "loans"
+        ]
     },
     {
         "id": "sss-maternity",
@@ -101,7 +127,11 @@
         "name": "Maternity Benefit",
         "category": "Cash Allowance / Maternity",
         "description": "A cash benefit paid to female SSS members who gave birth, suffered a miscarriage, or underwent emergency termination of pregnancy.",
-        "target_audience": ["Mothers", "Pregnant", "SSS Members"],
+        "target_audience": [
+            "Mothers",
+            "Pregnant",
+            "SSS Members"
+        ],
         "processing_time": "10-20 working days",
         "official_url": "https://member.sss.gov.ph",
         "steps": [
@@ -117,7 +147,11 @@
             "Enrolled bank account (DAEM)",
             "Medical certificate or ultrasound report (for miscarriages)"
         ],
-        "tags": ["maternity", "financial", "medical"]
+        "tags": [
+            "maternity",
+            "financial",
+            "medical"
+        ]
     },
     {
         "id": "dswd-4ps",
@@ -125,7 +159,11 @@
         "name": "Pantawid Pamilyang Pilipino Program (4Ps)",
         "category": "Financial / Education / Health",
         "description": "A human development measure that provides conditional cash grants to the poorest of the poor to improve the health, nutrition, and education of children aged 0-18.",
-        "target_audience": ["Indigent", "Low Income", "Families"],
+        "target_audience": [
+            "Indigent",
+            "Low Income",
+            "Families"
+        ],
         "processing_time": "Determined via Listahanan assessment",
         "official_url": "https://www.dswd.gov.ph",
         "steps": [
@@ -141,22 +179,30 @@
             "Children 3-18 years old must be enrolled in school with 85% attendance",
             "Parents must attend monthly Family Development Sessions (FDS)"
         ],
-        "tags": ["financial", "medical", "education"]
+        "tags": [
+            "financial",
+            "medical",
+            "education"
+        ]
     },
     {
         "id": "dole-tupad",
         "agency": "DOLE",
         "name": "TUPAD (Emergency Employment)",
         "category": "Livelihood / Cash",
-        "description": "A community-based package of assistance that provides emergency employment for displaced workers, underemployed, and seasonal workers, for a minimum period of 10 days up to 30 days.",
-        "target_audience": ["Unemployed", "Low Income", "Underemployed"],
+        "description": "A community-based package of assistance that provides emergency employment for displaced workers, underemployed, and seasonal workers, for a minimum period of 10 days up to 90 days in exceptional cases.",
+        "target_audience": [
+            "Unemployed",
+            "Low Income",
+            "Underemployed"
+        ],
         "processing_time": "10-15 working days",
         "official_url": "https://www.dole.gov.ph",
         "steps": [
             "Visit the nearest DOLE Regional/Field Office or local PESO (Public Employment Service Office) in your LGU.",
             "Submit application and profile sheet for evaluation.",
             "Attend the orientation on safety and health at work.",
-            "Perform assigned community work (e.g. street cleaning, minor repairs, tree planting) for 10-30 days.",
+            "Perform assigned community work (e.g. street cleaning, minor repairs, tree planting) for 10-90 days.",
             "Claim salary payout via money remittance centers upon submission of daily time record."
         ],
         "requirements": [
@@ -166,7 +212,11 @@
             "Must be at least 18 years old",
             "Must not be an active government employee"
         ],
-        "tags": ["unemployed", "financial", "livelihood"]
+        "tags": [
+            "unemployed",
+            "financial",
+            "livelihood"
+        ]
     },
     {
         "id": "doh-maip",
@@ -174,7 +224,11 @@
         "name": "Medical Assistance to Indigent Patients (MAIP)",
         "category": "Medical Assistance",
         "description": "DOH program providing financial support through guarantee letters to cover medical expenses (hospitalization, laboratory tests, drugs, medicines) in government and select private hospitals.",
-        "target_audience": ["Indigent", "Low Income", "Medical Patients"],
+        "target_audience": [
+            "Indigent",
+            "Low Income",
+            "Medical Patients"
+        ],
         "processing_time": "1-2 working days",
         "official_url": "https://doh.gov.ph",
         "steps": [
@@ -190,7 +244,10 @@
             "Doctor's Prescription with price estimation",
             "Valid ID of patient or immediate relative representative"
         ],
-        "tags": ["medical", "financial"]
+        "tags": [
+            "medical",
+            "financial"
+        ]
     },
     {
         "id": "pagibig-housing",
@@ -198,7 +255,11 @@
         "name": "Regular Housing Loan",
         "category": "Housing / Loan",
         "description": "Provides financing up to ₱6 Million for purchasing residential lots, house and lot packages, condominiums, or construction/renovation of homes, payable up to 30 years.",
-        "target_audience": ["Employed", "Self-Employed", "Pag-IBIG Members"],
+        "target_audience": [
+            "Employed",
+            "Self-Employed",
+            "Pag-IBIG Members"
+        ],
         "processing_time": "15-20 working days",
         "official_url": "https://www.pagibigfundservices.com",
         "steps": [
@@ -216,7 +277,10 @@
             "Tax Declaration and Real Estate Tax Receipt",
             "No outstanding Pag-IBIG loans in default"
         ],
-        "tags": ["housing", "loans"]
+        "tags": [
+            "housing",
+            "loans"
+        ]
     },
     {
         "id": "gsis-retirement",
@@ -224,7 +288,10 @@
         "name": "Retirement Benefit",
         "category": "Pension / Retirement",
         "description": "Ensures active GSIS members receive pensions (either as a lump-sum check + monthly annuity, or immediately as monthly pension) upon retiring from government service.",
-        "target_audience": ["Government Employees", "Seniors"],
+        "target_audience": [
+            "Government Employees",
+            "Seniors"
+        ],
         "processing_time": "10-15 working days",
         "official_url": "https://www.gsis.gov.ph",
         "steps": [
@@ -240,7 +307,11 @@
             "At least 15 years of government service",
             "Must be at least 60 years old at retirement"
         ],
-        "tags": ["pension", "seniors", "financial"]
+        "tags": [
+            "pension",
+            "seniors",
+            "financial"
+        ]
     },
     {
         "id": "owwa-edsp",
@@ -248,7 +319,10 @@
         "name": "Education for Development Scholarship Program (EDSP)",
         "category": "Education / Scholarship",
         "description": "A scholarship grant of up to ₱60,000 per school year for qualified dependents of active OFW members, who intend to enroll in a 4- to 5-year baccalaureate course.",
-        "target_audience": ["Students", "OFW Dependents"],
+        "target_audience": [
+            "Students",
+            "OFW Dependents"
+        ],
         "processing_time": "Annual Application Cycle",
         "official_url": "https://owwa.gov.ph",
         "steps": [
@@ -265,7 +339,10 @@
             "Birth Certificate of student (and OFW if sibling relation)",
             "Certificate of Good Moral Character"
         ],
-        "tags": ["education", "financial"]
+        "tags": [
+            "education",
+            "financial"
+        ]
     },
     {
         "id": "sss-sickness",
@@ -273,7 +350,10 @@
         "name": "Sickness Benefit",
         "category": "Cash Allowance / Medical",
         "description": "A daily cash allowance paid for the number of days a member is unable to work due to sickness or injury, confined either in a hospital or at home for at least 4 days.",
-        "target_audience": ["SSS Members", "Medical Patients"],
+        "target_audience": [
+            "SSS Members",
+            "Medical Patients"
+        ],
         "processing_time": "5-10 working days",
         "official_url": "https://member.sss.gov.ph",
         "steps": [
@@ -289,6 +369,141 @@
             "Laboratory/diagnostic results supporting the diagnosis",
             "Enrolled bank account (DAEM)"
         ],
-        "tags": ["medical", "financial"]
+        "tags": [
+            "medical",
+            "financial"
+        ]
+    },
+    {
+        "id": "philhealth-newborn",
+        "agency": "PhilHealth",
+        "name": "Newborn Care Package",
+        "category": "Healthcare / Newborn",
+        "description": "Provides essential health services for newborns including physical examination, eye prophylaxis, vitamin K administration, BCG vaccine, first dose of hepatitis B vaccine, and newborn screening test.",
+        "target_audience": [
+            "Mothers",
+            "Newborns",
+            "PhilHealth Members"
+        ],
+        "processing_time": "Immediate (availed at birth)",
+        "official_url": "https://www.philhealth.gov.ph",
+        "steps": [
+            "Ensure active PhilHealth membership prior to delivery.",
+            "Submit copy of Member Data Record (MDR) and valid ID to the billing section of the hospital.",
+            "Fill out PhilHealth Claim Form 1 (CF-1) and Claim Form 2 (CF-2) at the hospital.",
+            "The Newborn Care Package is automatically deducted from the hospital billing for both mother and child."
+        ],
+        "requirements": [
+            "Active PhilHealth membership or dependent registration",
+            "Completed PhilHealth Claim Form 1 (CF1)",
+            "Completed PhilHealth Claim Form 2 (CF2)",
+            "Member Data Record (MDR) copy",
+            "Valid government ID of the member parent"
+        ],
+        "tags": [
+            "medical",
+            "maternity",
+            "newborn"
+        ]
+    },
+    {
+        "id": "sss-funeral",
+        "agency": "SSS",
+        "name": "Funeral Benefit",
+        "category": "Financial / Burial",
+        "description": "A cash benefit ranging from a fixed ₱12,000 (for 1-35 contributions) up to a variable ₱20,000 to ₱60,000 (for 36+ contributions) granted to whoever paid the funeral expenses of a deceased SSS member.",
+        "target_audience": [
+            "Burial Claimants",
+            "Families",
+            "SSS Members"
+        ],
+        "processing_time": "5-10 working days",
+        "official_url": "https://member.sss.gov.ph",
+        "steps": [
+            "Secure a Certified True Copy of the Death Certificate from the local civil registry or PSA.",
+            "Gather official receipt from the funeral parlor showing the claimant's name as payor.",
+            "Log in to My.SSS Portal (E-Services tab) and select 'Apply for Funeral Benefit Claim'.",
+            "Fill out the online application and upload the Death Certificate, Funeral Receipt, and claimant ID.",
+            "Wait for approval and direct credit to the enrolled claimant bank account."
+        ],
+        "requirements": [
+            "Death Certificate of the deceased member (PSA copy or Certified True Copy)",
+            "Official Receipt of funeral expenses naming the claimant as payor",
+            "Valid ID of the claimant (Original and Photocopy)",
+            "Disbursement Account enrollment (DAEM) of claimant",
+            "Proof of contributions of the deceased member (at least 1 contribution)"
+        ],
+        "tags": [
+            "burial",
+            "financial",
+            "crisis"
+        ]
+    },
+    {
+        "id": "gsis-funeral",
+        "agency": "GSIS",
+        "name": "Funeral Benefit",
+        "category": "Financial / Burial",
+        "description": "A cash benefit of ₱30,000 paid to the surviving spouse, children, or whoever paid the funeral expenses of a deceased GSIS member or retiree.",
+        "target_audience": [
+            "Burial Claimants",
+            "Families",
+            "Government Employees"
+        ],
+        "processing_time": "5-7 working days",
+        "official_url": "https://www.gsis.gov.ph",
+        "steps": [
+            "Download and fill out the GSIS Application Form for Funeral Benefit.",
+            "Obtain a certified photocopy of the Death Certificate.",
+            "Submit application via GSIS Wireless Kiosk (GW@PS), GSIS Touch app, or email to the regional branch.",
+            "Submit official receipt of funeral expenses if the claimant is not the surviving spouse.",
+            "Wait for credit to the claimant's eCard or bank account."
+        ],
+        "requirements": [
+            "Completed GSIS Funeral Benefit Application Form",
+            "Death Certificate of the deceased GSIS member (PSA or Certified Local Copy)",
+            "Marriage Contract (PSA copy) if surviving spouse is claimant",
+            "Official Receipt of funeral expenses if claimant is not the spouse",
+            "Valid ID of the claimant"
+        ],
+        "tags": [
+            "burial",
+            "financial",
+            "pension"
+        ]
+    },
+    {
+        "id": "tesda-training",
+        "agency": "TESDA",
+        "name": "Free Skills Training & Scholarship",
+        "category": "Education / Livelihood",
+        "description": "Provides free vocational training, assessment, and entrepreneurship toolkits under programs like TWSP, STEP, and PESFA to help citizens find new employment.",
+        "target_audience": [
+            "Unemployed",
+            "Low Income",
+            "OFWs",
+            "Students"
+        ],
+        "processing_time": "Depends on course slot availability",
+        "official_url": "https://www.tesda.gov.ph",
+        "steps": [
+            "Search for available training courses at local TESDA-accredited schools or field offices.",
+            "Submit application forms along with required academic and demographic papers.",
+            "Attend the screening or selection interview at the training center.",
+            "Complete the designated classroom training hours and practical application.",
+            "Take the National Assessment to receive the National Certificate (NC I or NC II) and toolkit/allowance."
+        ],
+        "requirements": [
+            "Completed TESDA Enrollment Form",
+            "Barangay Clearance or Certificate of Indigency",
+            "At least High School Graduate report card or ALS Certificate",
+            "Form 137 or Transcript of Records",
+            "4 copies of passport size photos (white background, collar, with name tag)"
+        ],
+        "tags": [
+            "education",
+            "livelihood",
+            "unemployed"
+        ]
     }
 ]

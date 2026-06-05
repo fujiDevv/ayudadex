@@ -10,6 +10,7 @@
     "saved": "Saved",
     "hotlines": "Hotlines",
     "locator": "Branch Locator",
+    "pathways": "Life Events",
     "largeText": "Toggle Large Text",
     "darkMode": "Toggle Dark Mode"
   },
@@ -168,18 +169,18 @@
         "Under 60 years old at the time of separation"
       ]
     },
-    "philhealth-konsulta": {
-      "name": "Konsulta Package",
-      "description": "A comprehensive primary care benefit package providing free medical consultations, health risk screening, laboratory tests, and essential medicines.",
+    "philhealth-yakap": {
+      "name": "YAKAP (Yaman ng Kalusugan Program)",
+      "description": "An enhanced primary care benefit package (replacing the former Konsulta Package) providing holistic healthcare including free medical consultations, expanded laboratory and cancer screening tests, and essential medicines.",
       "steps": [
         "Ensure your PhilHealth membership is active and register online or via local office.",
-        "Choose and register with a designated PhilHealth Konsulta accredited provider (clinic/hospital).",
+        "Choose and register with a designated PhilHealth YAKAP accredited provider (clinic/hospital).",
         "Schedule an appointment for free consultations and diagnostic testing.",
         "Avail of the prescribed medicines at the provider's in-house pharmacy for free."
       ],
       "requirements": [
         "Member Data Record (MDR) copy",
-        "Registration form for PhilHealth Konsulta Provider",
+        "Registration form for PhilHealth YAKAP Provider",
         "At least 1 valid government ID"
       ]
     },
@@ -237,12 +238,12 @@
     },
     "dole-tupad": {
       "name": "TUPAD (Emergency Employment)",
-      "description": "A community-based package of assistance that provides emergency employment for displaced workers, underemployed, and seasonal workers, for a minimum period of 10 days up to 30 days.",
+      "description": "A community-based package of assistance that provides emergency employment for displaced workers, underemployed, and seasonal workers, for a minimum period of 10 days up to 90 days in exceptional cases.",
       "steps": [
         "Visit the nearest DOLE Regional/Field Office or local PESO (Public Employment Service Office) in your LGU.",
         "Submit application and profile sheet for evaluation.",
         "Attend the orientation on safety and health at work.",
-        "Perform assigned community work (e.g. street cleaning, minor repairs, tree planting) for 10-30 days.",
+        "Perform assigned community work (e.g. street cleaning, minor repairs, tree planting) for 10-90 days.",
         "Claim salary payout via money remittance centers upon submission of daily time record."
       ],
       "requirements": [
@@ -340,6 +341,77 @@
         "Laboratory/diagnostic results supporting the diagnosis",
         "Enrolled bank account (DAEM)"
       ]
+    },
+    "philhealth-newborn": {
+      "name": "Newborn Care Package",
+      "description": "Provides essential health services for newborns including physical examination, eye prophylaxis, vitamin K administration, BCG vaccine, first dose of hepatitis B vaccine, and newborn screening test.",
+      "steps": [
+        "Ensure active PhilHealth membership prior to delivery.",
+        "Submit copy of Member Data Record (MDR) and valid ID to the billing section of the hospital.",
+        "Fill out PhilHealth Claim Form 1 (CF-1) and Claim Form 2 (CF-2) at the hospital.",
+        "The Newborn Care Package is automatically deducted from the hospital billing for both mother and child."
+      ],
+      "requirements": [
+        "Active PhilHealth membership or dependent registration",
+        "Completed PhilHealth Claim Form 1 (CF1)",
+        "Completed PhilHealth Claim Form 2 (CF2)",
+        "Member Data Record (MDR) copy",
+        "Valid government ID of the member parent"
+      ]
+    },
+    "sss-funeral": {
+      "name": "Funeral Benefit",
+      "description": "A cash benefit ranging from a fixed ₱12,000 (for 1-35 contributions) up to a variable ₱20,000 to ₱60,000 (for 36+ contributions) granted to whoever paid the funeral expenses of a deceased SSS member.",
+      "steps": [
+        "Secure a Certified True Copy of the Death Certificate from the local civil registry or PSA.",
+        "Gather official receipt from the funeral parlor showing the claimant's name as payor.",
+        "Log in to My.SSS Portal (E-Services tab) and select 'Apply for Funeral Benefit Claim'.",
+        "Fill out the online application and upload the Death Certificate, Funeral Receipt, and claimant ID.",
+        "Wait for approval and direct credit to the enrolled claimant bank account."
+      ],
+      "requirements": [
+        "Death Certificate of the deceased member (PSA copy or Certified True Copy)",
+        "Official Receipt of funeral expenses naming the claimant as payor",
+        "Valid ID of the claimant (Original and Photocopy)",
+        "Disbursement Account enrollment (DAEM) of claimant",
+        "Proof of contributions of the deceased member (at least 1 contribution)"
+      ]
+    },
+    "gsis-funeral": {
+      "name": "Funeral Benefit",
+      "description": "A cash benefit of ₱30,000 paid to the surviving spouse, children, or whoever paid the funeral expenses of a deceased GSIS member or retiree.",
+      "steps": [
+        "Download and fill out the GSIS Application Form for Funeral Benefit.",
+        "Obtain a certified photocopy of the Death Certificate.",
+        "Submit application via GSIS Wireless Kiosk (GW@PS), GSIS Touch app, or email to the regional branch.",
+        "Submit official receipt of funeral expenses if the claimant is not the surviving spouse.",
+        "Wait for credit to the claimant's eCard or bank account."
+      ],
+      "requirements": [
+        "Completed GSIS Funeral Benefit Application Form",
+        "Death Certificate of the deceased GSIS member (PSA or Certified Local Copy)",
+        "Marriage Contract (PSA copy) if surviving spouse is claimant",
+        "Official Receipt of funeral expenses if claimant is not the spouse",
+        "Valid ID of the claimant"
+      ]
+    },
+    "tesda-training": {
+      "name": "Free Skills Training & Scholarship",
+      "description": "Provides free vocational training, assessment, and entrepreneurship toolkits under programs like TWSP, STEP, and PESFA to help citizens find new employment.",
+      "steps": [
+        "Search for available training courses at local TESDA-accredited schools or field offices.",
+        "Submit application forms along with required academic and demographic papers.",
+        "Attend the screening or selection interview at the training center.",
+        "Complete the designated classroom training hours and practical application.",
+        "Take the National Assessment to receive the National Certificate (NC I or NC II) and toolkit/allowance."
+      ],
+      "requirements": [
+        "Completed TESDA Enrollment Form",
+        "Barangay Clearance or Certificate of Indigency",
+        "At least High School Graduate report card or ALS Certificate",
+        "Form 137 or Transcript of Records",
+        "4 copies of passport size photos (white background, collar, with name tag)"
+      ]
     }
   },
   "hero": {
@@ -391,5 +463,22 @@
     "complete": "Completed",
     "incomplete": "Incomplete",
     "progress": "Preparation Progress"
+  },
+  "pathways": {
+    "title": "Life Event Pathways",
+    "desc": "Select a major life milestone to view, manage, and check off required government document packages and application steps in a structured timeline.",
+    "babyTitle": "Having a Baby",
+    "babyDesc": "Claim maternity cash benefits, newborn medical packages, and register your child's birth certificate.",
+    "babyTips": "Notify your employer or SSS immediately after pregnancy is confirmed. Make sure your PhilHealth contributions are updated prior to delivery to qualify for newborn care packages.",
+    "deathTitle": "Loss of a Family Member",
+    "deathDesc": "Secure death certificates, claim SSS/GSIS funeral benefits, and manage initial bereavement claims.",
+    "deathTips": "Ensure the official funeral receipts name you as the payor, as claims are reimbursed to the specific person who paid the expenses. Keep copies of both local and PSA-certified death certificates.",
+    "jobLossTitle": "Job Loss / Transition",
+    "jobLossDesc": "Apply for SSS unemployment benefits, register for free TESDA skill training, and find immediate local emergency work.",
+    "jobLossTips": "File for your DOLE separation certificate within 60 days of involuntary termination. Check if your SSS account has at least 36 monthly contributions registered to secure unemployment payouts.",
+    "selectEvent": "Select another Life Event",
+    "progress": "Overall Pathway Progress",
+    "coordinationTips": "Expert Guidance & Checklist Instructions",
+    "bundleIncludes": "This pathway bundles the following government programs:"
   }
 }
