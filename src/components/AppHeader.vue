@@ -1,19 +1,21 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { onClickOutside } from '@vueuse/core'
 import {
-  ClipboardList, Wand2, Star, Phone, Sun, Moon, Type, MoreVertical, MapPin
+  ClipboardList, Wand2, Star, Phone, Sun, Moon, Type, MoreVertical, MapPin,
+  Github, Lightbulb, Globe, ChevronDown
 } from 'lucide-vue-next'
 import { motion } from 'motion-v'
 import { useAyudaStore } from '../stores/ayudaStore'
+import { useRoute, useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 
 const store = useAyudaStore()
-
-import { useRoute, useRouter } from 'vue-router'
-
 const route = useRoute()
 const router = useRouter()
-defineProps<{
+const { t } = useI18n()
+
+const props = defineProps<{
   savedCount: number
   isDark: boolean
 }>()
@@ -30,6 +32,36 @@ onClickOutside(dropdownRef, () => {
     isMenuOpen.value = false
   }
 })
+
+// Navigation Dropdown State & Handlers
+const isNavDropdownOpen = ref(false)
+const navDropdownRef = ref(null)
+
+onClickOutside(navDropdownRef, () => {
+  if (isNavDropdownOpen.value) {
+    isNavDropdownOpen.value = false
+  }
+})
+
+const navItems = computed(() => [
+  { path: '/', label: t('nav.directory'), icon: ClipboardList },
+  { path: '/wizard', label: t('nav.quiz'), icon: Wand2 },
+  { path: '/shortlist', label: t('nav.saved') + ` (${props.savedCount})`, icon: Star },
+  { path: '/hotlines', label: t('nav.hotlines'), icon: Phone },
+  { path: '/locator', label: t('nav.locator'), icon: MapPin }
+])
+
+const currentNavItem = computed(() => {
+  if (route.path.startsWith('/program/')) {
+    return { path: '/', label: t('nav.directory'), icon: ClipboardList }
+  }
+  return navItems.value.find(item => item.path === route.path) || { path: '/', label: t('nav.directory'), icon: ClipboardList }
+})
+
+const navigate = (path: string) => {
+  router.push(path)
+  isNavDropdownOpen.value = false
+}
 </script>
 
 <template>
@@ -56,59 +88,69 @@ onClickOutside(dropdownRef, () => {
           </div>
         </motion.div>
 
-        <!-- Navigation Tabs (Desktop) -->
-        <nav class="hidden md:flex items-center gap-1">
-          <motion.button @click="router.push('/')"
-            class="px-3.5 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 border border-transparent"
-            :class="route.path === '/'
-              ? 'bg-blue-50 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold rounded-md shadow-sm'
-              : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60'"
-            :whileHover="{ scale: 1.02 }" :whileTap="{ scale: 0.98 }">
-            {{ $t('nav.directory') }}
-          </motion.button>
+        <!-- Navigation Dropdown (Desktop) -->
+        <div class="hidden md:flex items-center">
+          <div ref="navDropdownRef" class="relative">
+            <motion.button @click="isNavDropdownOpen = !isNavDropdownOpen"
+              class="px-3.5 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 border border-slate-200 dark:border-slate-800 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700/80 text-slate-700 dark:text-slate-200 shadow-sm font-bold"
+              :whileHover="{ scale: 1.02 }" :whileTap="{ scale: 0.98 }"
+              aria-label="Navigation menu" :aria-expanded="isNavDropdownOpen">
+              <component :is="currentNavItem.icon" class="w-4 h-4 text-blue-600 dark:text-blue-400" />
+              <span>{{ currentNavItem.label }}</span>
+              <ChevronDown class="w-4 h-4 text-slate-400 dark:text-slate-500 transition-transform duration-200" :class="{ 'rotate-180': isNavDropdownOpen }" />
+            </motion.button>
 
-          <motion.button @click="router.push('/wizard')"
-            class="px-3.5 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 border border-transparent"
-            :class="route.path === '/wizard'
-              ? 'bg-blue-50 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold rounded-md shadow-sm'
-              : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60'"
-            :whileHover="{ scale: 1.02 }" :whileTap="{ scale: 0.98 }">
-            {{ $t('nav.quiz') }}
-          </motion.button>
-
-          <motion.button @click="router.push('/shortlist')"
-            class="px-3.5 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 border border-transparent"
-            :class="route.path === '/shortlist'
-              ? 'bg-blue-50 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold rounded-md shadow-sm'
-              : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60'"
-            :whileHover="{ scale: 1.02 }" :whileTap="{ scale: 0.98 }">
-            {{ $t('nav.saved') }} ({{ savedCount }})
-          </motion.button>
-
-          <motion.button @click="router.push('/hotlines')"
-            class="px-3.5 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 border border-transparent"
-            :class="route.path === '/hotlines'
-              ? 'bg-blue-50 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold rounded-md shadow-sm'
-              : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60'"
-            :whileHover="{ scale: 1.02 }" :whileTap="{ scale: 0.98 }">
-            {{ $t('nav.hotlines') }}
-          </motion.button>
-
-          <motion.button @click="router.push('/locator')"
-            class="px-3.5 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 border border-transparent"
-            :class="route.path === '/locator'
-              ? 'bg-blue-50 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold rounded-md shadow-sm'
-              : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60'"
-            :whileHover="{ scale: 1.02 }" :whileTap="{ scale: 0.98 }">
-            {{ $t('nav.locator') }}
-          </motion.button>
-        </nav>
+            <!-- Dropdown Menu -->
+            <transition enter-active-class="transition duration-200 ease-out"
+              enter-from-class="transform scale-95 -translate-y-2 opacity-0" enter-to-class="transform scale-100 translate-y-0 opacity-100"
+              leave-active-class="transition duration-75 ease-in" leave-from-class="transform scale-100 translate-y-0 opacity-100"
+              leave-to-class="transform scale-95 -translate-y-2 opacity-0">
+              <div v-if="isNavDropdownOpen"
+                class="absolute left-0 mt-2 w-56 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 overflow-hidden z-50 py-1.5">
+                <button v-for="item in navItems" :key="item.path" @click="navigate(item.path)"
+                  class="w-full px-4 py-2.5 text-left flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer text-slate-700 dark:text-slate-300"
+                  :class="route.path === item.path ? 'bg-blue-50/50 dark:bg-blue-950/20 font-bold text-blue-900 dark:text-blue-200' : ''">
+                  <component :is="item.icon" class="w-4 h-4 text-slate-400" :class="route.path === item.path ? 'text-blue-600 dark:text-blue-400' : ''" />
+                  <span class="text-sm">{{ item.label }}</span>
+                </button>
+              </div>
+            </transition>
+          </div>
+        </div>
 
         <!-- Actions -->
         <div class="flex items-center gap-2 w-auto">
 
           <!-- Desktop Inline Actions (Hidden on Mobile/Tablet) -->
           <div class="hidden lg:flex items-center gap-2">
+            <!-- Suggest Update Button -->
+            <motion.button @click="router.push('/suggest')"
+              class="px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all flex items-center gap-1.5 cursor-pointer font-bold"
+              :class="route.path === '/suggest'
+                ? 'border-amber-300 dark:border-amber-800 bg-amber-100 dark:bg-amber-900/40 text-amber-900 dark:text-amber-200 shadow-sm'
+                : 'border-amber-200 dark:border-amber-900/60 bg-amber-50 dark:bg-amber-950/20 text-amber-800 dark:text-amber-300 hover:bg-amber-100 dark:hover:bg-amber-900/30'"
+              :whileHover="{ scale: 1.02 }" :whileTap="{ scale: 0.98 }">
+              <Lightbulb class="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />
+              <span>{{ $t('detail.suggestUpdate') }}</span>
+            </motion.button>
+
+            <!-- BetterGov.ph Link -->
+            <a href="https://bettergov.ph/" target="_blank" rel="noopener noreferrer"
+              class="px-3 py-1.5 rounded-lg text-xs font-semibold border border-blue-200 dark:border-blue-900/60 bg-blue-50 dark:bg-blue-950/20 text-blue-800 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-all flex items-center gap-1.5 cursor-pointer font-bold">
+              <Globe class="w-3.5 h-3.5 text-blue-500 dark:text-blue-450" />
+              <span>BetterGov.ph</span>
+            </a>
+
+            <!-- GitHub Link -->
+            <a href="https://github.com/fujiDevv/ayudadex" target="_blank" rel="noopener noreferrer"
+              class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center cursor-pointer"
+              title="GitHub Repository">
+              <Github class="w-5 h-5" />
+            </a>
+
+            <!-- Divider -->
+            <div class="w-[1px] h-5 bg-slate-200 dark:bg-slate-700 mx-1"></div>
+
             <!-- Language Switcher -->
             <div class="relative flex items-center">
               <select v-model="$i18n.locale"
@@ -158,7 +200,7 @@ onClickOutside(dropdownRef, () => {
               leave-active-class="transition duration-75 ease-in" leave-from-class="transform scale-100 opacity-100"
               leave-to-class="transform scale-95 opacity-0">
               <div v-if="isMenuOpen"
-                class="absolute right-0 top-full mt-2 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 overflow-hidden z-50 py-1">
+                class="absolute right-0 top-full mt-2 w-52 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 overflow-hidden z-50 py-1">
 
                 <!-- Language -->
                 <div
@@ -199,6 +241,31 @@ onClickOutside(dropdownRef, () => {
                     {{ isDark ? 'Light Mode' : 'Dark Mode' }}
                   </span>
                 </button>
+
+                <!-- Divider -->
+                <div class="border-t border-slate-100 dark:border-slate-700 my-1"></div>
+
+                <!-- Suggest Update -->
+                <button @click="router.push('/suggest'); isMenuOpen = false"
+                  class="w-full px-4 py-2.5 text-left flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer text-slate-700 dark:text-slate-300"
+                  :class="route.path === '/suggest' ? 'bg-blue-50/50 dark:bg-blue-950/20 font-bold text-blue-900 dark:text-blue-200' : ''">
+                  <Lightbulb class="w-4 h-4 text-slate-500" :class="route.path === '/suggest' ? 'text-blue-600 dark:text-blue-400' : ''" />
+                  <span class="text-sm font-medium">{{ $t('detail.suggestUpdate') }}</span>
+                </button>
+
+                <!-- BetterGov.ph Link -->
+                <a href="https://bettergov.ph/" target="_blank" rel="noopener noreferrer" @click="isMenuOpen = false"
+                  class="w-full px-4 py-2.5 text-left flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer text-slate-700 dark:text-slate-300 font-medium">
+                  <Globe class="w-4 h-4 text-slate-500" />
+                  <span class="text-sm font-medium">BetterGov.ph</span>
+                </a>
+
+                <!-- GitHub Link -->
+                <a href="https://github.com/fujiDevv/ayudadex" target="_blank" rel="noopener noreferrer" @click="isMenuOpen = false"
+                  class="w-full px-4 py-2.5 text-left flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer text-slate-700 dark:text-slate-300 font-medium">
+                  <Github class="w-4 h-4 text-slate-500" />
+                  <span class="text-sm font-medium">GitHub</span>
+                </a>
               </div>
             </transition>
           </div>
