@@ -1,7 +1,18 @@
 <script setup lang="ts">
-import { FileText, AlertTriangle } from 'lucide-vue-next'
+import { AlertTriangle, Phone, Mail } from 'lucide-vue-next'
 import { motion } from 'motion-v'
 import { hotlines } from '../constants'
+
+function getDialableNumber(text: string) {
+  // For dial string, take everything before ' to ' or ' or '
+  let clean = text.split(/\s+(?:to|or)\s+/i)[0].trim()
+  // Strip prefixes like "Smart:", "Globe:", "Toll-Free:", "Hotline:", etc.
+  clean = clean.replace(/^(Smart|Globe|Toll-Free|Hotline|Toll-Free Hotline)[:\s-]+\s*/i, '').trim()
+  // Remove parentheticals
+  clean = clean.replace(/\(.*?\)/g, '').trim()
+  // Keep only digits, +, and *
+  return clean.replace(/[^\d+*]/g, '')
+}
 </script>
 
 <template>
@@ -18,27 +29,36 @@ import { hotlines } from '../constants'
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <motion.div v-for="(contact, idx) in hotlines" :key="contact.agency"
-          class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm space-y-3"
+          class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm flex flex-col justify-between space-y-3"
           :initial="{ opacity: 0, y: 15 }" :animate="{ opacity: 1, y: 0 }"
           :transition="{ duration: 0.3, delay: idx * 0.04 }" :whileHover="{ y: -3, scale: 1.005 }">
           <div>
-            <h3 class="font-bold text-base text-slate-900 dark:text-slate-100 line-clamp-1">{{ contact.agency }}</h3>
-            <p class="text-xs text-slate-400 dark:text-slate-400 font-medium mt-0.5">{{ contact.purpose }}</p>
+            <h3 class="font-bold text-base text-slate-900 dark:text-slate-100 line-clamp-2 leading-snug">{{ contact.agency }}</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 font-medium mt-1">{{ contact.purpose }}</p>
           </div>
 
-          <div class="space-y-1.5 pt-2 border-t border-slate-100 dark:border-slate-800">
-            <div class="flex items-center gap-2 text-xs font-semibold">
-              <Phone class="w-4 h-4 text-slate-400 dark:text-slate-500" />
-              <a :href="`tel:${contact.number.split('/')[0].trim()}`"
-                class="text-blue-900 dark:text-blue-400 hover:underline">
-                {{ contact.number }}
-              </a>
+          <div class="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-2">
+            <!-- Phone Numbers -->
+            <div class="flex items-start gap-2 text-xs font-semibold">
+              <Phone class="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 shrink-0" />
+              <div class="flex flex-col gap-1.5 flex-grow">
+                <a v-for="phone in contact.numbers" :key="phone"
+                  :href="`tel:${getDialableNumber(phone)}`"
+                  class="text-blue-600 dark:text-blue-400 hover:underline inline-block break-all leading-normal">
+                  {{ phone }}
+                </a>
+              </div>
             </div>
-            <div class="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
-              <FileText class="w-4 h-4 text-slate-400 dark:text-slate-500" />
-              <a :href="`mailto:${contact.email}`" class="hover:underline">
-                {{ contact.email }}
-              </a>
+            <!-- Emails -->
+            <div class="flex items-start gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <Mail class="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 shrink-0" />
+              <div class="flex flex-col gap-1.5 flex-grow">
+                <a v-for="email in contact.emails" :key="email"
+                  :href="`mailto:${email}`"
+                  class="hover:underline text-slate-600 dark:text-slate-300 inline-block break-all leading-normal">
+                  {{ email }}
+                </a>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -58,3 +78,5 @@ import { hotlines } from '../constants'
     </div>
   </main>
 </template>
+
+
