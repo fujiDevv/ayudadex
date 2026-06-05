@@ -458,12 +458,33 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <div class="flex justify-between items-center mb-4">
+      <div class="flex justify-between items-center mb-4 flex-wrap gap-3">
         <button @click="searchArea(true)" :disabled="isLoading" class="flex items-center gap-2 bg-blue-50 dark:bg-blue-900/40 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-400 px-4 py-2 rounded-xl text-sm font-semibold transition-colors cursor-pointer disabled:opacity-50">
           <Loader2 v-if="isLoading" class="w-4 h-4 animate-spin" />
           <Search v-else class="w-4 h-4" />
           Search Map Area
         </button>
+
+        <!-- Agency Color Legend -->
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs font-semibold text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/40 px-4 py-2.5 rounded-xl border border-slate-100 dark:border-slate-800/80">
+          <span class="text-[10px] uppercase tracking-wider text-slate-400 dark:text-slate-500 mr-1">Legend</span>
+          <div class="flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-500 shadow-sm"></span>
+            <span>DSWD</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-green-500 shadow-sm"></span>
+            <span>PhilHealth</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-blue-600 shadow-sm"></span>
+            <span>Pag-IBIG</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-indigo-600 shadow-sm"></span>
+            <span>SSS</span>
+          </div>
+        </div>
       </div>
 
       <div v-if="searchError" class="mb-4 p-3 bg-red-50 text-red-600 dark:bg-red-900/30 dark:text-red-400 text-sm font-medium rounded-lg">
