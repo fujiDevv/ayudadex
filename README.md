@@ -21,6 +21,8 @@ Built with a premium modern design, it helps Filipinos search through benefits f
 * **Smart Eligibility Wizard**: An interactive quiz that evaluates demographic and employment status to match users with qualifying programs.
 * **Checklist & Requirement Tracker**: Save matching programs to a personal shortlist and track required application documents offline.
 * **Interactive Branch Locator**: An integrated map powered by OpenStreetMap and cached Overpass API queries to find nearby agency branches instantly.
+* **Document Prep & Generator**: Draft formal letters (Authorization Letters, Affidavits of Low Income, and Request Letters) in real-time with an interactive, draggable A4 sheet preview, printable and downloadable directly as a PDF.
+* **Prerequisite Certificate Guides**: Interactive checklists, procedures, and tips to secure foundational documents such as Barangay Certificates of Indigency and BIR Certificates of No Income, saving applicants time and money.
 * **Progressive Web App (PWA)**: Full offline support via service workers, making directory contents and checklists accessible without internet.
 * **Elder & Senior Friendly**: Offers bilingual English & Tagalog translations, dynamic large-text mode, high-contrast dark mode, and ink-saving print-to-PDF styles.
 
