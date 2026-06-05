@@ -9,6 +9,7 @@ const router = createRouter({
     { path: '/hotlines', name: 'hotlines', component: () => import('../views/HotlinesView.vue') },
     { path: '/locator', name: 'locator', component: () => import('../views/BranchLocatorView.vue') },
     { path: '/suggest', name: 'suggest', component: () => import('../views/SuggestUpdateView.vue') },
+    { path: '/assistance', name: 'assistance', component: () => import('../views/AssistanceView.vue') },
     {
       path: '/program/:id',
       name: 'program-detail',
