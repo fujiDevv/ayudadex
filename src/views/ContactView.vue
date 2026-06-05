@@ -21,7 +21,7 @@ const githubHref = 'https://github.com/fujiDevv/ayudadex/issues/new'
 
     <button @click="goBack"
       class="flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 transition-colors mb-6 cursor-pointer">
-      <ArrowLeft class="w-4 h-4" /> {{ t('suggest.backHome') }}
+      <ArrowLeft class="w-4 h-4" /> {{ t('contact.backHome') }}
     </button>
 
     <!-- Header -->
@@ -39,10 +39,10 @@ const githubHref = 'https://github.com/fujiDevv/ayudadex/issues/new'
         </div>
         <h1
           class="text-2xl sm:text-3xl font-bold font-black text-slate-900 dark:text-slate-100 tracking-tight leading-tight">
-          {{ t('suggest.title') }}
+          {{ t('contact.title') }}
         </h1>
         <p class="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-          {{ t('suggest.subtitle') }}
+          {{ t('contact.subtitle') }}
         </p>
       </div>
 
@@ -61,11 +61,11 @@ const githubHref = 'https://github.com/fujiDevv/ayudadex/issues/new'
           </div>
           <h3
             class="text-lg font-black text-slate-900 dark:text-slate-100 tracking-tight mb-2 flex items-center gap-1.5">
-            {{ t('suggest.emailUs') }}
+            {{ t('contact.emailUs') }}
             <ExternalLink class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-slate-400" />
           </h3>
           <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed flex-1">
-            {{ t('suggest.emailUsDesc') }}
+            {{ t('contact.emailUsDesc') }}
           </p>
         </motion.a>
 
@@ -82,11 +82,11 @@ const githubHref = 'https://github.com/fujiDevv/ayudadex/issues/new'
           </div>
           <h3
             class="text-lg font-black text-slate-900 dark:text-slate-100 tracking-tight mb-2 flex items-center gap-1.5">
-            {{ t('suggest.discord') }}
+            {{ t('contact.discord') }}
             <ExternalLink class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-slate-400" />
           </h3>
           <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed flex-1">
-            {{ t('suggest.discordDesc') }}
+            {{ t('contact.discordDesc') }}
           </p>
         </motion.a>
 
@@ -100,11 +100,11 @@ const githubHref = 'https://github.com/fujiDevv/ayudadex/issues/new'
           </div>
           <h3
             class="text-lg font-black text-slate-900 dark:text-slate-100 tracking-tight mb-2 flex items-center gap-1.5">
-            {{ t('suggest.reportIssues') }}
+            {{ t('contact.reportIssues') }}
             <ExternalLink class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-slate-400" />
           </h3>
           <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed flex-1">
-            {{ t('suggest.reportIssuesDesc') }}
+            {{ t('contact.reportIssuesDesc') }}
           </p>
         </motion.a>
       </div>

@@ -127,15 +127,15 @@ const navigate = (path: string) => {
 
           <!-- Desktop Inline Actions (Hidden on Mobile/Tablet) -->
           <div class="hidden lg:flex items-center gap-2">
-            <!-- Suggest Update Button -->
-            <motion.button @click="router.push('/suggest')"
+            <!-- Contact Us Button -->
+            <motion.button @click="router.push('/contact')"
               class="px-2 py-1.5 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
-              :class="route.path === '/suggest'
+              :class="route.path === '/contact'
                 ? 'text-amber-600 dark:text-amber-400 font-extrabold'
                 : 'text-slate-600 hover:text-amber-600 dark:text-slate-400 dark:hover:text-amber-400'"
               :whileHover="{ scale: 1.02 }" :whileTap="{ scale: 0.98 }">
               <Lightbulb class="w-4 h-4 text-amber-500" />
-              <span>{{ $t('detail.suggestUpdate') }}</span>
+              <span>{{ $t('detail.contactUs') }}</span>
             </motion.button>
 
             <!-- BetterGov.ph Link -->
@@ -249,13 +249,13 @@ const navigate = (path: string) => {
                 <!-- Divider -->
                 <div class="border-t border-slate-100 dark:border-slate-700 my-1"></div>
 
-                <!-- Suggest Update -->
-                <button @click="router.push('/suggest'); isMenuOpen = false"
+                <!-- Contact Us -->
+                <button @click="router.push('/contact'); isMenuOpen = false"
                   class="w-full px-4 py-2.5 text-left flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer text-slate-700 dark:text-slate-300"
-                  :class="route.path === '/suggest' ? 'bg-blue-50/50 dark:bg-blue-950/20 font-bold text-blue-900 dark:text-blue-200' : ''">
+                  :class="route.path === '/contact' ? 'bg-blue-50/50 dark:bg-blue-950/20 font-bold text-blue-900 dark:text-blue-200' : ''">
                   <Lightbulb class="w-4 h-4 text-slate-500"
-                    :class="route.path === '/suggest' ? 'text-blue-600 dark:text-blue-400' : ''" />
-                  <span class="text-sm font-medium">{{ $t('detail.suggestUpdate') }}</span>
+                    :class="route.path === '/contact' ? 'text-blue-600 dark:text-blue-400' : ''" />
+                  <span class="text-sm font-medium">{{ $t('detail.contactUs') }}</span>
                 </button>
 
                 <!-- BetterGov.ph Link -->

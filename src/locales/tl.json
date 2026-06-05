@@ -93,11 +93,11 @@
     "visitWebsite": "Bisitahin ang Website",
     "prepared": "Nakahanda",
     "print": "I-print",
-    "suggestUpdate": "Magmungkahi ng Update"
+    "contactUs": "Kontakin Kami"
   },
-  "suggest": {
-    "title": "Magmungkahi ng Update",
-    "subtitle": "Tulungang panatilihing tama at napapanahon ang Ayuda. Pumili kung paano mo gustong ipadala ang mga pagwawasto, mungkahi, o ulat ng problema sa aming team:",
+  "contact": {
+    "title": "Kontakin Kami",
+    "subtitle": "May mga katanungan, mungkahi, o feedback? Pumili kung paano mo gustong makipag-ugnayan sa aming team:",
     "emailUs": "Mag-email sa Amin",
     "emailUsDesc": "Ipadala ang iyong mga mungkahi o feedback direkta sa aming email.",
     "discord": "Komunidad ng Discord",

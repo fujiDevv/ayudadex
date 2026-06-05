@@ -64,10 +64,10 @@ const officialPortals = [
               </button>
             </li>
             <li>
-              <button @click="router.push('/suggest')"
+              <button @click="router.push('/contact')"
                 class="hover:text-blue-900 dark:hover:text-blue-400 transition-colors flex items-center gap-1.5 cursor-pointer text-left font-medium">
                 <Lightbulb class="w-3 h-3" />
-                <span>{{ t('suggest.title') }}</span>
+                <span>{{ t('contact.title') }}</span>
               </button>
             </li>
           </ul>

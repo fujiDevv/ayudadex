@@ -93,11 +93,11 @@
     "visitWebsite": "Visit Agency Website",
     "prepared": "Prepared",
     "print": "Print",
-    "suggestUpdate": "Suggest an Update"
+    "contactUs": "Contact Us"
   },
-  "suggest": {
-    "title": "Suggest an Update",
-    "subtitle": "Help keep Ayuda accurate and up-to-date. Choose how you would like to submit corrections, suggestions, or bug reports to our team:",
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Have questions, suggestions, or feedback? Choose how you would like to get in touch with our team:",
     "emailUs": "Email Us",
     "emailUsDesc": "Send us your suggestions or feedback directly via email.",
     "discord": "Discord Community",
