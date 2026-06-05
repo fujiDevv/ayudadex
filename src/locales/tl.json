@@ -15,7 +15,7 @@
   },
   "locator": {
     "title": "Locator ng Sangay ng Ahensya",
-    "desc": "Hanapin ang pinakamalapit na sangay ng ahensya ng gobyerno tulad ng PhilHealth, Pag-IBIG, SSS, DOLE, DOH, OWWA, at DSWD base sa iyong lokasyon.",
+    "desc": "Hanapin ang pinakamalapit na sangay ng ahensya ng gobyerno tulad ng PhilHealth, Pag-IBIG, SSS, GSIS, DOLE, DOH, OWWA, at DSWD base sa iyong lokasyon.",
     "filterBy": "I-filter ayon sa Ahensya",
     "allAgencies": "Lahat ng Ahensya",
     "selectRegion": "Pumili ng Rehiyon",

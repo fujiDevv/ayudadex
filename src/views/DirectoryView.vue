@@ -161,10 +161,12 @@ const goToProgram = (id: string) => router.push(`/program/${id}`)
             </motion.button>
           </div>
 
-          <ProgramCard v-for="program in filteredPrograms" :key="program.id" :program="program"
-            :is-saved="store.savedPrograms.includes(program.id)" :is-expanded="false" :checked-requirements="store.checkedRequirements[program.id] || []"
-            @toggle-save="store.toggleSaveProgram(program.id, $event)"
-            @toggle-expansion="goToProgram(program.id)" />
+          <div v-else class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <ProgramCard v-for="program in filteredPrograms" :key="program.id" :program="program"
+              :is-saved="store.savedPrograms.includes(program.id)" :is-expanded="false" :checked-requirements="store.checkedRequirements[program.id] || []"
+              @toggle-save="store.toggleSaveProgram(program.id, $event)"
+              @toggle-expansion="goToProgram(program.id)" />
+          </div>
         </section>
       </div>
     </div>

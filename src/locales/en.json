@@ -15,7 +15,7 @@
   },
   "locator": {
     "title": "Agency Branch Locator",
-    "desc": "Find the nearest government agency branches like PhilHealth, Pag-IBIG, SSS, DOLE, DOH, OWWA, and DSWD based on your current location.",
+    "desc": "Find the nearest government agency branches like PhilHealth, Pag-IBIG, SSS, GSIS, DOLE, DOH, OWWA, and DSWD based on your current location.",
     "filterBy": "Filter by Agency",
     "allAgencies": "All Agencies",
     "selectRegion": "Select Region",

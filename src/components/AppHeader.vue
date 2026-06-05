@@ -73,8 +73,9 @@ const navigate = (path: string) => {
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between">
 
         <!-- Logo and Slogan -->
-        <motion.div class="flex items-center gap-2 md:gap-3" :initial="{ opacity: 0, x: -15 }"
-          :animate="{ opacity: 1, x: 0 }" :transition="{ type: 'spring', stiffness: 300, damping: 20 }">
+        <motion.div class="flex items-center gap-2 md:gap-3 cursor-pointer" :initial="{ opacity: 0, x: -15 }"
+          :animate="{ opacity: 1, x: 0 }" :transition="{ type: 'spring', stiffness: 300, damping: 20 }"
+          @click="router.push('/')">
           <img src="/betterGov_Icon.svg" alt="betterGov Logo"
             class="w-8 h-8 md:w-10 md:h-10 object-contain drop-shadow-md drop-shadow-sm dark:brightness-0 dark:invert opacity-90" />
           <div>
