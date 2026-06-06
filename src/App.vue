@@ -1,28 +1,34 @@
 <script setup lang="ts">
-import { watchEffect } from 'vue'
-import { useDark, useToggle } from '@vueuse/core'
-import AppHeader from './components/AppHeader.vue'
-import AppFooter from './components/AppFooter.vue'
-import { useAyudaStore } from './stores/ayudaStore'
+import { watchEffect } from "vue";
+import { useDark, useToggle } from "@vueuse/core";
+import AppHeader from "./components/AppHeader.vue";
+import AppFooter from "./components/AppFooter.vue";
+import { useAyudaStore } from "./stores/ayudaStore";
 
-const isDark = useDark({ initialValue: 'light' })
-const toggleDark = useToggle(isDark)
+const isDark = useDark({ initialValue: "light" });
+const toggleDark = useToggle(isDark);
 
-const store = useAyudaStore()
+const store = useAyudaStore();
 
 watchEffect(() => {
   if (store.isLargeText) {
-    document.documentElement.classList.add('large-text')
+    document.documentElement.classList.add("large-text");
   } else {
-    document.documentElement.classList.remove('large-text')
+    document.documentElement.classList.remove("large-text");
   }
-})
+});
 </script>
 
 <template>
   <div
-    class="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans selection:bg-blue-900 selection:text-white pb-16 transition-colors duration-200">
-    <AppHeader class="print:hidden" :saved-count="store.savedPrograms.length" :is-dark="isDark" @toggle-dark="toggleDark()" />
+    class="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans selection:bg-blue-900 selection:text-white pb-16 transition-colors duration-200"
+  >
+    <AppHeader
+      class="print:hidden"
+      :saved-count="store.savedPrograms.length"
+      :is-dark="isDark"
+      @toggle-dark="toggleDark()"
+    />
 
     <!-- Router View for Dashboard or Program Detail -->
     <router-view v-slot="{ Component }">
