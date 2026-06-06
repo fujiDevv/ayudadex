@@ -49,7 +49,7 @@
     "applyNow": "Apply Now / Learn More"
   },
   "finder": {
-    "title": "Ayuda Finder Wizard",
+    "title": "Ayuda Finder",
     "subtitle": "Find Your Eligible Benefits",
     "step": "Step {step} of {total}",
     "q1": "What is your current employment or life status?",
@@ -108,7 +108,7 @@
     "backHome": "Back to Directory"
   },
   "wizard": {
-    "title": "Ayuda Finder Wizard",
+    "title": "Ayuda Finder",
     "desc": "Answer a few quick questions about your demographics and current situation. Our engine will calculate compatibility scores and recommend the best government programs for you.",
     "button": "Start Quiz"
   },

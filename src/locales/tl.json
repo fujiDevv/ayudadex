@@ -49,7 +49,7 @@
     "applyNow": "Mag-apply Ngayon / Alamin ang Iba Pa"
   },
   "finder": {
-    "title": "Ayuda Finder Wizard",
+    "title": "Ayuda Finder",
     "subtitle": "Hanapin ang mga Benepisyong Nararapat Sayo",
     "step": "Hakbang {step} ng {total}",
     "q1": "Ano ang iyong kasalukuyang katayuan sa trabaho o buhay?",
@@ -108,7 +108,7 @@
     "backHome": "Bumalik sa Direktoryo"
   },
   "wizard": {
-    "title": "Ayuda Finder Wizard",
+    "title": "Ayuda Finder",
     "desc": "Sagutan ang ilang mabilis na tanong tungkol sa iyong sitwasyon. Kakalkulahin ng aming system ang iyong compatibility at magrerekomenda ng mga pinakamahusay na programa ng gobyerno para sa iyo.",
     "button": "Simulan ang Pagsusuri"
   },

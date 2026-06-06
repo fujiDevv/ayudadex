@@ -161,8 +161,12 @@ const handleBlur = () => {
     <motion.div
       class="relative bg-slate-100 dark:bg-slate-900 sm:bg-gradient-to-br sm:from-slate-50 sm:via-slate-100/70 sm:to-blue-50/50 text-slate-900 sm:dark:from-slate-900 sm:dark:via-slate-950 sm:dark:to-blue-950 dark:text-white rounded-3xl p-8 sm:p-12 md:p-14 shadow-xs dark:shadow-2xl border border-slate-200 dark:border-slate-800/80"
       :initial="{ opacity: 0, y: -20 }" :animate="{ opacity: 1, y: 0 }" :transition="{ duration: 0.5 }">
+      <!-- Logo Watermark -->
+      <img src="/betterGov_Icon.svg" alt="betterGov Logo"
+        class="hidden sm:block absolute right-30 bottom-30 md:right-12 md:bottom-12 w-28 h-28 md:w-80 md:h-80 object-contain opacity-10 dark:opacity-[0.07] pointer-events-none select-none z-0 dark:brightness-0 dark:invert" />
+
       <!-- Dashed Bottom Left Fade Grid -->
-      <div class="absolute inset-0 z-0 pointer-events-none opacity-25 dark:opacity-15" style="
+      <div class="hidden sm:block absolute inset-0 z-0 pointer-events-none opacity-25 dark:opacity-15" style="
           background-image: 
             linear-gradient(to right, currentColor 1px, transparent 1px),
             linear-gradient(to bottom, currentColor 1px, transparent 1px);
@@ -294,8 +298,7 @@ const handleBlur = () => {
               : 'hover:border-slate-300 dark:hover:border-slate-700 ' + vc.glow
           ]" :whileHover="{ y: -3, scale: 1.02 }" :whileTap="{ scale: 0.98 }">
           <!-- Colored Icon Circle -->
-          <div
-            class="w-12 h-12 rounded-2xl flex items-center justify-center text-white mb-3 shadow-md"
+          <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-white mb-3 shadow-md"
             :class="vc.color">
             <component :is="vc.icon" class="w-6 h-6" />
           </div>
@@ -362,7 +365,7 @@ const handleBlur = () => {
     <div id="listings-container" class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start scroll-mt-24">
       <!-- Refinement Sidebar -->
       <motion.aside
-        class="space-y-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl shadow-sm backdrop-blur-md bg-white/95 dark:bg-slate-900/95 lg:sticky lg:top-24"
+        class="space-y-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl shadow-sm backdrop-blur-md bg-white/95 dark:bg-slate-900/95 lg:sticky lg:top-8"
         :initial="{ opacity: 0, x: -15 }" :animate="{ opacity: 1, x: 0 }" :transition="{ duration: 0.35 }">
         <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
           <h3 class="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
