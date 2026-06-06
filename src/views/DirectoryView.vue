@@ -205,7 +205,7 @@ const handleBlur = () => {
           <div class="relative group">
             <input type="text" v-model="searchQuery" @focus="isSearchFocused = true" @blur="handleBlur"
               :placeholder="$t('filters.searchPlaceholder')"
-              class="w-full bg-white dark:bg-slate-955/80 text-sm sm:text-base font-normal rounded-2xl border border-slate-200 dark:border-slate-800 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 py-4 pl-12 pr-12 focus:outline-none transition-all text-slate-900 dark:text-slate-100 shadow-lg dark:shadow-2xl placeholder-slate-400 dark:placeholder-slate-500 group-hover:border-slate-300 dark:group-hover:border-slate-700 backdrop-blur-md" />
+              class="w-full bg-white dark:bg-slate-900/80 text-sm sm:text-base font-normal rounded-2xl border border-slate-200 dark:border-slate-800 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 py-4 pl-12 pr-12 focus:outline-none transition-all text-slate-900 dark:text-slate-100 shadow-lg dark:shadow-2xl placeholder-slate-400 dark:placeholder-slate-500 group-hover:border-slate-300 dark:group-hover:border-slate-700 backdrop-blur-md" />
             <Search
               class="w-5 h-5 absolute left-4 top-4.5 text-slate-400 dark:text-slate-500 group-hover:text-slate-500 dark:group-hover:text-slate-450 transition-colors" />
             <button v-if="searchQuery" @click="searchQuery = ''"
@@ -249,7 +249,7 @@ const handleBlur = () => {
 
             <!-- View all results / scroll down option -->
             <div v-if="filteredPrograms.length > 5" @mousedown="scrollToResults"
-              class="p-3 text-center border-t border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-955/50 hover:bg-slate-100 dark:hover:bg-slate-800/80 cursor-pointer text-xs font-bold text-blue-600 dark:text-blue-400 flex items-center justify-center gap-1 transition-colors">
+              class="p-3 text-center border-t border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 hover:bg-slate-100 dark:hover:bg-slate-800/80 cursor-pointer text-xs font-bold text-blue-600 dark:text-blue-400 flex items-center justify-center gap-1 transition-colors">
               View all {{ filteredPrograms.length }} results below
               <ArrowRight class="w-3.5 h-3.5" />
             </div>
@@ -262,21 +262,21 @@ const handleBlur = () => {
             <span class="block text-2xl sm:text-3xl font-extrabold text-blue-600 dark:text-blue-400">{{
               programsData.length }}</span>
             <span
-              class="text-[10px] sm:text-xs font-bold text-slate-550 dark:text-slate-500 uppercase tracking-wide">Assistance
+              class="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-500 uppercase tracking-wide">Assistance
               Programs</span>
           </div>
           <div>
             <span class="block text-2xl sm:text-3xl font-extrabold text-teal-600 dark:text-teal-400">{{
               agenciesList.length }}</span>
             <span
-              class="text-[10px] sm:text-xs font-bold text-slate-555 dark:text-slate-500 uppercase tracking-wide">Agencies
+              class="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-500 uppercase tracking-wide">Agencies
               Covered</span>
           </div>
           <div>
             <span class="block text-2xl sm:text-3xl font-extrabold text-amber-600 dark:text-amber-400">{{
               store.savedPrograms.length }}</span>
             <span
-              class="text-[10px] sm:text-xs font-bold text-slate-555 dark:text-slate-500 uppercase tracking-wide">Bookmarked</span>
+              class="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-500 uppercase tracking-wide">Bookmarked</span>
           </div>
         </div>
       </div>
@@ -392,7 +392,7 @@ const handleBlur = () => {
               :whileHover="{ scale: 1.01 }" :whileTap="{ scale: 0.99 }">
               <span>{{ agency }}</span>
               <span class="text-[9px] font-bold px-2 py-0.5 rounded-full"
-                :class="selectedAgencies.includes(agency) ? 'bg-blue-700 dark:bg-blue-900 text-white' : 'bg-slate-100 dark:bg-slate-955 text-slate-500 dark:text-slate-400 border border-slate-200/10 dark:border-slate-800/10'">
+                :class="selectedAgencies.includes(agency) ? 'bg-blue-700 dark:bg-blue-900 text-white' : 'bg-slate-100 dark:bg-slate-900 text-slate-500 dark:text-slate-400 border border-slate-200/10 dark:border-slate-800/10'">
                 {{programsData.filter(p => p.agency === agency).length}}
               </span>
             </motion.button>

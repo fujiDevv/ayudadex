@@ -210,7 +210,7 @@ const getCategoryIcon = (category: string) => {
           <span 
             v-for="aud in program.target_audience" 
             :key="aud"
-            class="text-[9px] font-semibold bg-slate-50 dark:bg-slate-955 text-slate-500 dark:text-slate-400 border border-slate-200/60 dark:border-slate-800 px-2 py-0.5 rounded-md"
+            class="text-[9px] font-semibold bg-slate-50 dark:bg-slate-900 text-slate-500 dark:text-slate-400 border border-slate-200/60 dark:border-slate-800 px-2 py-0.5 rounded-md"
           >
             {{ aud }}
           </span>

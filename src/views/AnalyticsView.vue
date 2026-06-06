@@ -383,7 +383,7 @@ const viewProgramDetail = (id: string) => {
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 animate-fade-in space-y-10 pb-20">
     <!-- Premium Hero Section -->
     <motion.div
-      class="relative bg-slate-100 dark:bg-slate-900 sm:bg-gradient-to-br sm:from-slate-50 sm:via-slate-100/70 sm:to-blue-50/50 text-slate-900 sm:dark:from-slate-900 sm:dark:via-slate-955 sm:dark:to-blue-950 dark:text-white rounded-3xl p-8 sm:p-12 md:p-14 shadow-xs dark:shadow-2xl border border-slate-200 dark:border-slate-800/80"
+      class="relative bg-slate-100 dark:bg-slate-900 sm:bg-gradient-to-br sm:from-slate-50 sm:via-slate-100/70 sm:to-blue-50/50 text-slate-900 sm:dark:from-slate-900 sm:dark:via-slate-950 sm:dark:to-blue-950 dark:text-white rounded-3xl p-8 sm:p-12 md:p-14 shadow-xs dark:shadow-2xl border border-slate-200 dark:border-slate-800/80"
       :initial="{ opacity: 0, y: -20 }" :animate="{ opacity: 1, y: 0 }" :transition="{ duration: 0.5 }">
       <!-- Logo Watermark -->
       <img src="/betterGov_Icon.svg" alt="betterGov Logo"
