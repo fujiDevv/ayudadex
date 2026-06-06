@@ -11,6 +11,7 @@
     "hotlines": "Hotlines",
     "locator": "Branch Locator",
     "pathways": "Life Events",
+    "analytics": "Data Analytics",
     "largeText": "Toggle Large Text",
     "darkMode": "Toggle Dark Mode"
   },
@@ -94,7 +95,8 @@
     "visitWebsite": "Visit Agency Website",
     "prepared": "Prepared",
     "print": "Print",
-    "contactUs": "Contact Us"
+    "contactUs": "Contact Us",
+    "viewDetails": "View Details"
   },
   "contact": {
     "title": "Contact Us",
@@ -561,5 +563,31 @@
     "progress": "Overall Pathway Progress",
     "coordinationTips": "Expert Guidance & Checklist Instructions",
     "bundleIncludes": "This pathway bundles the following government programs:"
+  },
+  "analytics": {
+    "title": "Data Analytics",
+    "subtitle": "A comprehensive overview of the social assistance landscape in the Philippines across 20 distinct programs.",
+    "executiveSummary": "Executive Summary",
+    "takeaway1Title": "Leading Agencies",
+    "takeaway1Desc": "The Social Security System (SSS) and the Department of Social Welfare and Development (DSWD) are the most active agencies, providing a combined total of 8 programs. SSS focuses heavily on member-based benefits (Retirement, Sickness, Maternity), while DSWD manages broad social safety nets like 4Ps and AICS.",
+    "takeaway2Title": "Core Assistance Types",
+    "takeaway2Desc": "Financial assistance is the primary service offered, appearing in 6 different programs. This is closely followed by Education (4 programs) and Cash Allowances/Pensions (3 programs each), indicating a strong focus on direct economic support and human capital development.",
+    "takeaway3Title": "Vulnerable Groups",
+    "takeaway3Desc": "The programs are specifically designed to support Indigent and Low-Income individuals, as well as specific demographics such as Seniors, Students, and Retirees.",
+    "kpiTotalPrograms": "Total Programs",
+    "kpiAgencies": "Government Agencies",
+    "kpiCategories": "Subcategories",
+    "kpiAvgRequirements": "Avg. Documents Needed",
+    "kpiAvgSteps": "Avg. Application Steps",
+    "kpiActiveBookmarks": "Bookmarked Programs",
+    "chartAgenciesTitle": "Number of Ayuda Programs by Agency",
+    "chartCategoriesTitle": "Number of Ayuda Programs by Category",
+    "chartAudiencesTitle": "Top 15 Target Audiences for Ayuda Programs",
+    "chartTagsTitle": "Top 15 Program Tags",
+    "chartTooltipPrograms": "Programs",
+    "chartTooltipPercentage": "Percentage",
+    "viewAll": "View all related programs",
+    "agencyFilterLabel": "Filter by Agency",
+    "categoryFilterLabel": "Filter by Category"
   }
 }

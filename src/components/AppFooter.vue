@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {
-  AlertTriangle, Github, Heart, ArrowUpRight, Lightbulb
+  AlertTriangle, Github, Heart, ArrowUpRight, Mail
 } from 'lucide-vue-next'
 import { useI18n } from 'vue-i18n'
 
@@ -67,7 +67,7 @@ const officialPortals = [
             <li>
               <button @click="router.push('/contact')"
                 class="hover:text-blue-900 dark:hover:text-blue-400 transition-colors flex items-center gap-1.5 cursor-pointer text-left font-medium">
-                <Lightbulb class="w-3 h-3" />
+                <Mail class="w-3 h-3" />
                 <span>{{ t('contact.title') }}</span>
               </button>
             </li>

@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 import { onClickOutside } from '@vueuse/core'
 import {
   ClipboardList, Wand2, Star, Phone, Sun, Moon, Type, MoreVertical, MapPin,
-  Github, Lightbulb, Globe, ChevronDown, FileText, Layers
+  Github, Mail, Globe, ChevronDown, FileText, Layers, BarChart3
 } from 'lucide-vue-next'
 import { motion } from 'motion-v'
 import { useAyudaStore } from '../stores/ayudaStore'
@@ -135,7 +135,7 @@ const navigate = (path: string) => {
                 ? 'text-amber-600 dark:text-amber-400 font-extrabold'
                 : 'text-slate-600 hover:text-amber-600 dark:text-slate-400 dark:hover:text-amber-400'"
               :whileHover="{ scale: 1.02 }" :whileTap="{ scale: 0.98 }">
-              <Lightbulb class="w-4 h-4 text-amber-500" />
+              <Mail class="w-4 h-4 text-amber-500" />
               <span>{{ $t('detail.contactUs') }}</span>
             </motion.button>
 
@@ -145,6 +145,17 @@ const navigate = (path: string) => {
               <Globe class="w-4 h-4 text-blue-500" />
               <span>BetterGov.ph</span>
             </a>
+
+            <!-- Data Analytics Link -->
+            <motion.button @click="router.push('/analytics')"
+              class="p-2 rounded-lg transition-colors flex items-center justify-center cursor-pointer"
+              :class="route.path === '/analytics'
+                ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-slate-800'
+                : 'text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800'"
+              title="Data Analytics"
+              :whileHover="{ scale: 1.12 }" :whileTap="{ scale: 0.88 }">
+              <BarChart3 class="w-5 h-5" />
+            </motion.button>
 
             <!-- GitHub Link -->
             <a href="https://github.com/fujiDevv/ayuda" target="_blank" rel="noopener noreferrer"
@@ -181,6 +192,25 @@ const navigate = (path: string) => {
             </motion.button>
 
             <!-- Dark Mode Toggle -->
+            <motion.button @click="emit('toggle-dark')" :aria-label="$t('nav.darkMode') || 'Toggle Dark Mode'"
+              :aria-pressed="isDark"
+              class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+              :whileHover="{ scale: 1.12, rotate: 12 }" :whileTap="{ scale: 0.88 }">
+              <Sun v-if="isDark" class="w-5 h-5" />
+              <Moon v-else class="w-5 h-5" />
+            </motion.button>
+          </div>
+
+          <!-- Mobile & Tablet Inline Actions (Outside the 3 dots) -->
+          <div class="flex items-center gap-1 lg:hidden">
+            <!-- GitHub Link (Mobile) -->
+            <a href="https://github.com/fujiDevv/ayuda" target="_blank" rel="noopener noreferrer"
+              class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center cursor-pointer"
+              title="GitHub Repository">
+              <Github class="w-5 h-5" />
+            </a>
+
+            <!-- Dark Mode Toggle (Mobile) -->
             <motion.button @click="emit('toggle-dark')" :aria-label="$t('nav.darkMode') || 'Toggle Dark Mode'"
               :aria-pressed="isDark"
               class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
@@ -237,24 +267,14 @@ const navigate = (path: string) => {
                   </span>
                 </button>
 
-                <!-- Dark Mode Toggle -->
-                <button @click="emit('toggle-dark'); isMenuOpen = false"
-                  class="w-full px-4 py-2.5 text-left flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer">
-                  <Sun v-if="isDark" class="w-4 h-4 text-slate-500" />
-                  <Moon v-else class="w-4 h-4 text-slate-500" />
-                  <span class="text-sm font-medium text-slate-700 dark:text-slate-300">
-                    {{ isDark ? 'Light Mode' : 'Dark Mode' }}
-                  </span>
-                </button>
-
                 <!-- Divider -->
                 <div class="border-t border-slate-100 dark:border-slate-700 my-1"></div>
 
                 <!-- Contact Us -->
                 <button @click="router.push('/contact'); isMenuOpen = false"
-                  class="w-full px-4 py-2.5 text-left flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer text-slate-700 dark:text-slate-300"
+                  class="w-full px-4 py-2.5 text-left flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer text-slate-700 dark:text-slate-350"
                   :class="route.path === '/contact' ? 'bg-blue-50/50 dark:bg-blue-950/20 font-bold text-blue-900 dark:text-blue-200' : ''">
-                  <Lightbulb class="w-4 h-4 text-slate-500"
+                  <Mail class="w-4 h-4 text-slate-500"
                     :class="route.path === '/contact' ? 'text-blue-600 dark:text-blue-400' : ''" />
                   <span class="text-sm font-medium">{{ $t('detail.contactUs') }}</span>
                 </button>
@@ -268,6 +288,15 @@ const navigate = (path: string) => {
                   <span class="text-sm font-medium">{{ $t('nav.pathways') }}</span>
                 </button>
 
+                <!-- Data Analytics -->
+                <button @click="router.push('/analytics'); isMenuOpen = false"
+                  class="w-full px-4 py-2.5 text-left flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer text-slate-700 dark:text-slate-300"
+                  :class="route.path === '/analytics' ? 'bg-blue-50/50 dark:bg-blue-950/20 font-bold text-blue-900 dark:text-blue-200' : ''">
+                  <BarChart3 class="w-4 h-4 text-slate-500"
+                    :class="route.path === '/analytics' ? 'text-blue-600 dark:text-blue-400' : ''" />
+                  <span class="text-sm font-medium">{{ $t('nav.analytics') }}</span>
+                </button>
+
                 <!-- BetterGov.ph Link -->
                 <a href="https://bettergov.ph/" target="_blank" rel="noopener noreferrer" @click="isMenuOpen = false"
                   class="w-full px-4 py-2.5 text-left flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer text-slate-700 dark:text-slate-300 font-medium">
@@ -275,13 +304,7 @@ const navigate = (path: string) => {
                   <span class="text-sm font-medium">BetterGov.ph</span>
                 </a>
 
-                <!-- GitHub Link -->
-                <a href="https://github.com/fujiDevv/ayuda" target="_blank" rel="noopener noreferrer"
-                  @click="isMenuOpen = false"
-                  class="w-full px-4 py-2.5 text-left flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer text-slate-700 dark:text-slate-300 font-medium">
-                  <Github class="w-4 h-4 text-slate-500" />
-                  <span class="text-sm font-medium">GitHub</span>
-                </a>
+
               </div>
             </transition>
           </div>

@@ -11,6 +11,7 @@
     "hotlines": "Hotlines",
     "locator": "Locator ng Sangay",
     "pathways": "Yugto ng Buhay",
+    "analytics": "Pagsusuri ng Data",
     "largeText": "Baguhin ang Laki ng Teksto",
     "darkMode": "Baguhin ang Dark Mode"
   },
@@ -94,7 +95,8 @@
     "visitWebsite": "Bisitahin ang Website",
     "prepared": "Nakahanda",
     "print": "I-print",
-    "contactUs": "Kontakin Kami"
+    "contactUs": "Kontakin Kami",
+    "viewDetails": "Tingnan ang Detalye"
   },
   "contact": {
     "title": "Kontakin Kami",
@@ -561,5 +563,31 @@
     "progress": "Progreso ng Kabuuang Pathway",
     "coordinationTips": "Mga Gabay at Tagubilin mula sa Eksperto",
     "bundleIncludes": "Ang pathway na ito ay pinagsasama ang mga sumusunod na programa ng gobyerno:"
+  },
+  "analytics": {
+    "title": "Pagsusuri ng Data",
+    "subtitle": "Isang komprehensibong pagsusuri sa mga programa at tulong ng pamahalaan ng Pilipinas sa kabuuang 20 natatanging programa.",
+    "executiveSummary": "Buod ng Pagsusuri",
+    "takeaway1Title": "Mga Nangungunang Ahensya",
+    "takeaway1Desc": "Ang Social Security System (SSS) at ang Department of Social Welfare and Development (DSWD) ang pinaka-aktibong ahensya sa dataset na ito, na nagbibigay ng kabuuang 8 na programa. Nakatuon ang SSS sa mga benepisyong nakabatay sa miyembro (Retirement, Pagkakasakit, Maternity), habang pinamamahalaan ng DSWD ang malawak na tulong tulad ng 4Ps at AICS.",
+    "takeaway2Title": "Pangunahing Uri ng Tulong",
+    "takeaway2Desc": "Tulong pinansyal ang pangunahing serbisyong inaalok na makikita sa 6 na magkakaibang programa. Sinusundan ito ng Edukasyon (4 na programa) at Cash Allowances/Pensions (3 programa bawat isa), na nagpapakita ng malakas na pagtuon sa direktang suportang pang-ekonomiya at pag-unlad ng tao.",
+    "takeaway3Title": "Mga Grupong Nangangailangan",
+    "takeaway3Desc": "Ang mga programa ay partikular na idinisenyo upang suportahan ang mga Indigent at Low-Income na indibidwal, pati na rin ang mga partikular na demograpiko tulad ng mga Seniors, Estudyante, at Retirees.",
+    "kpiTotalPrograms": "Kabuuang Programa",
+    "kpiAgencies": "Mga Ahensya ng Gobyerno",
+    "kpiCategories": "Mga Kategorya",
+    "kpiAvgRequirements": "Average na Dokumento",
+    "kpiAvgSteps": "Average na Hakbang",
+    "kpiActiveBookmarks": "Naka-save na Programa",
+    "chartAgenciesTitle": "Bilang ng Programa kada Ahensya",
+    "chartCategoriesTitle": "Bilang ng Programa kada Kategorya",
+    "chartAudiencesTitle": "Nangungunang 15 Target na Grupo para sa mga Programa",
+    "chartTagsTitle": "Nangungunang 15 Tags ng Programa",
+    "chartTooltipPrograms": "Mga Programa",
+    "chartTooltipPercentage": "Porsyento",
+    "viewAll": "Tingnan ang lahat ng kaugnay na programa",
+    "agencyFilterLabel": "I-filter ayon sa Ahensya",
+    "categoryFilterLabel": "I-filter ayon sa Kategorya"
   }
 }

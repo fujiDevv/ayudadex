@@ -11,6 +11,7 @@ const router = createRouter({
     { path: '/locator', name: 'locator', component: () => import('../views/BranchLocatorView.vue') },
     { path: '/contact', name: 'contact', component: () => import('../views/ContactView.vue') },
     { path: '/assistance', name: 'assistance', component: () => import('../views/AssistanceView.vue') },
+    { path: '/analytics', name: 'analytics', component: () => import('../views/AnalyticsView.vue') },
     {
       path: '/program/:id',
       name: 'program-detail',
