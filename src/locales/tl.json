@@ -131,7 +131,7 @@
     "noticeDesc": "Ang opisyal na oras ng operasyon para sa karamihan ng hotline ng gobyerno ay Lunes hanggang Biyernes, 8:00 AM hanggang 5:00 PM (Philippine Standard Time), maliban sa Pag-IBIG na bukas 24/7. Siguraduhing handa ang iyong SSS/GSIS/PhilHealth/Pag-IBIG ID number kapag tatawag."
   },
   "footer": {
-    "desc": "Isang open-source na inisyatiba ng mga mamamayan sa pamamagitan ng BetterGov.ph, ginawa upang gawing simple ang paghahanap sa mga pampublikong programa sa Pilipinas. Binuo para sa impormasyonal na gabay.",
+    "desc": "Isang independyente at open-source na proyekto na naglalayong gawing simple ang paghahanap ng mga pampublikong programa sa Pilipinas. Binuo sa pakikipagtulungan ng BetterGov.ph.",
     "repo": "GitHub Repository",
     "navLabel": "Nabigasyon",
     "resourcesLabel": "Mga Mapagkukunan",
@@ -608,7 +608,7 @@
       "accessibilityDesc": "Mabilis gamitin kahit mahina ang internet, may Large Text Mode para sa madaling pagbabasa, at naaayon sa mga accessibility tools."
     },
     "initiativeTitle": "Ugnayan ng Mamamayan",
-    "initiativeDesc": "Ang Ayuda ay isang malayang proyekto na pinasimulan ng BetterGov.ph at binuo lamang ni <a href=\"https://www.facebook.com/joshsarmiento22\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"font-bold text-blue-600 dark:text-blue-400 hover:underline\">Joshua Sarmiento</a>. Naniniwala kami na ang mga pampublikong sistema ay dapat bukas at nakatuon sa pangangailangan ng tao.",
+    "initiativeDesc": "Ang Ayuda ay isang independiyenteng proyekto na nagmula sa personal na layunin na gawing mas madaling ma-navigate ang tulong ng pamahalaan para sa mga ordinaryong Pilipino. Binuo ito sa pakikipagtulungan ng <a href=\"https://bettergov.ph\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"font-bold text-blue-600 dark:text-blue-400 hover:underline\">BetterGov.ph</a>, isang civic tech na komunidad na naglalayong modernisahin ang pakikipag-ugnayan ng mga mamamayan sa mga pampublikong serbisyo. Naniniwala kami na ang mga digital na pampublikong sistema ay dapat bukas, madaling gamitin, at nakatuon sa tunay na pangangailangan ng tao.",
     "openSourceTitle": "Bukas sa Kontribusyon",
     "openSourceDesc": "Tulungan kaming magsaayos ng mga detalye, magdagdag ng lokal na tulong, o pagandahin ang system. Sama-sama nating buuin ang mas maayos na gabay ng pamahalaan.",
     "contribButton": "Mag-ambag sa GitHub"
@@ -624,7 +624,7 @@
     "catData": "Datos at Pag-update",
     "catContrib": "Mga Kontribusyon",
     "q1": "Ang Ayuda ba ay konektado sa gobyerno ng Pilipinas?",
-    "a1": "Hindi. Ang Ayuda ay isang 100% independiyente at open-source na inisyatiba ng mga mamamayan na nilikha ng BetterGov.ph. Ito ay hindi kaanib, itinataguyod, o pinondohan ng pamahalaan ng Pilipinas o ng alinman sa mga ahensya nito.",
+    "a1": "Hindi. Ang Ayuda ay isang 100% independiyente at open-source na proyekto. Binuo ito sa pakikipagtulungan ng BetterGov.ph bilang isang civic tech na kasosyo, ngunit hindi ito kaanib, itinataguyod, o pinondohan ng pamahalaan ng Pilipinas o ng alinman sa mga ahensya nito.",
     "q2": "Libre ba ang paggamit ng Ayuda?",
     "a2": "Oo, ganap na libre. Walang mga bayarin, ad, o premium na subscription. Ang proyekto ay binuo lamang bilang isang pampublikong serbisyo upang matulungan ang mga Pilipino na makatuklas ng mga programa ng tulong.",
     "q3": "Nangongolekta ba o nag-a-imbak ang Ayuda ng aking personal na impormasyon?",
