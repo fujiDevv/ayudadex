@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import { ArrowLeft, Target, ShieldCheck, Heart, Eye, Github, Compass } from "lucide-vue-next";
+import { ArrowLeft, Target, ShieldCheck, Heart, Eye, Github } from "lucide-vue-next";
 import { motion } from "motion-v";
 import { useI18n } from "vue-i18n";
 

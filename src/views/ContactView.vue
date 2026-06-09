@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import { ArrowLeft, Mail, ExternalLink, Github, Lightbulb } from "lucide-vue-next";
+import { ArrowLeft, Mail, ExternalLink, Github } from "lucide-vue-next";
 import { motion } from "motion-v";
 import { useI18n } from "vue-i18n";
 
