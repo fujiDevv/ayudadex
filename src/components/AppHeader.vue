@@ -13,7 +13,6 @@ import {
   MapPin,
   Github,
   Mail,
-  Globe,
   ChevronDown,
   FileText,
   Layers,
@@ -137,10 +136,6 @@ const navigate = (path: string) => {
                 aria-label="Navigation menu"
                 :aria-expanded="isNavDropdownOpen"
               >
-                <component
-                  :is="currentNavItem.icon"
-                  class="w-4 h-4 text-slate-500 dark:text-slate-400"
-                />
                 <span>{{ currentNavItem.label }}</span>
                 <ChevronDown
                   class="w-4 h-4 text-slate-400 dark:text-slate-500 transition-transform duration-200"
@@ -172,11 +167,6 @@ const navigate = (path: string) => {
                         : ''
                     "
                   >
-                    <component
-                      :is="item.icon"
-                      class="w-4 h-4 text-slate-400"
-                      :class="route.path === item.path ? 'text-blue-600 dark:text-blue-400' : ''"
-                    />
                     <span class="text-sm">{{ item.label }}</span>
                   </button>
                 </div>
@@ -186,19 +176,33 @@ const navigate = (path: string) => {
 
           <!-- Desktop Inline Actions (Hidden on Mobile/Tablet) -->
           <div class="hidden lg:flex items-center gap-2">
+            <!-- About Us Button -->
+            <motion.button
+              @click="router.push('/about')"
+              class="px-2 py-1.5 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
+              :class="
+                route.path === '/about'
+                  ? 'text-blue-600 dark:text-blue-400 font-extrabold'
+                  : 'text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400'
+              "
+              :whileHover="{ scale: 1.02 }"
+              :whileTap="{ scale: 0.98 }"
+            >
+              <span>{{ t("nav.about") }}</span>
+            </motion.button>
+
             <!-- Contact Us Button -->
             <motion.button
               @click="router.push('/contact')"
               class="px-2 py-1.5 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
               :class="
                 route.path === '/contact'
-                  ? 'text-amber-600 dark:text-amber-400 font-extrabold'
-                  : 'text-slate-600 hover:text-amber-600 dark:text-slate-400 dark:hover:text-amber-400'
+                  ? 'text-blue-600 dark:text-blue-400 font-extrabold'
+                  : 'text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400'
               "
               :whileHover="{ scale: 1.02 }"
               :whileTap="{ scale: 0.98 }"
             >
-              <Mail class="w-4 h-4 text-amber-500" />
               <span>{{ $t("detail.contactUs") }}</span>
             </motion.button>
 
@@ -209,7 +213,6 @@ const navigate = (path: string) => {
               rel="noopener noreferrer"
               class="px-2 py-1.5 text-xs font-bold text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-all flex items-center gap-1.5 cursor-pointer"
             >
-              <Globe class="w-4 h-4 text-blue-500" />
               <span>BetterGov.ph</span>
             </a>
 
@@ -296,16 +299,37 @@ const navigate = (path: string) => {
 
           <!-- Mobile & Tablet Inline Actions (Outside the 3 dots) -->
           <div class="flex items-center gap-1 lg:hidden">
-            <!-- GitHub Link (Mobile) -->
-            <a
-              href="https://github.com/fujiDevv/ayuda"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center cursor-pointer"
-              title="GitHub Repository"
+            <!-- Data Analytics Link (Mobile) -->
+            <motion.button
+              @click="router.push('/analytics')"
+              class="p-2 rounded-lg transition-colors flex items-center justify-center cursor-pointer"
+              :class="
+                route.path === '/analytics'
+                  ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-slate-800'
+                  : 'text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800'
+              "
+              title="Data Analytics"
+              :whileHover="{ scale: 1.12 }"
+              :whileTap="{ scale: 0.88 }"
             >
-              <Github class="w-5 h-5" />
-            </a>
+              <BarChart3 class="w-5 h-5" />
+            </motion.button>
+
+            <!-- Contact Us Link (Mobile) -->
+            <motion.button
+              @click="router.push('/contact')"
+              class="p-2 rounded-lg transition-colors flex items-center justify-center cursor-pointer"
+              :class="
+                route.path === '/contact'
+                  ? 'text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-slate-800'
+                  : 'text-slate-500 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800'
+              "
+              title="Contact Us"
+              :whileHover="{ scale: 1.12 }"
+              :whileTap="{ scale: 0.88 }"
+            >
+              <Mail class="w-5 h-5" />
+            </motion.button>
 
             <!-- Dark Mode Toggle (Mobile) -->
             <motion.button
@@ -399,6 +423,38 @@ const navigate = (path: string) => {
                 <!-- Divider -->
                 <div class="border-t border-slate-100 dark:border-slate-700 my-1"></div>
 
+                <!-- About Us -->
+                <button
+                  @click="
+                    router.push('/about');
+                    isMenuOpen = false;
+                  "
+                  class="w-full px-4 py-2.5 text-left flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer text-slate-700 dark:text-slate-300"
+                  :class="
+                    route.path === '/about'
+                      ? 'bg-blue-50/50 dark:bg-blue-950/20 font-bold text-blue-900 dark:text-blue-200'
+                      : ''
+                  "
+                >
+                  <span class="text-sm font-medium">{{ t("nav.about") }}</span>
+                </button>
+
+                <!-- FAQs -->
+                <button
+                  @click="
+                    router.push('/faqs');
+                    isMenuOpen = false;
+                  "
+                  class="w-full px-4 py-2.5 text-left flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer text-slate-700 dark:text-slate-300"
+                  :class="
+                    route.path === '/faqs'
+                      ? 'bg-blue-50/50 dark:bg-blue-950/20 font-bold text-blue-900 dark:text-blue-200'
+                      : ''
+                  "
+                >
+                  <span class="text-sm font-medium">{{ t("nav.faqs") }}</span>
+                </button>
+
                 <!-- Contact Us -->
                 <button
                   @click="
@@ -412,10 +468,6 @@ const navigate = (path: string) => {
                       : ''
                   "
                 >
-                  <Mail
-                    class="w-4 h-4 text-slate-500"
-                    :class="route.path === '/contact' ? 'text-blue-600 dark:text-blue-400' : ''"
-                  />
                   <span class="text-sm font-medium">{{ $t("detail.contactUs") }}</span>
                 </button>
 
@@ -467,7 +519,6 @@ const navigate = (path: string) => {
                   @click="isMenuOpen = false"
                   class="w-full px-4 py-2.5 text-left flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer text-slate-700 dark:text-slate-300 font-medium"
                 >
-                  <Globe class="w-4 h-4 text-slate-500" />
                   <span class="text-sm font-medium">BetterGov.ph</span>
                 </a>
               </div>

@@ -12,6 +12,9 @@
     "locator": "Branch Locator",
     "pathways": "Life Events",
     "analytics": "Data Analytics",
+    "about": "About Us",
+    "faqs": "FAQs",
+    "sitemap": "Sitemap",
     "largeText": "Toggle Large Text",
     "darkMode": "Toggle Dark Mode"
   },
@@ -103,8 +106,8 @@
     "subtitle": "Have questions, suggestions, or feedback? Choose how you would like to get in touch with our team:",
     "emailUs": "Email Us",
     "emailUsDesc": "Send us your suggestions or feedback directly via email.",
-    "discord": "Discord Community",
-    "discordDesc": "Join our server to chat, share ideas, and collaborate with the community.",
+    "discord": "betterGov.ph Discord",
+    "discordDesc": "Join the betterGov.ph Discord server to chat, share ideas, and collaborate with the community.",
     "reportIssues": "Report Issues",
     "reportIssuesDesc": "Found a bug or incorrect data? Open an issue on GitHub.",
     "backHome": "Back to Directory"
@@ -589,5 +592,58 @@
     "viewAll": "View all related programs",
     "agencyFilterLabel": "Filter by Agency",
     "categoryFilterLabel": "Filter by Category"
+  },
+  "about": {
+    "title": "About Ayuda",
+    "subtitle": "Empowering Filipinos with clear, accessible, and simplified information about government social benefits.",
+    "missionTitle": "Our Mission",
+    "missionDesc": "Navigating public assistance can be overwhelming. Ayuda was created to bridge the gap between citizens and social safety nets by organizing complex government guidelines into readable, step-by-step checklists.",
+    "valuesTitle": "Core Values",
+    "values": {
+      "transparency": "Radical Transparency",
+      "transparencyDesc": "All source code and data sheets are open-source. Anyone can verify, audit, and improve how eligibility is calculated.",
+      "privacy": "Privacy-First",
+      "privacyDesc": "No personal data is sent to external servers. Your responses, bookmark checklists, and documents remain 100% inside your local browser storage.",
+      "accessibility": "Designed for Everyone",
+      "accessibilityDesc": "Optimized for speed, low bandwidth, readability customization (Large Text Mode), and screen readers."
+    },
+    "initiativeTitle": "A Citizen Initiative",
+    "initiativeDesc": "Ayuda is an independent project initiated by betterGov.ph and developed solely by <a href=\"https://www.facebook.com/joshsarmiento22\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"font-bold text-blue-600 dark:text-blue-400 hover:underline\">Joshua Sarmiento</a>. We believe that digital public infrastructure should be open, modern, and built around user needs.",
+    "openSourceTitle": "Open for Contributions",
+    "openSourceDesc": "Help us update correct rates, add local government aids, or improve the UI. Together we can build a better government navigator.",
+    "contribButton": "Contribute on GitHub"
+  },
+  "faqs": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Got questions about Ayuda? We have answers to help you navigate our platform and learn how it works.",
+    "searchPlaceholder": "Search FAQs...",
+    "noResults": "No FAQs match your search.",
+    "catAll": "All Questions",
+    "catGeneral": "General Information",
+    "catPrivacy": "Privacy & Data",
+    "catData": "Data & Updates",
+    "catContrib": "Contributions",
+    "q1": "Is Ayuda affiliated with the Philippine government?",
+    "a1": "No. Ayuda is a 100% independent, open-source citizen initiative created by betterGov.ph. It is not affiliated with, sponsored by, or endorsed by the government of the Philippines or any of its agencies.",
+    "q2": "Is using Ayuda free?",
+    "a2": "Yes, completely free. There are no fees, ads, or premium subscriptions. The project is built purely as a public utility to help Filipinos discover social assistance programs.",
+    "q3": "Does Ayuda collect or store my personal information?",
+    "a3": "No. Ayuda is built with a privacy-first architecture. Any answers you submit in the Ayuda Finder (quiz), the documents you draft in the Document Generator, or the programs you bookmark are stored solely on your local device browser via LocalStorage. No data is sent to our servers.",
+    "q4": "Where does the benefit program data come from?",
+    "a4": "All program details, guidelines, requirements, and steps are compiled from official government public sources, such as citizen charters, agency portals (SSS, GSIS, DSWD, etc.), and official news releases.",
+    "q5": "How often is the benefits directory updated?",
+    "a5": "We monitor changes regularly and update the directory through community contributions. However, government guidelines can change without notice. We highly recommend cross-checking requirements on official portals using the links provided on the benefit details pages.",
+    "q6": "How can I report a correction or request a new benefit to be added?",
+    "a6": "You can suggest corrections or propose new programs by opening an issue or submitting a pull request on our GitHub repository, or by reaching out to us through our contact page."
+  },
+  "sitemap": {
+    "title": "Sitemap",
+    "subtitle": "Use our sitemap to quickly find and access any page or tool within the Ayuda platform.",
+    "coreTools": "Core Tools & Directories",
+    "coreToolsDesc": "Our main tools to search, filter, match, and organize government benefits.",
+    "resources": "Resources & Contacts",
+    "resourcesDesc": "Official agency hotlines, physical branch locators, and templates.",
+    "meta": "About & Project Info",
+    "metaDesc": "Learn more about the initiative, project team, FAQs, and contact forms."
   }
 }

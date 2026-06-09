@@ -12,7 +12,12 @@ const navigationItems = [
   { value: "/wizard", key: "quiz" },
   { value: "/shortlist", key: "saved" },
   { value: "/hotlines", key: "hotlines" },
+  { value: "/locator", key: "locator" },
   { value: "/pathways", key: "pathways" },
+  { value: "/analytics", key: "analytics" },
+  { value: "/about", key: "about" },
+  { value: "/faqs", key: "faqs" },
+  { value: "/sitemap", key: "sitemap" },
 ] as const;
 
 const officialPortals = [
@@ -60,13 +65,12 @@ const officialPortals = [
           </div>
         </div>
 
-        <!-- Column 2: App Navigation Links -->
         <div class="space-y-3 md:pl-8">
           <span
             class="font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider text-[10px]"
             >{{ t("footer.navLabel") }}</span
           >
-          <ul class="space-y-2 mt-3">
+          <ul class="grid grid-cols-2 gap-x-4 gap-y-2 mt-3">
             <li v-for="tab in navigationItems" :key="tab.value">
               <button
                 @click="router.push(tab.value)"
@@ -131,7 +135,15 @@ const officialPortals = [
         <div class="flex items-center gap-1 text-slate-500 dark:text-slate-400">
           <span>Made with</span>
           <Heart class="w-3 h-3 text-red-500 fill-current inline animate-pulse" />
-          <span>for the Filipino Community.</span>
+          <span>by </span>
+          <a
+            href="https://www.facebook.com/joshsarmiento22"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-bold hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+          >
+            Joshua Sarmiento
+          </a>
         </div>
       </div>
     </div>

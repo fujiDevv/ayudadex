@@ -12,6 +12,9 @@
     "locator": "Locator ng Sangay",
     "pathways": "Yugto ng Buhay",
     "analytics": "Pagsusuri ng Data",
+    "about": "Tungkol sa Amin",
+    "faqs": "Mga FAQ",
+    "sitemap": "Sitemap",
     "largeText": "Baguhin ang Laki ng Teksto",
     "darkMode": "Baguhin ang Dark Mode"
   },
@@ -103,8 +106,8 @@
     "subtitle": "May mga katanungan, mungkahi, o feedback? Pumili kung paano mo gustong makipag-ugnayan sa aming team:",
     "emailUs": "Mag-email sa Amin",
     "emailUsDesc": "Ipadala ang iyong mga mungkahi o feedback direkta sa aming email.",
-    "discord": "Komunidad ng Discord",
-    "discordDesc": "Sumali sa aming server para makipag-usap at makipagtulungan sa aming komunidad.",
+    "discord": "betterGov.ph Discord",
+    "discordDesc": "Sumali sa Discord server ng betterGov.ph para makipag-usap at makipagtulungan sa aming komunidad.",
     "reportIssues": "Iulat ang Problema",
     "reportIssuesDesc": "May nakitang bug o maling impormasyon? Magbukas ng issue sa GitHub.",
     "backHome": "Bumalik sa Direktoryo"
@@ -589,5 +592,58 @@
     "viewAll": "Tingnan ang lahat ng kaugnay na programa",
     "agencyFilterLabel": "I-filter ayon sa Ahensya",
     "categoryFilterLabel": "I-filter ayon sa Kategorya"
+  },
+  "about": {
+    "title": "Tungkol sa Ayuda",
+    "subtitle": "Pinalalakas ang mga Pilipino sa pamamagitan ng malinaw, madaling ma-access, at pinasimpleng impormasyon tungkol sa mga benepisyo ng pamahalaan.",
+    "missionTitle": "Ang Ating Layunin",
+    "missionDesc": "Maaaring maging kumplikado ang paghahanap ng tulong pinansyal. Binuo ang Ayuda upang tulungan ang mga mamamayan sa pamamagitan ng pag-aayos ng mga alituntunin ng pamahalaan sa mga simpleng checklist.",
+    "valuesTitle": "Pangunahing Halaga (Core Values)",
+    "values": {
+      "transparency": "Ganap na Transparensya",
+      "transparencyDesc": "Ang lahat ng code at data sheet ay bukas sa publiko. Kahit sino ay maaaring mag-audit at magsaayos sa pagkalkula ng mga beneipisyo.",
+      "privacy": "Proteksyon sa Datos (Privacy-First)",
+      "privacyDesc": "Walang personal na impormasyon ang ipinapadala sa labas. Ang iyong mga sagot, bookmark, at dokumento ay ligtas na nakaimbak lamang sa iyong browser.",
+      "accessibility": "Para sa Lahat",
+      "accessibilityDesc": "Mabilis gamitin kahit mahina ang internet, may Large Text Mode para sa madaling pagbabasa, at naaayon sa mga accessibility tools."
+    },
+    "initiativeTitle": "Ugnayan ng Mamamayan",
+    "initiativeDesc": "Ang Ayuda ay isang malayang proyekto na pinasimulan ng betterGov.ph at binuo lamang ni <a href=\"https://www.facebook.com/joshsarmiento22\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"font-bold text-blue-600 dark:text-blue-400 hover:underline\">Joshua Sarmiento</a>. Naniniwala kami na ang mga pampublikong sistema ay dapat bukas at nakatuon sa pangangailangan ng tao.",
+    "openSourceTitle": "Bukas sa Kontribusyon",
+    "openSourceDesc": "Tulungan kaming magsaayos ng mga detalye, magdagdag ng lokal na tulong, o pagandahin ang system. Sama-sama nating buuin ang mas maayos na gabay ng pamahalaan.",
+    "contribButton": "Mag-ambag sa GitHub"
+  },
+  "faqs": {
+    "title": "Mga Madalas Itanong (FAQs)",
+    "subtitle": "May mga katanungan tungkol sa Ayuda? Narito ang mga sagot para tulungan ka.",
+    "searchPlaceholder": "Maghanap sa mga FAQ...",
+    "noResults": "Walang tugmang FAQ sa iyong hinahanap.",
+    "catAll": "Lahat ng Tanong",
+    "catGeneral": "Pangkalahatang Impormasyon",
+    "catPrivacy": "Privacy at Datos",
+    "catData": "Datos at Pag-update",
+    "catContrib": "Mga Kontribusyon",
+    "q1": "Ang Ayuda ba ay konektado sa gobyerno ng Pilipinas?",
+    "a1": "Hindi. Ang Ayuda ay isang 100% independiyente at open-source na inisyatiba ng mga mamamayan na nilikha ng betterGov.ph. Ito ay hindi kaanib, itinataguyod, o pinondohan ng pamahalaan ng Pilipinas o ng alinman sa mga ahensya nito.",
+    "q2": "Libre ba ang paggamit ng Ayuda?",
+    "a2": "Oo, ganap na libre. Walang mga bayarin, ad, o premium na subscription. Ang proyekto ay binuo lamang bilang isang pampublikong serbisyo upang matulungan ang mga Pilipino na makatuklas ng mga programa ng tulong.",
+    "q3": "Nangongolekta ba o nag-a-imbak ang Ayuda ng aking personal na impormasyon?",
+    "a3": "Hindi. Ang Ayuda ay binuo nang may proteksyon sa datos. Ang anumang sagot mo sa Ayuda Finder (quiz), mga dokumentong ginagawa mo sa Document Generator, o mga naka-bookmark na programa ay nakaimbak lamang sa browser ng iyong sariling device. Walang data na ipinapadala sa aming mga server.",
+    "q4": "Saan galing ang mga datos ng mga programa ng tulong?",
+    "a4": "Ang lahat ng detalye ng programa, gabay, kinakailangan, at hakbang ay kinuha mula sa mga opisyal na pampublikong sanggunian ng pamahalaan tulad ng citizen charters, portal ng ahensya (SSS, GSIS, DSWD, atbp.), at mga opisyal na balita.",
+    "q5": "Gaano kadalas ina-update ang direktoryo ng mga benepisyo?",
+    "a5": "Regular na sinusubaybayan ang mga pagbabago at ina-update ang direktoryo sa pamamagitan ng tulong ng komunidad. Gayunpaman, maaaring magbago ang mga alituntunin ng pamahalaan nang walang paunawa. Inirerekumenda namin na kumpirmahin din ang mga kinakailangan sa opisyal na portal gamit ang mga link na ibinigay sa mga detalye ng benepisyo.",
+    "q6": "Paano ko maiuulat ang maling impormasyon o paano magmungkahi ng bagong benepisyo?",
+    "a6": "Maaari kang magmungkahi ng mga pagwawasto o maghain ng mga bagong programa sa pamamagitan ng paggawa ng issue o pull request sa aming GitHub repository, o sa pamamagitan ng pakikipag-ugnayan sa amin sa aming contact page."
+  },
+  "sitemap": {
+    "title": "Sitemap",
+    "subtitle": "Gamitin ang aming sitemap upang mabilis na mahanap at ma-access ang anumang pahina o tool sa Ayuda.",
+    "coreTools": "Pangunahing Tools at Direktoryo",
+    "coreToolsDesc": "Ang aming mga pangunahing tool upang maghanap, mag-filter, at mag-ayos ng mga benepisyo ng gobyerno.",
+    "resources": "Mga Mapagkukunan at Kontakin",
+    "resourcesDesc": "Opisyal na hotlines ng ahensya, locator ng sangay, at mga template ng dokumento.",
+    "meta": "Tungkol sa Proyekto at Impormasyon",
+    "metaDesc": "Alamin ang higit pa tungkol sa inisyatiba, team, mga FAQ, at form para sa pakikipag-ugnayan."
   }
 }
