@@ -152,7 +152,7 @@ const recommendedPrograms = computed<Program[]>(() => {
 
 <template>
   <motion.div
-    class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 md:p-8 shadow-sm transition-all duration-300"
+    class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 md:p-8 transition-all duration-300"
     :initial="{ opacity: 0, y: 15 }"
     :animate="{ opacity: 1, y: 0 }"
     :transition="{ duration: 0.4 }"

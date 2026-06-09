@@ -397,7 +397,7 @@ onMounted(() => {
         v-for="(pathway, key) in pathwaysData"
         :key="key"
         @click="selectedPathway = key"
-        class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer flex flex-col justify-between group overflow-hidden relative"
+        class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 hover:shadow-md transition-shadow cursor-pointer flex flex-col justify-between group overflow-hidden relative"
         :whileHover="{ y: -4, scale: 1.01 }"
         :whileTap="{ scale: 0.99 }"
       >
@@ -439,7 +439,7 @@ onMounted(() => {
 
       <!-- Pathway Title and Header -->
       <motion.div
-        class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6"
+        class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6"
         :initial="{ opacity: 0, y: 10 }"
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 0.3 }"
@@ -524,7 +524,7 @@ onMounted(() => {
         <motion.div
           v-for="(item, itemIdx) in pathwaysData[selectedPathway].items"
           :key="itemIdx"
-          class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6"
+          class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6"
           :initial="{ opacity: 0, y: 15 }"
           :animate="{ opacity: 1, y: 0 }"
           :transition="{ duration: 0.3, delay: 0.15 + itemIdx * 0.05 }"

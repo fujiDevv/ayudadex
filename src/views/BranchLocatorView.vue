@@ -441,7 +441,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 mb-20 md:mb-8">
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 mb-20 md:mb-8">
     <motion.div
       class="mb-8"
       :initial="{ opacity: 0, y: 20 }"
@@ -466,7 +466,7 @@ onUnmounted(() => {
     </motion.div>
 
     <motion.div
-      class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 p-4 md:p-6 shadow-sm mb-8"
+      class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 p-4 md:p-6 mb-8"
       :initial="{ opacity: 0, y: 20 }"
       :animate="{ opacity: 1, y: 0 }"
       :transition="{ duration: 0.5, delay: 0.1 }"

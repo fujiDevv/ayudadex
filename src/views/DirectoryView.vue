@@ -56,7 +56,7 @@ const visualCategories = [
     nameEn: "Financial Aid",
     nameTl: "Pinansyal na Tulong",
     icon: Coins,
-    tags: ["Financial Aid", "Cash Loan"],
+    tags: ["Financial", "Cash Allowance", "Cash", "Burial"],
     color: "bg-amber-500 sm:bg-gradient-to-br sm:from-amber-500 sm:to-yellow-500",
     glow: "hover:shadow-amber-500/10",
   },
@@ -65,7 +65,7 @@ const visualCategories = [
     nameEn: "Medical & Health",
     nameTl: "Medikal at Kalusugan",
     icon: Heart,
-    tags: ["Health", "Medical"],
+    tags: ["Health", "Medical", "Healthcare", "Medical Assistance", "Maternity"],
     color: "bg-emerald-500 sm:bg-gradient-to-br sm:from-emerald-500 sm:to-teal-500",
     glow: "hover:shadow-emerald-500/10",
   },
@@ -74,7 +74,7 @@ const visualCategories = [
     nameEn: "Education",
     nameTl: "Edukasyon",
     icon: GraduationCap,
-    tags: ["Education", "Scholarship"],
+    tags: ["Education", "Scholarship", "Subsidy"],
     color: "bg-blue-500 sm:bg-gradient-to-br sm:from-blue-500 sm:to-sky-500",
     glow: "hover:shadow-blue-500/10",
   },
@@ -83,7 +83,7 @@ const visualCategories = [
     nameEn: "Pensions & Seniors",
     nameTl: "Pension at Senior",
     icon: HeartHandshake,
-    tags: ["Pension", "Seniors"],
+    tags: ["Pension", "Seniors", "Retirement"],
     color: "bg-purple-500 sm:bg-gradient-to-br sm:from-purple-500 sm:to-indigo-500",
     glow: "hover:shadow-purple-500/10",
   },
@@ -92,7 +92,7 @@ const visualCategories = [
     nameEn: "Housing & Property",
     nameTl: "Pabahay at Lupa",
     icon: Home,
-    tags: ["Housing", "Property"],
+    tags: ["Housing", "Loan"],
     color: "bg-rose-500 sm:bg-gradient-to-br sm:from-rose-500 sm:to-pink-500",
     glow: "hover:shadow-rose-500/10",
   },
@@ -101,7 +101,7 @@ const visualCategories = [
     nameEn: "Livelihood & Jobs",
     nameTl: "Kabuhayan at Trabaho",
     icon: Briefcase,
-    tags: ["Employment", "Livelihood"],
+    tags: ["Livelihood", "Family"],
     color: "bg-indigo-500 sm:bg-gradient-to-br sm:from-indigo-500 sm:to-violet-500",
     glow: "hover:shadow-indigo-500/10",
   },
@@ -555,7 +555,7 @@ const handleBlur = () => {
     >
       <!-- Refinement Sidebar -->
       <motion.aside
-        class="space-y-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl shadow-sm backdrop-blur-md bg-white/95 dark:bg-slate-900/95 lg:sticky lg:top-8"
+        class="space-y-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl backdrop-blur-md bg-white/95 dark:bg-slate-900/95 lg:sticky lg:top-8"
         :initial="{ opacity: 0, x: -15 }"
         :animate="{ opacity: 1, x: 0 }"
         :transition="{ duration: 0.35 }"

@@ -69,7 +69,7 @@ const filteredFaqs = computed(() => {
 
     <!-- Header Card -->
     <div
-      class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-sm mb-8"
+      class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 mb-8"
     >
       <div class="space-y-4">
         <div class="flex items-center gap-2">
@@ -134,7 +134,7 @@ const filteredFaqs = computed(() => {
       <div
         v-for="faq in filteredFaqs"
         :key="faq.id"
-        class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm"
+        class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden hover:shadow-md transition-shadow"
       >
         <button
           @click="toggleFaq(faq.id)"
@@ -175,7 +175,7 @@ const filteredFaqs = computed(() => {
     <!-- No Results State -->
     <div
       v-else
-      class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-12 text-center shadow-sm"
+      class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-12 text-center"
     >
       <div
         class="p-4 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-750 text-slate-400 dark:text-slate-500 rounded-full w-fit mx-auto mb-4"

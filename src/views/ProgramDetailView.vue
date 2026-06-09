@@ -78,7 +78,7 @@ const printChecklist = () => {
 
     <div
       v-if="!program"
-      class="text-center py-20 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm"
+      class="text-center py-20 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800"
     >
       <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100">
         {{ $t("detail.notFoundTitle") }}
@@ -94,7 +94,7 @@ const printChecklist = () => {
 
     <div
       v-else
-      class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-sm"
+      class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10"
     >
       <!-- Header -->
       <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-6">

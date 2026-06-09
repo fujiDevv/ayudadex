@@ -25,15 +25,10 @@ const githubHref = "https://github.com/fujiDevv/ayudadex/issues/new";
 
     <!-- Header -->
     <div
-      class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-sm mb-8"
+      class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 mb-8"
     >
       <div class="space-y-3">
         <div class="flex items-center gap-2">
-          <div
-            class="p-2 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-100 dark:border-blue-900/30"
-          >
-            <Lightbulb class="w-5 h-5 text-blue-900 dark:text-blue-400" />
-          </div>
           <span
             class="px-2.5 py-0.5 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold uppercase rounded-md tracking-wider border border-emerald-200/50 dark:border-emerald-900/30"
           >
@@ -57,7 +52,7 @@ const githubHref = "https://github.com/fujiDevv/ayudadex/issues/new";
         <!-- Email Us Card -->
         <motion.a
           :href="emailHref"
-          class="flex flex-col h-full bg-slate-50 dark:bg-slate-900/40 hover:bg-white dark:hover:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-2xl p-6 transition-all shadow-sm hover:shadow-md cursor-pointer group"
+          class="flex flex-col h-full bg-slate-50 dark:bg-slate-900/40 hover:bg-white dark:hover:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-2xl p-6 transition-all hover:shadow-md cursor-pointer group"
           :whileHover="{ y: -4 }"
           :transition="{ duration: 0.2 }"
         >
@@ -84,7 +79,7 @@ const githubHref = "https://github.com/fujiDevv/ayudadex/issues/new";
           :href="discordHref"
           target="_blank"
           rel="noopener noreferrer"
-          class="flex flex-col h-full bg-slate-50 dark:bg-slate-900/40 hover:bg-white dark:hover:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 dark:hover:border-indigo-500 rounded-2xl p-6 transition-all shadow-sm hover:shadow-md cursor-pointer group"
+          class="flex flex-col h-full bg-slate-50 dark:bg-slate-900/40 hover:bg-white dark:hover:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 dark:hover:border-indigo-500 rounded-2xl p-6 transition-all hover:shadow-md cursor-pointer group"
           :whileHover="{ y: -4 }"
           :transition="{ duration: 0.2 }"
         >
@@ -115,7 +110,7 @@ const githubHref = "https://github.com/fujiDevv/ayudadex/issues/new";
           :href="githubHref"
           target="_blank"
           rel="noopener noreferrer"
-          class="flex flex-col h-full bg-slate-50 dark:bg-slate-900/40 hover:bg-white dark:hover:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-slate-700 dark:hover:border-slate-600 rounded-2xl p-6 transition-all shadow-sm hover:shadow-md cursor-pointer group"
+          class="flex flex-col h-full bg-slate-50 dark:bg-slate-900/40 hover:bg-white dark:hover:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-slate-700 dark:hover:border-slate-600 rounded-2xl p-6 transition-all hover:shadow-md cursor-pointer group"
           :whileHover="{ y: -4 }"
           :transition="{ duration: 0.2 }"
         >

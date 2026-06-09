@@ -106,8 +106,8 @@
     "subtitle": "Have questions, suggestions, or feedback? Choose how you would like to get in touch with our team:",
     "emailUs": "Email Us",
     "emailUsDesc": "Send us your suggestions or feedback directly via email.",
-    "discord": "betterGov.ph Discord",
-    "discordDesc": "Join the betterGov.ph Discord server to chat, share ideas, and collaborate with the community.",
+    "discord": "BetterGov.ph Discord",
+    "discordDesc": "Join the BetterGov.ph Discord server to chat, share ideas, and collaborate with the community.",
     "reportIssues": "Report Issues",
     "reportIssuesDesc": "Found a bug or incorrect data? Open an issue on GitHub.",
     "backHome": "Back to Directory"
@@ -131,7 +131,7 @@
     "noticeDesc": "Official operating times for most government hotlines are Monday to Friday, 8:00 AM to 5:00 PM (Philippine Standard Time), except for Pag-IBIG which operates 24/7. Standard local call rates apply. When contacting, ensure you have your SSS/GSIS/PhilHealth/Pag-IBIG membership ID number ready."
   },
   "footer": {
-    "desc": "An open-source citizen initiative by betterGov.ph designed to simplify and track access to public welfare programs in the Philippines. Developed for informational guidance.",
+    "desc": "An open-source citizen initiative by BetterGov.ph designed to simplify and track access to public welfare programs in the Philippines. Developed for informational guidance.",
     "repo": "GitHub Repository",
     "navLabel": "Navigation",
     "resourcesLabel": "Resources",
@@ -608,7 +608,7 @@
       "accessibilityDesc": "Optimized for speed, low bandwidth, readability customization (Large Text Mode), and screen readers."
     },
     "initiativeTitle": "A Citizen Initiative",
-    "initiativeDesc": "Ayuda is an independent project initiated by betterGov.ph and developed solely by <a href=\"https://www.facebook.com/joshsarmiento22\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"font-bold text-blue-600 dark:text-blue-400 hover:underline\">Joshua Sarmiento</a>. We believe that digital public infrastructure should be open, modern, and built around user needs.",
+    "initiativeDesc": "Ayuda is an independent project initiated by BetterGov.ph and developed solely by <a href=\"https://www.facebook.com/joshsarmiento22\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"font-bold text-blue-600 dark:text-blue-400 hover:underline\">Joshua Sarmiento</a>. We believe that digital public infrastructure should be open, modern, and built around user needs.",
     "openSourceTitle": "Open for Contributions",
     "openSourceDesc": "Help us update correct rates, add local government aids, or improve the UI. Together we can build a better government navigator.",
     "contribButton": "Contribute on GitHub"
@@ -624,7 +624,7 @@
     "catData": "Data & Updates",
     "catContrib": "Contributions",
     "q1": "Is Ayuda affiliated with the Philippine government?",
-    "a1": "No. Ayuda is a 100% independent, open-source citizen initiative created by betterGov.ph. It is not affiliated with, sponsored by, or endorsed by the government of the Philippines or any of its agencies.",
+    "a1": "No. Ayuda is a 100% independent, open-source citizen initiative created by BetterGov.ph. It is not affiliated with, sponsored by, or endorsed by the government of the Philippines or any of its agencies.",
     "q2": "Is using Ayuda free?",
     "a2": "Yes, completely free. There are no fees, ads, or premium subscriptions. The project is built purely as a public utility to help Filipinos discover social assistance programs.",
     "q3": "Does Ayuda collect or store my personal information?",

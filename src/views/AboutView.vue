@@ -30,9 +30,6 @@ const githubRepoHref = "https://github.com/fujiDevv/ayuda";
 
       <div class="space-y-4 relative z-10">
         <div class="flex items-center gap-2">
-          <div class="p-2 rounded-xl bg-white/10 backdrop-blur-md">
-            <Compass class="w-6 h-6 text-blue-200" />
-          </div>
           <span
             class="px-2.5 py-0.5 bg-blue-500/30 text-blue-100 text-[10px] font-bold uppercase rounded-md tracking-wider border border-white/10"
           >
@@ -50,7 +47,7 @@ const githubRepoHref = "https://github.com/fujiDevv/ayuda";
 
     <!-- Mission & Vision Section -->
     <div
-      class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-sm mb-8"
+      class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 mb-8"
     >
       <div class="space-y-4">
         <div class="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold">
@@ -72,7 +69,7 @@ const githubRepoHref = "https://github.com/fujiDevv/ayuda";
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
       <!-- Radical Transparency -->
       <motion.div
-        class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow"
+        class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 hover:shadow-md transition-shadow"
         :whileHover="{ y: -4 }"
         :transition="{ duration: 0.2 }"
       >
@@ -91,7 +88,7 @@ const githubRepoHref = "https://github.com/fujiDevv/ayuda";
 
       <!-- Privacy-First -->
       <motion.div
-        class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow"
+        class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 hover:shadow-md transition-shadow"
         :whileHover="{ y: -4 }"
         :transition="{ duration: 0.2 }"
       >
@@ -110,7 +107,7 @@ const githubRepoHref = "https://github.com/fujiDevv/ayuda";
 
       <!-- Accessibility -->
       <motion.div
-        class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow"
+        class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 hover:shadow-md transition-shadow"
         :whileHover="{ y: -4 }"
         :transition="{ duration: 0.2 }"
       >
@@ -130,7 +127,7 @@ const githubRepoHref = "https://github.com/fujiDevv/ayuda";
 
     <!-- Initiative Info -->
     <div
-      class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-sm mb-8"
+      class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 mb-8"
     >
       <div class="space-y-4">
         <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
@@ -145,7 +142,7 @@ const githubRepoHref = "https://github.com/fujiDevv/ayuda";
 
     <!-- GitHub Contribution CTA -->
     <div
-      class="bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 text-center shadow-sm"
+      class="bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 text-center"
     >
       <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2">
         {{ t("about.openSourceTitle") }}

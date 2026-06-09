@@ -13,7 +13,7 @@ const browseDirectory = () => router.push("/");
 </script>
 
 <template>
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 animate-fade-in">
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 animate-fade-in">
     <div class="space-y-6">
       <div class="text-left mb-8 max-w-2xl">
         <h2
@@ -28,7 +28,7 @@ const browseDirectory = () => router.push("/");
 
       <div
         v-if="store.shortlistedPrograms.length === 0"
-        class="text-center py-20 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm mt-8"
+        class="text-center py-20 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 mt-8"
       >
         <Star class="w-12 h-12 text-slate-300 dark:text-slate-700 mx-auto" />
         <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mt-4">

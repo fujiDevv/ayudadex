@@ -16,8 +16,8 @@ function getDialableNumber(text: string) {
 </script>
 
 <template>
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 animate-fade-in">
-    <div class="space-y-6 max-w-4xl mx-auto">
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 animate-fade-in">
+    <div class="space-y-6">
       <div class="text-left mb-8">
         <h2
           class="text-3xl font-bold text-slate-900 dark:text-slate-200 tracking-tight flex items-center gap-2"
@@ -29,11 +29,11 @@ function getDialableNumber(text: string) {
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <motion.div
           v-for="(contact, idx) in hotlines"
           :key="contact.agency"
-          class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm flex flex-col justify-between space-y-3"
+          class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 hover:shadow-md transition-shadow flex flex-col justify-between space-y-3"
           :initial="{ opacity: 0, y: 15 }"
           :animate="{ opacity: 1, y: 0 }"
           :transition="{ duration: 0.3, delay: idx * 0.04 }"

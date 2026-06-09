@@ -926,7 +926,7 @@ const guideProgress = computed(() => {
     </div>
 
     <main
-      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 md:mt-8 pb-20 animate-fade-in print:hidden"
+      class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 md:mt-8 pb-20 animate-fade-in print:hidden"
     >
       <!-- Header Hero -->
       <div class="mb-8 text-center max-w-3xl mx-auto">
@@ -941,7 +941,7 @@ const guideProgress = computed(() => {
       <!-- Navigation Tabs -->
       <div class="flex justify-center mb-8">
         <div
-          class="inline-flex bg-slate-200/60 dark:bg-slate-900 border border-slate-300/50 dark:border-slate-800 p-1 rounded-xl shadow-sm"
+          class="inline-flex bg-slate-200/60 dark:bg-slate-900 border border-slate-300/50 dark:border-slate-800 p-1 rounded-xl"
         >
           <button
             @click="activeTab = 'generator'"
@@ -978,7 +978,7 @@ const guideProgress = computed(() => {
         <!-- Input Form Column -->
         <div class="lg:col-span-5 space-y-6">
           <div
-            class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm"
+            class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6"
           >
             <div
               class="flex items-center gap-2 border-b border-slate-100 dark:border-slate-800 pb-4 mb-6"
@@ -1451,7 +1451,7 @@ const guideProgress = computed(() => {
       <div v-if="activeTab === 'guides'" class="max-w-4xl mx-auto space-y-6">
         <!-- Guide Selector Header -->
         <div
-          class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm"
+          class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6"
         >
           <div
             class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-5 mb-5"
@@ -1574,7 +1574,7 @@ const guideProgress = computed(() => {
         <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
           <!-- Prerequisites Checklist Card -->
           <div
-            class="md:col-span-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm"
+            class="md:col-span-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6"
           >
             <h4
               class="text-sm font-extrabold text-slate-900 dark:text-white uppercase tracking-wider mb-4 border-b border-slate-100 dark:border-slate-800 pb-2"
@@ -1620,7 +1620,7 @@ const guideProgress = computed(() => {
 
           <!-- Step-by-Step Procedure Card -->
           <div
-            class="md:col-span-7 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm space-y-6"
+            class="md:col-span-7 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-6"
           >
             <div>
               <h4
